@@ -1,0 +1,21 @@
+.CodeMirror {
+    padding: 10px 3px;
+    height: auto;
+    word-break: break-word;
+    border-radius: 20px;
+
+}
+
+.CodeMirror > textarea{
+    resize:none;
+    -ms-overflow-style: none;
+    outline: none;
+}
+
+.CodeMirror-scroll {
+    height: auto;
+    resize: none;
+    overflow:hidden;
+    border-radius: 20px;
+    outline: none;
+}
