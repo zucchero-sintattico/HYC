@@ -1,0 +1,33 @@
+body header{
+    background-color: #E0E0E0;
+    padding-left: 3%;
+}
+
+body header > h1{
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 55px;
+    color: white;
+    text-align: left;
+}
+
+body header > h2{
+    color: black;
+    text-align: left;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+body > div > div > div > ul > li{
+    padding: 0px 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+body > div > div > div > ul > li > a > img{
+    width: 10%;
+}
+
+
