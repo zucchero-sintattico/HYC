@@ -30,4 +30,24 @@ body > div > div > div > ul > li > a > img{
     width: 10%;
 }
 
+body  div div button{
+    width:100%;
+}
+body > div > div  div{
+
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 10px  !important;
+}
+
+body > div > div  button{
+    border-radius: 0px !important;
+    border : solid !important;
+    border-color: lightslategray !important;
+    background-color: transparent !important;
+    border-width: 1px !important;
+    border-width: 2px;
+    color: black !important;
+}
+
 
