@@ -60,17 +60,6 @@ body > div > div  button:hover{
     background-color: #f1f1f1 !important;
 }
 
-
-
-.greenButton{
-    color: green;
-}
-
-.grayButton{
-    background-color: gray;
-}
-
-
 .row{
     display: flex;
     justify-content: center;

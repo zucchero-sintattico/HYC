@@ -101,21 +101,26 @@
             </div>
         </div>
     </div>
-        <!-- Console -->
-    <div class="row col-8">
-        <code id="code">
-            <script>
-                let quadro = new CodeSquare(document.querySelector('#code'));
-                quadro.getSquare();
-                quadro.updateStyle();
-            </script>
-        </code>
-    </div>
-    <div class="row col-6">
-            <div class="col-6">
+       <!-- Console -->
+<div class="row justify-content-center">
+    <code class="col-6" id="code">
+        <script>
+            let quadro = new CodeSquare(document.querySelector('#code'));
+            quadro.getSquare();
+            quadro.updateStyle();
+        </script>
+    </code>
+</div>
+</div>
+
+
+
+<div class="container-fluid overflow-hidden">
+    <div class="row">
+            <div class="col-3 mx-1">
                 <button class="btn btn-primary" type="button">Add to Cart</button>
             </div>
-            <div class="col-6">
+            <div class="col-3 mx-1">
                 <button class="btn btn-primary" type="button">BuyNow</button>
             </div>
         </div>
