@@ -40,11 +40,12 @@ body nav > ul > li > a > img{
 body  div div button{
     width:100%;
 }
-body > div > div  div{
 
+body > div  > div div :not(code *){
     padding: 0 !important;
     margin: 0 !important;
     margin-top: 10px  !important;
+    background-color: aqua;
 }
 
 body > div > div  button{
