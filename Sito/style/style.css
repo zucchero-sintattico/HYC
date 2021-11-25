@@ -55,6 +55,7 @@ body > div > div  button, select{
     margin: 10px 0 0 0;
     padding: 10px 0;
     text-align: center;
+    -webkit-appearance:none;
 }
 body > div > div  button:hover, body > div > div  select:hover{
     background-color: #f1f1f1 !important;
