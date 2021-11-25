@@ -20,6 +20,7 @@ body header > h2{
     font-size: 20px;
 }
 
+
 body > div > div > div > ul > li{
     padding: 0px 10px;
     background-color: #f1f1f1;
@@ -27,7 +28,7 @@ body > div > div > div > ul > li{
 }
 
 body > div > div > div > ul > li > a > img{
-    width: 10%;
+    width: 30px;
 }
 
 body  div div button{
@@ -50,4 +51,16 @@ body > div > div  button{
     color: black !important;
 }
 
+#code{
+    margin-top: 3%;
+    margin-bottom: 100px;
+    
+}
 
+/* Regole per la visualizzazione Desktop-Mode*/
+/* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
+@media screen and (min-width: 768px) {
+
+    
+
+}
