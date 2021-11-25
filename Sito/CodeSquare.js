@@ -77,6 +77,11 @@ class CodeSquare {
         codeMirror.setOption("theme", style);
     }
 
+    setLanguages(code_language){
+        language = code_language;
+        codeMirror.setOption("mode", language);
+    }
+
     disable(){
         let square = $(this.querySelector);
         square.find("textarea").css("caret-color", "transparent");
