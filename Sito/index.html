@@ -17,7 +17,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css"></link>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-light.min.css">
+
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="style/code.css">
@@ -70,24 +73,27 @@
     <div class="row">
         <div class="col col-8">
             <div class="row">
-                <button class="btn btn-primary dropdown-toggle" type="button">Dimension Option</button>
+                <button class="dropdown-toggle" type="button">Dimension Option</button>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" type="button">Style</button>
+                    <button  type="button">Style</button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
+                    <select class="dropdown-toggle" >
+                        <option>monokai</option>
+                        <option>base16-light</option>
+                    </select>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" type="button">Language</button>
+                    <button  type="button">Language</button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
+                    <button class="dropdown-toggle" type="button">Default</button>
                 </div>
             </div>
 
@@ -102,7 +108,7 @@
         </div>
     </div>
         <!-- Console -->
-    <div class="row col-8">
+    <div class="row col-8 justify-content-center">
         <code id="code">
             <script>
                 let quadro = new CodeSquare(document.querySelector('#code'));

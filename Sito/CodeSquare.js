@@ -1,5 +1,3 @@
-
-
 let value = "console.log('ciao mondo')";
 let language = 'javascript';
 let theme = 'monokai';
@@ -68,6 +66,11 @@ class CodeSquare {
         font_size = size;
         let square = $(this.querySelector);
         square.find(".CodeMirror").css("font-size", font_size);
+
+    }
+
+    setStyle(style){
+        theme = style;
 
     }
 
