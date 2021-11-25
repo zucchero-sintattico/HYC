@@ -48,17 +48,17 @@
                         </a>
                     </li>
                     <li class="nav-item col-3 col-md-3">
-                        <a class="mx-2 my-2 nav-link" href="#">
+                        <a class="nav-link" href="#">
                             <img src="img/user.svg" alt="">
                         </a>
                     </li>
                     <li class="nav-item col-3 col-md-3">
-                        <a class="mx-2 my-2 nav-link" href="#">
+                        <a class="nav-link" href="#">
                             <img src="img/search.svg" alt="">
                         </a>
                     </li>
                     <li class="nav-item col-3 col-md-3">
-                        <a class="mx-2 my-2 nav-link" href="#">
+                        <a class="nav-link" href="#">
                             <img src="img/settings.svg" alt="">
                         </a>
                     </li>
@@ -74,55 +74,49 @@
             </div>
 
             <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" type="button">Style</button>
+                <div class="col-6">
+                    <button type="button">Style</button>
                 </div>
-                <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" type="button">Language</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
+                <div class="col-6">
+                    <button class="dropdown-toggle" type="button ">Default</button>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" type="button">Code block color</button>
+                    <button type="button">Language</button>
                 </div>
                 <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Frame color</button>
+                    <button class="dropdown-toggle" type="button">Default</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button">Code block color</button>
+                </div>
+                <div class="col">
+                    <button class="dropdown-toggle" type="button">Frame color</button>
                 </div>
             </div>
         </div>
     </div>
        <!-- Console -->
-<div class="row justify-content-center">
-    <code class="col-6" id="code">
-        <script>
-            let quadro = new CodeSquare(document.querySelector('#code'));
-            quadro.getSquare();
-            quadro.updateStyle();
-        </script>
-    </code>
-</div>
-</div>
-
-
-
-<div class="container-fluid overflow-hidden">
+    <div class="row justify-content-center">
+        <code class="col-6" id="code">
+            <script>
+                let quadro = new CodeSquare(document.querySelector('#code'));
+                quadro.getSquare();
+                quadro.updateStyle();
+            </script>
+        </code>
+    </div>
     <div class="row">
-            <div class="col-3 mx-1">
-                <button class="btn btn-primary" type="button">Add to Cart</button>
-            </div>
-            <div class="col-3 mx-1">
-                <button class="btn btn-primary" type="button">BuyNow</button>
-            </div>
+        <div class="col-3 mx-1">
+            <button type="button">Add to Cart</button>
+        </div>
+        <div class="col-3 mx-1">
+            <button type="button">BuyNow</button>
         </div>
     </div>
 </div>

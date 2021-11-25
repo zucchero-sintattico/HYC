@@ -5,10 +5,10 @@ body{
 
 body header{
     background-color: #E0E0E0;
-    padding-left: 3%;
+    padding-left: 20px;
 }
 
-body header > h1{
+body header h1{
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
     font-weight: bold;
@@ -24,13 +24,19 @@ body header > h2{
 }
 
 body nav{
-    visibility: hidden;
+    width: 100%;
+    background-color: black;
 }
 
 body nav > ul > li{
-    padding: 0px 10px;
+    padding: 10px 10px;
     background-color: #f1f1f1;
     text-align: center;
+    width:25%;
+    display: inline;
+}
+
+body nav > ul > li a{
 }
 
 body nav > ul > li > a > img{
@@ -38,14 +44,11 @@ body nav > ul > li > a > img{
 }
 
 body  div div button{
-    width:100%;
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 10px 0;
 }
 
-body > div  > div div :not(code *){
-    padding: 0 !important;
-    margin: 0 !important;
-    margin-top: 10px  !important;
-}
 
 body > div > div  button{
     border-radius: 0px !important;
@@ -60,6 +63,10 @@ body > div > div  button:hover{
     background-color: #f1f1f1 !important;
 }
 
+#code{
+    margin-top: 1%;
+}
+
 .row{
     display: flex;
     justify-content: center;
@@ -69,6 +76,7 @@ body > div > div  button:hover{
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media screen and (min-width: 768px) {
 
-    
-
+    nav{
+        vertical-align: top;!important;
+    }
 }
