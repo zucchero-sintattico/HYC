@@ -50,6 +50,9 @@ body > div > div  button{
     border-width: 2px;
     color: black !important;
 }
+body > div > div  button:hover{
+    background-color: #f1f1f1 !important;
+}
 
 #code{
     margin-top: 3%;
