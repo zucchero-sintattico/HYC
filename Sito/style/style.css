@@ -47,16 +47,14 @@ body nav > ul > li > a > img{
 
 body > div > div  button, select{
     border-radius: 0px;
-    border : solid;
-    border-color: lightslategray !important;
     background-color: transparent;
-    border-width: 1px;
-    border-width: 2px;
+    border: 1px solid lightslategray;
     color: black;
     width: 100%;
     margin: 10px 0 0 0;
     padding: 10px 0;
     text-align: center;
+    -webkit-appearance:none;
 }
 body > div > div  button:hover, body > div > div  select:hover{
     background-color: #f1f1f1 !important;
