@@ -1,5 +1,3 @@
-
-
 let value = "console.log('ciao mondo')";
 let language = 'javascript';
 let theme = 'monokai';
@@ -8,6 +6,7 @@ let width = 300;
 let height = 300;
 let padding = 10;
 let font_size = 10;
+let codeMirror;
 
 
 class CodeSquare {
@@ -20,13 +19,15 @@ class CodeSquare {
         square.css("width", width);
         square.css("padding", padding);
         square.css("background-color", frame_color);
-        return CodeMirror(this.querySelector, {
+        codeMirror = CodeMirror(this.querySelector, {
             lineNumbers: true,
             tabSize: 2,
             value: value,
             mode: language,
             theme: theme,
         });
+
+        return codeMirror;
     }
 
     updateStyle(){
@@ -69,6 +70,11 @@ class CodeSquare {
         let square = $(this.querySelector);
         square.find(".CodeMirror").css("font-size", font_size);
 
+    }
+
+    setStyle(style){
+        theme = style;
+        codeMirror.setOption("theme", style);
     }
 
     disable(){
