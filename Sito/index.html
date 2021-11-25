@@ -28,6 +28,7 @@
 <body>
 <!-- Tutta la pagina qua dentro -->
 <div class="container-fluid p-0 overflow-hidden">
+    <!--Header-->
     <div class="row">
         <div class="col-12">
             <header class="py-2">
@@ -36,44 +37,10 @@
             </header>
         </div>
     </div>
-</div>
-    <div class="row justify-content-center">
-        <div class="col col-8">
-            <div class="row">
-                <button class="btn btn-primary dropdown-toggle" type="button">Dimension Option</button>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col">
-                    <button class="btn btn-primary" type="button">Style</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">default</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" type="button">Lenguage</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <button class="btn btn-primary" type="button">Code block color</button>
-                </div>
-                <div class="col">
-                    <button class="btn btn-primary dropdown-toggle" type="button">Frame color</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row ">
-            <div class="col-12 fixed-bottom">
+    <!-- Menu -->
+    <div class="row ">
+        <div class="col-12 fixed-bottom">
+            <nav>
                 <ul class="nav nav-pills">
                     <li class="nav-item col-3 col-md-3">
                         <a class="mx-2 my-2 nav-link" href="#">
@@ -96,20 +63,65 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </div>
-
-        <code id="code">
-            <script>
-                let quadro = new CodeSquare(document.querySelector('#code'));
-                quadro.getSquare();
-                quadro.updateStyle();
-
-            </script>
-        </code>
-
     </div>
 
+    <div class="row">
+        <div class="col col-8">
+            <div class="row">
+                <button class="btn btn-primary dropdown-toggle" type="button">Dimension Option</button>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" type="button">Style</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" type="button">Language</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary dropdown-toggle" type="button">Default</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" type="button">Code block color</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary dropdown-toggle" type="button">Frame color</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Console -->
+    <div>
+        <div>
+            <code id="code">
+                <script>
+                    let quadro = new CodeSquare(document.querySelector('#code'));
+                    quadro.getSquare();
+                    quadro.updateStyle();
+                </script>
+            </code>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-3">
+            <button class="btn btn-primary grayButton" type="button">Add to Cart</button>
+        </div>
+        <div class="col col-3 greenButton">
+            <button class="greenButton" type="button">BuyNow</button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
