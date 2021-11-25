@@ -43,14 +43,7 @@ body nav > ul > li > a > img{
     width: 30px;
 }
 
-body  div div button{
-    width: 100%;
-    margin: 10px 0 0 0;
-    padding: 10px 0;
-}
-
-
-body > div > div  button{
+body > div > div  button, select{
     border-radius: 0px !important;
     border : solid !important;
     border-color: lightslategray !important;
@@ -58,8 +51,12 @@ body > div > div  button{
     border-width: 1px !important;
     border-width: 2px;
     color: black !important;
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 10px 0;
+    text-align: center;
 }
-body > div > div  button:hover{
+body > div > div  button:hover, body > div > div  select:hover{
     background-color: #f1f1f1 !important;
 }
 
@@ -70,6 +67,10 @@ body > div > div  button:hover{
 .row{
     display: flex;
     justify-content: center;
+}
+
+.col{
+    padding: 0;
 }
 
 /* Regole per la visualizzazione Desktop-Mode*/
