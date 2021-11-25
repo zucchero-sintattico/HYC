@@ -44,13 +44,10 @@ body nav > ul > li > a > img{
 }
 
 body > div > div  button, select{
-    border-radius: 0px !important;
-    border : solid !important;
-    border-color: lightslategray !important;
-    background-color: transparent !important;
-    border-width: 1px !important;
-    border-width: 2px;
-    color: black !important;
+    border-radius: 0px;
+    background-color: transparent;
+    border: 1px solid lightslategray;
+    color: black;
     width: 100%;
     margin: 10px 0 0 0;
     padding: 10px 0;
