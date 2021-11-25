@@ -102,23 +102,22 @@
         </div>
     </div>
         <!-- Console -->
-    <div>
-        <div>
-            <code id="code">
-                <script>
-                    let quadro = new CodeSquare(document.querySelector('#code'));
-                    quadro.getSquare();
-                    quadro.updateStyle();
-                </script>
-            </code>
-        </div>
+    <div class="row col-8">
+        <code id="code">
+            <script>
+                let quadro = new CodeSquare(document.querySelector('#code'));
+                quadro.getSquare();
+                quadro.updateStyle();
+            </script>
+        </code>
     </div>
-    <div class="row">
-        <div class="col col-3">
-            <button class="btn btn-primary grayButton" type="button">Add to Cart</button>
-        </div>
-        <div class="col col-3 greenButton">
-            <button class="greenButton" type="button">BuyNow</button>
+    <div class="row col-6">
+            <div class="col-6">
+                <button class="btn btn-primary" type="button">Add to Cart</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary" type="button">BuyNow</button>
+            </div>
         </div>
     </div>
 </div>
