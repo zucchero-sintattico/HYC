@@ -6,6 +6,7 @@ body{
 body header{
     background-color: #E0E0E0;
     padding-left: 20px;
+    margin-bottom: 2%;
 }
 
 body header h1{
@@ -25,7 +26,6 @@ body header > h2{
 
 body nav{
     width: 100%;
-    background-color: black;
 }
 
 body nav > ul > li{
@@ -34,23 +34,25 @@ body nav > ul > li{
     text-align: center;
     width:25%;
     display: inline;
+    height: 5% !important;
 }
 
 body nav > ul > li a{
 }
 
 body nav > ul > li > a > img{
-    width: 30px;
+    width: 30px!important;
+
 }
 
 body > div > div  button, select{
-    border-radius: 0px !important;
-    border : solid !important;
+    border-radius: 0px;
+    border : solid;
     border-color: lightslategray !important;
-    background-color: transparent !important;
-    border-width: 1px !important;
+    background-color: transparent;
+    border-width: 1px;
     border-width: 2px;
-    color: black !important;
+    color: black;
     width: 100%;
     margin: 10px 0 0 0;
     padding: 10px 0;
