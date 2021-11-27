@@ -6,7 +6,6 @@ body{
 body header{
     background-color: #E0E0E0;
     padding-left: 20px;
-    margin-bottom: 0;
     margin-bottom: 2%;
 }
 
@@ -40,6 +39,8 @@ body nav ul{
     width: 100% !important;
 }
 
+
+
 body nav > ul > li{
     width:22%;
     padding: 10px 10px;
@@ -53,7 +54,7 @@ body nav > ul > li a{
 
 body nav > ul > li > a > img{
 
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 
 }
 
@@ -84,11 +85,22 @@ body > div > div  button:hover, body > div > div  select:hover{
     padding: 0;
 }
 
+
+
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
-@media screen and (min-width: 768px) {
-
-    nav{
-        vertical-align: top;!important;
+@media (min-width: 768px){
+    body nav{
+        position: static;
+        margin-bottom: 10px;
     }
+
+    body header{
+        margin: 0;
+    }
+
+
 }
+
+
+
