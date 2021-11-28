@@ -40,32 +40,29 @@
             <ul>
                 <li>
                     <a href="#">
-                        <img src="img/cart.svg" alt="">
+                        <img src="img/cart.svg" alt="" /><p>Cart</p>
                     </a>
-                </li>
-                <li >
+                </li><li >
                     <a href="#">
-                        <img src="img/user.svg" alt="">
+                        <img src="img/user.svg" alt=""/><p>Profile</p>
                     </a>
-                </li>
-                <li>
+                </li><li>
                     <a href="#">
-                        <img src="img/search.svg" alt="">
+                        <img src="img/search.svg" alt=""/><p>Search</p>
                     </a>
-                </li>
-                <li>
+                </li><li>
                     <a href="#">
-                        <img src="img/settings.svg" alt="">
+                        <img src="img/settings.svg" alt=""/><p>Settings</p>
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
-
-    <?php
-    require($templateParams["name"]);
-    ?>
-
+    <main>
+        <?php
+            require($templateParams["name"]);
+        ?>
+    </main>
 </div>
 
 </body>

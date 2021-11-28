@@ -28,34 +28,41 @@ body nav{
     width: 100%;
     position: fixed;
     bottom: 0;
-    padding: 0 !important;
     z-index: 100;
+    padding: 0!important;
 }
 
 body nav ul{
     list-style: none;
-    margin: 0 0 !important;
+    margin-bottom: 0;
     background-color: #f1f1f1;
-    width: 100% !important;
+    padding: 0 !important;
 }
 
-
-
 body nav > ul > li{
-    width:22%;
-    padding: 10px 10px;
-    background-color: #f1f1f1;
+    width:25%;
     text-align: center;
     display: inline-block;
 }
 
-body nav > ul > li a{
+body nav > ul > li > a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+body nav > ul > li > a > p{
+    display: none;
 }
 
 body nav > ul > li > a > img{
+    width: 20%;
+}
 
-    margin-bottom: 0;
-
+body main{
+    margin-bottom: 50px;
 }
 
 body > div > div  button, select{
@@ -95,8 +102,24 @@ body > div > div  button:hover, body > div > div  select:hover{
         margin-bottom: 10px;
     }
 
+    body nav > ul > li:not(:last-child){
+        border-right: 1px solid #E0E0E0;
+    }
+
+    body nav ul li a img{
+        width: 10%;
+    }
+
     body header{
         margin: 0;
+    }
+
+    body nav > ul > li > a > p{
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: inline;
+        margin-left: 20px;
+        color: black;
+        font-weight: bold;
     }
 
 
