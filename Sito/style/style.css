@@ -75,6 +75,13 @@ body > div > div  button, select{
     padding: 10px 0;
     text-align: center;
 }
+
+input{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
 body > div > div  button:hover, body > div > div  select:hover{
     background-color: #f1f1f1 !important;
 }
@@ -86,6 +93,10 @@ body > div > div  button:hover, body > div > div  select:hover{
 .row{
     display: flex;
     justify-content: center;
+}
+
+main .row{
+    margin-top: 1%;
 }
 
 .col{
