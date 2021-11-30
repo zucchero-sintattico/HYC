@@ -6,6 +6,7 @@ let width = 300;
 let height = 300;
 let padding = 10;
 let font_size = 10;
+let lineNumbers = true;
 let codeMirror;
 
 
@@ -20,7 +21,7 @@ class CodeSquare {
         square.css("padding", padding);
         square.css("background-color", frame_color);
         codeMirror = CodeMirror(this.querySelector, {
-            lineNumbers: true,
+            lineNumbers: lineNumbers,
             tabSize: 2,
             value: value,
             mode: language,
@@ -82,11 +83,20 @@ class CodeSquare {
         codeMirror.setOption("mode", language);
     }
 
+    setlineNumbers(line_numbers){
+        lineNumbers = line_numbers;
+        codeMirror.setOption("lineNumbers", lineNumbers);
+    }
+
     disable(){
         let square = $(this.querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
 
     }
+
+
+
+
 
 }
