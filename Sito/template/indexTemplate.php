@@ -1,39 +1,37 @@
-<div class="container-fluid p-0 overflow-hidden">
-    <div class="row">
-        <!-- Choose by Category -->
-        <div class="row">
-            <!-- Questa lista andrà popolata a partire da un foreach in php su di un elemento -->
-            <!-- del TemplateParams che contiene le info su tutti i prodotti raccolta attravero -->
-            <!-- una query sul DB -->
-            <ul>
-                <li><article>
-                        <figure><img src="res/logos/videogame.png" alt="Product 1"></figure>
-                        <footer><p>Videogames</p></footer>
-                    </article></li>
-                <li><article>
-                        <figure><img src="res/logos/pi.png" alt="Product 1"></figure>
-                        <footer><p>Math</p></footer>
-                    </article></li>
-                <li><article>
-                        <figure><img src="res/logos/fisica.png" alt="Product 1"></figure>
-                        <footer><p>Physics</p></footer>
-                    </article></li>
-                <li><article>
-                        <figure><img src="res/logos/shuttle.png" alt="Product 1"></figure>
-                        <footer><p>Aerospace</p></footer>
-                    </article></li>
-            </ul>
+<div class="row flex-row flex-nowrap mt-4 pb-4 pt-2">
 
-        </div>
-        <!-- Most Popular -->
-        <div class="row">
-
-
-        </div>
-        <!-- Suggested for you -->
-        <div class="row">
-
-
-        </div>
+    <div class="col-5 align-items-end">
+        <article>
+            <header>
+                <img src="../img/logos/videogame.png" class="img-fluid" alt="Responsive image">
+            </header>
+            <footer><p>Videogames</p></footer>
+        </article>
     </div>
+    <div class="col-5">
+        <article>
+            <header>
+                <img src="../img/logos/pi.png" class="img-fluid" alt="Responsive image">
+            </header>
+            <footer><p>Math</p></footer>
+        </article>
+    </div>
+    <div class="col-5">
+        <article>
+            <header>
+                <img src="../img/logos/fisica.png" class="img-fluid" alt="Responsive image">
+            </header>
+            <footer><p>Physics</p></footer>
+        </article>
+    </div>
+    <div class="col-5">
+        <article>
+            <header>
+                <img src="../img/logos/shuttle.png" class="img-fluid" alt="Responsive image">
+            </header>
+            <footer><p>Aerospace</p></footer>
+        </article>
+
+    </div>
+
 </div>

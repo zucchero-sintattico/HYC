@@ -1,0 +1,36 @@
+body > div > main > div {
+    overflow-x: auto;
+}
+
+
+body > div > main > div > div {
+    padding: 20px;
+    height: 150px;
+    margin: 5px;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f1f1f1;
+
+}
+
+body > div > main > div > div > article {
+    vertical-align: bottom;
+}
+
+body > div > main > div > div > article > footer {
+    vertical-align: bottom;
+}
+
+body > div > main > div > div img {
+    width: 40%;
+    background-repeat: no-repeat;
+}
+
+
+@media (min-width: 768px) {
+
+}
+

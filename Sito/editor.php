@@ -1,4 +1,6 @@
 <?php
+
     $templateParams["title"] = "HYC - Editor";
-    $templateParams["name"] = "editor-code.php";
+    $templateParams["name"] = "editorTemplate.php";
+    $templateParams['style'] = "style/editor.css";
     require("template/base.php");
