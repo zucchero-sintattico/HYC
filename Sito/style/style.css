@@ -1,16 +1,15 @@
-
 body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
 }
 
-body header{
+body header {
     background-color: #E0E0E0;
     padding-left: 20px;
     margin-bottom: 2%;
 }
 
-body header h1{
+body header h1 {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
     font-weight: bold;
@@ -19,34 +18,34 @@ body header h1{
     text-align: left;
 }
 
-body header > h2{
+body header > h2 {
     color: black;
     text-align: left;
     font-size: 20px;
 }
 
-body nav{
+body nav {
     width: 100%;
     position: fixed;
     bottom: 0;
     z-index: 100;
-    padding: 0!important;
+    padding: 0 !important;
 }
 
-body nav ul{
+body nav ul {
     list-style: none;
     margin-bottom: 0;
     background-color: #f1f1f1;
     padding: 0 !important;
 }
 
-body nav > ul > li{
-    width:25%;
+body nav > ul > li {
+    width: 25%;
     text-align: center;
     display: inline-block;
 }
 
-body nav > ul > li > a{
+body nav > ul > li > a {
     display: block;
     width: 100%;
     height: 100%;
@@ -54,19 +53,20 @@ body nav > ul > li > a{
     text-decoration: none;
 }
 
-body nav > ul > li > a > p{
+body nav > ul > li > a > p {
     display: none;
 }
 
-body nav > ul > li > a > img{
+body nav > ul > li > a > img {
     width: 20%;
 }
 
-body main{
+body main {
     margin-bottom: 50px;
+
 }
 
-body > div > div  button, select{
+body > div > div button, select {
     border-radius: 0px;
     background-color: transparent;
     border: 1px solid lightslategray;
@@ -77,30 +77,30 @@ body > div > div  button, select{
     text-align: center;
 }
 
-input{
+input {
     width: 100% !important;
     height: 100% !important;
 }
 
 
-body > div > div  button:hover, body > div > div  select:hover{
+body > div > div button:hover, body > div > div select:hover {
     background-color: #f1f1f1 !important;
 }
 
-#code{
+#code {
     margin-top: 1%;
 }
 
-.row{
+.row {
     display: flex;
     justify-content: center;
 }
 
-main .row{
+main .row {
     margin-top: 1%;
 }
 
-.col{
+.col {
     padding: 0;
 }
 
@@ -134,27 +134,28 @@ main > div > div > div > ul > li > article > footer > p{
     font-size: 30px;
 }
 
+
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
-@media (min-width: 768px){
-    body nav{
+@media (min-width: 768px) {
+    body nav {
         position: static;
         margin-bottom: 10px;
     }
 
-    body nav > ul > li:not(:last-child){
+    body nav > ul > li:not(:last-child) {
         border-right: 1px solid #E0E0E0;
     }
 
-    body nav ul li a img{
+    body nav ul li a img {
         width: 10%;
     }
 
-    body header{
+    body header {
         margin: 0;
     }
 
-    body nav > ul > li > a > p{
+    body nav > ul > li > a > p {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         display: inline;
         margin-left: 20px;
