@@ -1,36 +1,27 @@
-body > div > main > div {
+body > div > main > div > div {
     overflow-x: auto;
+    height: 35%;
 }
 
 
-body > div > main > div > div {
-    padding: 20px;
-    height: 150px;
+body > div > main > div > div > div {
+    padding: 3% 40%;
     margin: 5px;
     border: none;
-    background-position: center;
-    background-size: cover;
     border-radius: 10px;
     text-align: center;
     background-color: #f1f1f1;
-
 }
 
-body > div > main > div > div > article {
-    vertical-align: bottom;
-}
 
-body > div > main > div > div > article > footer {
-    vertical-align: bottom;
-}
 
-body > div > main > div > div img {
+body > div > main > div > div > div img {
     width: 40%;
     background-repeat: no-repeat;
 }
 
-
-@media (min-width: 768px) {
-
+body > div > main > div > div > div {
+    background-color: #f1f1f1;
 }
+
 
