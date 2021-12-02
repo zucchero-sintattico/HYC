@@ -14,7 +14,6 @@ body > div > main > div > div > div {
 }
 
 
-
 body > div > main > div > div > div img {
     width: 40%;
     background-repeat: no-repeat;
@@ -26,5 +25,23 @@ body > div > main > div > div > div * {
 }
 
 
+@media (min-width: 768px) {
 
+    body > div > main > div > div > div img {
+        width: 100px !important;
+    }
+
+    body > div > main > div > div {
+        transform: scale(0.9);
+    }
+
+    body > div > main > div > div > div {
+        transform: scale(0.9);
+        margin: 0 !important;
+        padding: 40px !important;
+        width: 90px !important;
+    }
+
+
+}
 
