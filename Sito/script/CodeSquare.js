@@ -83,6 +83,11 @@ class CodeSquare {
         codeMirror.setOption("mode", language);
     }
 
+    setText(code_text){
+        value = code_text;
+        codeMirror.setOption("value", value);
+    }
+
     setlineNumbers(line_numbers){
         lineNumbers = line_numbers;
         codeMirror.setOption("lineNumbers", lineNumbers);
@@ -92,7 +97,6 @@ class CodeSquare {
         let square = $(this.querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
-
     }
 
 

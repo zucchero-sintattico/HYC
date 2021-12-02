@@ -57,20 +57,17 @@
                         <img src="../img/nav/cart.svg" alt=""/>
                         <p>Cart</p>
                     </a>
-                </li>
-                <li>
+                </li><li>
                     <a href="/profile.php">
                         <img src="../img/nav/user.svg" alt=""/>
                         <p>Profile</p>
                     </a>
-                </li>
-                <li>
+                </li><li>
                     <a href="#">
                         <img src="../img/nav/search.svg" alt=""/>
                         <p>Search</p>
                     </a>
-                </li>
-                <li>
+                </li><li>
                     <a href="#">
                         <img src="../img/nav/settings.svg" alt=""/>
                         <p>Settings</p>

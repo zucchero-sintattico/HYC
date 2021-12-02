@@ -39,7 +39,7 @@ body nav > ul {
 }
 
 body nav > ul > li {
-    width: 24%;
+    width: 25%;
     text-align: center;
     display: inline-block;
 }
@@ -84,6 +84,15 @@ body main {
 
     body header {
         margin: 0;
+    }
+
+    body nav > ul > li > a:hover{
+        text-decoration: none;
+        background-color: #E0E0E0;
+    }
+
+    body nav > ul > li:hover{
+
     }
 
     body nav > ul > li > a > p {
