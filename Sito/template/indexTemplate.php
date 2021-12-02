@@ -30,7 +30,22 @@
                 <div class="class-footer mt-auto">
                     <p class="card-text">Aerospace</p>
                 </div>
-
+            </div>
+        </div>
+        <div class="col-3 d-flex justify-content-center text-center">
+            <div class="card card-block">
+                <img class="card-img-top" src="img/logos/shuttle.png" alt="Card image cap">
+                <div class="class-footer mt-auto">
+                    <p class="card-text">Aerospace</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 d-flex justify-content-center text-center">
+            <div class="card card-block">
+                <img class="card-img-top" src="img/logos/shuttle.png" alt="Card image cap">
+                <div class="class-footer mt-auto">
+                    <p class="card-text">Aerospace</p>
+                </div>
             </div>
         </div>
     </div>

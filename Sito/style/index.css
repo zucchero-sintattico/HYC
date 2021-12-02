@@ -21,9 +21,10 @@ body > div > main > div > div > div img {
 }
 
 body > div > main > div > div > div * {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1 !important;
     border: none !important;
 }
+
 
 
 
