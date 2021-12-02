@@ -76,6 +76,7 @@
             </ul>
         </nav>
     </div>
+    <!-- Main -->
     <main>
         <?php
         require($templateParams["name"]);
