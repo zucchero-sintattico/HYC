@@ -29,6 +29,7 @@ body nav {
     bottom: 0;
     z-index: 100;
     padding: 0 !important;
+    border-top: 1px solid #E0E0E0;
 }
 
 body nav > ul {
@@ -61,7 +62,7 @@ body nav > ul > li > a > img {
 }
 
 body main {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 
 }
 
