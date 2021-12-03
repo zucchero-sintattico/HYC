@@ -13,7 +13,7 @@
 -- ________________ 
 
 create database HYC;
-
+use HYC;
 
 -- DBSpace Section
 -- _______________
