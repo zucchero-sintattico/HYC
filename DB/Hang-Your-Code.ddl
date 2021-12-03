@@ -12,9 +12,14 @@
 -- Database Section
 -- ________________ 
 
+<<<<<<< HEAD
 create
 database HYC;
 
+=======
+create database HYC;
+use HYC;
+>>>>>>> 9505bda9b14412f83c3f59137c711a2d4a38618e
 
 -- DBSpace Section
 -- _______________
