@@ -53,12 +53,16 @@ body nav > ul > li > a {
     text-decoration: none;
 }
 
+body nav > ul > li > a:hover{
+    background-color: #E0E0E0;
+}
+
 body nav > ul > li > a > p {
     display: none;
 }
 
 body nav > ul > li > a > img {
-    width: 20%;
+    width: 30%;
 }
 
 body main {

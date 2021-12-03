@@ -52,34 +52,33 @@
     </div>
     <!-- Menu -->
     <div class="row ">
-        <nav>
-            <ul>
-                <li>
-                    <a href="/cart.php">
-                        <img src="../img/nav/cart.svg" alt=""/>
-                        <p>Cart</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/profile.php">
-                        <img src="../img/nav/user.svg" alt=""/>
-                        <p>Profile</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../img/nav/search.svg" alt=""/>
-                        <p>Search</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="../img/nav/settings.svg" alt=""/>
-                        <p>Settings</p>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="col-12">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/cart.php">
+                            <img src="../img/nav/cart.svg" alt=""/>
+                            <p>Cart</p>
+                        </a>
+                    </li><li>
+                        <a href="/profile.php">
+                            <img src="../img/nav/user.svg" alt=""/>
+                            <p>Profile</p>
+                        </a>
+                    </li><li>
+                        <a href="#">
+                            <img src="../img/nav/search.svg" alt=""/>
+                            <p>Search</p>
+                        </a>
+                    </li><li>
+                        <a href="#">
+                            <img src="../img/nav/settings.svg" alt=""/>
+                            <p>Settings</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <!-- Main -->
     <main>
