@@ -18,7 +18,9 @@
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
 
-
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
     <script type="text/javascript"
@@ -57,17 +59,20 @@
                         <img src="../img/nav/cart.svg" alt=""/>
                         <p>Cart</p>
                     </a>
-                </li><li>
+                </li>
+                <li>
                     <a href="/profile.php">
                         <img src="../img/nav/user.svg" alt=""/>
                         <p>Profile</p>
                     </a>
-                </li><li>
+                </li>
+                <li>
                     <a href="#">
                         <img src="../img/nav/search.svg" alt=""/>
                         <p>Search</p>
                     </a>
-                </li><li>
+                </li>
+                <li>
                     <a href="#">
                         <img src="../img/nav/settings.svg" alt=""/>
                         <p>Settings</p>
@@ -85,4 +90,5 @@
 </div>
 
 </body>
+
 </html>
