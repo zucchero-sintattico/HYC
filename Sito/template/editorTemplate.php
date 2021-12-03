@@ -8,9 +8,16 @@
 
 
         <div class="collapse" id="collapseSetting">
-            <div class="card card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="30x70" checked> 30x70
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="70x30"> 70x30
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="100x100"> 100x100
+                </label>
             </div>
         </div>
 
