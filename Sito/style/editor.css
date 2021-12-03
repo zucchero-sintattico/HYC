@@ -1,4 +1,4 @@
-body > div > div button, select {
+body > div > main > div:nth-child(1) > div button, select {
     border-radius: 0px;
     background-color: transparent;
     border: 1px solid lightslategray;
@@ -6,7 +6,8 @@ body > div > div button, select {
     width: 100%;
     margin: 10px 0 0 0;
     padding: 10px 0;
-    text-align: center;
+    text-align: center !important;
+    -webkit-appearance: none;
 }
 
 input {
@@ -15,6 +16,16 @@ input {
 }
 
 
-body > div > div button:hover, body > div > div select:hover {
+body > div > main > div:nth-child(1) > div button:hover, select:hover {
     background-color: #f1f1f1 !important;
+}
+
+body > div > main > div:nth-child(1) > div {
+    padding: 0 !important;
+    margin: 0 !important;
+
+}
+
+.active {
+    background-color: green !important;
 }
