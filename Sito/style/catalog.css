@@ -8,7 +8,6 @@ body > div > main > div:nth-child(1) > h1{
 }
 
 body > div > main > div > div > a{
-    text-align: center;
     margin: 20px;
     padding: 0 !important;
     color: black;
