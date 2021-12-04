@@ -36,6 +36,7 @@
     <script src="../script/CodeSquare.js"></script>
     <script src="../script/editToggles.js"></script>
     <link rel="stylesheet" href="../style/base.css">
+    <link rel="icon" href="../img/logos/hangCode.png">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
 </header>
 
