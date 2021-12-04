@@ -1,6 +1,6 @@
 <!-- Title -->
 <div class="row">
-    <h1>Categoria</h1>
+    <h1><?php echo $templateParams['query'][0]['Tipo'] ;?></h1>
 </div>
 <!-- Articles -->
 <div class="row justify-content-center">

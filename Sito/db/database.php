@@ -31,9 +31,10 @@ class DatabaseHelper
     {
         $query = "SELECT p.idProd, codice, colore_frame, larghezza,
        titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee,
-       NomeLinguaggio, NomeTema
-            FROM prodotto p, categoria c, prodottoinvetrina pv
+       NomeLinguaggio, NomeTema, Tipo
+            FROM prodotto p, prodottoinvetrina pv, categoria c
             WHERE p.IdProd = pv.IdProd
+              AND c.IdCategoria = p.IdCategoria
               AND p.IdCategoria = ?";
         $stmt = $this -> db -> prepare($query);
         $stmt -> bind_param("i", $category);
@@ -41,6 +42,7 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
 }
 /*
     public function getRandomPosts($n){
