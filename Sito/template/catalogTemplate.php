@@ -14,17 +14,17 @@
                     <div class="row justify-content-center">
                         <code id="code<?php echo $articolo["idProd"] ?>">
                             <script>
-                                let quadro<?php echo $articolo["idProd"] ?> = new CodeSquare(document.querySelector('#<?php echo $articolo["idProd"] ?>'));
+                                let quadro<?php echo $articolo["idProd"] ?> = new CodeSquare(document.querySelector('#code<?php echo $articolo["idProd"] ?>'));
                                 quadro<?php echo $articolo["idProd"] ?>.getSquare();
-                                quadro<?php echo $articolo["idProd"] ?>.setText(<?php echo $articolo["codice"] ?>);
+                                quadro<?php echo $articolo["idProd"] ?>.setText('<?php echo $articolo["codice"] ?>');
                                 quadro<?php echo $articolo["idProd"] ?>.setWidth(<?php echo $articolo["larghezza"] ?>);
                                 quadro<?php echo $articolo["idProd"] ?>.setHeight(<?php echo $articolo["altezza"] ?>);
                                 quadro<?php echo $articolo["idProd"] ?>.setPadding(<?php echo $articolo["padding"] ?>);
                                 quadro<?php echo $articolo["idProd"] ?>.setlineNumbers(<?php echo $articolo["mostra_numero_linee"] ?>);
                                 quadro<?php echo $articolo["idProd"] ?>.setFramecolor(<?php echo $articolo["colore_frame"] ?>)
                                 quadro<?php echo $articolo["idProd"] ?>.setFontSize(<?php echo $articolo["dimensione_font"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setLanguages(<?php echo $articolo["NomeLinguaggio"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setStyle(<?php echo $articolo["NomeTema"] ?>);
+                                quadro<?php echo $articolo["idProd"] ?>.setLanguages('<?php echo $articolo["NomeLinguaggio"] ?>');
+                                quadro<?php echo $articolo["idProd"] ?>.setStyle('<?php echo $articolo["NomeTema"] ?>');
                                 quadro<?php echo $articolo["idProd"] ?>.disable();
                                 quadro<?php echo $articolo["idProd"] ?>.updateStyle();
                             </script>
