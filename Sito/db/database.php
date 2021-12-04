@@ -26,6 +26,21 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getProductByCategory($category)
+    {
+        $query = "SELECT p.idProd, codice, colore_frame, larghezza,
+       titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee,
+       NomeLinguaggio, NomeTema
+            FROM prodotto p, categoria c, prodottoinvetrina pv
+            WHERE p.IdProd = pv.IdProd
+              AND p.IdCategoria = ?";
+        $stmt = $this -> db -> prepare($query);
+        $stmt -> bind_param("i", $category);
+        $stmt -> execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 /*
     public function getRandomPosts($n){

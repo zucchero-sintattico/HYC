@@ -3,4 +3,5 @@
     $templateParams["title"] = "HYC - Catalog";
     $templateParams["name"] = "catalogTemplate.php";
     $templateParams['style'] = "style/catalog.css";
+    $templateParams['query'] = $dbh -> getProductByCategory(1);
     require("template/base.php");
