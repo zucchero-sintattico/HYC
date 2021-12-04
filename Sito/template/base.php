@@ -36,8 +36,8 @@
     <script src="../script/CodeSquare.js"></script>
     <script src="../script/editToggles.js"></script>
     <link rel="stylesheet" href="../style/base.css">
-    <link rel="icon" href="../img/logos/hangCode.png">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
+    <link rel="shortcut icon" href="../img/icon/favicon.ico">
 </header>
 
 <!-- Tutta la pagina qua dentro -->
@@ -57,23 +57,28 @@
             <nav>
                 <ul>
                     <li>
+                        <a href="../index.php">
+                            <img src="../img/nav/home.svg" alt=""/>
+                            <p>Home</p>
+                        </a>
+                    </li><li>
                         <a href="/cart.php">
-                            <img src="../img/nav/cart.svg" alt=""/>
+                            <img src="../img/nav/cart2.svg" alt=""/>
                             <p>Cart</p>
                         </a>
                     </li><li>
                         <a href="/profile.php">
-                            <img src="../img/nav/user.svg" alt=""/>
+                            <img src="../img/nav/user2.svg" alt=""/>
                             <p>Profile</p>
                         </a>
                     </li><li>
                         <a href="#">
-                            <img src="../img/nav/search.svg" alt=""/>
+                            <img src="../img/nav/search2.svg" alt=""/>
                             <p>Search</p>
                         </a>
                     </li><li>
                         <a href="#">
-                            <img src="../img/nav/bells.png" alt=""/>
+                            <img src="../img/nav/bell.svg" alt=""/>
                             <p>Notifications</p>
                         </a>
                     </li>
