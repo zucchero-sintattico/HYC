@@ -72,8 +72,8 @@
                         </a>
                     </li><li>
                         <a href="#">
-                            <img src="../img/nav/settings.svg" alt=""/>
-                            <p>Settings</p>
+                            <img src="../img/nav/bells.png" alt=""/>
+                            <p>Notifications</p>
                         </a>
                     </li>
                 </ul>
