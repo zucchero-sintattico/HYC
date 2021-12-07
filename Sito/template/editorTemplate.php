@@ -58,14 +58,16 @@
 </div>
 <!-- Console -->
 <div class="row justify-content-center">
-    <code id="code">
+    <code>
         <script>
-            let quadro = new CodeSquare(document.querySelector('#code'));
+            let quadro = new CodeSquare($('script').last().parent().get(0));
             quadro.getSquare();
             quadro.updateStyle();
         </script>
     </code>
+
 </div>
+
 <div class="row justify-content-center">
     <div class="col-3 mx-1">
         <button type="button">Add to Cart</button>
