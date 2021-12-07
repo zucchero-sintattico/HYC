@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="../style/code.css">
     <script src="../script/CodeSquare.js"></script>
     <script src="../script/editToggles.js"></script>
+    <script src="../script/searchToggle.js"></script>
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
@@ -74,7 +75,7 @@
                             <p>Profile</p>
                         </a>
                     </li><li>
-                        <a href="#">
+                        <a href="#" id="search">
                             <img src="../img/nav/search2.svg" alt=""/>
                             <p>Search</p>
                         </a>
@@ -86,6 +87,14 @@
                     </li>
                 </ul>
             </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="/search.php">
+                <input type="text" name="key" placeholder="Search you article..."/>
+                <input type="submit" value="">
+            </form>
         </div>
     </div>
     <!-- Main -->
