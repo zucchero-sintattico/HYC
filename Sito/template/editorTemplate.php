@@ -7,18 +7,56 @@
         </div>
 
 
-        <div class="collapse" id="collapseSetting">
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                    <input type="radio" name="options" id="30x70" checked> 30x70
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="70x30"> 70x30
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="options" id="100x100"> 100x100
-                </label>
+        <div class="collapse text-center" id="collapseSetting">
+            <div class="row justify-content-center ">
+
+                <div class="col align-content-center">
+                    <label>Width(cm)</label>
+                    <div class="btn-group-toggle" data-toggle="buttons">
+                        <label class="btn  active ">
+                            <input type="radio" name="options" id="30" checked> 30
+                        </label>
+                        <label class="btn ">
+                            <input type="radio" name="options" id="70"> 70
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="options" id="100"> 100
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="options" id="120"> 120
+                        </label>
+                    </div>
+                </div>
+                <div class="col align-content-center">
+                    <label>Height(cm)</label>
+                    <div class="col">
+                        <div class="btn-group-toggle" data-toggle="buttons">
+                            <label class="btn active ">
+                                <input type="radio" name="options" id="30" checked> 30
+                            </label>
+                            <label class="btn">
+                                <input type="radio" name="options" id="70"> 70
+                            </label>
+                            <label class="btn">
+                                <input type="radio" name="options" id="100"> 100
+                            </label>
+                            <label class="btn">
+                                <input type="radio" name="options" id="120"> 120
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            <div class="row justify-content-center">
+                <label>FontSize</label>
+            </div>
+            <label class="btn">
+                <input type="number" name="options" id="100">
+            </label>
+
+
         </div>
 
 

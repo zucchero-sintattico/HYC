@@ -1,4 +1,4 @@
-body > div > main > div:nth-child(1) > div button, select {
+body > div > main > div:nth-child(1) > div button, select, input {
     border-radius: 0px;
     background-color: transparent;
     border: 1px solid lightslategray;
@@ -8,7 +8,9 @@ body > div > main > div:nth-child(1) > div button, select {
     padding: 10px 0;
     text-align: center !important;
     -webkit-appearance: none;
+
 }
+
 
 input {
     width: 100% !important;
