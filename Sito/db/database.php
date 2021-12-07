@@ -43,6 +43,21 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getArticleByName($titolo)
+    {
+        $query = "SELECT p.idProd, codice, colore_frame, larghezza,
+       titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee,
+       NomeLinguaggio, NomeTema, Tipo
+            FROM prodotto p, prodottoinvetrina pv, categoria c
+            WHERE p.IdProd = pv.IdProd
+              AND titolo LIKE concat('%', ?, '%')";
+        $stmt = $this -> db -> prepare($query);
+        $stmt -> bind_param('s', $titolo);
+        $stmt -> execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 /*
     public function getRandomPosts($n){
