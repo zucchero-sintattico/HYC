@@ -67,6 +67,33 @@ body nav > ul > li > a > img {
     width: 30%;
 }
 
+form{
+    margin: 0 0 0 40%;
+    position: fixed;
+    padding: 5px;
+    height: 7%;
+    width: 60%;
+    bottom:10%;
+    background-color: darkgreen;
+    z-index: 99;
+    font-size: 13px;
+}
+input{
+    vertical-align: bottom;
+}
+
+
+form > input[type=text]{
+    width: 80%;
+    text-align: center;
+    border: 1px solid #E0E0E0;
+}
+form > input[type=submit]{
+    width: 17%;
+    text-align: center;
+}
+
+
 body main {
     margin-bottom: 100px;
 
@@ -98,8 +125,11 @@ body main {
         background-color: #E0E0E0;
     }
 
-    body nav > ul > li:hover {
 
+    form{
+        position: static;
+        padding: 30px;
+        background-color: #f1f1f1;
     }
 
     body nav > ul > li > a > p {
