@@ -1,13 +1,22 @@
 main > div:nth-child(1) > div > div button, select, input {
-    border-radius: 0px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0px !important;
     background-color: transparent;
-    border: 1px solid lightslategray;
+    border: 1px solid lightslategray !important;
     color: black;
     width: 100% !important;
+    height: 50px !important;
     margin: 10px 0 0 0;
-    padding: 10px 0;
-    text-align: center !important;
-    -webkit-appearance: none;
+
+}
+
+main > div:nth-child(1) > div div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 
 }
 
@@ -24,4 +33,8 @@ main > div:nth-child(1) > div {
 
 .active {
     background-color: green !important;
+}
+
+code {
+    margin: 50px;
 }
