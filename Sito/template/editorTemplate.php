@@ -14,16 +14,16 @@
                     <label>Width(cm)</label>
                     <div class="col">
                         <div class="btn-group-toggle" data-toggle="buttons">
-                            <label class="btn  active ">
+                            <label class="btn  active border border-secondary">
                                 <input type="radio" name="options" id="30" checked> 30
                             </label>
-                            <label class="btn ">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="70"> 70
                             </label>
-                            <label class="btn">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="100"> 100
                             </label>
-                            <label class="btn">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="120"> 120
                             </label>
                         </div>
@@ -33,16 +33,16 @@
                     <label>Height(cm)</label>
                     <div class="col">
                         <div class="btn-group-toggle" data-toggle="buttons">
-                            <label class="btn active ">
+                            <label class="btn active border border-secondary">
                                 <input type="radio" name="options" id="30" checked> 30
                             </label>
-                            <label class="btn">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="70"> 70
                             </label>
-                            <label class="btn">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="100"> 100
                             </label>
-                            <label class="btn">
+                            <label class="btn border border-secondary">
                                 <input type="radio" name="options" id="120"> 120
                             </label>
                         </div>

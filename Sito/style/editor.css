@@ -1,9 +1,9 @@
-body > div > main > div:nth-child(1) > div button, select, input {
+main > div:nth-child(1) > div > div button, select, input {
     border-radius: 0px;
     background-color: transparent;
     border: 1px solid lightslategray;
     color: black;
-    width: 100%;
+    width: 100% !important;
     margin: 10px 0 0 0;
     padding: 10px 0;
     text-align: center !important;
@@ -12,17 +12,11 @@ body > div > main > div:nth-child(1) > div button, select, input {
 }
 
 
-input {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-
-body > div > main > div:nth-child(1) > div button:hover, select:hover {
+main > div:nth-child(1) > div button:hover, select:hover {
     background-color: #f1f1f1 !important;
 }
 
-body > div > main > div:nth-child(1) > div {
+main > div:nth-child(1) > div {
     padding: 0 !important;
     margin: 0 !important;
 
