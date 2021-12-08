@@ -27,6 +27,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+
+    public function getThemes()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM Tema");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getProductByCategory($category)
     {
         $query = "SELECT p.idProd, codice, colore_frame, larghezza,
@@ -36,9 +46,9 @@ class DatabaseHelper
             WHERE p.IdProd = pv.IdProd
               AND c.IdCategoria = p.IdCategoria
               AND p.IdCategoria = ?";
-        $stmt = $this -> db -> prepare($query);
-        $stmt -> bind_param("i", $category);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $category);
+        $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
@@ -51,9 +61,9 @@ class DatabaseHelper
             FROM prodotto p, prodottoinvetrina pv, categoria c
             WHERE p.IdProd = pv.IdProd
               AND titolo LIKE concat('%', ?, '%')";
-        $stmt = $this -> db -> prepare($query);
-        $stmt -> bind_param('s', $titolo);
-        $stmt -> execute();
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $titolo);
+        $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }

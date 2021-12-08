@@ -68,8 +68,9 @@
             </div>
             <div class="col text-center-center">
                 <select class="custom-select" id="style">
-                    <option>monokai</option>
-                    <option>base16-light</option>
+                    <?php foreach ($templateParams['themes'] as $theme): ?>
+                        <option> <?php echo $theme['NomeTema']; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
         </div>
@@ -80,11 +81,13 @@
             </div>
             <div class="col">
                 <select id="language" class="custom-select">
-                    <option>javascript</option>
-                    <option>python</option>
+                    <?php foreach ($templateParams['languages'] as $language): ?>
+                        <option> <?php echo $language['NomeLinguaggio']; ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
         </div>
+
 
         <div class="row">
             <div class="col">
