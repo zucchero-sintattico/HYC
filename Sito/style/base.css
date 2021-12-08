@@ -57,6 +57,7 @@ body nav > ul > li > a {
 
 body nav > ul > li > a:hover {
     background-color: #E0E0E0;
+    color: white;
 }
 
 body nav > ul > li > a > p {
@@ -68,7 +69,7 @@ body nav > ul > li > a > img {
 }
 
 body > div > div:nth-child(3) > div > form{
-    margin: 0 0 0 40% !important;
+    margin: 0 0 0 20% !important;
     position: fixed;
     height: 7%;
     width: 60%;

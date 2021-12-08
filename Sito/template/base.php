@@ -70,14 +70,14 @@
                             <p>Cart</p>
                         </a>
                     </li><li>
-                        <a href="/profile.php">
-                            <img src="../img/nav/user2.svg" alt=""/>
-                            <p>Profile</p>
-                        </a>
-                    </li><li>
                         <a href="#" id="search">
                             <img src="../img/nav/search2.svg" alt=""/>
                             <p>Search</p>
+                        </a>
+                    </li><li>
+                        <a href="/profile.php">
+                            <img src="../img/nav/user2.svg" alt=""/>
+                            <p>Profile</p>
                         </a>
                     </li><li>
                         <a href="#">
