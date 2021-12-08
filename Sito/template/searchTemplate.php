@@ -1,6 +1,6 @@
 <!-- Title -->
 <div class="row">
-    <h1>Risultati della ricerca per "<?php echo $_GET["key"] ;?>"</h1>
+    <h1>Search results for "<?php echo $_GET["key"] ;?>"</h1>
 </div>
 <!-- Articles -->
 <div class="row justify-content-center">
