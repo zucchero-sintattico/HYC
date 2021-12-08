@@ -1,0 +1,143 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+body > div > div > div > header {
+    background-color: #E0E0E0;
+    padding-left: 20px;
+}
+
+body > div > div > div > header > h1 {
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+    font-size: 55px;
+    color: white;
+    text-align: left;
+}
+
+body > div > div > div > header > h2 {
+    color: black;
+    text-align: left;
+    font-size: 20px;
+}
+body nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    padding: 0 !important;
+    border-top: 1px solid #E0E0E0;
+}
+
+body nav > ul {
+    list-style: none;
+    margin-bottom: 0;
+    background-color: #f1f1f1;
+    padding: 0 !important;
+}
+
+body nav > ul > li {
+    width: 20%;
+    text-align: center;
+    display: inline-block;
+}
+
+body nav > ul > li > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+body nav > ul > li > a:hover{
+    background-color: #E0E0E0;
+}
+
+body nav > ul > li > a > p {
+    display: none;
+}
+
+body nav > ul > li > a > img {
+    width: 30%;
+}
+
+form{
+    margin: 0 0 0 40%;
+    position: fixed;
+    padding: 5px;
+    height: 7%;
+    width: 60%;
+    bottom:10%;
+    background-color: darkgreen;
+    z-index: 99;
+    font-size: 13px;
+}
+input{
+    vertical-align: bottom;
+}
+
+
+form > input[type=text]{
+    width: 80%;
+    text-align: center;
+    border: 1px solid #E0E0E0;
+}
+form > input[type=submit]{
+    width: 17%;
+    text-align: center;
+}
+
+
+body main {
+    margin-bottom: 100px;
+
+}
+
+
+/* Regole per la visualizzazione Desktop-Mode*/
+/* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
+@media (min-width: 768px) {
+    body nav {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    body nav > ul > li:not(:last-child) {
+        border-right: 1px solid #E0E0E0;
+    }
+
+    body nav ul li a img {
+        width: 10%;
+    }
+
+    body header {
+        margin: 0;
+    }
+
+    body nav > ul > li > a:hover{
+        text-decoration: none;
+        background-color: #E0E0E0;
+    }
+
+    form{
+        position: static;
+        padding: 30px;
+        background-color: #f1f1f1;
+    }
+
+    body nav > ul > li > a > p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        display: inline;
+        margin-left: 20px;
+        color: black;
+        font-weight: bold;
+    }
+
+
+}
+
+
+

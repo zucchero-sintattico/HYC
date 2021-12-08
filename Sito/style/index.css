@@ -1,0 +1,47 @@
+body > div > main > section > div > div {
+    overflow-x: auto;
+    height: 35%;
+}
+
+
+body > div > main > section > div > div > div {
+    padding: 3% 40%;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+
+body > div > main > section > div > div > div img {
+    width: 40%;
+    background-repeat: no-repeat;
+}
+
+body > div > main > section > div > div > div * {
+    background-color: #f1f1f1 !important;
+    border: none !important;
+}
+
+
+@media (min-width: 768px) {
+
+    body > div > main > section > div > div > div img {
+        width: 100px !important;
+    }
+
+    body > div > main > div > div {
+        transform: scale(0.9);
+    }
+
+    body > div > main > section > div > div > div {
+        transform: scale(0.9);
+        margin: 0 !important;
+        padding: 40px !important;
+        width: 90px !important;
+    }
+
+
+}
+

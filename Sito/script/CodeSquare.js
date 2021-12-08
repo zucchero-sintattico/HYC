@@ -1,5 +1,3 @@
-
-
 let value = "console.log('ciao mondo')";
 let language = 'javascript';
 let theme = 'monokai';
@@ -8,6 +6,8 @@ let width = 300;
 let height = 300;
 let padding = 10;
 let font_size = 10;
+let lineNumbers = true;
+let codeMirror;
 
 
 class CodeSquare {
@@ -20,13 +20,15 @@ class CodeSquare {
         square.css("width", width);
         square.css("padding", padding);
         square.css("background-color", frame_color);
-        return CodeMirror(this.querySelector, {
-            lineNumbers: true,
+        codeMirror = CodeMirror(this.querySelector, {
+            lineNumbers: lineNumbers,
             tabSize: 2,
             value: value,
             mode: language,
             theme: theme,
         });
+
+        return codeMirror;
     }
 
     updateStyle(){
@@ -71,11 +73,34 @@ class CodeSquare {
 
     }
 
+    setStyle(style){
+        theme = style;
+        codeMirror.setOption("theme", style);
+    }
+
+    setLanguages(code_language){
+        language = code_language;
+        codeMirror.setOption("mode", language);
+    }
+
+    setText(code_text){
+        value = code_text;
+        codeMirror.setOption("value", value);
+    }
+
+    setlineNumbers(line_numbers){
+        lineNumbers = line_numbers;
+        codeMirror.setOption("lineNumbers", lineNumbers);
+    }
+
     disable(){
         let square = $(this.querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
-
     }
+
+
+
+
 
 }

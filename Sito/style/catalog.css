@@ -1,0 +1,55 @@
+body > div > main > div:nth-child(1){
+    text-align: center;
+    margin-top: 10px;
+}
+
+body > div > main > div:nth-child(1) > h1{
+    width: 100%;
+}
+
+body > div > main > div > div > a{
+    margin: 20px;
+    padding: 0 !important;
+    color: black;
+}
+
+body > div > main > div > div > a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+body > div > main > div > div > a article{
+    background-color: #E0E0E0;
+    width: 100%;
+    padding: 3% 3%;
+    border: 1px solid darkgrey;
+}
+
+body > div > main > div > div > a article:hover{
+    background-color: gray;
+}
+
+body > div > main > div > div > a article > div:nth-child(1){
+    text-align: center;
+}
+
+body > div > main > div > div > a article > div:nth-child(1) > h2{
+    width: 100%;
+    font-size: 20px;
+    font-family: "Courier New";
+    font-weight: bold;
+}
+
+body > div > main > div > div article > div:nth-child(3){
+    padding-top: 20px;
+    text-align: center;
+}
+
+body > div > main > div > div article > div:nth-child(3) > p{
+    width: 100%;
+    font: 17px "Courier New";
+    font-weight: bolder;
+    color: gray(0);
+}
+
+
