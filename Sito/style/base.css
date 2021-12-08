@@ -67,36 +67,43 @@ body nav > ul > li > a > img {
     width: 30%;
 }
 
-form{
-    margin: 0 0 0 40%;
+body > div > div:nth-child(3) > div > form{
+    margin: 0 0 0 40% !important;
     position: fixed;
-    padding: 5px;
     height: 7%;
     width: 60%;
-    bottom:10%;
-    background-color: darkgreen;
+    bottom:10.5%;
+    background-color: #E0E0E0;
     z-index: 99;
-    font-size: 13px;
-}
-input{
-    vertical-align: bottom;
+    padding-right: 0 !important;
 }
 
+body > div > div:nth-child(3) > div > form > input, body > div > div:nth-child(3) > div > form > button{
+    height: 100%;
+    border: 1px solid black;
+    font-weight: bolder;
+    text-align: center;
+}
 
-form > input[type=text]{
+body > div > div:nth-child(3) > div > form > input[type=text]{
     width: 80%;
-    text-align: center;
-    border: 1px solid #E0E0E0;
+    float: left;
+    font-size: 11px;
 }
-form > input[type=submit]{
-    width: 17%;
-    text-align: center;
+body > div > div:nth-child(3) > div > form > button{
+    width: 20%;
+    float: right;
+    font-size: 17px;
+    border-left: none;
 }
 
+body > div > div:nth-child(3) > div > form > button:hover{
+    background-color: black;
+    color: white;
+}
 
 body main {
     margin-bottom: 100px;
-
 }
 
 
@@ -125,11 +132,15 @@ body main {
         background-color: #E0E0E0;
     }
 
-
-    form{
+    body > div > div:nth-child(3) > div > form{
+        padding: 0;
         position: static;
-        padding: 30px;
         background-color: #f1f1f1;
+        height: 40px;
+    }
+
+    body > div > div:nth-child(3) > div > form input{
+
     }
 
     body nav > ul > li > a > p {

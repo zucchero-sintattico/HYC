@@ -33,10 +33,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-light.min.css">
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style/code.css">
     <script src="../script/CodeSquare.js"></script>
-    <script src="../script/editToggles.js"></script>
     <script src="../script/searchToggle.js"></script>
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
@@ -90,10 +90,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-12">
             <form action="/search.php">
                 <input type="text" name="key" placeholder="Search you article..."/>
-                <input type="submit" value="">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
             </form>
         </div>
     </div>
