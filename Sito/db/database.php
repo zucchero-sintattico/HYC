@@ -42,7 +42,7 @@ class DatabaseHelper
         $query = "SELECT p.idProd, codice, colore_frame, larghezza,
        titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee,
        NomeLinguaggio, NomeTema, Tipo
-            FROM prodotto p, prodottoinvetrina pv, categoria c
+            FROM Prodotto p, ProdottoInVetrina pv, Categoria c
             WHERE p.IdProd = pv.IdProd
               AND c.IdCategoria = p.IdCategoria
               AND p.IdCategoria = ?";
@@ -55,12 +55,10 @@ class DatabaseHelper
 
     public function getArticleByName($titolo)
     {
-        $query = "SELECT p.idProd, codice, colore_frame, larghezza,
-       titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee,
-       NomeLinguaggio, NomeTema, Tipo
-            FROM prodotto p, prodottoinvetrina pv, categoria c
-            WHERE p.IdProd = pv.IdProd
-              AND titolo LIKE concat('%', ?, '%')";
+        $query = "SELECT p.idProd, codice, colore_frame, larghezza, titolo, descrizione, altezza, padding, dimensione_font,
+        mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
+        WHERE p.IdProd = pv.IdProd 
+        AND titolo LIKE concat('%', ?, '%')";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $titolo);
         $stmt->execute();
