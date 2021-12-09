@@ -27,6 +27,28 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCategorie()
+    {
+        $stmt = $this->db->prepare("SELECT Tipo, IdCategoria FROM categoria");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getMostPopularProducts($n)
+    {
+        $query = "        SELECT * FROM prodotto, prodottoInVetrina 
+                        WHERE prodotto.idprod = prodottoInVetrina.idprod 
+                        ORDER BY prodottoInVetrina.indicePopolarita DESC
+                        LIMIT ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     public function getThemes()
     {
