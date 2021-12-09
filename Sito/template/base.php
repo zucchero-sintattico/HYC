@@ -36,8 +36,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style/code.css">
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">        </script>
+    <script src="typeahead.min.js"></script>
+
+    <script src="../script/searchBar.js"></script>
+        -->
     <script src="../script/CodeSquare.js"></script>
     <script src="../script/searchToggle.js"></script>
+
+
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">

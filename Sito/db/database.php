@@ -66,6 +66,22 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getArticleInCart($idUser)
+    {
+        $query = "SELECT p.idProd, codice, colore_frame, larghezza, titolo, descrizione, altezza, padding, dimensione_font, mostra_numero_linee, NomeLinguaggio, NomeTema 
+         FROM Prodotto p, ProdottoInCarrello pc, Carrello c, Utente u 
+            WHERE p.IdProd = pc.IdProd 
+              AND pc.IdCarrello = c.IdCarrello 
+              AND c.IdCarrello = u.IdCarrello 
+              AND u.IdUser = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
 }
 /*
     public function getRandomPosts($n){
