@@ -4,8 +4,8 @@ $(document).on('ready', function () {
     quadro.setStyle($('#style').val());
     quadro.setFramecolor($('#frame-color').val());
     quadro.setStyle($('#style').val());
-    quadro.setWidth($('#width .active  input').val() * $(window).width() / 500);
-    quadro.setHeight($('#height .active  input').val() * $(window).width() / 500);
+    quadro.setWidth($('#width .active  input').val() * $(window).width() / 400);
+    quadro.setHeight($('#height .active  input').val() * $(window).width() / 400);
 
 
     $('#style').on('change', (function () {
@@ -22,12 +22,12 @@ $(document).on('ready', function () {
     }));
 
     $('#width').on('change', (function () {
-        quadro.setWidth($('#width .active  input').val() * $(window).width() / 500);
+        quadro.setWidth($('#width .active  input').val() * $(window).width() / 400);
     }));
 
 
     $('#height').on('change', (function () {
-        quadro.setHeight($('#height .active  input').val() * $(window).width() / 500);
+        quadro.setHeight($('#height .active  input').val() * $(window).width() / 400);
     }));
 
 
