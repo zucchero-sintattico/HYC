@@ -1,6 +1,6 @@
 <!-- Title -->
 <div class="row">
-    <h1>Carrello</h1>
+    <h1>Cart</h1>
 </div>
 <!-- Articles -->
 <div class="row justify-content-center">
