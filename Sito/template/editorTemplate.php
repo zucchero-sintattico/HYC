@@ -12,38 +12,38 @@
 
                 <div class="col align-content-center">
                     <label>Width(cm)</label>
-                    <div class="col">
+                    <div class="col" id="width">
                         <div class="btn-group-toggle" data-toggle="buttons">
-                            <label class="btn  active border border-secondary">
-                                <input type="radio" name="options" id="30" checked> 100
+                            <label class="btn active border border-secondary" id="width30">
+                                <input type="radio" name="options" id="width30" value="100" checked> 100
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="70"> 120
+                                <input type="radio" name="options" id="width70" value="120"> 120
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="100"> 150
+                                <input type="radio" name="options" id="width100" value="150"> 150
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="120"> 170
+                                <input type="radio" name="options" id="width120" value="170"> 170
                             </label>
                         </div>
                     </div>
                 </div>
                 <div class="col align-content-center">
                     <label>Height(cm)</label>
-                    <div class="col">
+                    <div class="col" id="height">
                         <div class="btn-group-toggle" data-toggle="buttons">
                             <label class="btn active border border-secondary">
-                                <input type="radio" name="options" id="30" checked> 100
+                                <input type="radio" name="options" id="height30" value="100" checked>100
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="70"> 120
+                                <input type="radio" name="options" id="height70" value="120">120
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="100"> 150
+                                <input type="radio" name="options" id="height100" value="150">150
                             </label>
                             <label class="btn border border-secondary">
-                                <input type="radio" name="options" id="120"> 170
+                                <input type="radio" name="options" id="height120" value="170">170
                             </label>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
     </code>
 
 </div>
-
+<script src="../script/editToggles.js"></script>
 <div class="row justify-content-right">
 
     <button type="button">Add to Cart</button>
