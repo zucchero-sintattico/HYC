@@ -1,16 +1,30 @@
-main > div:nth-child(1) > div > div button, select, input {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0px !important;
+main > div:nth-child(1) > div > div button {
     background-color: transparent;
     border: 1px solid lightslategray !important;
-    color: black;
     width: 100% !important;
     height: 50px !important;
     margin: 10px 0 0 0;
 
 }
+
+main > div:nth-child(1) > div select {
+    background-color: transparent;
+    border: 1px solid lightslategray !important;
+    width: 100% !important;
+    height: 50px !important;
+    margin: 10px 0 0 0;
+    border-radius: 0 !important;
+}
+
+main > div:nth-child(1) > div input {
+    background-color: transparent;
+    border: 1px solid lightslategray !important;
+    width: 100% !important;
+    height: 50px !important;
+    margin: 10px 0 0 0;
+    border-radius: 0 !important;
+}
+
 
 main > div:nth-child(1) > div div {
     padding-left: 0 !important;
