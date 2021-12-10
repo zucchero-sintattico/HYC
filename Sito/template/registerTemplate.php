@@ -1,6 +1,6 @@
 <div class="row justify-content-center ">
     <form action="#" method="POST">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <?php if (isset($templateParams["errorelogin"])): ?>
             <p><?php echo $templateParams["errorelogin"]; ?></p>
         <?php endif; ?>
@@ -10,6 +10,9 @@
             </li>
             <li>
                 <label for="password">Password:</label><input type="password" id="password" name="password"/>
+            </li>
+            <li>
+                <label for="password">Confirm Password:</label><input type="password" id="password" name="password"/>
             </li>
             <li>
                 <input type="submit" name="submit" value="Invia"/>
