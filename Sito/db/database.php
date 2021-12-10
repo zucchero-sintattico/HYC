@@ -29,7 +29,7 @@ class DatabaseHelper
 
     public function getCategorie()
     {
-        $stmt = $this->db->prepare("SELECT Tipo, IdCategoria FROM Categoria");
+        $stmt = $this->db->prepare("SELECT Tipo, IdCategoria,ImgCategoria  FROM Categoria");
         $stmt->execute();
         $result = $stmt->get_result();
 
