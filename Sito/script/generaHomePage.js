@@ -80,6 +80,11 @@ function generaProdottiPopolari(data) {
                                 quadro${data[i]["IdProd"]}.disable();
                                 quadro${data[i]["IdProd"]}.widthScale(300);
                                 quadro${data[i]["IdProd"]}.updateStyle();
+                                if($(window).width()<700){
+                
+                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-3");
+                                            $('#quadro${data[i]["IdProd"]}').parent().addClass("col");
+                                }
                             </script>
                         </code>
 
