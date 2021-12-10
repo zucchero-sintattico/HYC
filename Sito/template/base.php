@@ -49,6 +49,17 @@
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
+
+    <?php
+    if(isset($templateParams["js"])):
+        foreach($templateParams["js"] as $script):
+            ?>
+            <script src="<?php echo $script; ?>"></script>
+        <?php
+        endforeach;
+    endif;
+    ?>
+
     <title><?php echo $templateParams["title"]; ?></title>
 </head>
 <body>
@@ -125,7 +136,9 @@
     <!-- Main -->
     <main>
         <?php
-        require($templateParams["name"]);
+        if(isset($templateParams["name"])){
+            require($templateParams["name"]);
+        }
         ?>
     </main>
 </div>

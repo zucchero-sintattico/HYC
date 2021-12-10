@@ -16,6 +16,10 @@ class CodeSquare {
         this.querySelector = querySelector;
     }
 
+    setQuerySelector(querySelector){
+        this.querySelector = querySelector
+    }
+
     getSquare() {
         let square = $(this.querySelector);
         square.css("width", width);

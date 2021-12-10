@@ -1,9 +1,7 @@
 main > section > div > div {
     overflow-x: auto;
     height: 35%;
-
 }
-
 
 main > section > div > div > a {
     padding: 3% 40%;
