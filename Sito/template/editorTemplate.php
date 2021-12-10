@@ -106,7 +106,10 @@
             let quadro = new CodeSquare($('script').last().parent().get(0));
             quadro.getSquare();
             quadro.updateStyle();
-            
+            quadro.widthSclae(350);
+            if($(window).width()<700){
+                quadro.widthSclae($(window).width()-20);
+            }
         </script>
     </code>
 

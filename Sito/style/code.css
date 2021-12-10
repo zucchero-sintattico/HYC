@@ -1,6 +1,5 @@
 .CodeMirror {
     padding: 10px 3px;
-    height: auto;
     word-break: break-word;
     border-radius: 20px;
 
@@ -13,7 +12,6 @@
 }
 
 .CodeMirror-scroll {
-    height: auto;
     resize: none;
     overflow:hidden;
     border-radius: 20px;

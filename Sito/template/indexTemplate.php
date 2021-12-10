@@ -5,17 +5,18 @@
 
     <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
-            <?php foreach($templateParams['categories'] as $categoria): ?>
-                <div class="col-3 d-flex justify-content-center text-center">
+            <?php foreach ($templateParams['categories'] as $categoria): ?>
+                <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
 
                     <div class="card card-block">
-                        <img class="card-img-top" src="img/logos/<?php echo $categoria['Tipo']?>.png" alt="Card image cap">
+                        <img class="card-img-top" src="img/logos/<?php echo $categoria['Tipo'] ?>.png"
+                             alt="Card image cap">
                         <div class="class-footer mt-auto">
-                            <p class="card-text"><?php echo $categoria['Tipo']?></p>
+                            <p class="card-text"><?php echo $categoria['Tipo'] ?></p>
                         </div>
                     </div>
 
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
@@ -29,14 +30,14 @@
 
     <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
-            <?php foreach($templateParams['languages'] as $language): ?>
-                <div class="col-3 d-flex justify-content-center text-center">
+            <?php foreach ($templateParams['languages'] as $language): ?>
+                <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
 
                     <div class="row justify-content-center">
-                        <?php echo $language['NomeLinguaggio'];?>
+                        <?php echo $language['NomeLinguaggio']; ?>
                     </div>
 
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
@@ -50,11 +51,11 @@
 
     <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
-            <?php foreach($templateParams['mostPopularProducts'] as $popularProduct): ?>
+            <?php foreach ($templateParams['mostPopularProducts'] as $popularProduct): ?>
                 <div class="col-3 d-flex justify-content-center text-center">
 
                     <div class="row justify-content-center">
-                        <?php echo $popularProduct['titolo'];?>
+                        <?php echo $popularProduct['titolo']; ?>
                     </div>
 
                 </div>

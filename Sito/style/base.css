@@ -68,37 +68,38 @@ body nav > ul > li > a > img {
     width: 30%;
 }
 
-body > div > div:nth-child(3) > div > form{
+body > div > div:nth-child(3) > div > form {
     margin: 0 0 0 20% !important;
     position: fixed;
     height: 7%;
     width: 60%;
-    bottom:10.5%;
+    bottom: 10.5%;
     background-color: #E0E0E0;
     z-index: 99;
     padding-right: 0 !important;
 }
 
-body > div > div:nth-child(3) > div > form > input, body > div > div:nth-child(3) > div > form > button{
+body > div > div:nth-child(3) > div > form > input, body > div > div:nth-child(3) > div > form > button {
     height: 100%;
     border: 1px solid black;
     font-weight: bolder;
     text-align: center;
 }
 
-body > div > div:nth-child(3) > div > form > input[type=text]{
+body > div > div:nth-child(3) > div > form > input[type=text] {
     width: 80%;
     float: left;
     font-size: 11px;
 }
-body > div > div:nth-child(3) > div > form > button{
+
+body > div > div:nth-child(3) > div > form > button {
     width: 20%;
     float: right;
     font-size: 17px;
     border-left: none;
 }
 
-body > div > div:nth-child(3) > div > form > button:hover{
+body > div > div:nth-child(3) > div > form > button:hover {
     background-color: black;
     color: white;
 }
@@ -133,16 +134,13 @@ body main {
         background-color: #E0E0E0;
     }
 
-    body > div > div:nth-child(3) > div > form{
+    body > div > div:nth-child(3) > div > form {
         padding: 0;
         position: static;
         background-color: #f1f1f1;
         height: 40px;
     }
 
-    body > div > div:nth-child(3) > div > form input{
-
-    }
 
     body nav > ul > li > a > p {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

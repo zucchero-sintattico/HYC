@@ -4,11 +4,11 @@ let theme = 'monokai';
 let frame_color = 'red';
 let width = 100;
 let height = 100;
-let padding = 9;
-let font_size = 2;
+let padding = 7;
+let font_size = 4;
 let lineNumbers = true;
 let codeMirror;
-let scaleMul = 1;
+let scaledWidth = 100;
 
 
 class CodeSquare {
@@ -34,30 +34,25 @@ class CodeSquare {
 
     updateStyle() {
         let square = $(this.querySelector);
-        square.find(".CodeMirror").css("font-size", font_size);
+        this.widthSclae(scaledWidth);
+
+/*        square.find(".CodeMirror").css("font-size", font_size);
         square.find(".CodeMirror").css("min-height", height);
         square.find(".CodeMirror").css("height", height);
         square.find(".CodeMirror-scroll").css("min-height", height);
-        square.find("textarea").css("max-height", height);
+        square.find("textarea").css("max-height", height);*/
     }
 
     setWidth(x) {
-        let square = $(this.querySelector);
         width = x;
-        square.css("width", width);
     }
 
     setHeight(y) {
-        let square = $(this.querySelector);
         height = y;
-        square.find(".CodeMirror").css("min-height", height);
-        square.find(".CodeMirror-scroll").css("min-height", height);
     }
 
     setPadding(padding_value) {
-        let square = $(this.querySelector);
         padding = padding_value;
-        square.css("padding", padding);
     }
 
     setFramecolor(color) {
@@ -69,9 +64,6 @@ class CodeSquare {
 
     setFontSize(size) {
         font_size = size;
-        let square = $(this.querySelector);
-        square.find(".CodeMirror").css("font-size", font_size);
-
     }
 
     setStyle(style) {
@@ -107,6 +99,18 @@ class CodeSquare {
         square.find(".CodeMirror-scroll").css("min-height", height * mul);
         square.css("padding", padding * mul);
         square.find(".CodeMirror").css("font-size", font_size * mul);
+    }
+
+    widthSclae(width_select){
+        scaledWidth = width_select;
+        let square = $(this.querySelector);
+        let h = (scaledWidth * height) / width
+        let mul = h/height;
+        square.css("width", scaledWidth);
+        square.find(".CodeMirror").css("min-height", h);
+        square.find(".CodeMirror-scroll").css("min-height", h);
+        square.find(".CodeMirror").css("font-size", font_size*mul);
+        square.css("padding", padding*mul);
     }
 
 
