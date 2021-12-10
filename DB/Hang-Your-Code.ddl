@@ -33,48 +33,60 @@ create table Carrello
 
 create table Ordine
 (
-    idOrdine   int     not null AUTO_INCREMENT,
+    IdOrdine   int     not null AUTO_INCREMENT,
     IdCarrello int     not null,
     Data       date    not null,
     Stato      char(1) not null,
-    constraint ID_Ordine_ID primary key (idOrdine),
+    constraint ID_Ordine_ID primary key (IdOrdine),
     constraint SID_Ordin_Carre_ID unique (IdCarrello)
+);
+
+create table Notifica
+(
+    IdNotifica   int     not null AUTO_INCREMENT,
+    TipoNotifica    varchar (15)    not null,
+    Data       date    not null,
+    Descrizione      varchar(100) not null,
+    IdUtente    int     not null,
+    constraint ID_Notifica_ID primary key (IdNotifica),
+    constraint SID_Notifica_Utente_ID unique (IdUtente)
 );
 
 create table Prodotto
 (
-    idProd              int          not null AUTO_INCREMENT,
-    codice              varchar(150) not null,
-    colore_frame        varchar(1)   not null,
-    larghezza           int          not null,
-    titolo              varchar(40)  not null,
-    descrizione         varchar(100),
-    altezza             int          not null,
-    padding             int          not null,
-    dimensione_font     int          not null,
-    mostra_numero_linee char         not null,
+    IdProd              int          not null AUTO_INCREMENT,
+    Codice              varchar(150) not null,
+    Colore_frame        varchar(10)   not null,
+    Larghezza           int          not null,
+    Titolo              varchar(40)  not null,
+    Descrizione         varchar(100),
+    Altezza             int          not null,
+    Padding             int          not null,
+    Dimensione_font     int          not null,
+    Mostra_numero_linee char         not null,
     NomeLinguaggio      varchar(40)  not null,
     IdCategoria         int          not null,
     NomeTema            varchar(40)  not null,
     IdProdInVetrina     int,
-    constraint ID_Prodotto_ID primary key (idProd)
+    constraint ID_Prodotto_ID primary key (IdProd)
 );
 
 create table Spedizione
 (
-    idSpedizione    int     not null AUTO_INCREMENT,
-    idOrdine        int     not null,
+    IdSpedizione    int     not null AUTO_INCREMENT,
+    IdOrdine        int     not null,
     StatoSpedizione char(1) not null,
     DataInvio       date    not null,
     DataConsegna    date    not null,
-    constraint ID_Spedizione_ID primary key (idSpedizione),
-    constraint SID_Spedi_Ordin_ID unique (idOrdine)
+    constraint ID_Spedizione_ID primary key (IdSpedizione),
+    constraint SID_Spedi_Ordin_ID unique (IdOrdine)
 );
 
 create table Categoria
 (
     Tipo        varchar(40) not null,
     IdCategoria int         not null AUTO_INCREMENT,
+    ImgCategoria varchar(30) not null,
     constraint ID_Categoria_ID primary key (IdCategoria)
 );
 
@@ -93,29 +105,29 @@ create table Tema
 create table ProdottoInVetrina
 (
     IdProdInVetrina  int not null AUTO_INCREMENT,
-    idProd           int not null,
+    IdProd           int not null,
     IndicePopolarita int not null,
     constraint ID_ProdottoInVetrina_ID primary key (IdProdInVetrina),
-    constraint SID_Prodo_Prodo_ID unique (idProd)
+    constraint SID_Prodo_Prodo_ID unique (IdProd)
 );
 
 create table ProdottoInCarrello
 (
     IdCarrello int not null AUTO_INCREMENT,
-    idProd     int not null,
-    constraint ID_ProdottoInCarrello_ID primary key (IdCarrello, idProd)
+    IdProd     int not null,
+    constraint ID_ProdottoInCarrello_ID primary key (IdCarrello, IdProd)
 );
 
 create table Utente
 (
-    idUser     int         not null AUTO_INCREMENT,
+    IdUtente     int         not null AUTO_INCREMENT,
     IdCarrello int         not null,
     Nome       varchar(40) not null,
     Cognome    varchar(40) not null,
     Username   varchar(40) not null,
     Email      varchar(40) not null,
     Password   varchar(40) not null,
-    constraint ID_Utente_ID primary key (idUser),
+    constraint ID_Utente_ID primary key (IdUtente),
     constraint SID_Utent_Carre_ID unique (IdCarrello)
 );
 
@@ -127,6 +139,11 @@ alter table Ordine
     add constraint SID_Ordin_Carre_FK
         foreign key (IdCarrello)
             references Carrello (IdCarrello);
+
+alter table Notifica
+    add constraint SID_Notifica_Utente_FK
+        foreign key (IdUtente)
+            references Utente (IdUtente);
 
 alter table Prodotto
     add constraint REF_Prodo_Lingu_FK
@@ -145,18 +162,18 @@ alter table Prodotto
 
 alter table Spedizione
     add constraint SID_Spedi_Ordin_FK
-        foreign key (idOrdine)
-            references Ordine (idOrdine);
+        foreign key (IdOrdine)
+            references Ordine (IdOrdine);
 
 alter table ProdottoInVetrina
     add constraint SID_Prodo_Prodo_FK
-        foreign key (idProd)
+        foreign key (IdProd)
             references Prodotto (idProd);
 
 alter table ProdottoInCarrello
     add constraint REF_Prodo_Prodo_FK
-        foreign key (idProd)
-            references Prodotto (idProd);
+        foreign key (IdProd)
+            references Prodotto (IdProd);
 
 alter table ProdottoInCarrello
     add constraint REF_Prodo_Carre
@@ -176,13 +193,19 @@ create unique index ID_Carrello_IND
     on Carrello (IdCarrello);
 
 create unique index ID_Ordine_IND
-    on Ordine (idOrdine);
+    on Ordine (IdOrdine);
 
 create unique index SID_Ordin_Carre_IND
     on Ordine (IdCarrello);
 
+create unique index ID_Notifica_IND
+    on Notifica (IdNotifica);
+
+create unique index SID_Notifica_Utente_IND
+    on Notifica (IdUtente);
+
 create unique index ID_Prodotto_IND
-    on Prodotto (idProd);
+    on Prodotto (IdProd);
 
 create index REF_Prodo_Lingu_IND
     on Prodotto (NomeLinguaggio);
@@ -194,10 +217,10 @@ create index REF_Prodo_Tema_IND
     on Prodotto (NomeTema);
 
 create unique index ID_Spedizione_IND
-    on Spedizione (idSpedizione);
+    on Spedizione (IdSpedizione);
 
 create unique index SID_Spedi_Ordin_IND
-    on Spedizione (idOrdine);
+    on Spedizione (IdOrdine);
 
 create unique index ID_Categoria_IND
     on Categoria (IdCategoria);
@@ -212,16 +235,16 @@ create unique index ID_ProdottoInVetrina_IND
     on ProdottoInVetrina (IdProdInVetrina);
 
 create unique index SID_Prodo_Prodo_IND
-    on ProdottoInVetrina (idProd);
+    on ProdottoInVetrina (IdProd);
 
 create unique index ID_ProdottoInCarrello_IND
-    on ProdottoInCarrello (IdCarrello, idProd);
+    on ProdottoInCarrello (IdCarrello, IdProd);
 
 create index REF_Prodo_Prodo_IND
-    on ProdottoInCarrello (idProd);
+    on ProdottoInCarrello (IdProd);
 
 create unique index ID_Utente_IND
-    on Utente (idUser);
+    on Utente (IdUtente);
 
 create unique index SID_Utent_Carre_IND
     on Utente (IdCarrello);
