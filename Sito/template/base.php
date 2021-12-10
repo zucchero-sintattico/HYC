@@ -60,13 +60,25 @@
 <div class="container-fluid p-0 overflow-hidden">
     <!--Header-->
     <div class="row">
-        <div class="col-12">
-            <header class="py-2">
+
+            <div class="col-8">
+                <header class="py-2">
                 <h1> H.Y.C.</h1>
                 <h2>hang your code</h2>
-            </header>
-        </div>
+                </header>
+            </div>
+
+            <div class="col-4 text-right">
+                <label><?php
+                    if (isUserLoggedIn()) {
+                        echo "<a href='/logout.php'>LogOut</a>";
+                    } else {
+                        echo "<a href='../login.php'>LogIn</a>";
+                    } ?></label>
+            </div>
+
     </div>
+
     <!-- Menu -->
     <div class="row ">
         <div class="col-12">
