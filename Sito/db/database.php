@@ -29,7 +29,7 @@ class DatabaseHelper
 
     public function getCategorie()
     {
-        $stmt = $this->db->prepare("SELECT Tipo, IdCategoria FROM categoria");
+        $stmt = $this->db->prepare("SELECT Tipo, IdCategoria FROM Categoria");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -38,7 +38,7 @@ class DatabaseHelper
 
     public function getMostPopularProducts($n)
     {
-        $query = "        SELECT * FROM prodotto, prodottoInVetrina 
+        $query = "        SELECT * FROM Prodotto, ProdottoInVetrina 
                         WHERE prodotto.idprod = prodottoInVetrina.idprod 
                         ORDER BY prodottoInVetrina.indicePopolarita DESC
                         LIMIT ?";
