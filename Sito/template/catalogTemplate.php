@@ -1,10 +1,10 @@
 <!-- Title -->
 <div class="row">
-    <h1><?php echo $templateParams['query'][0]['Tipo'] ;?></h1>
+    <h1><?php echo $templateParams['argument'] ;?></h1>
 </div>
 <!-- Articles -->
 <div class="row justify-content-center">
-    <?php foreach($templateParams["query"] as $articolo) :?>
+    <?php foreach($templateParams['query'] as $articolo) :?>
         <div class="col-10 col-md-5">
             <a href="../editor.php?id=<?php echo $articolo["idProd"] ?>">
                 <article>
