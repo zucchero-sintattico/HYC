@@ -39,7 +39,7 @@ class DatabaseHelper
     public function getMostPopularProducts($n)
     {
         $query = "        SELECT * FROM Prodotto, ProdottoInVetrina 
-                        WHERE Prodotto.IdProdotto = ProdottoInVetrina.IdProdotto 
+                        WHERE Prodotto.IdProd = ProdottoInVetrina.IdProd
                         ORDER BY ProdottoInVetrina.IndicePopolarita DESC
                         LIMIT ?";
         $stmt = $this->db->prepare($query);
@@ -61,11 +61,11 @@ class DatabaseHelper
 
     public function getProductByCategory($category)
     {
-        $query = "SELECT p.IdProdotto, Codice, Colore_frame, Larghezza,
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
        Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
        NomeLinguaggio, NomeTema, Tipo
             FROM Prodotto p, ProdottoInVetrina pv, Categoria c
-            WHERE p.IdProdotto = pv.IdProdotto
+            WHERE p.IdProd = pv.IdProd
               AND c.IdCategoria = p.IdCategoria
               AND p.IdCategoria = ?";
         $stmt = $this->db->prepare($query);
@@ -77,10 +77,10 @@ class DatabaseHelper
 
     public function getArticleByName($Titolo)
     {
-        $query = "SELECT p.IdProdotto, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font,
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font,
         Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
         FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
-        WHERE p.IdProdotto = pv.IdProdotto 
+        WHERE p.IdProd = pv.IdProd 
         AND Titolo LIKE concat('%', ?, '%')";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $Titolo);
@@ -91,9 +91,9 @@ class DatabaseHelper
 
     public function getArticleByLanguage($language)
     {
-        $query = "SELECT p.IdProdotto, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
         FROM Prodotto p, ProdottoInVetrina pv 
-        WHERE p.IdProdotto = pv.IdProdotto 
+        WHERE p.IdProd = pv.IdProd 
           AND NomeLinguaggio = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $language);
@@ -104,9 +104,9 @@ class DatabaseHelper
 
     public function getArticleInCart($idUser)
     {
-        $query = "SELECT p.IdProdotto, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
          FROM Prodotto p, ProdottoInCarrello pc, Carrello c, Utente u 
-            WHERE p.IdProdotto = pc.IdProdotto 
+            WHERE p.IdProd = pc.IdProd
               AND pc.IdCarrello = c.IdCarrello 
               AND c.IdCarrello = u.IdCarrello 
               AND u.IdUser = ?";
