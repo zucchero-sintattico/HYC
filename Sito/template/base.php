@@ -52,9 +52,7 @@
     <title><?php echo $templateParams["title"]; ?></title>
 </head>
 <body>
-<header>
 
-</header>
 
 <!-- Tutta la pagina qua dentro -->
 <div class="container-fluid p-0 overflow-hidden">

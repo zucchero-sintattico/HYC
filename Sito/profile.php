@@ -6,7 +6,7 @@ $templateParams['style'] = "style/profile.css";
 if(isUserLoggedIn()) {
     $templateParams["name"] = "profileTemplate.php";
 }else{
-    $templateParams["name"] = "loginTemplate.php";
+    header("location: login.php");
 }
 require("template/base.php");
 
