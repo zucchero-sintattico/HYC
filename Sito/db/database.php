@@ -39,7 +39,7 @@ class DatabaseHelper
     public function getMostPopularProducts($n)
     {
         $query = "        SELECT * FROM Prodotto, ProdottoInVetrina 
-                        WHERE prodotto.idprod = ProdottoInVetrina.idprod 
+                        WHERE Prodotto.idprod = ProdottoInVetrina.idprod 
                         ORDER BY ProdottoInVetrina.indicePopolarita DESC
                         LIMIT ?";
         $stmt = $this->db->prepare($query);
