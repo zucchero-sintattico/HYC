@@ -15,12 +15,12 @@ main > section > div > div > a {
 }
 
 
-main > section > div > div > div img {
+main > section > div > div > a img {
     width: 40%;
     background-repeat: no-repeat;
 }
 
-main > section > div > div > div * {
+main > section > div > div > a *:not(code, code *) {
     background-color: #f1f1f1 !important;
     border: none !important;
 }
@@ -28,7 +28,7 @@ main > section > div > div > div * {
 
 @media (min-width: 768px) {
 
-    main > section > div > div > div img {
+    main > section > div > div > a img {
         width: 100px !important;
     }
 
@@ -36,7 +36,7 @@ main > section > div > div > div * {
         transform: scale(0.9);
     }
 
-    main > section > div > div > div {
+    main > section > div > div > a {
         transform: scale(0.9);
         margin: 0 !important;
         padding: 40px !important;

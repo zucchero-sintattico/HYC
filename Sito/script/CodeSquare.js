@@ -34,7 +34,7 @@ class CodeSquare {
 
     updateStyle() {
         let square = $(this.querySelector);
-        this.widthSclae(scaledWidth);
+        this.widthScale(scaledWidth);
 
 /*        square.find(".CodeMirror").css("font-size", font_size);
         square.find(".CodeMirror").css("min-height", height);
@@ -101,7 +101,7 @@ class CodeSquare {
         square.find(".CodeMirror").css("font-size", font_size * mul);
     }
 
-    widthSclae(width_select){
+    widthScale(width_select){
         scaledWidth = width_select;
         let square = $(this.querySelector);
         let h = (scaledWidth * height) / width

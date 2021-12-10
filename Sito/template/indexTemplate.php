@@ -52,13 +52,27 @@
     <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
             <?php foreach ($templateParams['mostPopularProducts'] as $popularProduct): ?>
-                <div class="col-3 d-flex justify-content-center text-center">
+                <a href="#" class="col-3 d-flex justify-content-center text-center">
 
-                    <div class="row justify-content-center">
-                        <?php echo $popularProduct['titolo']; ?>
-                    </div>
+                        <code>
+                            <script>
+                                let quadro<?php echo $popularProduct["IdProd"] ?> = new CodeSquare($('script').last().parent().get(0));
+                                quadro<?php echo $popularProduct["IdProd"] ?>.getSquare();
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setText('<?php echo $popularProduct["Codice"] ?>');
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setWidth(<?php echo $popularProduct["Larghezza"] ?>);
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setHeight(<?php echo $popularProduct["Altezza"] ?>);
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setPadding(<?php echo $popularProduct["Padding"] ?>);
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setFramecolor("<?php echo $popularProduct["Colore_frame"] ?>")
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setFontSize(<?php echo $popularProduct["Dimensione_font"] ?>);
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setLanguages('<?php echo $popularProduct["NomeLinguaggio"] ?>');
+                                quadro<?php echo $popularProduct["IdProd"] ?>.setStyle('<?php echo $popularProduct["NomeTema"] ?>');
+                                quadro<?php echo $popularProduct["IdProd"] ?>.disable();
+                                quadro<?php echo $popularProduct["IdProd"] ?>.widthScale(300);
+                                quadro<?php echo $popularProduct["IdProd"] ?>.updateStyle();
+                            </script>
+                        </code>
 
-                </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
