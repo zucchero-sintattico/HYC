@@ -129,7 +129,7 @@ class DatabaseHelper
 
     public function getProductById($id)
     {
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
+        $query = "SELECT IdProd, Codice, Colore_frame, Larghezza,
        Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
        NomeLinguaggio, NomeTema
             FROM Prodotto p

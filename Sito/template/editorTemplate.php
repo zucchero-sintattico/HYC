@@ -69,7 +69,11 @@
             <div class="col text-center-center">
                 <select class="custom-select" id="style">
                     <?php foreach ($templateParams['themes'] as $theme): ?>
-                        <option> <?php echo $theme['NomeTema']; ?></option>
+                        <?php if($theme['NomeTema'] == $templateParams["product"]["NomeTema"]): ?>
+                            <option selected="selected"> <?php echo $theme['NomeTema']; ?></option>
+                        <?php else: ?>
+                            <option> <?php echo $theme['NomeTema']; ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -82,7 +86,11 @@
             <div class="col">
                 <select id="language" class="custom-select">
                     <?php foreach ($templateParams['languages'] as $language): ?>
-                        <option> <?php echo $language['NomeLinguaggio']; ?></option>
+                        <?php if($language['NomeLinguaggio'] == $templateParams["product"]["NomeLinguaggio"]): ?>
+                            <option selected="selected"> <?php echo $language['NomeLinguaggio']; ?></option>
+                        <?php else: ?>
+                            <option> <?php echo $language['NomeLinguaggio']; ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -99,14 +107,14 @@
         </div>
     </div>
 </div>
-<h1>'<?php echo $templateParams["product"]; ?>'</h1>
 <!-- Console -->
 <div class="row justify-content-center">
     <code>
         <script>
             let quadro = new CodeSquare($('script').last().parent().get(0));
-            quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
             quadro.getSquare();
+            quadro.setText("<?php echo $templateParams["product"]["Codice"]; ?>");
+
             quadro.updateStyle();
             quadro.widthScale(350);
             if($(window).width()<700){
