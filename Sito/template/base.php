@@ -49,7 +49,6 @@
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
-
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):

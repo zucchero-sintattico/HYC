@@ -1,5 +1,4 @@
-
-function generaSectionBootstrap(contenuto, title){
+function generaSectionBootstrap(contenuto, title) {
     let result = `<section>
         <header>
             <h1>${title}</h1>
@@ -67,19 +66,19 @@ function generaProdottiPopolari(data) {
 
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
-                                let quadro${data[i]["IdProd"]} = new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}'));
-                                quadro${data[i]["IdProd"]}.getSquare();
-                                quadro${data[i]["IdProd"]}.setText('${data[i]["Codice"]}');
-                                quadro${data[i]["IdProd"]}.setWidth(${data[i]["Larghezza"]});
-                                quadro${data[i]["IdProd"]}.setHeight(${data[i]["Altezza"]});
-                                quadro${data[i]["IdProd"]}.setPadding(${data[i]["Padding"]});
-                                quadro${data[i]["IdProd"]}.setFramecolor("${data[i]["Colore_frame"]}")
-                                quadro${data[i]["IdProd"]}.setFontSize(${data[i]["Dimensione_font"]});
-                                quadro${data[i]["IdProd"]}.setLanguages('${data[i]["NomeLinguaggio"]}');
-                                quadro${data[i]["IdProd"]}.setStyle('${data[i]["NomeTema"]}');
-                                quadro${data[i]["IdProd"]}.disable();
-                                quadro${data[i]["IdProd"]}.widthScale(300);
-                                quadro${data[i]["IdProd"]}.updateStyle();
+                                quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
+                                quadri[${i}].getSquare();
+                                quadri[${i}].setText('${data[i]["Codice"]}');
+                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                quadri[${i}].setHeight(${data[i]["Altezza"]});
+                                quadri[${i}].setPadding(${data[i]["Padding"]});
+                                quadri[${i}].setFramecolor("${data[i]["Colore_frame"]}")
+                                quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                                quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                                quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                                quadri[${i}].disable();
+                                quadri[${i}].widthScale(300);
+                                quadri[${i}].updateStyle();
                                 if($(window).width()<700){
                 
                                             $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-3");
@@ -97,7 +96,7 @@ function generaProdottiPopolari(data) {
 
 
 $(document).on("ready", function () {
-    $.getJSON("api-homepage.php", function (data) {
+    $.getJSON("/API/api-homepage.php", function (data) {
         let categorie = generaCategorie(data['Categorie']);
         let linguaggi = generaLinguaggi(data['Linguaggi']);
         let prodottiPopolari = generaProdottiPopolari(data['ProdottiPopolari']);

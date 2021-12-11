@@ -1,5 +1,5 @@
 <?php
-require_once 'bootstrap.php';
+require_once '../bootstrap.php';
 $Categorie = $dbh->getCategorie();
 $MostPopularProducts = $dbh->getMostPopularProducts(2);
 $Languages = $dbh->getLanguages();
