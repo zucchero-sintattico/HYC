@@ -127,6 +127,20 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProductById($id)
+    {
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
+       Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
+       NomeLinguaggio, NomeTema
+            FROM Prodotto p
+            WHERE p.IdProd = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
 }
 /*

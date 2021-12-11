@@ -99,11 +99,13 @@
         </div>
     </div>
 </div>
+<h1>'<?php echo $templateParams["product"]; ?>'</h1>
 <!-- Console -->
 <div class="row justify-content-center">
     <code>
         <script>
             let quadro = new CodeSquare($('script').last().parent().get(0));
+            quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
             quadro.getSquare();
             quadro.updateStyle();
             quadro.widthScale(350);
