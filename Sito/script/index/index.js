@@ -1,24 +1,4 @@
-function generaSectionBootstrap(contenuto, title) {
-    let result = `<section>
-        <header>
-            <h1>${title}</h1>
-        </header>
-
-        <div class="container-fluid">
-            <div class="row flex-row flex-nowrap">
-        `;
-
-    result += contenuto;
-
-    result += `</div>
-            </div>
-        </section>`;
-
-    return result;
-}
-
 function generaCategorie(data) {
-
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
@@ -31,14 +11,14 @@ function generaCategorie(data) {
                                         <p class="card-text">${data[i]['Tipo']}</p>
                                     </div>
                             </div>
-    
                         </a>
             `;
         content += categoria;
     }
 
-    return generaSectionBootstrap(content, "Categories");
+    return horizontalSection(content, "Categories");
 }
+
 
 function generaLinguaggi(data) {
     let content = '';
@@ -48,12 +28,11 @@ function generaLinguaggi(data) {
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>
-
                 </a>
             `;
         content += linguaggio;
     }
-    return generaSectionBootstrap(content, "Languages");
+    return horizontalSection(content, "Languages");
 }
 
 function generaProdottiPopolari(data) {
@@ -90,7 +69,7 @@ function generaProdottiPopolari(data) {
             `;
         content += prodottoPopolare;
     }
-    return generaSectionBootstrap(content, "Most Popular Products");
+    return horizontalSection(content, "Most Popular Products");
 }
 
 

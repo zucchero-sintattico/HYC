@@ -42,8 +42,9 @@
 
     <script src="../script/searchBar.js"></script>
         -->
-    <script src="../script/CodeSquare.js"></script>
+    <script src="../script/utility/CodeSquare.js"></script>
     <script src="../script/searchToggle.js"></script>
+    <script src="../script/utility/graphicsTemplate.js"></script>
 
 
     <link rel="stylesheet" href="../style/base.css">
