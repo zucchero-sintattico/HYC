@@ -114,7 +114,6 @@
     </code>
 
 </div>
-<script src="../script/editToggles.js"></script>
 <div class="row justify-content-right">
 
     <button type="button">Add to Cart</button>
