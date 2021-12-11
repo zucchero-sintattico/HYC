@@ -125,16 +125,16 @@
             </nav>
         </div>
     </div>
+
     <div class="row">
         <div class="col-12">
-            <form action="/search.php">
-                <input type="text" name="key" placeholder="Search you article..."/>
-                <button type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
+            <form>
+                <input type="text" name="key" id ="searchField" placeholder="Search you article..."/>
             </form>
+
         </div>
     </div>
+
     <!-- Main -->
     <main>
         <?php
