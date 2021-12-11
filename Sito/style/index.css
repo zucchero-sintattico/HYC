@@ -13,7 +13,7 @@ main > section > div > div > a {
     color: black;
 }
 
-main > section > div > div > a:hover, body > div > main > section:nth-child(1) > div > div > a:hover:nth-child(2) > div{
+main > section > div > div > a:hover{
     color: black;
     background-color: #E0E0E0;
     font-weight: bold;

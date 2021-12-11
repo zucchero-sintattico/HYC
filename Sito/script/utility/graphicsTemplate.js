@@ -14,7 +14,7 @@ function horizontalSection(content, title) {
 }
 
 
-function adattableSection(content, title) {
+function adaptableSection(content, title) {
     let result = `<section>
                     <header>
                         <h1>${title}</h1>
