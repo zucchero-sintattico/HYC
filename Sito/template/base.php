@@ -68,15 +68,14 @@
 <div class="container-fluid p-0 overflow-hidden">
     <!--Header-->
     <div class="row">
+        <header class="">
+            <div class="col">
 
-            <div class="col-8">
-                <header class="py-2">
                 <h1> H.Y.C.</h1>
                 <h2>hang your code</h2>
-                </header>
-            </div>
 
-            <div class="col-4 text-right">
+            </div>
+            <div class="col">
                 <label><?php
                     if (isUserLoggedIn()) {
                         echo "<a href='/logout.php'>LogOut</a>";
@@ -84,6 +83,9 @@
                         echo "<a href='../login.php'>LogIn</a>";
                     } ?></label>
             </div>
+        </header>
+
+
 
     </div>
 

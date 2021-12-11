@@ -10,6 +10,12 @@ main > section > div > div > a {
     border-radius: 10px;
     text-align: center;
     background-color: #f1f1f1;
+    color: black;
+}
+
+main > section > div > div > a:hover{
+    color: black;
+    background-color: #E0E0E0;;
 }
 
 

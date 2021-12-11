@@ -45,7 +45,6 @@ function generaLinguaggi(data) {
     for (let i = 0; i < data.length; i++) {
         let linguaggio = `
                 <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
-
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>

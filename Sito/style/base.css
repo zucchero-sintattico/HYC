@@ -5,12 +5,13 @@ body {
     box-sizing: border-box;
 }
 
-body > div > div > div > header {
+body > div > div > header {
     background-color: #E0E0E0;
-    padding-left: 20px;
+    padding: 20px 0 20px 40px;
+    width: 100%;
 }
 
-body > div > div > div > header > h1 {
+body > div > div > header > div > h1 {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: black;
     font-weight: bold;
@@ -19,10 +20,33 @@ body > div > div > div > header > h1 {
     text-align: left;
 }
 
-body > div > div > div > header > h2 {
+body > div > div:nth-child(1) > header > div:nth-child(1){
+    float: left;
+    width: 70%;
+}
+
+body > div > div > header > div > h2 {
     color: black;
     text-align: left;
     font-size: 20px;
+}
+
+body > div > div:nth-child(1) > header > div:nth-child(2){
+    float: right;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    line-height: 106px;
+}
+
+body > div > div:nth-child(1) > header > div:nth-child(2) > label > a{
+    text-decoration: underline;
+    color: black;
+    font-weight: bold;
+}
+
+body > div > div:nth-child(1) > header > div:nth-child(2) > label > a:hover{
+    color: #0000AA;
 }
 
 body nav {
