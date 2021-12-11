@@ -1,22 +1,3 @@
-function generaSectionBootstrap(contenuto, title) {
-    let result = `<section>
-        <header>
-            <h1>${title}</h1>
-        </header>
-
-        <div class="container-fluid">
-            <div class="row flex-row flex-nowrap">
-        `;
-
-    result += contenuto;
-
-    result += `</div>
-            </div>
-        </section>`;
-
-    return result;
-}
-
 function generaCategorie(data) {
 
     let content = '';
@@ -37,8 +18,10 @@ function generaCategorie(data) {
         content += categoria;
     }
 
-    return generaSectionBootstrap(content, "Categories");
+    return horizontalSection(content, "Categories");
 }
+
+
 
 function generaLinguaggi(data) {
     let content = '';
@@ -54,7 +37,7 @@ function generaLinguaggi(data) {
             `;
         content += linguaggio;
     }
-    return generaSectionBootstrap(content, "Languages");
+    return horizontalSection(content, "Languages");
 }
 
 function generaProdottiPopolari(data) {
@@ -91,7 +74,7 @@ function generaProdottiPopolari(data) {
             `;
         content += prodottoPopolare;
     }
-    return generaSectionBootstrap(content, "Most Popular Products");
+    return horizontalSection(content, "Most Popular Products");
 }
 
 
