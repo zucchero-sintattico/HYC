@@ -1,5 +1,4 @@
 function generaCategorie(data) {
-
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
@@ -12,7 +11,6 @@ function generaCategorie(data) {
                                         <p class="card-text">${data[i]['Tipo']}</p>
                                     </div>
                             </div>
-    
                         </a>
             `;
         content += categoria;
@@ -22,17 +20,14 @@ function generaCategorie(data) {
 }
 
 
-
 function generaLinguaggi(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let linguaggio = `
                 <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
-
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>
-
                 </a>
             `;
         content += linguaggio;
