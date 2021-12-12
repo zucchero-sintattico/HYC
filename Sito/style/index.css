@@ -3,7 +3,7 @@ main > section > div > div {
     height: 35%;
 }
 
-main > section > div > div > a {
+main > section > div > div > a, main > section > div > div > article, main > section > div > div > section {
     padding: 3% 40%;
     margin: 5px;
     border: none;
@@ -12,15 +12,17 @@ main > section > div > div > a {
     color: black;
 }
 
-main > section > div > div > a:hover {
+main > section > div > div > a:hover, main > section > div > div > article:hover, main > section > div > div > section:hover {
     color: black;
     background-color: #E0E0E0;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
-main > section > div > div > a img {
-    width: 40%;
+main > section > div > div > section img {
+    width: 40% !important;
+    margin: auto;
     background-repeat: no-repeat;
 }
 
@@ -38,7 +40,6 @@ body > div > main > section > div > div > div > a > article{
     border-radius: 10px;
     width: 100%;
     padding: 3% 3%;
-    border: 1px solid darkgrey;
     color: black;
     margin-top: 5%;
 }
@@ -47,9 +48,15 @@ body > div > main > section > div > div > div > a:hover{
     text-decoration: none;
 }
 
+body > div > main > section:nth-child(1) > div > div > section > div{
+    background-color: #f1f1f1!important;
+    border: none!important;
+}
+
 body > div > main > section > div > div > div > a:hover > article{
     background-color: gray;
     color: black;
+    text-decoration: none;
 }
 
 body > div > main > section > div > div > div > a > article > div:nth-child(1){

@@ -2,9 +2,9 @@ function generaCategorie(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
-                        <section href="" class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">
-    
-                            <div class="card card-block">
+
+                        <section class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">    
+                            <div class="card card-block justify-content-center">
                                 <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
                                      alt="Card image cap">
                                     <div class="class-footer mt-auto">
@@ -12,6 +12,10 @@ function generaCategorie(data) {
                                     </div>
                             </div>
                         </section>
+                        <script>$("#category${data[i]['IdCategoria']}").on('click',function (){
+                            createCatalogWithCategories(${data[i]['IdCategoria']});
+                        })</script>
+                       
             `;
         content += categoria;
     }
@@ -42,7 +46,7 @@ function generaProdottiPopolari(data) {
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="" class="col-3 d-flex justify-content-center" onclick="">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center" onclick="">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
@@ -76,10 +80,10 @@ function generaProdottiPopolari(data) {
 function createCatalogWithCategories(idCategory) {
     $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
         let articles = generaRisultati(data)
-        console.log(idCategory);
         const main = $("main");
         main.html("");
         main.append(articles);
+        console.log(articles);
     });
 }
 
