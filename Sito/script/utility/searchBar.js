@@ -60,7 +60,7 @@ $(document).on('ready', function () {
         if ($("#searchField").val() !== "") {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 let articoli = data["Results"];
-                let risultatiRicerca = generaRisultati(articoli, "Results for " + $("#searchField").val() + ":");
+                let risultatiRicerca = generaRisultati(articoli, data["Title"]);
                 const main = $("main");
                 main.html(risultatiRicerca);
 
