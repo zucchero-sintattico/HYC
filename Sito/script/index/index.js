@@ -45,7 +45,7 @@ function generaProdottiPopolari(data) {
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="" class="col-3 d-flex justify-content-center" onclick="">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center" onclick="">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
