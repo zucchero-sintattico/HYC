@@ -16,10 +16,10 @@ function horizontalSection(content, title) {
 
 function adaptableSection(content, title) {
     let result = `<section>
-                    <header>
+                    <header class="text-center">
                         <h1>${title}</h1>
                     </header>
-                    <div class="container">
+                    <div class="container justify-content-center">
                     <div class="row">                
                     `;
     result += content;

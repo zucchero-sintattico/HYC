@@ -43,7 +43,7 @@
     <script src="../script/searchBar.js"></script>
         -->
     <script src="../script/utility/CodeSquare.js"></script>
-    <script src="../script/utility/searchToggle.js"></script>
+    <script src="../script/utility/searchBar.js"></script>
     <script src="../script/utility/graphicsTemplate.js"></script>
 
 
@@ -72,8 +72,7 @@
         <header class="">
             <div class="col">
 
-                <h1> H.Y.C.</h1>
-                <h2>hang your code</h2>
+                <img src="../img/logos/logo.png">
 
             </div>
             <div class="col">

@@ -77,12 +77,12 @@ class DatabaseHelper
 
     public function getArticleByName($Titolo)
     {
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font,
-        Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
-        FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
-        WHERE p.IdProd = pv.IdProd 
-        AND Titolo LIKE concat('%', ?, '%')
-        LIMIT 1";
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
+FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
+WHERE p.IdProd = pv.IdProd 
+  AND Titolo LIKE concat('%', ?, '%') 
+  GROUP BY p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema;
+        ";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $Titolo);
         $stmt->execute();

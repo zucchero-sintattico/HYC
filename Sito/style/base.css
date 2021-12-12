@@ -11,13 +11,8 @@ body > div > div > header {
     width: 100%;
 }
 
-body > div > div > header > div > h1 {
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: black;
-    font-weight: bold;
-    font-size: 55px;
-    color: white;
-    text-align: left;
+body > div > div > header > div > img {
+    height: 56px;
 }
 
 body > div > div:nth-child(1) > header > div:nth-child(1){
@@ -36,7 +31,7 @@ body > div > div:nth-child(1) > header > div:nth-child(2){
     width: 30%;
     height: 100%;
     text-align: center;
-    line-height: 106px;
+    line-height: 56px;
 }
 
 body > div > div:nth-child(1) > header > div:nth-child(2) > label > a{
@@ -111,7 +106,7 @@ body > div > div:nth-child(3) > div > form > input, body > div > div:nth-child(3
 }
 
 body > div > div:nth-child(3) > div > form > input[type=text] {
-    width: 80%;
+    width: 100%;
     float: left;
     font-size: 11px;
 }
