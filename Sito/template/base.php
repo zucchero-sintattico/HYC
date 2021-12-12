@@ -129,7 +129,7 @@
     <div class="row">
         <div class="col-12">
             <form>
-                <input type="text" name="key" id ="searchField" placeholder="Search you article..."/>
+                <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
             </form>
 
         </div>

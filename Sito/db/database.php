@@ -81,7 +81,8 @@ class DatabaseHelper
         Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
         FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
         WHERE p.IdProd = pv.IdProd 
-        AND Titolo LIKE concat('%', ?, '%')";
+        AND Titolo LIKE concat('%', ?, '%')
+        LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $Titolo);
         $stmt->execute();
