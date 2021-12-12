@@ -42,7 +42,7 @@ function generaRisultati(data, titolo) {
             `;
         content += result;
     }
-    return adaptableSection(content, "Results for " + titolo + ":");
+    return adaptableSection(content, titolo);
 }
 
 $(document).on('ready', function () {
@@ -59,8 +59,8 @@ $(document).on('ready', function () {
         quadri = [];
         if ($("#searchField").val() !== "") {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
-                let articoli = data["Risultati"];
-                let risultatiRicerca = generaRisultati(articoli, $("#searchField").val());
+                let articoli = data["Results"];
+                let risultatiRicerca = generaRisultati(articoli, "Results for " + $("#searchField").val() + ":");
                 const main = $("main");
                 main.html(risultatiRicerca);
 
