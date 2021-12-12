@@ -2,7 +2,7 @@ function generaCategorie(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
-                        <a href="" class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">
+                        <div class="col-3 d-flex justify-content-center text-center" id="category${data[i]['IdCategoria']}">
     
                             <div class="card card-block">
                                 <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
@@ -11,7 +11,10 @@ function generaCategorie(data) {
                                         <p class="card-text">${data[i]['Tipo']}</p>
                                     </div>
                             </div>
-                        </a>
+                        </div>
+                        <script>$("#category${data[i]['IdCategoria']}").on('click',function (){
+                            createCatalogWithCategories(${data[i]['IdCategoria']});
+                        })</script>
             `;
         content += categoria;
     }
@@ -76,10 +79,10 @@ function generaProdottiPopolari(data) {
 function createCatalogWithCategories(idCategory) {
     $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
         let articles = generaRisultati(data)
-        console.log(idCategory);
         const main = $("main");
         main.html("");
         main.append(articles);
+        console.log(articles);
     });
 }
 
