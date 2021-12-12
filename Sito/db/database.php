@@ -80,6 +80,7 @@ class DatabaseHelper
         $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
                     FROM Prodotto p, ProdottoInVetrina pv 
                     WHERE p.IdProd = pv.IdProd AND Titolo LIKE concat('%', ?, '%')";
+
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $Titolo);
         $stmt->execute();
