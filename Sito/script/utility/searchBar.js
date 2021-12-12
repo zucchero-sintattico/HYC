@@ -24,15 +24,7 @@ function generaRisultati(data, titolo) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            $(window).on('resize', function (){
-                                                if($(window).width()<768){
-                                                        $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-5");
-                                                        $('#quadro${data[i]["IdProd"]}').parent().addClass("col");
-                                                 }else{
-                                                        $('#quadro${data[i]["IdProd"]}').parent().removeClass("col");
-                                                        $('#quadro${data[i]["IdProd"]}').parent().addClass("col-5");
-                                                 }
-                                            })
+                                            
                                         </script>
                                     </code>
                                 </div>

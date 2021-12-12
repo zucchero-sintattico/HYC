@@ -61,15 +61,6 @@ function generaProdottiPopolari(data) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
-                                $(window).on('resize', function (){
-                                    if($(window).width()<768){
-                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-5");
-                                            $('#quadro${data[i]["IdProd"]}').parent().addClass("col");
-                                     }else{
-                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col");
-                                            $('#quadro${data[i]["IdProd"]}').parent().addClass("col-5");
-                                     }
-                                })
                             </script>
                         </code>
 
@@ -90,8 +81,11 @@ function createCatalogWithCategories(idCategory) {
     });
 }
 
+
+
 $(document).on("ready", function (event) {
     event.preventDefault();
+
     $.getJSON("/API/api-homepage.php", function (data) {
         let categorie = generaCategorie(data['Categorie']);
         let linguaggi = generaLinguaggi(data['Linguaggi']);
@@ -100,6 +94,10 @@ $(document).on("ready", function (event) {
         main.append(categorie);
         main.append(linguaggi);
         main.append(prodottiPopolari);
+        checkOnResize();
+    });
+    $(window).on('resize', function () {
+        checkOnResize();
     });
 
 });
