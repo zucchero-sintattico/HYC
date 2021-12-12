@@ -34,6 +34,8 @@ body > div > div:nth-child(1) > header > div:nth-child(2){
     line-height: 56px;
 }
 
+
+
 body > div > div:nth-child(1) > header > div:nth-child(2) > label > a{
     text-decoration: underline;
     color: black;
@@ -50,13 +52,12 @@ body nav {
     bottom: 0;
     z-index: 100;
     padding: 0 !important;
-    border-top: 1px solid #E0E0E0;
 }
 
 body nav > ul {
     list-style: none;
     margin-bottom: 0;
-    background-color: #f1f1f1;
+    background-color: #E0E0E0;;
     padding: 0 !important;
 }
 
@@ -75,7 +76,7 @@ body nav > ul > li > a {
 }
 
 body nav > ul > li > a:hover {
-    background-color: #E0E0E0;
+    background-color: gray;
     color: white;
 }
 

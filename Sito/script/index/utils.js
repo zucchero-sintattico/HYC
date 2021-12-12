@@ -1,5 +1,6 @@
 let quadri = [];
 
+
 function checkOnResize() {
         if($(window).width()<768){
             $('code').each(function () {
