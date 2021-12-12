@@ -118,7 +118,7 @@ class DatabaseHelper
             WHERE p.IdProd = pc.IdProd
               AND pc.IdCarrello = c.IdCarrello 
               AND c.IdCarrello = u.IdCarrello 
-              AND u.IdUser = ?";
+              AND u.IdUtente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idUser);
         $stmt->execute();
