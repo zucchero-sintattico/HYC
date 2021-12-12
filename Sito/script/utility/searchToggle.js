@@ -2,9 +2,8 @@ function generaRisultati(data, titolo) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let result = `
-      
                     <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center">
-
+                     <h2>${data[i]["Titolo"]}</h2>
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
@@ -27,7 +26,7 @@ function generaRisultati(data, titolo) {
                                 }
                             </script>
                         </code>
-
+                                       
                 </a>
              
             `;
@@ -54,7 +53,7 @@ $(document).on('ready', function () {
                 main.html(risultatiRicerca);
 
             });
-        }else{
+        } else {
             $.getJSON("/API/api-homepage.php", function (data) {
                 let categories = generaCategorie(data['Categorie']);
                 let language = generaLinguaggi(data['Linguaggi']);
