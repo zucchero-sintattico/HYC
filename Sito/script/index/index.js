@@ -2,7 +2,7 @@ function generaCategorie(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
-                        <a href="" class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">
+                        <section href="" class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">
     
                             <div class="card card-block">
                                 <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
@@ -11,7 +11,7 @@ function generaCategorie(data) {
                                         <p class="card-text">${data[i]['Tipo']}</p>
                                     </div>
                             </div>
-                        </a>
+                        </section>
             `;
         content += categoria;
     }
@@ -24,11 +24,11 @@ function generaLinguaggi(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let linguaggio = `
-                <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
+                <section href="editor.php" class="col-3 d-flex justify-content-center text-center">
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>
-                </a>
+                </section>
             `;
         content += linguaggio;
     }
@@ -83,7 +83,8 @@ function createCatalogWithCategories(idCategory) {
     });
 }
 
-$(document).on("ready", function () {
+$(document).on("ready", function (event) {
+    event.preventDefault();
     $.getJSON("/API/api-homepage.php", function (data) {
         let categorie = generaCategorie(data['Categorie']);
         let linguaggi = generaLinguaggi(data['Linguaggi']);
