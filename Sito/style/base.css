@@ -6,7 +6,7 @@ body {
 }
 
 body > div > div > header {
-    background-color: #E0E0E0;
+    background-color: Gainsboro;
     padding: 20px 0 20px 40px;
     width: 100%;
 }
@@ -135,7 +135,6 @@ body main {
     body nav {
         position: static;
         margin-bottom: 10px;
-        border-top: 1px solid lightgray;
     }
 
     body nav > ul > li:not(:last-child) {

@@ -27,7 +27,7 @@ main > section > div > div > section img {
 }
 
 main > section > div > div > a *:not(code, code *) {
-    background-color: #f1f1f1 !important;
+    background-color: #E0E0E0 !important;
     border: none !important;
 }
 
@@ -36,7 +36,7 @@ body > div > main > section > header > h1{
 }
 
 body > div > main > section > div > div > div > a > article{
-    background-color: #f1f1f1;
+    background-color: #E0E0E0;
     border-radius: 10px;
     width: 100%;
     padding: 3% 3%;
