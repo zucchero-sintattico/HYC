@@ -69,7 +69,7 @@
 <div class="container-fluid p-0 overflow-hidden">
     <!--Header-->
     <div class="row">
-        <header class="">
+        <header>
             <div class="col">
 
                 <img src="../img/logos/logo.png">
@@ -78,7 +78,8 @@
             <div class="col">
                 <label><?php
                     if (isUserLoggedIn()) {
-                        echo "<a href='/logout.php'>LogOut</a>";
+                        echo "Hi ".getNameUserID()."\n";
+                        echo "<a href='../logout.php'>LogOut</a>";
                     } else {
                         echo "<a href='../login.php'>LogIn</a>";
                     } ?></label>

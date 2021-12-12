@@ -12,6 +12,13 @@ function getPrice($height, $width){
 function isUserLoggedIn(){
     return !empty($_SESSION['IdUtente']);
 }
+function getLoggedUserID(){
+    return $_SESSION["IdUtente"];
+}
+
+function getNameUserID(){
+    return $_SESSION["Username"];
+}
 
 function registerLoggedUser($user){
     $_SESSION["IdUtente"] = $user["IdUtente"];
