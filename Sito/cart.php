@@ -3,7 +3,10 @@ require_once 'bootstrap.php';
 $templateParams["title"] = "HYC - Cart";
 $templateParams["name"] = "cartTemplate.php";
 $templateParams['style'] = "style/cart.css";
-// Da mettere IdUser con ????
-$templateParams['query'] = $dbh -> getArticleInCart(1);
+if (isUserLoggedIn()) {
+    $templateParams['query'] = $dbh->getArticleInCart(getLoggedUserID());
+} else {
+    header("location: login.php");
+}
 require("template/base.php");
 

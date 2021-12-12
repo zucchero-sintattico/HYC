@@ -39,13 +39,12 @@ function generaLinguaggi(data) {
 }
 
 
-
 function generaProdottiPopolari(data) {
     let content = '';
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center" onclick="">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" onclick="">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
@@ -61,11 +60,15 @@ function generaProdottiPopolari(data) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
-                                if($(window).width()<700){
-                
-                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-3");
+                                $(window).on('resize', function (){
+                                    if($(window).width()<768){
+                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col-5");
                                             $('#quadro${data[i]["IdProd"]}').parent().addClass("col");
-                                }
+                                     }else{
+                                            $('#quadro${data[i]["IdProd"]}').parent().removeClass("col");
+                                            $('#quadro${data[i]["IdProd"]}').parent().addClass("col-5");
+                                     }
+                                })
                             </script>
                         </code>
 
