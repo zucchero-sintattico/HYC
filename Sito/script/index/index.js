@@ -40,7 +40,7 @@ function generaProdottiPopolari(data) {
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center text-center">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center">
 
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>

@@ -8,12 +8,12 @@ main > section > div > div > a {
     margin: 5px;
     border: none;
     border-radius: 10px;
-    text-align: center;
+
     background-color: #f1f1f1;
     color: black;
 }
 
-main > section > div > div > a:hover{
+main > section > div > div > a:hover {
     color: black;
     background-color: #E0E0E0;
     font-weight: bold;
@@ -32,6 +32,11 @@ main > section > div > div > a *:not(code, code *) {
 
 
 @media (min-width: 768px) {
+
+    main {
+        margin-right: 50px;
+        margin-left: 50px;
+    }
 
     main > section > div > div > a img {
         width: 100px !important;
