@@ -6,7 +6,7 @@ function generaRisultati(data, titolo) {
                         <a href="../editor.php?id=${data[i]["IdProd"]}">
                             <article>
                                <div class="col-12">
-                                    <h2>"${data[i]["Titolo"]}"</h2>
+                                    <h2>${data[i]["Titolo"]}</h2>
                                 </div>
                                 <div class="row justify-content-center">
                                     <code id="quadro${data[i]["IdProd"]}">
@@ -72,7 +72,6 @@ $(document).on('ready', function () {
                 let productPoplar = generaProdottiPopolari(data['ProdottiPopolari']);
                 const main = $("main");
                 main.html("")
-                console.log("refil");
                 main.append(categories);
                 main.append(language);
                 main.append(productPoplar);

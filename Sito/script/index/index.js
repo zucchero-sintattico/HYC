@@ -2,7 +2,7 @@ function generaCategorie(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let categoria = `
-                        <a href="editor.php" class="col-3 d-flex justify-content-center text-center">
+                        <a href="" class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">
     
                             <div class="card card-block">
                                 <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
@@ -35,13 +35,14 @@ function generaLinguaggi(data) {
     return horizontalSection(content, "Languages");
 }
 
+
+
 function generaProdottiPopolari(data) {
     let content = '';
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-3 d-flex justify-content-center">
-
+                <a href="" class="col-3 d-flex justify-content-center" onclick="">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
@@ -72,6 +73,15 @@ function generaProdottiPopolari(data) {
     return horizontalSection(content, "Most Popular Products");
 }
 
+function createCatalogWithCategories(idCategory) {
+    $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
+        let articles = generaRisultati(data)
+        console.log(idCategory);
+        const main = $("main");
+        main.html("");
+        main.append(articles);
+    });
+}
 
 $(document).on("ready", function () {
     $.getJSON("/API/api-homepage.php", function (data) {
@@ -83,4 +93,5 @@ $(document).on("ready", function () {
         main.append(linguaggi);
         main.append(prodottiPopolari);
     });
+
 });

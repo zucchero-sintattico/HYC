@@ -77,14 +77,21 @@ class DatabaseHelper
 
     public function getArticleByName($Titolo)
     {
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
-FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
-WHERE p.IdProd = pv.IdProd 
-  AND Titolo LIKE concat('%', ?, '%') 
-  GROUP BY p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema;
-        ";
+        $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
+                    FROM Prodotto p, ProdottoInVetrina pv 
+                    WHERE p.IdProd = pv.IdProd AND Titolo LIKE concat('%', ?, '%')";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $Titolo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategoryById($idCategory){
+        $query = "SELECT * FROM Categoria c
+                    WHERE c.IdCategoria";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idCategory);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
