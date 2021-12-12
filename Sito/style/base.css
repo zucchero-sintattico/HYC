@@ -135,6 +135,7 @@ body main {
     body nav {
         position: static;
         margin-bottom: 10px;
+        border-top: 1px solid lightgray;
     }
 
     body nav > ul > li:not(:last-child) {
@@ -151,7 +152,7 @@ body main {
 
     body nav > ul > li > a:hover {
         text-decoration: none;
-        background-color: #E0E0E0;
+        background-color: gray;
     }
 
     body > div > div:nth-child(3) > div > form {
