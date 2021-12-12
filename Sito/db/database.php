@@ -77,7 +77,7 @@ class DatabaseHelper
 
     public function getArticleByName($Titolo)
     {
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema, Tipo 
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
 FROM Prodotto p, ProdottoInVetrina pv, Categoria c 
 WHERE p.IdProd = pv.IdProd 
   AND Titolo LIKE concat('%', ?, '%') 
