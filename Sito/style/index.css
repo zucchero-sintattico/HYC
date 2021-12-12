@@ -35,7 +35,8 @@ body > div > main > section > header > h1{
 }
 
 body > div > main > section > div > div > div > a > article{
-    background-color: #E0E0E0;
+    background-color: #f1f1f1;
+    border-radius: 10px;
     width: 100%;
     padding: 3% 3%;
     border: 1px solid darkgrey;
