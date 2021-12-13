@@ -48,8 +48,8 @@ create table Notifica
     Data       date    not null,
     Descrizione      varchar(100) not null,
     IdUtente    int     not null,
-    constraint ID_Notifica_ID primary key (IdNotifica),
-    constraint SID_Notifica_Utente_ID unique (IdUtente)
+    Letto   INT not null,
+    constraint ID_Notifica_ID primary key (IdNotifica)
 );
 
 create table Prodotto
@@ -201,7 +201,7 @@ create unique index SID_Ordin_Carre_IND
 create unique index ID_Notifica_IND
     on Notifica (IdNotifica);
 
-create unique index SID_Notifica_Utente_IND
+create index REF_Notifica_Utente_IND
     on Notifica (IdUtente);
 
 create unique index ID_Prodotto_IND

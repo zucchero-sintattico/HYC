@@ -134,7 +134,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form>
+            <form action="../index.php">
                 <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
             </form>
 

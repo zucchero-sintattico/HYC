@@ -3,16 +3,17 @@ function createCategories(data) {
     for (let i = 0; i < data.length; i++) {
         let categoria = `
 
-                        <section class="col-3 d-flex justify-content-center text-center" onclick="createCatalogWithCategories(${data[i]['IdCategoria']})">    
+                        <section class="col-3 d-flex justify-content-center text-center" id="category${data[i]['IdCategoria']}">    
                             <div class="card card-block justify-content-center">
                                 <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
-                                     alt="Card image cap">
+                                     alt="${data[i]['ImgCategoria']}">
                                     <div class="class-footer mt-auto">
                                         <p class="card-text">${data[i]['Tipo']}</p>
                                     </div>
                             </div>
                         </section>
-                        <script>$("#category${data[i]['IdCategoria']}").on('click',function (){
+                        <script>
+                        $("#category${data[i]['IdCategoria']}").on('click',function (){
                             createCatalogWithCategories(${data[i]['IdCategoria']});
                         })</script>
                        
@@ -28,11 +29,16 @@ function createLanguages(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let linguaggio = `
-                <section href="editor.php" class="col-3 d-flex justify-content-center text-center">
+                <section href="editor.php" class="col-3 d-flex justify-content-center text-center" id="language${data[i]['NomeLinguaggio']}" >
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>
                 </section>
+                <script>
+                        $("#language${data[i]['NomeLinguaggio']}").on('click',function (){
+                            createCatalogByLanguages("${data[i]['NomeLinguaggio']}");
+                        })
+                </script>
             `;
         content += linguaggio;
     }
@@ -71,7 +77,7 @@ function createPopularArticles(data) {
     return horizontalSection(content, "Most Popular Products");
 }
 
-function getFilteredArticles(data, titolo) {
+function getFilteredArticles(data, filterName) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let result = `
@@ -97,7 +103,6 @@ function getFilteredArticles(data, titolo) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            
                                         </script>
                                     </code>
                                 </div>
@@ -111,16 +116,30 @@ function getFilteredArticles(data, titolo) {
             `;
         content += result;
     }
-    return adaptableSection(content, titolo);
+    return adaptableSection(content, filterName);
 }
 
 function createCatalogWithCategories(idCategory) {
     $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
-        let articles = getFilteredArticles(data)
+        let results = data['Results'];
+        let categoryName = data['Title'];
+        quadri = [];
+        let articles = getFilteredArticles(results, categoryName);
         const main = $("main");
         main.html("");
         main.append(articles);
-        console.log(articles);
+    });
+}
+
+function createCatalogByLanguages(idLang) {
+    $.getJSON("/API/api-search.php?lan=" + idLang, function (data) {
+        let results = data['Results'];
+        let languageName = data['Title'];
+        quadri = [];
+        let articles = getFilteredArticles(results, languageName);
+        const main = $("main");
+        main.html("");
+        main.append(articles);
     });
 }
 
@@ -135,9 +154,6 @@ $(document).on("ready", function (event) {
         main.append(categorie);
         main.append(linguaggi);
         main.append(prodottiPopolari);
-        checkOnResize();
-    });
-    $(window).on('resize', function () {
         checkOnResize();
     });
 
