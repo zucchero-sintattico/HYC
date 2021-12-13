@@ -25,7 +25,7 @@ class MyWebSocketServer(tornado.websocket.WebSocketHandler):
         cursor = mydb.cursor()
         try:
             cursor.execute("USE HYC")
-            cursor.execute("SELECT * FROM `Notifica` WHERE IdUtente = %s AND Letto = 0 LIMIT 1", id)
+            cursor.execute("SELECT * FROM `Notifica` WHERE IdUtente = (%s) AND Letto = 0 LIMIT 1", (id,))
             row = cursor.fetchone()
             while row is not None:
                 print(row)
