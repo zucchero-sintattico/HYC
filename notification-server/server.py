@@ -18,7 +18,8 @@ class MyWebSocketServer(tornado.websocket.WebSocketHandler):
         mydb = mysql.connector.connect(
           host="localhost",
           user="root",
-          password="pasword"
+          password="pasword",
+          use_pure=False
         )
         cursor = mydb.cursor()
         try:
