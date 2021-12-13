@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
     if (userId != null) {
-        const ws = new WebSocket("ws://hangyourcode.shop:8000/notification");
+        const ws = new WebSocket("ws://hangyourcode.shop/notification");
         ws.onopen = function () {
             ws.send(userId);
         };
