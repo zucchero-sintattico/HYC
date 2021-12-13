@@ -9,46 +9,42 @@ import time
 from threading import Thread
 import asyncio
 
-def update_db(id):
 
-    mydb = mysql.connector.connect(
-      host="localhost",
-      user="root",
-      password="root"
-    )
-    cursor = mydb.cursor()
-    try:
-        cursor.execute("USE HYC")
-        cursor.execute("SELECT * FROM Notifica")
 
-        row = cursor.fetchone()
+class MyWebSocketServer(tornado.websocket.WebSocketHandler):
+    thread = None
+    stop_threads = True
+    def update_db(self, id):
+        mydb = mysql.connector.connect(
+          host="localhost",
+          user="root",
+          password="root"
+        )
+        cursor = mydb.cursor()
+        try:
+            cursor.execute("USE HYC")
+            cursor.execute("SELECT * FROM Notifica")
+            row = cursor.fetchone()
+            while row is not None:
+                return row
 
-        while row is not None:
-            print(row)
-            return row
+        except Error as e:
+                print("ERROR", e)
 
-    except Error as e:
-            print("ERROR", e)
-
-    finally:
         cursor.close()
         mydb.close()
 
 
 
-def thread_update_db(id, wb, loop):
-        asyncio.set_event_loop(loop)
-        notification = update_db(id)
-        while(True):
-            if notification != update_db(id):
-                notification = update_db(id)
-                wb.write_message("update_notification")
-            time.sleep(3)
 
-
-
-threads = []
-class MyWebSocketServer(tornado.websocket.WebSocketHandler):
+    def thread_update_db(self, loop, id):
+            asyncio.set_event_loop(loop)
+            notification = self.update_db(id)
+            while(self.stop_threads):
+                if notification != self.update_db(id):
+                    notification = self.update_db(id)
+                    self.write_message("update_notification")
+                time.sleep(3)
 
     def open(self):
         print('new connection')
@@ -58,11 +54,14 @@ class MyWebSocketServer(tornado.websocket.WebSocketHandler):
         print('Message: %s' % message)
         userID = message
         loop = asyncio.new_event_loop()
-        t = Thread(target = thread_update_db, args = (userID,self,loop))
-        t.start()
+        self.thread = Thread(target = self.thread_update_db, args = (loop,userID,))
+        self.thread.start()
 
     def on_close(self):
         print('close connection')
+        self.stop_threads = False
+        self.thread.join()
+
 
 
     def check_origin(self, origin):
