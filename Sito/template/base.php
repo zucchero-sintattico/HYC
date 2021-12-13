@@ -122,9 +122,9 @@
                             <p>Profile</p>
                         </a>
                     </li><li>
-                        <a href="#" id="notification">
+                        <a href="#" >
                             <img src="../img/nav/bell.svg" alt=""/>
-                            <p>Notifications</p>
+                            <p id="notification">Notifications</p>
                         </a>
                     </li>
                 </ul>
