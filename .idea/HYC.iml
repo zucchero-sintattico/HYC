@@ -19,5 +19,6 @@
     <orderEntry type="library" name="jquery-1.10.2" level="application" />
     <orderEntry type="library" name="codemirror" level="application" />
     <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="socket.io" level="application" />
   </component>
 </module>

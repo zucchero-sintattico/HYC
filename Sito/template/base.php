@@ -9,6 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -45,11 +47,13 @@
     <script src="../script/utility/CodeSquare.js"></script>
     <script src="../script/utility/searchBar.js"></script>
     <script src="../script/utility/graphicsTemplate.js"></script>
+    <script src="../script/utility/notifications.js"></script>
 
 
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
+    <?php header('Access-Control-Allow-Origin: *'); ?>
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):
@@ -78,9 +82,11 @@
             <div class="col">
                 <label><?php
                     if (isUserLoggedIn()) {
+                        echo "<script>let userId =".getLoggedUserID().";</script>";
                         echo "Hi ".getNameUserID()."\n";
                         echo "<a href='../logout.php'>LogOut</a>";
                     } else {
+                        echo "<script> let userId = null </script>";
                         echo "<a href='../login.php'>LogIn</a>";
                     } ?></label>
             </div>
