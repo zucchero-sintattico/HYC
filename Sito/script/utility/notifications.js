@@ -9,6 +9,7 @@ $(document).on('ready', function () {
             if(e.data === "update_notification"){
                 $.post( "/API/api-notification.php", function( data ) {
                     console.log("notifiche = ", data)
+                    $("#notification").css("color", "red");
                 });
             }
         }
