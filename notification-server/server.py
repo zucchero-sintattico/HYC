@@ -7,7 +7,7 @@ import mysql.connector
 from mysql.connector import  Error
 import time
 from threading import Thread
-
+import asyncio
 
 def update_db(id):
 
@@ -36,6 +36,18 @@ def update_db(id):
 
 
 
+def thread_update_db(id, wb, loop):
+        asyncio.set_event_loop(loop)
+        notification = update_db(id)
+        while(True):
+            if notification != update_db(id):
+                notification = update_db(id)
+                wb.write_message("update_notification")
+            time.sleep(3)
+
+
+
+threads = []
 class MyWebSocketServer(tornado.websocket.WebSocketHandler):
 
     def open(self):
@@ -45,15 +57,9 @@ class MyWebSocketServer(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         print('Message: %s' % message)
         userID = message
-        notification = update_db(id)
-        while(True):
-            if notification != update_db(id):
-                notification = update_db(id)
-                self.write_message("update_notification")
-            time.sleep(3)
-
-
-
+        loop = asyncio.new_event_loop()
+        t = Thread(target = thread_update_db, args = (userID,self,loop))
+        t.start()
 
     def on_close(self):
         print('close connection')
