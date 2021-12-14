@@ -46,6 +46,7 @@ function createLanguages(data) {
 }
 
 
+
 function createPopularArticles(data) {
     let content = '';
 
@@ -56,11 +57,12 @@ function createPopularArticles(data) {
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();
-                                quadri[${i}].setText('${data[i]["Codice"]}');
+                                quadri[${i}].setText('${data[i]["Codice"]}');                           
+                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
                                 quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                quadri[${i}].setPadding(${data[i]["Padding"]});
-                                quadri[${i}].setFramecolor("${data[i]["Colore_frame"]}")
+                                quadri[${i}].setPadding(0);
+                                quadri[${i}].setFramecolor("transparent");
                                 quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
                                 quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
                                 quadri[${i}].setStyle('${data[i]["NomeTema"]}');

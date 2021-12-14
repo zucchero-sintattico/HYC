@@ -113,7 +113,7 @@
         <script>
             let quadro = new CodeSquare($('script').last().parent().get(0));
             quadro.getSquare();
-            quadro.setText("<?php echo $templateParams["product"]["Codice"]; ?>");
+            quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
 
             quadro.updateStyle();
             quadro.widthScale(350);

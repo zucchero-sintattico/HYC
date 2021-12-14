@@ -117,5 +117,10 @@ class CodeSquare {
         square.css("padding", padding*mul);
     }
 
+    getCode(){
+        return codeMirror.getValue();
+    }
+
+
 
 }
