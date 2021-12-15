@@ -82,7 +82,6 @@ function createPopularArticles(data) {
 
 function getFilteredArticles(data, filterName) {
     let content = '';
-    quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
                     <div class="col-12 col-md-6">

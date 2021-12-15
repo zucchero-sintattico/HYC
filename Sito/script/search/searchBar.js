@@ -22,7 +22,6 @@ $(document).on('ready', function () {
 
             });
         } else {
-            quadri = [];
             backMainSetted = false;
             const main = $("main");
             main.html(backmain);
