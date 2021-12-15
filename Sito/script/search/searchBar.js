@@ -1,18 +1,11 @@
 
 $(document).on('ready', function () {
-    $("body > div > div:nth-child(3) > div > form").hide();
-
-    $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(3) > a").on("click", function (event) {
-        event.preventDefault();
-        $("body > div > div:nth-child(3) > div > form").slideToggle();
-        $("body > div > div:nth-child(3) > div > form > input:first-child").trigger('focus');
-    });
     let backMainSetted = false;
     let backmain = "";
 
-    $("#searchField").on('input', function () {
+    $("#searchField").on('input', function (event) {
+        event.preventDefault();
         if(!backMainSetted){
-            quadri = [];
             backmain = "";
             backmain = $("main").html();
             backMainSetted = true;
@@ -20,6 +13,7 @@ $(document).on('ready', function () {
         let main = $("main");
         main.html("");
         if ($("#searchField").val() !== "") {
+
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 let articoli = data["Results"];
                 let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
@@ -28,6 +22,7 @@ $(document).on('ready', function () {
 
             });
         } else {
+            quadri = [];
             backMainSetted = false;
             const main = $("main");
             main.html(backmain);

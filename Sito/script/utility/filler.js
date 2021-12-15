@@ -123,6 +123,19 @@ function getFilteredArticles(data, filterName) {
     return adaptableSection(content, filterName);
 }
 
+// Recall previous function and change the description with the Price
+function getArticleInCart(data){
+    let results = data['Articles'];
+    let prices = data['Prices'];
+    let content = getFilteredArticles(data, "Cart");
+    const main = $("main");
+    main.html("");
+    main.append(content);
+    for(let i = 0; i < prices.length; i++){
+        $("main article:nth-child(${i}) p").val("Price: $" + prices[i]);
+    }
+}
+
 function createCatalogWithCategories(idCategory) {
     $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
         let results = data['Results'];
