@@ -1,10 +1,10 @@
 <?php
 require_once 'bootstrap.php';
-$templateParams["title"] = "HYC - Cart";
-$templateParams['style'] = "style/pages.css";
-
+$templateParams['title'] = "HYC - Cart";
+$templateParams['style'] = "style/index.css";
+$templateParams['name'] = "template/cartTemplate.php";
 if (isUserLoggedIn()) {
-    $templateParams['js'] = array("script/utility/utils.js","script/pages/cart.js", "script/utility/filler.js");
+    $templateParams['query'] = $dbh -> getArticleInCart(getLoggedUserID());
 } else {
     header("location: login.php");
 }

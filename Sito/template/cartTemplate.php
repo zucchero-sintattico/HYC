@@ -1,40 +1,44 @@
-<!-- Title -->
-<div class="row">
-    <h1>Cart</h1>
-</div>
-<!-- Articles -->
-<div class="row justify-content-center">
-    <?php foreach($templateParams["query"] as $articolo) :?>
-        <div class="col-10 col-md-5">
-            <a href="../editor.php?id=<?php echo $articolo["idProd"] ?>">
-                <article>
-                    <div class="col-12">
-                        <h2><?php echo $articolo["titolo"] ?></h2>
-                    </div>
-                    <div class="row justify-content-center">
-                        <code id="code<?php echo $articolo["idProd"] ?>">
-                            <script>
-                                let quadro<?php echo $articolo["idProd"] ?> = new CodeSquare(document.querySelector('#code<?php echo $articolo["idProd"] ?>'));
-                                quadro<?php echo $articolo["idProd"] ?>.getSquare();
-                                quadro<?php echo $articolo["idProd"] ?>.setText('<?php echo $articolo["codice"] ?>');
-                                quadro<?php echo $articolo["idProd"] ?>.setWidth(<?php echo $articolo["larghezza"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setHeight(<?php echo $articolo["altezza"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setPadding(<?php echo $articolo["padding"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setlineNumbers(<?php echo $articolo["mostra_numero_linee"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setFramecolor(<?php echo $articolo["colore_frame"] ?>)
-                                quadro<?php echo $articolo["idProd"] ?>.setFontSize(<?php echo $articolo["dimensione_font"] ?>);
-                                quadro<?php echo $articolo["idProd"] ?>.setLanguages('<?php echo $articolo["NomeLinguaggio"] ?>');
-                                quadro<?php echo $articolo["idProd"] ?>.setStyle('<?php echo $articolo["NomeTema"] ?>');
-                                quadro<?php echo $articolo["idProd"] ?>.disable();
-                                quadro<?php echo $articolo["idProd"] ?>.updateStyle();
-                            </script>
-                        </code>
-                    </div>
-                    <div class="row">
-                        <p class="col-12">Price: €<?php echo getPrice($articolo["altezza"], $articolo["larghezza"]) ?></p>
-                    </div>
-                </article>
-            </a>
+<section>
+    <!-- Title -->
+    <header class="text-center">
+        <h1>Cart</h1>
+    </header>
+    <!-- Articles -->
+    <div class="container-fluid">
+        <div class="row flex-row justify-content-center">
+            <?php foreach($templateParams["query"] as $articolo) :?>
+                <div class="col-10 col-md-5">
+                    <a href="../editor.php?id=<?php echo $articolo["IdProd"] ?>">
+                        <article>
+                            <div class="col-12">
+                                <h2><?php echo $articolo["Titolo"] ?></h2>
+                            </div>
+                            <div class="row justify-content-center">
+                                <code id="quadro<?php echo $articolo["IdProd"] ?>">
+                                    <script>
+                                        let quadro<?php echo $articolo["IdProd"] ?> = new CodeSquare(document.querySelector('#quadro<?php echo $articolo["IdProd"] ?>'));
+                                        quadro<?php echo $articolo["IdProd"] ?>.getSquare();
+                                        quadro<?php echo $articolo["IdProd"] ?>.setText('<?php echo $articolo["Codice"] ?>');
+                                        quadro<?php echo $articolo["IdProd"] ?>.setWidth(<?php echo $articolo["Larghezza"] ?>);
+                                        quadro<?php echo $articolo["IdProd"] ?>.setHeight(<?php echo $articolo["Altezza"] ?>);
+                                        quadro<?php echo $articolo["IdProd"] ?>.setPadding(0);
+                                        quadro<?php echo $articolo["IdProd"] ?>.setFramecolor("transparent");
+                                        quadro<?php echo $articolo["IdProd"] ?>.setFontSize(<?php echo $articolo["Dimensione_font"] ?>);
+                                        quadro<?php echo $articolo["IdProd"] ?>.setLanguages('<?php echo $articolo["NomeLinguaggio"] ?>');
+                                        quadro<?php echo $articolo["IdProd"] ?>.setStyle('<?php echo $articolo["NomeTema"] ?>');
+                                        quadro<?php echo $articolo["IdProd"] ?>.disable();
+                                        quadro<?php echo $articolo["IdProd"] ?>.widthScale(300);
+                                        quadro<?php echo $articolo["IdProd"] ?>.updateStyle();
+                                    </script>
+                                </code>
+                            </div>
+                            <div class="row">
+                                <p class="col-12 font-weight-bold">Price: €<?php echo getPrice($articolo["Altezza"], $articolo["Larghezza"]) ?></p>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+            <?php endforeach;?>
         </div>
-    <?php endforeach ?>
-</div>
+    </div>
+</section>
