@@ -7,10 +7,17 @@ $(document).on('ready', function () {
         $("body > div > div:nth-child(3) > div > form").slideToggle();
         $("body > div > div:nth-child(3) > div > form > input").trigger('focus');
     });
-
+    let backMainSetted = false;
+    let backmain = "";
 
     $("#searchField").on('input', function () {
-        quadri = [];
+        if(!backMainSetted){
+            backmain = "";
+            backmain = $("main").html();
+            backMainSetted = true;
+        }
+        let main = $("main");
+        main.html("");
         if ($("#searchField").val() !== "") {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 let articoli = data["Results"];
@@ -20,16 +27,9 @@ $(document).on('ready', function () {
 
             });
         } else {
-            $.getJSON("/API/api-homepage.php", function (data) {
-                let categories = createCategories(data['Categorie']);
-                let language = createLanguages(data['Linguaggi']);
-                let productPoplar = createPopularArticles(data['ProdottiPopolari']);
-                const main = $("main");
-                main.html("")
-                main.append(categories);
-                main.append(language);
-                main.append(productPoplar);
-            });
+            backMainSetted = false;
+            const main = $("main");
+            main.html(backmain);
         }
     });
 

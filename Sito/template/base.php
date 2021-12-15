@@ -45,7 +45,7 @@
     <script src="../script/searchBar.js"></script>
         -->
     <script src="../script/utility/CodeSquare.js"></script>
-    <script src="../script/utility/searchBar.js"></script>
+    <script src="../script/search/searchBar.js"></script>
     <script src="../script/utility/graphicsTemplate.js"></script>
     <script src="../script/utility/notifications.js"></script>
 
@@ -134,7 +134,7 @@
 
     <div class="row">
         <div class="col-12">
-            <form action="../index.php">
+            <form action="../search.php">
                 <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
             </form>
 

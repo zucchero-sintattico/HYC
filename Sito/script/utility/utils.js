@@ -1,6 +1,4 @@
 let quadri = [];
-
-
 function checkOnResize() {
         if($(window).width()<768){
             $('code').each(function () {
@@ -13,5 +11,4 @@ function checkOnResize() {
                 $(this).parent().addClass("col-5");
             });
         }
-
 }
