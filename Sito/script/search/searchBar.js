@@ -5,13 +5,14 @@ $(document).on('ready', function () {
     $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(3) > a").on("click", function (event) {
         event.preventDefault();
         $("body > div > div:nth-child(3) > div > form").slideToggle();
-        $("body > div > div:nth-child(3) > div > form > input").trigger('focus');
+        $("body > div > div:nth-child(3) > div > form > input:first-child").trigger('focus');
     });
     let backMainSetted = false;
     let backmain = "";
 
     $("#searchField").on('input', function () {
         if(!backMainSetted){
+            quadri = [];
             backmain = "";
             backmain = $("main").html();
             backMainSetted = true;

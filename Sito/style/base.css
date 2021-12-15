@@ -107,19 +107,20 @@ body > div > div:nth-child(3) > div > form > input, body > div > div:nth-child(3
 }
 
 body > div > div:nth-child(3) > div > form > input[type=text] {
-    width: 100%;
+    width: 80%;
     float: left;
     font-size: 11px;
 }
 
-body > div > div:nth-child(3) > div > form > button {
+body > div > div:nth-child(3) > div > form > input[type=submit] {
     width: 20%;
     float: right;
-    font-size: 17px;
+    font-size: 18px;
     border-left: none;
 }
 
-body > div > div:nth-child(3) > div > form > button:hover {
+
+body > div > div:nth-child(3) > div > form > input[type=submit]:hover {
     background-color: black;
     color: white;
 }
