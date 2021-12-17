@@ -57,9 +57,7 @@ function createPopularArticles(data) {
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
-                                quadri[${i}].getSquare();
-                                quadri[${i}].setText('${data[i]["Codice"]}');                           
-                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                quadri[${i}].getSquare();                        
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
                                 quadri[${i}].setHeight(${data[i]["Altezza"]});
                                 quadri[${i}].setPadding(0);
@@ -70,6 +68,7 @@ function createPopularArticles(data) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
+                                quadri[${i}].setText('${data[i]["Codice"]}');   
                             </script>
                         </code>
 
@@ -96,9 +95,6 @@ function getFilteredArticles(data, filterName) {
                                         <script>
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();
-                                            quadri[${i}].setText('${data[i]["Codice"]}');
-                                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                            quadri[${i}].setHeight(${data[i]["Altezza"]});
                                             quadri[${i}].setPadding(0);
                                             quadri[${i}].setFramecolor("transparent")
                                             quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
@@ -107,6 +103,7 @@ function getFilteredArticles(data, filterName) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
+                                            quadri[${i}].setText('${data[i]["Codice"]}');
                                         </script>
                                     </code>
                                 </div>
