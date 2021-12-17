@@ -55,7 +55,7 @@
                 <label>FontSize</label>
             </div>
             <label class="btn">
-                <input type="number" value="12" name="options" id="100">
+                <input type="number" value="<?php echo $templateParams["product"]["Dimensione_font"]?>" id="fontSize">
             </label>
 
 
@@ -114,7 +114,6 @@
             let quadro = new CodeSquare($('script').last().parent().get(0));
             quadro.getSquare();
             quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
-
             quadro.updateStyle();
             quadro.widthScale(350);
             if($(window).width()<700){

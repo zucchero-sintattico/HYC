@@ -6,7 +6,8 @@ $(document).on('ready', function () {
     quadro.setStyle($('#style').val());
     quadro.setWidth($('#width .active  input').val());
     quadro.setHeight($('#height .active  input').val());
-
+    quadro.setFontSize($('#fontSize').val());
+    quadro.updateStyle();
     $('#style').on('change', (function () {
         quadro.setStyle($('#style').val());
         console.log("test");
@@ -28,6 +29,11 @@ $(document).on('ready', function () {
 
     $('#height').on('change', (function () {
         quadro.setHeight($('#height .active  input').val());
+        quadro.updateStyle();
+    }));
+
+    $('#fontSize').on('change', (function () {
+        quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
     }));
 

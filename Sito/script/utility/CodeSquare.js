@@ -101,8 +101,10 @@ class CodeSquare {
         square.css("width", width * mul);
         square.find(".CodeMirror").css("min-height", height * mul);
         square.find(".CodeMirror-scroll").css("min-height", height * mul);
+        square.find(".CodeMirror-sizer").css("min-height", (height * mul)-10);
         square.css("padding", padding * mul);
         square.find(".CodeMirror").css("font-size", font_size * mul);
+
     }
 
     widthScale(width_select){

@@ -2,18 +2,21 @@
     padding: 10px 3px;
     word-break: break-word;
     border-radius: 20px;
+    overflow: hidden !important;
 
 }
+
 
 .CodeMirror > textarea{
     resize:none;
     -ms-overflow-style: none;
-    outline: none;
+    overflow: hidden !important;
+    outline: none !important;
 }
 
 .CodeMirror-scroll {
     resize: none;
-    overflow:hidden;
+    overflow-y:hidden !important;
     border-radius: 20px;
     outline: none;
 }
