@@ -27,16 +27,6 @@ main > div:nth-child(1) > div input {
     border-radius: 0 !important;
 }
 
-main > div:nth-child(1) > div label {
-    background-color: transparent;
-    border: 1px solid lightslategray !important;
-    width: 100% !important;
-    height: 50px !important;
-    margin: 10px 0 0 0;
-    border-radius: 0 !important;
-    text-align: center;
-    vertical-align: center;
-}
 
 main > div:nth-child(1) > div div {
     padding-left: 0 !important;

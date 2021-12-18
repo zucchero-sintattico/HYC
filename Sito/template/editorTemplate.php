@@ -5,6 +5,9 @@
     <div class="col-8">
         <div class="row ">
             <div class="col">
+                <label>Titolo</label>
+            </div>
+            <div class="col">
                 <input class="bnt text-center" type="text" placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
             </div>
         </div>
