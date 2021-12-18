@@ -31,6 +31,7 @@ class CodeSquare {
             value: value,
             mode: language,
             theme: theme,
+            scrollbarStyle: null,
         });
 
         return codeMirror;

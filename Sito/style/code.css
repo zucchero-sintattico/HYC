@@ -10,7 +10,7 @@
 .CodeMirror > textarea{
     resize:none;
     -ms-overflow-style: none;
-    overflow: hidden !important;
+    overflow: auto !important;
     outline: none !important;
 }
 
