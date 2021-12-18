@@ -55,7 +55,7 @@
                 <label>FontSize</label>
             </div>
             <label class="btn">
-                <input type="number" value="<?php echo $templateParams["product"]["Dimensione_font"]?>" id="fontSize">
+                <input type="number" value="<?php echo $templateParams["product"]["Dimensione_font"] ?>" id="fontSize">
             </label>
 
 
@@ -69,7 +69,7 @@
             <div class="col text-center-center">
                 <select class="custom-select" id="style">
                     <?php foreach ($templateParams['themes'] as $theme): ?>
-                        <?php if($theme['NomeTema'] == $templateParams["product"]["NomeTema"]): ?>
+                        <?php if ($theme['NomeTema'] == $templateParams["product"]["NomeTema"]): ?>
                             <option selected="selected"> <?php echo $theme['NomeTema']; ?></option>
                         <?php else: ?>
                             <option> <?php echo $theme['NomeTema']; ?></option>
@@ -86,7 +86,7 @@
             <div class="col">
                 <select id="language" class="custom-select">
                     <?php foreach ($templateParams['languages'] as $language): ?>
-                        <?php if($language['NomeLinguaggio'] == $templateParams["product"]["NomeLinguaggio"]): ?>
+                        <?php if ($language['NomeLinguaggio'] == $templateParams["product"]["NomeLinguaggio"]): ?>
                             <option selected="selected"> <?php echo $language['NomeLinguaggio']; ?></option>
                         <?php else: ?>
                             <option> <?php echo $language['NomeLinguaggio']; ?></option>
@@ -117,16 +117,17 @@
             quadro.updateStyle();
             quadro.widthScale(350);
             quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
-            if($(window).width()<700){
-                quadro.widthScale($(window).width()-20);
+            if ($(window).width() < 700) {
+                quadro.widthScale($(window).width() - 20);
             }
         </script>
     </code>
 
 </div>
-<div class="row justify-content-right">
 
-    <button type="button">Add to Cart</button>
-
+<div class="row justify-content-end">
+    <div class="col-4">
+        <button  class="bnt" type="button">Add to Cart</button>
+    </div>
 </div>
 
