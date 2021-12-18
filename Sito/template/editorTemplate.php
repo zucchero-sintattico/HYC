@@ -1,5 +1,13 @@
 <div class="row justify-content-center">
+
+
+
     <div class="col-8">
+        <div class="row ">
+            <div class="col">
+                <input class="bnt text-center" type="text" placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
+            </div>
+        </div>
         <div class="row  align-content-center">
             <button class="dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseSetting"
                     aria-expanded="false" aria-controls="collapseSetting">Dimension Option
@@ -64,7 +72,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="button">Style</button>
+                <label>Style</label>
             </div>
             <div class="col text-center-center">
                 <select class="custom-select" id="style">
@@ -81,7 +89,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="button">Language</button>
+                <label>Language</label>
             </div>
             <div class="col">
                 <select id="language" class="custom-select">
@@ -99,7 +107,7 @@
 
         <div class="row">
             <div class="col">
-                <button type="button">Code frame color</button>
+                <label>Code frame color</label>
             </div>
             <div class="col">
                 <input class="custom-select" id="frame-color" type="color" value="#ff0000">
@@ -127,7 +135,7 @@
 
 <div class="row justify-content-end">
     <div class="col-4">
-        <button  class="bnt" type="button">Add to Cart</button>
+        <button class="bnt" type="button">Add to Cart</button>
     </div>
 </div>
 
