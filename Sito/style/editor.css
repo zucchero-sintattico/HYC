@@ -1,4 +1,22 @@
-body > div > main > div > div.row.justify-content-center > div.col.text-center div {
-    margin-top: 15px;
+main label, main button {
+    margin-top: 20px;
+    margin-bottom: 0 !important;
+    font-size: x-large;
+    color: #333333;
+}
+
+main button:hover, main select:hover {
+    background-color: #f1f1f1 !important;
+    color: black !important;
+}
+
+
+main button, main select, main input {
+    color:  black !important;
+    text-align: center !important;
+    outline: none;
+    font-weight: lighter !important;
+    width: 100% !important;
+    border-color: #333333 !important;
 }
 

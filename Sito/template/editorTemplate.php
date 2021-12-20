@@ -4,19 +4,12 @@
 
         <div class="col text-center">
             <div class="row justify-content-center">
-                <div class="col-10">
-                    <label>Titolo</label>
-                        <input class="form-control form-control-lg text-center" type="text"
-                               placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
-
+                <div class="col-10 text-center">
+                    <button class="dropdown-toggle btn btn-outline-secondary" type="button" data-toggle="collapse"
+                            data-target="#collapseSetting"
+                            aria-expanded="false" aria-controls="collapseSetting">Dimension Option
+                    </button>
                 </div>
-            </div>
-
-
-            <div class="row justify-content-center">
-                <button class="dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseSetting"
-                        aria-expanded="false" aria-controls="collapseSetting">Dimension Option
-                </button>
             </div>
 
 
@@ -73,6 +66,15 @@
                 </label>
 
 
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <label>Title</label>
+                    <input class="form-control form-control-lg text-center" type="text"
+                           placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
+
+                </div>
             </div>
 
 
