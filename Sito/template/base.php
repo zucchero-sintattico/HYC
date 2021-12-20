@@ -132,6 +132,7 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-12">
             <form action="../search.php">
@@ -143,6 +144,12 @@
     </div>
 
     <!-- Main -->
+
+    <div class="alert alert-success collapse" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> You have been signed in successfully!
+    </div>
+
     <main>
         <?php
         if(isset($templateParams["name"])){

@@ -1,4 +1,6 @@
 $(document).on('ready', function () {
+
+
     if (userId != null) {
         const ws = new WebSocket("ws://hangyourcode.shop:8000/notification");
         ws.onopen = function () {
@@ -9,6 +11,8 @@ $(document).on('ready', function () {
             if(e.data === "update_notification"){
                 $.post( "/API/api-notification.php", function( data ) {
                     console.log("notifiche = ", data)
+
+
                     $("#notification").css("color", "red");
                 });
             }
