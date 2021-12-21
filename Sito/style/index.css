@@ -12,13 +12,13 @@ main > section > div > div > a, main > section > div > div > article, main > sec
     color: black;
 }
 
-main > section > div > div > a:hover, main > section > div > div > article:hover, main > section > div > div > section:hover {
-    color: black;
-    background-color: gray;
-    font-weight: bold;
+main > section > div > div section:hover{
     cursor: pointer;
 }
 
+main > section > div > div section:hover img{
+    animation: searchMovement 0.5s ease-out;
+}
 
 main > section > div > div > section img {
     width: 40% !important;

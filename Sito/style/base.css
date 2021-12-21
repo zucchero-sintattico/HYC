@@ -2,22 +2,127 @@
 /* Option 2: Import via CSS */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes cartMovement {
+    0% {
+        transform: scale(1,1);
+        transform: rotate3d(1,1,1,0);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+        transform: translateY(150px);
+        transform: rotate3d(1,1,1,45deg);
+    }
+    100% {
+        transform: scale(1,1);
+        transform: rotate3d(1,1,1,0);
+    }
+}
+
+@keyframes searchMovement {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.4,1.4);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes profileSpinMovement {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bellRingSpinMovement {
+    0% {
+        animation-timing-function: ease-in;
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(45deg);
+    }
+    100% {
+        animation-timing-function: ease-out;
+        transform: rotate(0deg);
+    }
+}
+
 body {
     font-family: 'Roboto Mono', monospace;
     box-sizing: border-box;
 }
 
-body > div > div > header {
+nav > ul li:nth-child(1):hover img{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+nav > ul li:nth-child(2):hover img{
+    animation: cartMovement 0.5s ease-out;
+}
+
+nav > ul li:nth-child(3):hover img{
+    animation: searchMovement 0.5s ease-out;
+}
+
+nav > ul li:nth-child(4):hover img{
+    animation: profileSpinMovement 0.2s 2 linear;
+}
+
+nav > ul li:nth-child(5):hover img{
+    animation: bellRingSpinMovement 0.2s 3 ease-in;
+}
+
+nav > ul li a:hover {
+    text-decoration: none;
+}
+
+header > div {
     background-color: Gainsboro;
     padding: 20px 0 20px 40px;
     width: 100%;
 }
 
-body > div > div > header > div  img {
+header > div > div img {
     height: 66px;
+    width: 80%;
 }
 
-body > div > div:nth-child(1) > header > div:nth-child(1){
+header > div > div:nth-child(3) {
+    text-align: right;
+}
+
+header > div > div:nth-child(2) {
+    text-align: left;
+    font-size: 35px;
+}
+
+header > div:nth-child(1) > div:nth-child(1){
     float: left;
     width: 70%;
 }
@@ -26,30 +131,24 @@ body > div > div > div > form > label {
     display: none;
 }
 
-body > div > div > header > div > h2 {
+header > div > div > h2 {
     color: black;
     text-align: left;
     font-size: 20px;
 }
 
-body > div > div:nth-child(1) > header > div:nth-child(2){
+header > div:nth-child(1) >  div:nth-child(2){
     float: right;
     width: 30%;
     height: 100%;
-    text-align: center;
+    text-align: left;
     line-height: 56px;
 }
 
-
-
-body > div > div:nth-child(1) > header > div:nth-child(2) > label > a{
+header > div:nth-child(1) > div:nth-child(2) > label > a{
     text-decoration: underline;
     color: black;
     font-weight: bold;
-}
-
-body > div > div:nth-child(1) > header > div:nth-child(2) > label > a:hover{
-    color: #0000AA;
 }
 
 body nav {
@@ -81,16 +180,13 @@ body nav > ul > li > a {
     text-decoration: none;
 }
 
-body nav > ul > li > a:hover {
-    background-color: gray;
-    color: white;
-}
 
-body nav > ul > li > a > p {
+
+nav > ul > li > a > p {
     display: none;
 }
 
-body nav > ul > li > a > img {
+nav > ul > li > a > img {
     width: 30%;
 }
 
@@ -154,11 +250,6 @@ body main {
 
     body header {
         margin: 0;
-    }
-
-    body nav > ul > li > a:hover {
-        text-decoration: none;
-        background-color: gray;
     }
 
     body > div > div:nth-child(3) > div > form {

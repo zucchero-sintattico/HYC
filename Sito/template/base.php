@@ -72,14 +72,19 @@
 <!-- Tutta la pagina qua dentro -->
 <div class="container-fluid p-0 overflow-hidden">
     <!--Header-->
+    <header>
     <div class="row">
-        <header>
-            <div class="col">
+            <div class="col-3">
                 <a href="../index.php">
                     <img src="../img/logos/logo.png">
                 </a>
             </div>
-            <div class="col">
+            <div class="col-6">
+                <p>You select the code that inspires you the most.
+                    We frame it and make sure it arrives to your home.
+                </p>
+            </div>
+            <div class="col-3">
                 <label><?php
                     if (isUserLoggedIn()) {
                         echo "<script>let userId =".getLoggedUserID().";</script>";
@@ -90,12 +95,8 @@
                         echo "<a href='../login.php'>LogIn</a>";
                     } ?></label>
             </div>
-        </header>
-
-
-
     </div>
-
+    </header>
     <!-- Menu -->
     <div class="row ">
         <div class="col-12">
