@@ -1,45 +1,45 @@
-let value = "console.log('ciao mondo')";
-let language = 'javascript';
-let theme = 'monokai';
-let frame_color = 'red';
-let width = 100;
-let height = 100;
-let padding = 7;
-let font_size = 4;
-let lineNumbers = true;
-let codeMirror;
-let scaledWidth = 100;
-
 
 class CodeSquare {
     constructor(querySelector) {
-        this.querySelector = querySelector;
+        this._value = "console.log('ciao mondo')";
+        this._language = 'javascript';
+        this._theme = 'monokai';
+        this._frame_color = 'red';
+        this._width = 100;
+        this._height = 100;
+        this._padding = 7;
+        this._font_size = 4;
+        this._lineNumbers = true;
+        this.codeMirror = null;
+        this._scaledWidth = 100;
+        this._querySelector = querySelector;
+
     }
 
     setQuerySelector(querySelector){
-        this.querySelector = querySelector
+        this._querySelector = querySelector
     }
 
     getSquare() {
-        let square = $(this.querySelector);
-        square.css("width", width);
-        square.css("padding", padding);
-        square.css("background-color", frame_color);
-        codeMirror = CodeMirror(this.querySelector, {
-            lineNumbers: lineNumbers,
+        let square = $(this._querySelector);
+        square.css("width", this._width);
+        square.css("padding", this._padding);
+        square.css("background-color", this._frame_color);
+        this.codeMirror = CodeMirror(this._querySelector, {
+            lineNumbers: this._lineNumbers,
             tabSize: 2,
-            value: value,
-            mode: language,
-            theme: theme,
+            value: this._value,
+            mode: this._language,
+            theme: this._theme,
             scrollbarStyle: null,
         });
 
-        return codeMirror;
+        return this.codeMirror;
     }
 
     updateStyle() {
-        let square = $(this.querySelector);
-        this.widthScale(scaledWidth);
+        let square = $(this._querySelector);
+        this.widthScale(this._scaledWidth);
 
 /*        square.find(".CodeMirror").css("font-size", font_size);
         square.find(".CodeMirror").css("min-height", height);
@@ -49,81 +49,123 @@ class CodeSquare {
     }
 
     setWidth(x) {
-        width = x;
+        this._width = x;
     }
 
     setHeight(y) {
-        height = y;
+        this._height = y;
     }
 
     setPadding(padding_value) {
-        padding = padding_value;
+        this._padding = padding_value;
     }
 
     setFramecolor(color) {
-        let square = $(this.querySelector);
-        frame_color = color;
-        square.css("background-color", frame_color);
+        let square = $(this._querySelector);
+        this._frame_color = color;
+        square.css("background-color", this._frame_color);
 
     }
 
     setFontSize(size) {
-        font_size = size;
+        this._font_size = size;
     }
 
     setStyle(style) {
-        theme = style;
-        codeMirror.setOption("theme", style);
+        this._theme = style;
+        this.codeMirror.setOption("theme", style);
     }
 
     setLanguages(code_language) {
-        language = code_language;
-        codeMirror.setOption("mode", language);
+        this._language = code_language;
+        this.codeMirror.setOption("mode", this._language);
     }
 
     setText(code_text) {
-        value = code_text;
-        codeMirror.setOption("value", value);
+        this._value = code_text;
+        this.codeMirror.setOption("value", this._value);
     }
 
     setlineNumbers(line_numbers) {
-        lineNumbers = line_numbers;
-        codeMirror.setOption("lineNumbers", lineNumbers);
+        this._lineNumbers = line_numbers;
+        this.codeMirror.setOption("lineNumbers", this._lineNumbers);
     }
 
     disable() {
-        let square = $(this.querySelector);
+        let square = $(this._querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
     }
 
     scale(mul) {
-        let square = $(this.querySelector);
-        square.css("width", width * mul);
-        square.find(".CodeMirror").css("min-height", height * mul);
-        square.find(".CodeMirror-scroll").css("min-height", height * mul);
-        square.find(".CodeMirror-sizer").css("min-height", (height * mul)-10);
-        square.css("padding", padding * mul);
-        square.find(".CodeMirror").css("font-size", font_size * mul);
+        let square = $(this._querySelector);
+        square.css("width", this._width * mul);
+        square.find(".CodeMirror").css("min-height", this._height * mul);
+        square.find(".CodeMirror-scroll").css("min-height", this._height * mul);
+        square.find(".CodeMirror-sizer").css("min-height", (this._height * mul)-10);
+        square.css("padding", this._padding * mul);
+        square.find(".CodeMirror").css("font-size", this._font_size * mul);
 
     }
 
     widthScale(width_select){
-        scaledWidth = width_select;
-        let square = $(this.querySelector);
-        let h = (scaledWidth * height) / width
-        let mul = h/height;
-        square.css("width", scaledWidth);
+        this._scaledWidth = width_select;
+        let square = $(this._querySelector);
+        let h = (this._scaledWidth * this._height) / this._width
+        let mul = h/this.height;
+        square.css("width", this._scaledWidth);
         square.find(".CodeMirror").css("height", h);
         square.find(".CodeMirror-scroll").css("height", h);
-        square.find(".CodeMirror").css("font-size", font_size*mul);
-        square.css("padding", padding*mul);
+        square.find(".CodeMirror").css("font-size", this._font_size*mul);
+        square.css("padding", this._padding*mul);
     }
 
     getCode(){
-        return codeMirror.getValue();
+        return this.codeMirror.getValue();
     }
 
 
+    get querySelector() {
+        return this._querySelector;
+    }
 
+    get value() {
+        return this._value;
+    }
+
+    get language() {
+        return this._language;
+    }
+
+    get theme() {
+        return this._theme;
+    }
+
+    get frame_color() {
+        return this._frame_color;
+    }
+
+    get width() {
+        return this._width;
+    }
+
+    get height() {
+        return this._height;
+    }
+
+    get padding() {
+        return this._padding;
+    }
+
+    get font_size() {
+        return this._font_size;
+    }
+
+    get lineNumbers() {
+        return this._lineNumbers;
+    }
+
+    get scaledWidth() {
+        return this._scaledWidth;
+    }
 }
