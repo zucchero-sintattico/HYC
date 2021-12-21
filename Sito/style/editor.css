@@ -5,6 +5,10 @@ main label, main button {
     color: #333333;
 }
 
+.active {
+    background-color: chartreuse !important;
+}
+
 main button:hover, main select:hover {
     background-color: #f1f1f1 !important;
     color: black !important;
