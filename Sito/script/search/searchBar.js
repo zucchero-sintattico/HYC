@@ -18,7 +18,7 @@ $(document).on('ready', function () {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 let articoli = data["Results"];
                 const main = $("main");
-                if(articoli != ""){
+                if(articoli !== ""){
                     let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
                     main.html(risultatiRicerca);
                 }else {
