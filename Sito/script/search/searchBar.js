@@ -1,6 +1,7 @@
 
 $(document).on('ready', function () {
     let backMainSetted = false;
+    let timeOut = true;
     let backmain = "";
 
     $("#searchField").on('input', function (event) {
@@ -12,13 +13,17 @@ $(document).on('ready', function () {
         }
         let main = $("main");
         main.html("");
-        if ($("#searchField").val() !== "") {
-
+        if ($("#searchField").val() !== "" && timeOut) {
+            timeOut = false;
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 let articoli = data["Results"];
-                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
                 const main = $("main");
-                main.html(risultatiRicerca);
+                if(articoli != ""){
+                    let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
+                    main.html(risultatiRicerca);
+                }else {
+                    main.html("<h2>not found</h2>");
+                }
 
             });
         } else {
@@ -26,6 +31,7 @@ $(document).on('ready', function () {
             const main = $("main");
             main.html(backmain);
         }
+        timeOut = true;
     });
 
 
