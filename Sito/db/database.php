@@ -169,8 +169,8 @@ class DatabaseHelper
                 VALUES (?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isssss", ($cart[0])["IdCarrello"], $Nome, $Cognome, $Username, $Email, $Password);
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->execute();
+        return true;
 
     }
 

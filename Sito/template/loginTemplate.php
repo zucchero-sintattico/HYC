@@ -21,4 +21,4 @@
 </div>
 <div class="row justify-content-center">
     <a href="../register.php">Sing Up</a>
-</div>`);
+</div>
