@@ -6,6 +6,8 @@ $templateParams['style'] = "style/checkout.css";
 $templateParams['name'] = "template/checkoutTemplate.php";
 $templateParams['prices'] = [];
 $templateParams['shipping'] = 10;
+$templateParams['js'] = array("script/pages/checkout.js");
+
 if (isUserLoggedIn()) {
     $templateParams['query'] = $dbh->getArticleInCart(getLoggedUserID());
     // calcolo prezzo tot
