@@ -114,8 +114,8 @@ class CodeSquare {
         let h = (scaledWidth * height) / width
         let mul = h/height;
         square.css("width", scaledWidth);
-        square.find(".CodeMirror").css("min-height", h);
-        square.find(".CodeMirror-scroll").css("min-height", h);
+        square.find(".CodeMirror").css("height", h);
+        square.find(".CodeMirror-scroll").css("height", h);
         square.find(".CodeMirror").css("font-size", font_size*mul);
         square.css("padding", padding*mul);
     }
