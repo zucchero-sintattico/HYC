@@ -71,10 +71,12 @@ function createPopularArticles(data) {
                                 quadri[${i}].updateStyle();
                                 quadri[${i}].setText('${data[i]["Codice"]}'); 
                              }
+                            checkOnResize();
                             </script>
                         </code>
 
                 </a>
+
             `;
         content += prodottoPopolare;
     }
