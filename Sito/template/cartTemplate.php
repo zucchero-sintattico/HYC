@@ -37,13 +37,20 @@
                             </div>
                         </article>
                     </a>
+                    <div class="row justify-content-center mt-2">
+                        <p class="text-allert">Delete from cart</p>
+
+                    </div>
                 </div>
             <?php endforeach;?>
         </div>
     </div>
+    <?php if(count($templateParams["query"]) > 0) : ?>
     <div class="row">
-        <div class="col-12 text-center mt-4">
+        <div class="col-12 text-center">
             <a href="../checkout.php?id=<?php echo getLoggedUserID() ; ?>">Checkout</a>
         </div>
     </div>
+    <?php endif; ?>
+
 </section>
