@@ -136,6 +136,7 @@
     <div class="row">
         <div class="col-12">
             <form action="../search.php">
+                <label for="key">Search</label>
                 <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
                 <input type="submit" value="➜">
             </form>
