@@ -56,6 +56,7 @@ function createPopularArticles(data) {
                 <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" onclick="">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
+                            if(!$('#quadro${data[i]["IdProd"]} > .CodeMirror').length){
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();                        
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
@@ -68,7 +69,8 @@ function createPopularArticles(data) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
-                                quadri[${i}].setText('${data[i]["Codice"]}');   
+                                quadri[${i}].setText('${data[i]["Codice"]}'); 
+                             }
                             </script>
                         </code>
 
