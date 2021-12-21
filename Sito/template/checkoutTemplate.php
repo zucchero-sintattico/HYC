@@ -7,29 +7,29 @@
                 <form>
                     <div class="form-group"> <label class="text-muted">Name</label> <input type="text" placeholder="Insert your name" class="form-control"> </div>
                     <div class="form-group"> <label class="text-muted">Email</label>
-                        <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="email" placeholder="Insert your mail"> <span class="fas fa-check text-success pr-sm-2 pr-0"></span> </div>
+                        <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="email" placeholder="Insert your mail"> </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>City</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Cesena" disabled> <span class="fas fa-check text-success pr-2"></span> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Cesena" disabled></div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Zip code</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="47522" disabled> <span class="fas fa-check text-success pr-2"></span> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="47522" disabled> </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Address</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled> <span class="fas fa-check text-success pr-2"></span> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled> </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group"> <label>State</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Italy" disabled> <span class="fas fa-check text-success pr-2"></span> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Italy" disabled> </div>
                             </div>
                         </div>
                     </div>
@@ -47,19 +47,21 @@
                 <div class="d-flex justify-content-between align-items-center pt-3 pb-2 border-bottom">
                         <div class="item pr-2">
                             <!-- Code -->
-                            <div class="row justify-content-center">
+                            <div class="row">
                                 <code id="quadro<?php echo $articolo["IdProd"] ?>">
                                     <script>
                                         let quadro<?php echo $articolo["IdProd"] ?> = new CodeSquare(document.querySelector('#quadro<?php echo $articolo["IdProd"] ?>'));
                                         quadro<?php echo $articolo["IdProd"] ?>.getSquare();
                                         quadro<?php echo $articolo["IdProd"] ?>.setWidth(<?php echo $articolo["Larghezza"] ?>);
                                         quadro<?php echo $articolo["IdProd"] ?>.setHeight(<?php echo $articolo["Altezza"] ?>);
-                                        quadro<?php echo $articolo["IdProd"] ?>.setPadding(0);
-                                        quadro<?php echo $articolo["IdProd"] ?>.setFramecolor("transparent");
+                                        quadro<?php echo $articolo["IdProd"] ?>.setPadding(<?php echo $articolo["Padding"] ?>);
+                                        quadro<?php echo $articolo["IdProd"] ?>.setFramecolor("<?php echo $articolo["Colore_frame"] ?>");
                                         quadro<?php echo $articolo["IdProd"] ?>.setFontSize(<?php echo $articolo["Dimensione_font"] ?>);
                                         quadro<?php echo $articolo["IdProd"] ?>.setLanguages('<?php echo $articolo["NomeLinguaggio"] ?>');
                                         quadro<?php echo $articolo["IdProd"] ?>.setStyle('<?php echo $articolo["NomeTema"] ?>');
                                         quadro<?php echo $articolo["IdProd"] ?>.disable();
+
+                                        quadro<?php echo $articolo["IdProd"] ?>.widthScale(100);    
                                         quadro<?php echo $articolo["IdProd"] ?>.updateStyle();
                                         quadro<?php echo $articolo["IdProd"] ?>.setText('<?php echo $articolo["Codice"] ;?>');
                                     </script>

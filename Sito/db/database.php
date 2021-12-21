@@ -160,6 +160,27 @@ class DatabaseHelper
 
     }
 
+    public function registerUser($Nome, $Cognome, $Username, $Email, $Password){
+        $query = "INSERT INTO Carrello (IdCarrello) VALUES (NULL)";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $cart = $this->getLastCart();
+        $query = "INSERT INTO Utente (IdCarrello, Nome, Cognome, Username, Email, Password) 
+                VALUES (?, ?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sssss", ($cart)[0], $Nome, $Cognome, $Username, $Email, $Password);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastCart(){
+        $query = "Select * from carrello order by IdCarrello DESC LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
 }
 /*

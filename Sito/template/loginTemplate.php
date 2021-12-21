@@ -17,3 +17,9 @@
         </ul>
     </form>
 </div>
+<div class="row justify-content-center">
+    <button>Register</button>
+    <script>  $("div > button").on('click', function () {
+            changeToRegister();
+        });</script>
+</div>
