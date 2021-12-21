@@ -120,7 +120,7 @@ class CodeSquare {
         square.css("padding", this._padding*mul);
     }
 
-    getCode(){
+    get code(){
         return this.codeMirror.getValue();
     }
 
@@ -167,5 +167,19 @@ class CodeSquare {
 
     get scaledWidth() {
         return this._scaledWidth;
+    }
+
+    toJSON() {
+        return {
+            value : this.code(),
+            language : this.language(),
+            theme : this.theme(),
+            frame_color: this.frame_color(),
+            width : this.width(),
+            height : this.height(),
+            padding : this.padding(),
+            font_size : this.font_size(),
+            lineNumbers : this.lineNumbers()
+        }
     }
 }
