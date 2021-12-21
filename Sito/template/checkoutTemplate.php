@@ -60,8 +60,7 @@
                                         quadro<?php echo $articolo["IdProd"] ?>.setLanguages('<?php echo $articolo["NomeLinguaggio"] ?>');
                                         quadro<?php echo $articolo["IdProd"] ?>.setStyle('<?php echo $articolo["NomeTema"] ?>');
                                         quadro<?php echo $articolo["IdProd"] ?>.disable();
-
-                                        quadro<?php echo $articolo["IdProd"] ?>.widthScale(100);    
+                                        quadro<?php echo $articolo["IdProd"] ?>.widthScale(100);
                                         quadro<?php echo $articolo["IdProd"] ?>.updateStyle();
                                         quadro<?php echo $articolo["IdProd"] ?>.setText('<?php echo $articolo["Codice"] ;?>');
                                     </script>

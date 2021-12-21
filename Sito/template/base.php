@@ -75,9 +75,9 @@
     <div class="row">
         <header>
             <div class="col">
-
-                <img src="../img/logos/logo.png">
-
+                <a href="../index.php">
+                    <img src="../img/logos/logo.png">
+                </a>
             </div>
             <div class="col">
                 <label><?php

@@ -6,10 +6,12 @@
         <?php endif; ?>
         <ul>
             <li>
-                <label for="username">Username:</label><input type="text" id="username" name="username"/>
+                <label htmlFor="username">Username:</label><input type="text" id="username"
+                                                                  name="username"/>
             </li>
             <li>
-                <label for="password">Password:</label><input type="password" id="password" name="password"/>
+                <label htmlFor="password">Password:</label><input type="password" id="password"
+                                                                  name="password"/>
             </li>
             <li>
                 <input type="submit" name="submit" value="Invia"/>
@@ -18,8 +20,5 @@
     </form>
 </div>
 <div class="row justify-content-center">
-    <button>Register</button>
-    <script>  $("div > button").on('click', function () {
-            changeToRegister();
-        });</script>
-</div>
+    <a href="../register.php">Sing Up</a>
+</div>`);

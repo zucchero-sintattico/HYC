@@ -168,9 +168,10 @@ class DatabaseHelper
         $query = "INSERT INTO Utente (IdCarrello, Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sssss", ($cart)[0], $Nome, $Cognome, $Username, $Email, $Password);
+        $stmt->bind_param("isssss", ($cart[0])["IdCarrello"], $Nome, $Cognome, $Username, $Email, $Password);
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+
     }
 
     public function getLastCart(){

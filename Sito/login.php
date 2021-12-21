@@ -2,7 +2,6 @@
 
 require_once 'bootstrap.php';
 $templateParams["style"] = "style/login.css";
-$templateParams['js'] = array('script/pages/loginRegister.js');
 
 if(isset($_POST["username"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
@@ -23,7 +22,5 @@ else{
     $templateParams["title"] = "HYC- Login";
     $templateParams["name"] = "loginTemplate.php";
 }
-
-
 require("template/base.php");
 

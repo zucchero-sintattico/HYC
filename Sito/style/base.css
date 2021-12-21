@@ -11,7 +11,7 @@ body > div > div > header {
     width: 100%;
 }
 
-body > div > div > header > div > img {
+body > div > div > header > div  img {
     height: 66px;
 }
 
