@@ -1,9 +1,9 @@
 <div class="wrapper">
-    <div class="h5 large">Shipping Address</div>
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-10 offset-lg-0 offset-md-2 offset-sm-1">
-            <div class="mobile h5">Shipping Address</div>
+            <div class="mobile h5">Shipping Address & Payment</div>
             <div id="details" class="bg-white rounded pb-5">
+                <div class="h6 text-center">Shipping address</div>
                 <form>
                     <div class="form-group"> <label class="text-muted">Name</label> <input type="text" placeholder="Insert your name" class="form-control"> </div>
                     <div class="form-group"> <label class="text-muted">Email</label>
@@ -33,6 +33,30 @@
                             </div>
                         </div>
                     </div>
+                    </select>
+                </form>
+            </div>
+            <div class="mobile h5">Payment</div>
+            <div id="details" class="bg-white rounded pb-5">
+                <div class="h6 text-center">Payment</div>
+                <form>
+                    <div class="form-group"> <label class="text-muted">Name on card</label> <input type="text" placeholder="Insert name on card" class="form-control"> </div>
+                    <div class="form-group"> <label class="text-muted">Credit card number</label>
+                        <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" placeholder="Insert your Card number"> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group"> <label>Expiration</label>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" placeholder="Insert expiration date" ></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group"> <label>CVV</label>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="password" placeholder="Insert CVV"> </div>
+                            </div>
+                        </div>
+                    </div>
+
                     </select>
                 </form>
             </div>
