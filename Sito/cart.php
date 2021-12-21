@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 $templateParams['title'] = "HYC - Cart";
-$templateParams['style'] = "style/index.css";
+$templateParams['style'] = "style/cart.css";
 $templateParams['name'] = "template/cartTemplate.php";
 if (isUserLoggedIn()) {
     $templateParams['query'] = $dbh -> getArticleInCart(getLoggedUserID());

@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-light.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Fine import CodeMirror -->
 
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
@@ -136,6 +136,7 @@
     <div class="row">
         <div class="col-12">
             <form action="../search.php">
+                <label for="key">Search</label>
                 <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
                 <input type="submit" value="➜">
             </form>
@@ -157,6 +158,94 @@
         }
         ?>
     </main>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block col-6">
+                    <span>Get connected with us on social networks:</span>
+                </div>
+                <!-- Left -->
+
+                <!-- Right -->
+                <div class="col-6">
+                    <a style="width: 20%" href="https://www.instagram.com/zucchero_sintattico/" class="mr-2 me-4 text-reset">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+
+                    <a href="https://github.com/zucchero-sintattico" class="me-4 text-reset">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <!-- Right -->
+
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i> Hang Your Code
+                        </h6>
+                        <p>
+                            You select the code that inspires you the most.
+                            We frame it and make sure it arrives to your home.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="../index.php" class="text-reset">Home</a>
+                        </p>
+                        <p>
+                            <a href="../cart.php" class="text-reset">Cart</a>
+                        </p>
+                        <p>
+                            <a href="../profile.php" class="text-reset">Profile</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i>  Via Cesare Pavese, 50, Cesena FC</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@hyc.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 39 3667154519</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </div>
 <script>
     $(document).on('ready', function () {
