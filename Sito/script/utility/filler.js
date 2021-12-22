@@ -1,5 +1,13 @@
 // Functions that fill the pages
 
+function createImages(){
+    return `
+        <div class="text-center">
+          <img src="img/paintings/quadriTrasparentiExample.png" class="rounded" alt="...">
+        </div>
+    `;
+}
+
 function createCategories(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
@@ -30,7 +38,7 @@ function createLanguages(data) {
     let content = '';
     for (let i = 0; i < data.length; i++) {
         let linguaggio = `
-                <section href="editor.php" class="col-3 d-flex justify-content-center text-center" id="language${data[i]['NomeLinguaggio']}" >
+                <section href="editor.php" class="col-3 d-flex justify-content-center text-center"  id="language${data[i]['NomeLinguaggio']}" >
                     <div class="row justify-content-center">
                         ${data[i]['NomeLinguaggio']}
                     </div>
@@ -53,7 +61,7 @@ function createPopularArticles(data) {
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" >
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                             if(!$('#quadro${data[i]["IdProd"]} > .CodeMirror').length){
@@ -166,12 +174,16 @@ function createCatalogByLanguages(idLang) {
 }
 
 function fillHomePage(data) {
+    let img = createImages();
     let categorie = createCategories(data['Categorie']);
     let linguaggi = createLanguages(data['Linguaggi']);
     let prodottiPopolari = createPopularArticles(data['ProdottiPopolari']);
     const main = $("main");
+    main.append(img);
     main.append(categorie);
+    main.append(img);
     main.append(linguaggi);
+    main.append(img);
     main.append(prodottiPopolari);
 
 }

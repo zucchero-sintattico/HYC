@@ -43,12 +43,12 @@ main > section > div > div {
     height: 35%;
 }
 
-main > section > div > div > a, main > section > div > div > article, main > section > div > div > section {
+main > section > div > div > a, main > section > div > div > article, main > section > div > div > section{
     padding: 3% 40%;
     margin: 5px;
     border: none;
     border-radius: 10px;
-    background-color: #E0E0E0;
+    background-color: #E0E0E0 !important;
     color: black;
 }
 
@@ -83,8 +83,8 @@ body > div > main > section > header > h1{
 }
 
 
-body > div > main > section > div > div > div > a > article{
-    background-color: #E0E0E0;
+main > section > div > div > div > a > article{
+    background-color: #E0E0E0 !important;
     border-radius: 10px;
     width: 100%;
     padding: 3% 3%;
@@ -96,7 +96,11 @@ body a:hover{
     text-decoration: none;
 }
 
-body > div > main > section:nth-child(1) > div > div > section > div{
+body > div img {
+    padding: 2% 0%;
+}
+
+body > div > main > section > div > div > section > div{
     background-color: #E0E0E0 !important;
     border: none !important;
 }

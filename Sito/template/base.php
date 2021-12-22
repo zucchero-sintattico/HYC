@@ -54,10 +54,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
 
-    <!-- Imports for AOS -->
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-
     <?php header('Access-Control-Allow-Origin: *'); ?>
     <?php
     if(isset($templateParams["js"])):
@@ -262,9 +258,6 @@
             $("body > div > div:nth-child(3) > div > form > input:first-child").trigger('focus');
         });
     });
-</script>
-<script>
-    AOS.init();
 </script>
 </body>
 
