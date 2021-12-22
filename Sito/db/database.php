@@ -75,7 +75,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getArticleByName($Titolo)
+    public function getProductByTitle($Titolo)
     {
         $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
                     FROM Prodotto p, ProdottoInVetrina pv 
@@ -99,7 +99,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getArticleByLanguage($language)
+    public function getProductsByLanguage($language)
     {
         $query = "SELECT * FROM `prodotto` WHERE NomeLinguaggio = ?";
         $stmt = $this->db->prepare($query);
@@ -109,7 +109,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getArticleInCart($idUser)
+    public function getProductInCart($idUser)
     {
         $cart = $this->getLastCartOfUser($idUser);
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
