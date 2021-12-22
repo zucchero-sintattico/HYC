@@ -111,14 +111,14 @@ class DatabaseHelper
 
     public function getArticleInCart($idUser)
     {
+        $cart = getLastCartOfUser($idUser);
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
-         FROM Prodotto p, ProdottoInCarrello pc, Carrello c, Utente u 
+         FROM Prodotto p, ProdottoInCarrello pc, Carrello c
             WHERE p.IdProd = pc.IdProd
               AND pc.IdCarrello = c.IdCarrello 
-              AND c.IdCarrello = u.IdCarrello 
-              AND u.IdUtente = ?";
+              AND c.IdCarrello = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $idUser);
+        $stmt->bind_param('i', $cart);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -160,44 +160,47 @@ class DatabaseHelper
 
     }
 
+    /** Insert a user into Db */
     public function registerUser($Nome, $Cognome, $Username, $Email, $Password){
-        $this->createNewCart();
-        $cart = $this->getLastCart();
         $query = "INSERT INTO Utente (IdCarrello, Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isssss", ($cart[0])["IdCarrello"], $Nome, $Cognome, $Username, $Email, $Password);
         $stmt->execute();
-        return true;
+        $userId = getLastUser();
+        getNewCartForUser($userId);
 
     }
 
-    public function getLastCart(){
-        $query = "Select * from Carrello order by IdCarrello DESC LIMIT 1;";
+    /** Return the last IdUtente of the DB to be attached to the cart */
+    public function getLastUser(){
+        $query = "Select * from Utente order by IdUtente DESC LIMIT 1;";
         $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
+        return $cart['IdUtente'];
+    }
+
+    /** Create a new Cart for the Input User */
+    public function getNewCartForUser($IdUser){
+        $query = "INSERT INTO Carrello (IdUtente) VALUES ($IdUser)";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+    }
+
+    /** Return the last cart used by the User */
+    public function getLastCartOfUser($IdUser){
+        $query = "Select * from Carrello where Carrello.IdUtente = ? order by IdCarrello DESC LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUser);
         $stmt->execute();
         $result = $stmt->get_result();
         $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
         return $cart['IdCarrello'];
     }
 
-    public function createNewCart(){
-        $query = "INSERT INTO Carrello (IdCarrello) VALUES (NULL)";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-    }
-
-    public function bindNewCartToUser($idUser){
-        $this->createNewCart();
-        $newCart = $this->getLastCart();
-        $query = "UPDATE Utente SET IdCarrello = ? WHERE Utente.IdUtente = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $newCart,$idUser);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
+    /** Insert a new Product on the Db */
     public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                                   $IdCategoria, $NomeTema){
         $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
@@ -211,6 +214,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** Edit a product on the DB */
     public function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                                 $IdCategoria, $NomeTema){
         $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
@@ -224,6 +228,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** ADD a product to the Showcase */
     public function addProductToShowCase($IdProd, $PopIndex){
         $query = "INSERT INTO Prodottoinvetrina (IdProd, IndicePopolarita) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
@@ -233,6 +238,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** Remove a product for the DB */
     public function removeProduct($IdProd){
         $query = "DELETE FROM Prodotto WHERE Prodotto.IdProd = ?";
         $stmt = $this->db->prepare($query);
@@ -242,28 +248,20 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCartFromUser($IdUser){
-        $query = "Select IdCarrello from Utente where Utente.IdUtente = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $IdUser);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
-        return $cart['IdCarrello'];
-    }
-
+    /** Add a product to a cart */
     public function addProductInCart($IdProd, $IdUser){
-        $cart = $this->getCartFromUser($IdUser);
+        $cart = $this->getLastCartOfUser($IdUser);
         $query = "INSERT INTO Prodottoincarrello (IdCarrello, IdProd) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $cart,$IdProd);
+        $stmt->bind_param("ii", $cart, $IdProd);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** Remove a product from a cart */
     public function removeProductFromCart($IdProd, $IdUser){
-        $cart = $this->getCartFromUser($IdUser);
+        $cart = $this->getLastCartOfUser($IdUser);
         $query = "DELETE FROM Prodottoincarrello 
                     WHERE prodottoincarrello.IdCarrello = ? 
                       AND prodottoincarrello.IdProd = ?";
@@ -274,8 +272,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /** Create a new Order */
     public function createOrder($IdUser){
-        $cart = $this->getCartFromUser($IdUser);
+        $cart = $this->getLastCartOfUser($IdUser);
         $query = "INSERT INTO Ordine (IdCarrello, Data, Stato) 
                     VALUES (?, ?, ?);";
         $stmt = $this->db->prepare($query);
