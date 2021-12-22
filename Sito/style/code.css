@@ -3,13 +3,15 @@
     word-break: break-word;
     border-radius: 20px;
     overflow: hidden !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
 }
 
-
-.CodeMirror > textarea {
-    resize:none;
+.CodeMirror > textarea{
     -ms-overflow-style: none;
-    overflow: hidden !important;
+    overflow-y: hidden !important;
     outline: none !important;
 }
 

@@ -28,6 +28,7 @@ HYC;
 create table Carrello
 (
     IdCarrello int not null AUTO_INCREMENT,
+    IdUtente int         not null,
     constraint ID_Carrello_ID primary key (IdCarrello)
 );
 
@@ -67,7 +68,6 @@ create table Prodotto
     NomeLinguaggio      varchar(40)  not null,
     IdCategoria         int          not null,
     NomeTema            varchar(40)  not null,
-    IdProdInVetrina     int,
     constraint ID_Prodotto_ID primary key (IdProd)
 );
 
@@ -121,14 +121,12 @@ create table ProdottoInCarrello
 create table Utente
 (
     IdUtente     int         not null AUTO_INCREMENT,
-    IdCarrello int         not null,
     Nome       varchar(40) not null,
     Cognome    varchar(40) not null,
     Username   varchar(40) not null,
     Email      varchar(40) not null,
     Password   varchar(40) not null,
-    constraint ID_Utente_ID primary key (IdUtente),
-    constraint SID_Utent_Carre_ID unique (IdCarrello)
+    constraint ID_Utente_ID primary key (IdUtente)
 );
 
 
@@ -180,10 +178,10 @@ alter table ProdottoInCarrello
         foreign key (IdCarrello)
             references Carrello (IdCarrello);
 
-alter table Utente
-    add constraint SID_Utent_Carre_FK
-        foreign key (IdCarrello)
-            references Carrello (IdCarrello);
+alter table Carrello
+    add constraint SID_Carre_Utent_FK
+        foreign key (IdUtente)
+            references Utente (IdUtente);
 
 
 -- Index Section
@@ -246,6 +244,4 @@ create index REF_Prodo_Prodo_IND
 create unique index ID_Utente_IND
     on Utente (IdUtente);
 
-create unique index SID_Utent_Carre_IND
-    on Utente (IdCarrello);
 

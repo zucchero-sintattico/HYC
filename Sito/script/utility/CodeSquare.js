@@ -32,6 +32,8 @@ class CodeSquare {
             mode: this._language,
             theme: this._theme,
             scrollbarStyle: null,
+            lineWrapping: true,
+            matchBrackets: true
         });
 
         return this.codeMirror;
@@ -95,6 +97,8 @@ class CodeSquare {
         let square = $(this._querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
+        square.find(".CodeMirror").css("events", "none");
+        this.codeMirror.setOption("readOnly", "nocursor");
     }
 
     scale(mul) {
