@@ -75,6 +75,7 @@ main > section > div > div > section img {
 main > section > div > div > a *:not(code, code *) {
     background-color: #E0E0E0 !important;
     border: none !important;
+    z-index: 999;
 }
 
 body > div > main > section > header > h1{
