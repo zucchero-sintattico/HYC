@@ -30,16 +30,6 @@ function handleObjectsMovement(relative){
 
 }
 
-let numOfCalls = 0;
-let angle = 45;
-
-function decreaseAngle(){
-    numOfCalls++;
-    angle -= numOfCalls*8;
-    console.log(numOfCalls);
-    return angle;
-}
-
 function executeButtonAnimation(button){
 
     button.animate([

@@ -44,16 +44,15 @@
 
 </section>
 
+
 <section>
     <header>
         <h1>Most Popular Codes</h1>
     </header>
-
     <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
             <?php foreach ($templateParams['mostPopularProducts'] as $popularProduct): ?>
                 <a href="#" class="col-3 d-flex justify-content-center text-center">
-
                         <code>
                             <script>
                                 let quadro<?php echo $popularProduct["IdProd"] ?> = new CodeSquare($('script').last().parent().get(0));
@@ -71,7 +70,6 @@
                                 quadro<?php echo $popularProduct["IdProd"] ?>.updateStyle();
                             </script>
                         </code>
-
                 </a>
             <?php endforeach; ?>
         </div>

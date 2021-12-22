@@ -3,14 +3,13 @@
     word-break: break-word;
     border-radius: 20px;
     overflow: hidden !important;
-
 }
 
 
-.CodeMirror > textarea{
+.CodeMirror > textarea {
     resize:none;
     -ms-overflow-style: none;
-    overflow: auto !important;
+    overflow: hidden !important;
     outline: none !important;
 }
 
