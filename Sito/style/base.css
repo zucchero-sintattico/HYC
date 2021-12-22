@@ -81,6 +81,8 @@ body {
 * {
     scrollbar-width: auto;
     scrollbar-color: grey white;
+    scrollbar-highlight-color: grey;
+    scroll-behavior: smooth;
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -93,7 +95,7 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: white;
+    background-color: grey;
     border-radius: 20px;
     border: 3px solid grey;
 }

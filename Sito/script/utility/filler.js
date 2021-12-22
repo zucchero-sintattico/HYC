@@ -88,7 +88,7 @@ function getFilteredArticles(data, filterName) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6" >
                         <a href="../editor.php?id=${data[i]["IdProd"]}">
                             <article>
                                <div class="col-12">
