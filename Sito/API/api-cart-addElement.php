@@ -16,7 +16,7 @@ if(isUserLoggedIn() && isset($_POST["title"])){
         1,
         $_POST["theme"]);
     $dbh->addProductInCart($product_id, getLoggedUserID());
-    echo json_encode($data);
+    echo "success";
 }
 
 
