@@ -37,8 +37,8 @@
                             </div>
                         </article>
                     </a>
-                    <div class="row justify-content-center mt-2">
-                        <a href="../removedArticleFromCart.php?IdProd=<?php echo $articolo["IdProd"] ?>" class="text-allert">Delete from cart</a>
+                    <div class="row justify-content-center my-4">
+                        <a href="../removedArticleFromCart.php?IdProd=<?php echo $articolo["IdProd"] ?>" class="text-danger">Delete from cart</a>
                     </div>
 
                 </div>
