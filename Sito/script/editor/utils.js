@@ -7,34 +7,48 @@ function getRelativeOffset(start, end) {
     }
 }
 
+function handleObjectsMovement(relative){
+    let stuffToTraslate = [];
+
+    const mainDiv = document.querySelector("main > div > div:nth-child(1)");
+
+    let relativePosition = getRelativeOffset(mainDiv, relative);
+
+    mainDiv.animate([
+        {
+            transform: "translate(0px,0px) scale(1,1)",
+            opacity: 1
+        },
+        {
+            transform: "translate(" + relativePosition.left + "px," + relativePosition.top + "px) scale(0.1, 0.1)",
+            opacity: 0
+        }], {duration: 1000,fill: "forwards", easing: "ease-out"}
+    );
+
+
+}
+
+function executeButtonAnimation(button){
+    button.animate([
+        {
+            transform: "scale(1,1)",
+            opacity: 1
+        },
+        {
+            transform: "scale(1.5, 1.5)",
+            opacity: 0
+        }],{duration: 500}
+    );
+}
+
 $(document).on('ready', function () {
 
     $("main > div > div > div > button").on("click", function (event) {
-        let stuffToTraslate = [];
 
-        stuffToTraslate.push(document.querySelector(".col-11 > div:nth-child(1) > div:nth-child(1)"));
-        stuffToTraslate.push(document.querySelector(".col-11 > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > code:nth-child(1)"))
-
-
-        for (let i = 0; i < stuffToTraslate.length; i++) {
-
-            let relativePosition = getRelativeOffset(stuffToTraslate[i], this);
-
-            stuffToTraslate[i].prototype.promise().done(function(){console.log("aaa");});
-            stuffToTraslate[i].animate([
-                {
-                    transform: "translate(0px,0px) scale(1,1)",
-                    opacity: 1
-                },
-                {
-                    transform: "translate(" + relativePosition.left + "px," + relativePosition.top + "px) scale(0.1, 0.1)",
-                    opacity: 0
-                }], 500, function () {
-                console.log("aaa");
-            })
-
-
-        }
+        window.setTimeout(() => { handleObjectsMovement(this); }, 0);
+        window.setTimeout(() => { executeButtonAnimation(this); }, 250);
+        //Da eseguire qui la funzione che si vuole fare
+        $(this).attr("disabled", "disabled");
 
     });
 
