@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-}
-
 body {
     background-color: #eee
 }
@@ -13,40 +5,6 @@ body {
 nav,
 .wrapper {
     padding: 10px 50px
-}
-
-nav .logo a {
-    color: #000;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none
-}
-
-nav div.ml-auto a {
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.8rem
-}
-
-header {
-    padding: 20px 0px
-}
-
-header .active {
-    font-weight: 700;
-    position: relative
-}
-
-header .active .fa-check {
-    position: absolute;
-    left: 50%;
-    bottom: -27px;
-    background-color: #fff;
-    font-size: 0.7rem;
-    padding: 5px;
-    border: 1px solid #008000;
-    border-radius: 50%;
-    color: #008000
 }
 
 .progress {

@@ -185,5 +185,10 @@ function fillHomePage(data) {
     main.append(linguaggi);
     main.append(img);
     main.append(prodottiPopolari);
+}
 
+function removeProdAndRefreshCart(idProd) {
+    $.getJSON("/API/api-search.php?lan=" + idLang, function (data) {
+
+    });
 }

@@ -111,7 +111,7 @@ class DatabaseHelper
 
     public function getArticleInCart($idUser)
     {
-        $cart = getLastCartOfUser($idUser);
+        $cart = $this->getLastCartOfUser($idUser);
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
          FROM Prodotto p, ProdottoInCarrello pc, Carrello c
             WHERE p.IdProd = pc.IdProd
@@ -160,26 +160,27 @@ class DatabaseHelper
 
     }
 
-    /** Insert a user into Db */
-    public function registerUser($Nome, $Cognome, $Username, $Email, $Password){
-        $query = "INSERT INTO Utente (IdCarrello, Nome, Cognome, Username, Email, Password) 
-                VALUES (?, ?, ?, ?, ?, ?);";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isssss", ($cart[0])["IdCarrello"], $Nome, $Cognome, $Username, $Email, $Password);
-        $stmt->execute();
-        $userId = getLastUser();
-        getNewCartForUser($userId);
-
-    }
 
     /** Return the last IdUtente of the DB to be attached to the cart */
     public function getLastUser(){
-        $query = "Select * from Utente order by IdUtente DESC LIMIT 1;";
+        $query = "Select * from Utente order by IdUtente DESC LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
-        return $cart['IdUtente'];
+        $user = ($result->fetch_all(MYSQLI_ASSOC))[0];
+        return $user['IdUtente'];
+    }
+
+    /** Insert a user into Db */
+    public function registerUser($Nome, $Cognome, $Username, $Email, $Password){
+        $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
+                VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sssss", $Nome, $Cognome, $Username, $Email, $Password);
+        $stmt->execute();
+        $userId = $this->getLastUser();
+        $this->getNewCartForUser($userId);
+
     }
 
     /** Create a new Cart for the Input User */
@@ -268,8 +269,6 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $cart,$IdProd);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     /** Create a new Order */
