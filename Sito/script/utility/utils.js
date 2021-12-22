@@ -1,29 +1,22 @@
 let quadri = [];
 
-function checkOnResize() {
+function checkerSize(selector, initialFrom, initialTo){
     if ($(window).width() < 768) {
-        $('code').each(function () {
-            $(this).parent().removeClass("col-5");
-            $(this).parent().addClass("col");
+        $(selector).each(function () {
+            $(this).parent().removeClass(initialFrom);
+            $(this).parent().addClass(initialTo);
         });
     } else {
-        $('code').each(function () {
-            $(this).parent().removeClass("col");
-            $(this).parent().addClass("col-5");
+        $(selector).each(function () {
+            $(this).parent().removeClass(initialTo);
+            $(this).parent().addClass(initialFrom);
         });
     }
-    $(window).on('resize', function () {
-        if ($(window).width() < 768) {
-            $('code').each(function () {
-                $(this).parent().removeClass("col-5");
-                $(this).parent().addClass("col");
-            });
-        } else {
-            $('code').each(function () {
-                $(this).parent().removeClass("col");
-                $(this).parent().addClass("col-5");
-            });
-        }
+}
 
+function checkOnResize(selector,initialFrom,initialTo) {
+    checkerSize(selector,initialFrom,initialTo);
+    $(window).on('resize', function () {
+        checkerSize(selector,initialFrom,initialTo);
     });
 }

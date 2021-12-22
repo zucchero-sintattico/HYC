@@ -16,7 +16,7 @@
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <!-- Import CodeMirror -->
@@ -72,14 +72,19 @@
 <!-- Tutta la pagina qua dentro -->
 <div class="container-fluid p-0 overflow-hidden">
     <!--Header-->
+    <header>
     <div class="row">
-        <header>
-            <div class="col">
+            <div class="col-3">
                 <a href="../index.php">
                     <img src="../img/logos/logo.png">
                 </a>
             </div>
-            <div class="col">
+            <div class="col-6">
+                <p>You select the code that inspires you the most.
+                    We frame it and make sure it arrives to your home.
+                </p>
+            </div>
+            <div class="col-3">
                 <label><?php
                     if (isUserLoggedIn()) {
                         echo "<script>let userId =".getLoggedUserID().";</script>";
@@ -90,12 +95,8 @@
                         echo "<a href='../login.php'>LogIn</a>";
                     } ?></label>
             </div>
-        </header>
-
-
-
     </div>
-
+    </header>
     <!-- Menu -->
     <div class="row ">
         <div class="col-12">

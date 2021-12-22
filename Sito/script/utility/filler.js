@@ -71,7 +71,7 @@ function createPopularArticles(data) {
                                 quadri[${i}].updateStyle();
                                 quadri[${i}].setText('${data[i]["Codice"]}'); 
                              }
-                            checkOnResize();
+                            checkOnResize("code","col-5","col");
                             </script>
                         </code>
 

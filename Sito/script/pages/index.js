@@ -4,4 +4,5 @@ $(document).on("ready", function (event) {
     $.getJSON("/API/api-homepage.php", function (data) {
         fillHomePage(data);
     });
+
 });

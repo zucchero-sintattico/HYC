@@ -1,5 +1,45 @@
+@keyframes sectionMovement {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.05,1.05);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes productsMovement {
+    0% {
+        transform: scale(1,1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05,1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1,1);
+        opacity: 1;
+    }
+}
+
+@keyframes imgMovement {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.1,1.1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
 main > section > div > div {
     overflow-x: auto;
+    overflow-y: hidden;
     height: 35%;
 }
 
@@ -12,13 +52,19 @@ main > section > div > div > a, main > section > div > div > article, main > sec
     color: black;
 }
 
-main > section > div > div > a:hover, main > section > div > div > article:hover, main > section > div > div > section:hover {
-    color: black;
-    background-color: gray;
-    font-weight: bold;
+main > section > div > div section:hover{
     cursor: pointer;
+    animation: sectionMovement 0.4s ease-out;
 }
 
+main > section > div > div a:hover > code{
+    cursor: pointer;
+    animation: productsMovement 0.4s ease-out;
+}
+
+main > section > div > div section:hover img{
+    animation: imgMovement 0.5s ease-out;
+}
 
 main > section > div > div > section img {
     width: 40% !important;
