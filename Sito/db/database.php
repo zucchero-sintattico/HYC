@@ -211,6 +211,37 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+                                $IdCategoria, $NomeTema){
+        $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
+                      IdCategoria, NomeTema) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssissiiissis", $Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+            $IdCategoria, $NomeTema);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addProductToShowCase($IdProd, $PopIndex){
+        $query = "INSERT INTO Prodottoinvetrina (IdProd, IndicePopolarita) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $IdProd,$PopIndex);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeProduct($IdProd){
+        $query = "DELETE FROM Prodotto WHERE Prodotto.IdProd = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCartFromUser($IdUser){
         $query = "Select IdCarrello from Utente where Utente.IdUtente = ?";
         $stmt = $this->db->prepare($query);
