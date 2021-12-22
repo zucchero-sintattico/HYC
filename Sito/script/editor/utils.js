@@ -87,7 +87,11 @@ $(document).on('ready', function () {
         $(this).attr("disabled", "disabled");
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
-        //Da eseguire qui la funzione che si vuole fare
+
+
+        $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
+            console.log(data);
+        });
 
     });
 
