@@ -74,8 +74,7 @@ function createPopularArticles(data) {
                             checkOnResize("code","col-5","col");
                             
                             $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
-                                $(this).href("editor.php?id=${data[i]["IdProd"]}");
-               
+                                window.location.href = "editor.php?id=${data[i]["IdProd"]}")          
                             });
                             </script>
                         </code>
