@@ -89,13 +89,13 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-    background: orange;
+    background: white;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: blue;
+    background-color: white;
     border-radius: 20px;
-    border: 3px solid orange;
+    border: 3px solid grey;
 }
 
 nav > ul li:nth-child(1):hover img{
