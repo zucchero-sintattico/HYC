@@ -45,7 +45,7 @@
     <script src="../script/searchBar.js"></script>
         -->
     <script src="../script/utility/CodeSquare.js"></script>
- <!--   <script src="../script/search/searchBar.js"></script> -->
+    <!--   <script src="../script/search/searchBar.js"></script> -->
     <script src="../script/utility/graphicsTemplate.js"></script>
     <script src="../script/utility/notifications.js"></script>
 
@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
+
     <?php header('Access-Control-Allow-Origin: *'); ?>
     <?php
     if(isset($templateParams["js"])):
@@ -67,7 +68,6 @@
     <title><?php echo $templateParams["title"]; ?></title>
 </head>
 <body>
-
 
 <!-- Tutta la pagina qua dentro -->
 <div class="container-fluid p-0 overflow-hidden">

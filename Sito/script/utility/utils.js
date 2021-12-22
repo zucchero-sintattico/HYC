@@ -20,3 +20,5 @@ function checkOnResize(selector,initialFrom,initialTo) {
         checkerSize(selector,initialFrom,initialTo);
     });
 }
+
+

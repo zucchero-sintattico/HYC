@@ -32,6 +32,8 @@ class CodeSquare {
             mode: this._language,
             theme: this._theme,
             scrollbarStyle: null,
+            lineWrapping: true,
+            matchBrackets: true
         });
 
         return this.codeMirror;
