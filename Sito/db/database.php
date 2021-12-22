@@ -287,6 +287,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function editOrderStatus($IdOrder, $Status){
+        $query = "UPDATE Ordine SET Stato = ? WHERE Ordine.IdOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $Status, $IdOrder);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function createNotification($Type, $Desc, $IdUser){
         $query = "INSERT INTO Notifica (TipoNotifica, Data, Descrizione, IdUtente, Letto) 
                     VALUES (?, ?, ?, ?, ?);";
