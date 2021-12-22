@@ -212,11 +212,11 @@ class DatabaseHelper
             $IdCategoria, $NomeTema);
         $stmt->execute();
 
-        $query = "Select * from Prodotto order by IdProdotto DESC LIMIT 1;";
+        // Return the IdProd of the newest Product
+        $query = "Select * from Prodotto order by IdProd DESC LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        // Return the IdProd of the newest Product
         return (($result->fetch_all(MYSQLI_ASSOC))[0])['IdProd'];
     }
 
@@ -261,8 +261,6 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $cart, $IdProd);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     /** Remove a product from a cart */
@@ -286,8 +284,6 @@ class DatabaseHelper
         $status = 'Processed';
         $stmt->bind_param("iss", $cart, $date, $status);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function editOrderStatus($IdOrder, $Status){

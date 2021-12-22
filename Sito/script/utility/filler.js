@@ -138,7 +138,7 @@ function getFilteredArticles(data, filterName) {
 
 // Recall previous function and change the description with the Price
 function getArticleInCart(data){
-    let results = data['Articles'];
+    let results = data['Products'];
     let prices = data['Prices'];
     let content = getFilteredArticles(data, "Cart");
     const main = $("main");
@@ -188,7 +188,7 @@ function fillHomePage(data) {
 }
 
 function removeProdAndRefreshCart(idProd) {
-    $.getJSON("/API/api-search.php?lan=" + idLang, function (data) {
-
+    $.post("API/api-cart-removeElement", { id : idProd }, function (data) {
+        getArticleInCart(data);
     });
 }
