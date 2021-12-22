@@ -72,6 +72,10 @@ function createPopularArticles(data) {
                                 quadri[${i}].setText('${data[i]["Codice"]}'); 
                              }
                             checkOnResize("code","col-5","col");
+                            
+                            $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
+                               window.location.href = $(this).attr("href");
+                            });
                             </script>
                         </code>
 
