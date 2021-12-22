@@ -77,6 +77,27 @@ body {
     box-sizing: border-box;
 }
 
+/* Works on Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: grey white;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: orange;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: blue;
+    border-radius: 20px;
+    border: 3px solid orange;
+}
+
 nav > ul li:nth-child(1):hover img{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
