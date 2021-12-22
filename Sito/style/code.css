@@ -10,13 +10,15 @@
 .CodeMirror > textarea{
     resize:none;
     -ms-overflow-style: none;
-    overflow: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
     outline: none !important;
 }
 
 .CodeMirror-scroll {
     resize: none;
     overflow-y:hidden !important;
+    overflow-x:hidden !important;
     border-radius: 20px;
     outline: none;
 }

@@ -96,7 +96,7 @@ class CodeSquare {
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
-        this.codeMirror.setOption("readOnly", true);
+        this.codeMirror.setOption("readOnly", "nocursor");
     }
 
     scale(mul) {
