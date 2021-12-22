@@ -211,8 +211,13 @@ class DatabaseHelper
         $stmt->bind_param("ssissiiissis", $Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
             $IdCategoria, $NomeTema);
         $stmt->execute();
+
+        $query = "Select * from Prodotto order by IdProdotto DESC LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        // Return the IdProd of the newest Product
+        return (($result->fetch_all(MYSQLI_ASSOC))[0])['IdProd'];
     }
 
     /** Edit a product on the DB */

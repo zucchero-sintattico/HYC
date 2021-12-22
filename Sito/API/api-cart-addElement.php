@@ -1,4 +1,3 @@
-<!-- Called when an articles is added to cart
 <?php
 require_once '../bootstrap.php';
 
