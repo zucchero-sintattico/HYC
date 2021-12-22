@@ -13,12 +13,14 @@ class CodeSquare {
         this.codeMirror = null;
         this._scaledWidth = 100;
         this._querySelector = querySelector;
+        this._title="Title";
 
     }
 
     setQuerySelector(querySelector){
         this._querySelector = querySelector
     }
+
 
     getSquare() {
         let square = $(this._querySelector);
@@ -124,6 +126,14 @@ class CodeSquare {
         square.css("padding", this._padding*mul);
     }
 
+    set title(value) {
+        this._title = value;
+    }
+
+    get title() {
+        return this._title;
+    }
+
     get code(){
         return this.codeMirror.getValue();
     }
@@ -175,15 +185,17 @@ class CodeSquare {
 
     toJSON() {
         return {
-            value : this.code(),
-            language : this.language(),
-            theme : this.theme(),
-            frame_color: this.frame_color(),
-            width : this.width(),
-            height : this.height(),
-            padding : this.padding(),
-            font_size : this.font_size(),
-            lineNumbers : this.lineNumbers()
+            value : this.code,
+            language : this.language,
+            theme : this.theme,
+            frame_color: this.frame_color,
+            width : this.width,
+            height : this.height,
+            padding : this.padding,
+            font_size : this.font_size,
+            lineNumbers : this.lineNumbers,
+            description : "",
+            title : this.title
         }
     }
 }
