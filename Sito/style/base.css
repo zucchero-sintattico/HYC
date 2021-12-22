@@ -22,17 +22,13 @@
 
 @keyframes cartMovement {
     0% {
-        transform: scale(1,1);
-        transform: rotate3d(1,1,1,0);
+        transform: scale(1,1) rotate3d(1,1,1,0);
     }
     50% {
-        transform: scale(1.2,1.2);
-        transform: translateY(150px);
-        transform: rotate3d(1,1,1,45deg);
+        transform: scale(1.2,1.2) translate(-5px,-8px) rotate3d(1,1,1,30deg);
     }
     100% {
-        transform: scale(1,1);
-        transform: rotate3d(1,1,1,0);
+        transform: scale(1,1) rotate3d(1,1,1,0);
     }
 }
 
@@ -50,24 +46,29 @@
 
 @keyframes profileSpinMovement {
     0% {
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1,1);
     }
+
+    50% {
+        transform: rotate(180deg) scale(1.2,1.2);
+    }
+
     100% {
-        transform: rotate(360deg);
+        transform: rotate(360deg) scale(1,1);
     }
 }
 
 @keyframes bellRingSpinMovement {
     0% {
         animation-timing-function: ease-in;
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1, 1);
     }
     50% {
-        transform: rotate(45deg);
+        transform: rotate(45deg) scale(1.2, 1.2);
     }
     100% {
         animation-timing-function: ease-out;
-        transform: rotate(0deg);
+        transform: rotate(0deg) scale(1, 1);
     }
 }
 
@@ -78,10 +79,8 @@ body {
 
 nav > ul li:nth-child(1):hover img{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
 }
+
 nav > ul li:nth-child(2):hover img{
     animation: cartMovement 0.5s ease-out;
 }
@@ -91,7 +90,7 @@ nav > ul li:nth-child(3):hover img{
 }
 
 nav > ul li:nth-child(4):hover img{
-    animation: profileSpinMovement 0.2s 2 linear;
+    animation: profileSpinMovement 0.22s 2 linear;
 }
 
 nav > ul li:nth-child(5):hover img{
@@ -109,8 +108,7 @@ header > div {
 }
 
 header > div > div img {
-    height: 66px;
-    width: 80%;
+    width: 100%;
 }
 
 header > div > div:nth-child(3) {
@@ -119,7 +117,11 @@ header > div > div:nth-child(3) {
 
 header > div > div:nth-child(2) {
     text-align: left;
-    font-size: 35px;
+    font-size: clamp(1rem, -0.875rem + 2.333vw, 3.5rem);
+}
+
+header > div > div:nth-child(2) > p {
+    line-height: 15px;
 }
 
 header > div:nth-child(1) > div:nth-child(1){
@@ -232,6 +234,12 @@ body main {
 }
 
 
+@media (prefers-reduced-motion) {
+    * {
+        animation: none;
+    }
+}
+
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
@@ -246,6 +254,10 @@ body main {
 
     body nav ul li a img {
         width: 10%;
+    }
+
+    header > div > div:nth-child(2) > p {
+        line-height: 40px;
     }
 
     body header {
