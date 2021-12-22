@@ -161,9 +161,7 @@ class DatabaseHelper
     }
 
     public function registerUser($Nome, $Cognome, $Username, $Email, $Password){
-        $query = "INSERT INTO Carrello (IdCarrello) VALUES (NULL)";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
+        $this->createNewCart();
         $cart = $this->getLastCart();
         $query = "INSERT INTO Utente (IdCarrello, Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?, ?);";
@@ -175,16 +173,114 @@ class DatabaseHelper
     }
 
     public function getLastCart(){
-        $query = "Select * from carrello order by IdCarrello DESC LIMIT 1;";
+        $query = "Select * from Carrello order by IdCarrello DESC LIMIT 1;";
         $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
+        return $cart['IdCarrello'];
+    }
+
+    public function createNewCart(){
+        $query = "INSERT INTO Carrello (IdCarrello) VALUES (NULL)";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+    }
+
+    public function bindNewCartToUser($idUser){
+        $this->createNewCart();
+        $newCart = $this->getLastCart();
+        $query = "UPDATE Utente SET IdCarrello = ? WHERE Utente.IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $newCart,$idUser);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createNewCart(){
-
+    public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+                                  $IdCategoria, $NomeTema){
+        $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
+                      IdCategoria, NomeTema) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssissiiissis", $Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+            $IdCategoria, $NomeTema);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getCartFromUser($IdUser){
+        $query = "Select IdCarrello from Utente where Utente.IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart = ($result->fetch_all(MYSQLI_ASSOC))[0];
+        return $cart['IdCarrello'];
+    }
+
+    public function addProductInCart($IdProd, $IdUser){
+        $cart = $this->getCartFromUser($IdUser);
+        $query = "INSERT INTO Prodottoincarrello (IdCarrello, IdProd) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $cart,$IdProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeProductFromCart($IdProd, $IdUser){
+        $cart = $this->getCartFromUser($IdUser);
+        $query = "DELETE FROM Prodottoincarrello 
+                    WHERE prodottoincarrello.IdCarrello = ? 
+                      AND prodottoincarrello.IdProd = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $cart,$IdProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createOrder($IdUser){
+        $cart = $this->getCartFromUser($IdUser);
+        $query = "INSERT INTO Ordine (IdCarrello, Data, Stato) 
+                    VALUES (?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+        $date = date("y/m/d");
+        $status = 'Processed';
+        $stmt->bind_param("iss", $cart, $date, $status);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createNotification($Type, $Desc, $IdUser){
+        $query = "INSERT INTO Notifica (TipoNotifica, Data, Descrizione, IdUtente, Letto) 
+                    VALUES (?, ?, ?, ?, ?);";
+        $stmt = $this->db->prepare($query);
+        $date = date("y/m/d");
+        $read = 0;
+        $stmt->bind_param("sssii", $Type, $date, $Desc, $IdUser, $read);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function readAllNotifications($IdUser){
+        $query = "UPDATE Notifica SET Letto = 1 
+                    WHERE Notifica.IdNotifica 
+                              IN(SELECT IdNotifica FROM Notifica where Notifica.IdUtente = ?);";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+
 
 
 
