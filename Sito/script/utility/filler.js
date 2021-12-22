@@ -53,7 +53,7 @@ function createPopularArticles(data) {
 
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" onclick="">
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center">
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
                             if(!$('#quadro${data[i]["IdProd"]} > .CodeMirror').length){
@@ -72,6 +72,10 @@ function createPopularArticles(data) {
                                 quadri[${i}].setText('${data[i]["Codice"]}'); 
                              }
                             checkOnResize("code","col-5","col");
+                            
+                            $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
+                                window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
+                            });
                             </script>
                         </code>
 
