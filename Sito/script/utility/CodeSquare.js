@@ -95,6 +95,7 @@ class CodeSquare {
         let square = $(this._querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
+        this.codeMirror.setOption("readOnly", true);
     }
 
     scale(mul) {
