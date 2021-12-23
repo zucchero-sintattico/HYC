@@ -3,9 +3,9 @@
         <h2>Welcome <?php echo $templateParams["userInfo"]["Nome"]; ?></h2>
         <h3>Order history</h3>
         <div class="col border text-center">
-                    <?php for($i=1;$i<=count($templateParams["ordersHistory"]);$i++): ?>
+                    <?php for($i=0;$i<count($templateParams["ordersHistory"]);$i++): ?>
                     <?php $totaleOrdine=0; ?>
-                        <div class="row d-flex justify-content-center"><h4>Ordine N°<?php echo $i ?></h4></div>
+                        <div class="row d-flex justify-content-center"><h4>Ordine N°<?php echo $i+1 ?></h4></div>
                         <div class="row">
                             <?php for($j=0;$j<count($templateParams["ordersHistory"][$i]);$j++): ?>
                                 <div class="col border">

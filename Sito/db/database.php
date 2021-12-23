@@ -176,16 +176,16 @@ class DatabaseHelper
         $resultFetched = $result->fetch_all(MYSQLI_ASSOC);
 
         $ordersArrayOrderedByIndex = array();
-
+        $var = 0;
         foreach ($resultFetched as $productOrdered){
 
-            $productOrderId = $productOrdered["OrdineId"];
-
-            if(!isset($ordersArrayOrderedByIndex[$productOrderId])){
-                $ordersArrayOrderedByIndex[$productOrderId] = array();
+            if(!isset($ordersArrayOrderedByIndex[$var])){
+                $ordersArrayOrderedByIndex[$var] = array();
             }
-            $ordersArrayOrderedByIndex[$productOrderId][] = ($productOrdered);
+            $ordersArrayOrderedByIndex[$var][] = ($productOrdered);
+            $var++;
         }
+
         return $ordersArrayOrderedByIndex;
     }
 
