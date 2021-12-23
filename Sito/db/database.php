@@ -384,8 +384,6 @@ class DatabaseHelper
         $read = 0;
         $stmt->bind_param("sssii", $Type, $date, $Desc, $IdUser, $read);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function readAllNotifications($IdUser){
