@@ -190,5 +190,6 @@ function fillHomePage(data) {
 function removeProdAndRefreshCart(idProd) {
     $.post("API/api-cart-removeElement", { id : idProd }, function (data) {
         getArticleInCart(data);
+        // Da controllare PHP come genera Carrello e replicare GRAZZZZZIE
     });
 }

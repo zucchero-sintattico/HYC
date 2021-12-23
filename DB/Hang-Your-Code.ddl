@@ -60,13 +60,13 @@ create table Prodotto
     Colore_frame        varchar(10)   not null,
     Larghezza           int          not null,
     Titolo              varchar(40)  not null,
-    Descrizione         varchar(100),
+    
     Altezza             int          not null,
     Padding             int          not null,
     Dimensione_font     int          not null,
     Mostra_numero_linee char         not null,
     NomeLinguaggio      varchar(40)  not null,
-    IdCategoria         int          not null,
+   
     NomeTema            varchar(40)  not null,
     constraint ID_Prodotto_ID primary key (IdProd)
 );
@@ -107,6 +107,8 @@ create table ProdottoInVetrina
     IdProdInVetrina  int not null AUTO_INCREMENT,
     IdProd           int not null,
     IndicePopolarita int not null,
+    Descrizione         varchar(100),
+    IdCategoria         int          not null,
     constraint ID_ProdottoInVetrina_ID primary key (IdProdInVetrina),
     constraint SID_Prodo_Prodo_ID unique (IdProd)
 );
@@ -148,7 +150,7 @@ alter table Prodotto
         foreign key (NomeLinguaggio)
             references Linguaggio (NomeLinguaggio);
 
-alter table Prodotto
+alter table ProdottoInVetrina
     add constraint REF_Prodo_Categ_FK
         foreign key (IdCategoria)
             references Categoria (IdCategoria);
@@ -209,7 +211,7 @@ create index REF_Prodo_Lingu_IND
     on Prodotto (NomeLinguaggio);
 
 create index REF_Prodo_Categ_IND
-    on Prodotto (IdCategoria);
+    on ProdottoInVetrina (IdCategoria);
 
 create index REF_Prodo_Tema_IND
     on Prodotto (NomeTema);
