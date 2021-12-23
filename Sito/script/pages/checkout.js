@@ -2,7 +2,7 @@ function checkoutIsOk() {
     let content = `
     <section>
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-6 align-middle font-weight-bold offset-3 mt-4 bg-white border border-success text-center">
                 <p>Order Confirmed!</p>
             </div>
         </div>
@@ -13,7 +13,7 @@ function checkoutIsOk() {
 
 function validateInput() {
     let valid = true;
-    $("input").each(function () {
+    $("input:not(input:first-of-type, input:last-of-type)").each(function () {
         if($(this).val() == ""){
             valid = false;
             $(this).addClass("notValid");

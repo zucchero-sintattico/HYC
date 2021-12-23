@@ -114,7 +114,7 @@
                     <div class="btn text-uppercase">back to shopping</div>
                 </div>
                 <div class="col-md-6 pt-md-0 pt-3">
-                    <div class="btn text-white ml-auto"> <span class="fas fa-lock"></span> Continue to Shopping </div>
+                    <div class="btn text-white ml-auto"> <span class="fas fa-lock"></span> Process Order</div>
                 </div>
             </div>
             <div class="text-muted pt-3" id="mobile"> <span class="fas fa-lock"></span> Your information is save </div>
