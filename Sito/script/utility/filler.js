@@ -174,7 +174,6 @@ function generateCart(data){
                             <a href="#" class="text-danger" id="delete${products[i]["IdProd"]}"> Delete Product </a>
                                 <script>
                                     $("#delete${products[i]["IdProd"]}").on('click', function () {
-                                        console.log("ciao");
                                         removeProdAndRefreshCart(${products[i]["IdProd"]});
                                     });
                                 </script>

@@ -85,6 +85,7 @@ $(document).on('ready', function () {
 
     $("main > div > div > div > button").on("click", function (event) {
         $(this).attr("disabled", "disabled");
+
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
 
