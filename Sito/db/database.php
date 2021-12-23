@@ -66,8 +66,8 @@ class DatabaseHelper
        NomeLinguaggio, NomeTema, Tipo
             FROM Prodotto p, ProdottoInVetrina pv, Categoria c
             WHERE p.IdProd = pv.IdProd
-              AND c.IdCategoria = p.IdCategoria
-              AND p.IdCategoria = ?";
+              AND c.IdCategoria = pv.IdCategoria
+              AND pv.IdCategoria = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $category);
         $stmt->execute();
@@ -109,10 +109,10 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProductInCart($idUser)
+    public function getProductsInCart($idUser)
     {
         $cart = $this->getLastCartOfUser($idUser);
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
          FROM Prodotto p, ProdottoInCarrello pc, Carrello c
             WHERE p.IdProd = pc.IdProd
               AND pc.IdCarrello = c.IdCarrello 
@@ -138,7 +138,7 @@ class DatabaseHelper
     public function getProductById($id)
     {
         $query = "SELECT IdProd, Codice, Colore_frame, Larghezza,
-       Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
+       Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
        NomeLinguaggio, NomeTema
             FROM Prodotto p
             WHERE p.IdProd = ?";
@@ -202,14 +202,14 @@ class DatabaseHelper
     }
 
     /** Insert a new Product on the Db */
-    public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                                  $IdCategoria, $NomeTema){
-        $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                      IdCategoria, NomeTema) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+                                   $NomeTema){
+        $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
+                       NomeTema) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssissiiissis", $Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-            $IdCategoria, $NomeTema);
+        $stmt->bind_param("ssisiiisss", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+             $NomeTema);
         $stmt->execute();
 
         // Return the IdProd of the newest Product
@@ -221,24 +221,24 @@ class DatabaseHelper
     }
 
     /** Edit a product on the DB */
-    public function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                                $IdCategoria, $NomeTema){
-        $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                      IdCategoria, NomeTema) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+                                 $NomeTema){
+        $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
+                       NomeTema) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssissiiissis", $Codice, $Colore_frame, $Larghezza, $Titolo, $Descrizione, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-            $IdCategoria, $NomeTema);
+        $stmt->bind_param("ssisiiisss", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+            $NomeTema);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     /** ADD a product to the Showcase */
-    public function addProductToShowCase($IdProd, $PopIndex){
-        $query = "INSERT INTO Prodottoinvetrina (IdProd, IndicePopolarita) VALUES (?, ?)";
+    public function addProductToShowCase($IdProd, $PopIndex, $Descrizione, $IdCategoria){
+        $query = "INSERT INTO Prodottoinvetrina (IdProd, IndicePopolarita, Descrizione, IdCategoria) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $IdProd,$PopIndex);
+        $stmt->bind_param("iisi", $IdProd, $PopIndex, $Descrizione, $IdCategoria);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -250,8 +250,11 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $IdProd);
         $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        /** Delete from ShowCase */
+        $query = "DELETE FROM ProdottoInVetrina WHERE IdProd = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdProd);
+        $stmt->execute();
     }
 
     /** Add a product to a cart */

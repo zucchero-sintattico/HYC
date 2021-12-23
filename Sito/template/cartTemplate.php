@@ -38,7 +38,13 @@
                         </article>
                     </a>
                     <div class="row justify-content-center my-4">
-                        <a href="../removedArticleFromCart.php?IdProd=<?php echo $articolo["IdProd"] ?>" class="text-danger">Delete from cart</a>
+                        <p> Delete Product </p>
+                        <script>$("main > section > div.container-fluid > div > div > div > p").on('click', function () {
+                                console.log("chaimo");
+                            removeProdAndRefreshCart(<?php echo $articolo["IdProd"] ?>);
+
+                            });</script>
+                      <!--  <a href="../removedArticleFromCart.php?IdProd=<?php echo $articolo["IdProd"] ?>" class="text-danger">Delete from cart</a> -->
                     </div>
 
                 </div>
