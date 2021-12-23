@@ -250,6 +250,17 @@ class DatabaseHelper
         return $stmt->execute();
     }
 
+    public function updateUserPass($idUtente, $passToUpdate){
+        $query = "UPDATE Utente SET Password = ? 
+                    WHERE Utente.idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si",
+            $passToUpdate,
+            $idUtente
+        );
+        return $stmt->execute();
+    }
+
     /** Create a new Cart for the Input User */
     public function getNewCartForUser($IdUser){
         $query = "INSERT INTO Carrello (IdUtente) VALUES ($IdUser)";

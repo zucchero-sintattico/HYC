@@ -89,7 +89,7 @@
                     <label><?php
                         if (isUserLoggedIn()) {
                             echo "<script>let userId =".getLoggedUserID().";</script>";
-                            echo "Hi ".getNameUserID()."\n";
+                            echo "<p>Hi ".getNameUserID()."</p>";
                             echo "<a href='../logout.php'>LogOut</a>";
                         } else {
                             echo "<script> let userId = null </script>";
