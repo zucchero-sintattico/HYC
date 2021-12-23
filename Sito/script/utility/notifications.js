@@ -21,17 +21,18 @@ $(document).on('ready', function () {
 
 
     //notification selector
-    const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5) > a");
+    const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5)");
     let notificationDropDown = null;
     const header = $("header")
-    notificationToggle.on('click', function () {
+    notificationToggle.children().on('click', function () {
 
         if (notificationDropDown == null) {
             notificationToggle.append("<div><p>notifica 1</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p><p>notifica 2</p></div>");
-            notificationDropDown = notificationToggle.children().next().next();
+            notificationDropDown = notificationToggle.children().next();
             notificationDropDown.css("position", "absolute");
             notificationDropDown.css("background", "#f1f1f1");
             notificationDropDown.css("overflow-y", "scroll");
+            notificationDropDown.css("z-index", 999999);
 
             if($(window).width() < 768){
                 notificationDropDown.css("bottom", $("nav").height());
