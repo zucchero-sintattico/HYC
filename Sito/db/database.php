@@ -126,9 +126,20 @@ class DatabaseHelper
 
     public function checkLogin($username, $password)
     {
-        $query = "SELECT IdUtente, Username,  Nome FROM Utente WHERE  Username = ? AND Password = ?";
+        $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  Username = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkLoginById($idUtente, $password)
+    {
+        $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  IdUtente = ? AND Password = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is', $idUtente, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -222,6 +233,21 @@ class DatabaseHelper
         $userId = $this->getLastUser();
         $this->getNewCartForUser($userId);
 
+    }
+
+    public function updateUserData($idUtente, $dataToUpdate){
+        $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?, Password = ? 
+                    WHERE Utente.idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sssssi",
+            $dataToUpdate["nome"],
+            $dataToUpdate["cognome"],
+            $dataToUpdate["username"],
+            $dataToUpdate["email"],
+            $dataToUpdate["password"],
+            $idUtente
+        );
+        return $stmt->execute();
     }
 
     /** Create a new Cart for the Input User */

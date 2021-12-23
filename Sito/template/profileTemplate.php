@@ -51,12 +51,12 @@
                 </div>
                 <div class="row m-3">
                     <div class="col pr-4">
-                        <button type="submit" class="btn btn-dark">Confirm profile edit</button>
+                        <button class="btn btn-dark">Confirm profile edit</button>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="oldPass">Insert old password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Old password">
+                            <label for="oldPass">Insert current password to confirm edit</label>
+                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>
@@ -76,12 +76,12 @@
                 </div>
                 <div class="row m-3">
                     <div class="col pr-4">
-                        <button type="submit" class="btn btn-dark">Confirm profile edit</button>
+                        <button class="btn btn-dark">Confirm profile edit</button>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="oldPass">Insert old password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Old password">
+                            <label for="oldPass">Insert current password to confirm edit</label>
+                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>

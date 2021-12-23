@@ -25,3 +25,8 @@ function registerLoggedUser($user){
     $_SESSION["Username"] = $user["Username"];
     $_SESSION["Nome"] = $user["Nome"];
 }
+
+function updateNameAndUsername($username, $nome){
+    $_SESSION["Username"] = $username;
+    $_SESSION["Nome"] = $nome;
+}
