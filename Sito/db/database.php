@@ -109,7 +109,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProductInCart($idUser)
+    public function getProductsInCart($idUser)
     {
         $cart = $this->getLastCartOfUser($idUser);
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 

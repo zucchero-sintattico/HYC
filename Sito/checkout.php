@@ -9,7 +9,7 @@ $templateParams['shipping'] = 10;
 $templateParams['js'] = array("script/pages/checkout.js");
 
 if (isUserLoggedIn()) {
-    $templateParams['query'] = $dbh->getArticleInCart(getLoggedUserID());
+    $templateParams['query'] = $dbh->getProductsInCart(getLoggedUserID());
     // calcolo prezzo tot
     $sum = 0;
     $i = 0;

@@ -140,12 +140,14 @@ function getFilteredArticles(data, filterName) {
 function getArticleInCart(data){
     let results = data['Products'];
     let prices = data['Prices'];
-    let content = getFilteredArticles(data, "Cart");
+    let content = getFilteredArticles(results, "Cart");
     const main = $("main");
     main.html("");
     main.append(content);
-    for(let i = 0; i < prices.length; i++){
-        $("main article:nth-child(${i}) p").val("Price: $" + prices[i]);
+    if(data["Empty"] == 0){
+        for(let i = 0; i < prices.length; i++){
+            $(`main article:nth-child(${i}) p`).val("Price: $" + prices[i]);
+        }
     }
 }
 
@@ -188,7 +190,15 @@ function fillHomePage(data) {
 }
 
 function removeProdAndRefreshCart(idProd) {
-    $.post("API/api-cart-removeElement", { id : idProd }, function (data) {
+    prod = {
+        IdProd : idProd
+    }
+    console.log(prod);
+    $.post("/API/api-cart-removeElement.php", prod, function (data) {
+        if(data['Empty'] == 1){
+            data['Products'] = new Array();
+            data['Prices'] = new Array();
+        }
         getArticleInCart(data);
         // Da controllare PHP come genera Carrello e replicare GRAZZZZZIE
     });
