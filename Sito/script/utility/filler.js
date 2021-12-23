@@ -58,7 +58,6 @@ function createLanguages(data) {
 
 function createPopularArticles(data) {
     let content = '';
-
     for (let i = 0; i < data.length; i++) {
         let prodottoPopolare = `
                 <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" >
@@ -100,7 +99,7 @@ function getFilteredArticles(data, filterName) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-12 col-md-6" >
+                    <div class="col-12 col-md-6">
                         <a href="../editor.php?id=${data[i]["IdProd"]}">
                             <article>
                                <div class="col-12">
@@ -136,19 +135,79 @@ function getFilteredArticles(data, filterName) {
     return adaptableSection(content, filterName);
 }
 
+function generateCart(data){
+    let content = '';
+    quadri = [];
+    let products = data['Products'];
+    let prices = data['Prices'];
+    for (let i = 0; i < products.length; i++) {
+        let result = `
+                    <div class="col-10 col-md-5" >
+                        <a href="../editor.php?id=${products[i]["IdProd"]}">
+                            <article>
+                               <div class="col-12">
+                                    <h2>${products[i]["Titolo"]}</h2>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <code id="quadro${products[i]["IdProd"]}">
+                                        <script>
+                                            quadri.push(new CodeSquare(document.querySelector('#quadro${products[i]["IdProd"]}')));
+                                            quadri[${i}].getSquare();
+                                            quadri[${i}].setPadding(${products[i]["Padding"]});
+                                            quadri[${i}].setFramecolor('${products[i]["Colore_frame"]}');
+                                            quadri[${i}].setFontSize(${products[i]["Dimensione_font"]});
+                                            quadri[${i}].setLanguages('${products[i]["NomeLinguaggio"]}');
+                                            quadri[${i}].setStyle('${products[i]["NomeTema"]}');
+                                            quadri[${i}].disable();
+                                            quadri[${i}].widthScale(300);
+                                            quadri[${i}].updateStyle();
+                                            quadri[${i}].setText('${products[i]["Codice"]}');
+                                        </script>
+                                    </code>
+                                </div>
+                                <div class="row">
+                                    <p href="#" class="col-12 font-weight-bold">Price: € ${prices[i]}</p>
+                                </div>
+                            </article>                
+                        </a>
+                        <div class="row justify-content-center my-4">
+                            <a href="#" class="text-danger" id="delete${products[i]["IdProd"]}"> Delete Product </a>
+                                <script>
+                                    $("#delete${products[i]["IdProd"]}").on('click', function () {
+                                        console.log("ciao");
+                                        removeProdAndRefreshCart(${products[i]["IdProd"]});
+                                    });
+                                </script>
+                        </div>
+                    </div>`;
+        content += result;
+    }
+    return adaptableSection(content, "Cart");
+
+
+}
+
 // Recall previous function and change the description with the Price
 function getArticleInCart(data){
     let results = data['Products'];
     let prices = data['Prices'];
-    let content = getFilteredArticles(results, "Cart");
+    let content = generateCart(data);
     const main = $("main");
     main.html("");
     main.append(content);
-    if(data["Empty"] == 0){
-        for(let i = 0; i < prices.length; i++){
-            $(`main article:nth-child(${i}) p`).val("Price: $" + prices[i]);
-        }
+    let content2 = ``;
+    if(prices.length > 0){
+        content2 += `
+                      <div class="row">
+                        <div class="col-12 text-center">
+                            <a href="../checkout.php">Checkout</a>
+                        </div>
+                      </div>
+                        
+                      `;
     }
+    let section = $("main section");
+    section.append(content2);
 }
 
 function createCatalogWithCategories(idCategory) {
