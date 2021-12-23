@@ -24,7 +24,7 @@ body > div > main > div > div > a article{
     padding: 3% 3%;
     border: 1px solid darkgrey;
 }
-
+body > div > main > section > div > div > div > a > article
 body > div > main > div > div > a article:hover{
     background-color: gray;
 }
@@ -51,5 +51,3 @@ body > div > main > div > div article > div:nth-child(3) > p{
     font-weight: bolder;
     color: gray(0);
 }
-
-

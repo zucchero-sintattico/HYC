@@ -1,7 +1,17 @@
 <?php
     require_once 'bootstrap.php';
-    $templateParams["title"] = "HYC - Catalog";
-    $templateParams["name"] = "catalogTemplate.php";
+    $templateParams['title'] = "HYC - Catalog";
+    $templateParams['name'] = "catalogTemplate.php";
     $templateParams['style'] = "style/catalog.css";
-    $templateParams['query'] = $dbh -> getProductByCategory($_GET["id"]);
+  /*
+    if($_GET['type'] == "c"){
+        $templateParams['query'] = $dbh -> getProductByCategory($_GET['id']);
+        $templateParams['argument'] = $templateParams['query'][0]['Tipo'];
+    }
+    if(strcmp($_GET['type'], "l")){
+        $templateParams['query'] = $dbh -> getArticleByLanguage($_GET['id']);
+        $templateParams['argument'] = var_dump($templateParams['query']);
+    }
+*/
+    $templateParams['query'] = $dbh -> getProductByCategory($_GET['id']);
     require("template/base.php");

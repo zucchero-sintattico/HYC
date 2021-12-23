@@ -1,41 +1,156 @@
-body > div > main > section > div > div {
+@keyframes sectionMovement {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.05,1.05);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes productsMovement {
+    0% {
+        transform: scale(1,1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05,1.05);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1,1);
+        opacity: 1;
+    }
+}
+
+@keyframes imgMovement {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.1,1.1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+main > section > div > div {
     overflow-x: auto;
+    overflow-y: hidden;
     height: 35%;
 }
 
-
-body > div > main > section > div > div > div {
+main > section > div > div > a, main > section > div > div > article, main > section > div > div > section{
     padding: 3% 40%;
     margin: 5px;
     border: none;
     border-radius: 10px;
-    text-align: center;
-    background-color: #f1f1f1;
+    background-color: #E0E0E0 !important;
+    color: black;
 }
 
+main > section > div > div section:hover{
+    cursor: pointer;
+    animation: sectionMovement 0.4s ease-out;
+}
 
-body > div > main > section > div > div > div img {
-    width: 40%;
+main > section > div > div a:hover > code{
+    cursor: pointer;
+    animation: productsMovement 0.4s ease-out;
+}
+
+main > section > div > div section:hover img{
+    animation: imgMovement 0.5s ease-out;
+}
+
+main > section > div > div > section img {
+    width: 40% !important;
+    margin: auto;
     background-repeat: no-repeat;
 }
 
-body > div > main > section > div > div > div * {
-    background-color: #f1f1f1 !important;
+main > section > div > div > a *:not(code, code *) {
+    background-color: #E0E0E0 !important;
     border: none !important;
+}
+
+
+body > div > main > section > header > h1{
+    padding-top: 3%;
+}
+
+
+main > section > div > div > div > a > article{
+    background-color: #E0E0E0 !important;
+    border-radius: 10px;
+    width: 100%;
+    padding: 3% 3%;
+    color: black;
+    margin-top: 5%;
+}
+
+body a:hover{
+    text-decoration: none;
+}
+
+body > div img {
+    padding: 3% 0%;
+}
+
+body > div > main > section > div > div > section > div{
+    background-color: #E0E0E0 !important;
+    border: none !important;
+}
+
+body > div > main > section > div > div > div > a:hover > article{
+    background-color: gray;
+    color: black;
+    text-decoration: none;
+}
+
+body > div > main > section > div > div > div > a > article > div:nth-child(1){
+    text-align: center;
+}
+
+body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{
+    width: 100%;
+    font-size: 20px;
+    font-family: "Courier New";
+    font-weight: bold;
+}
+
+body > div > main > section > div > div > div > a > article > div:nth-child(3){
+    padding-top: 20px;
+    text-align: center;
+}
+
+
+body > div > main > section > div > div > div > a > article > div:nth-child(3) > p{
+    width: 100%;
+    font: 17px "Courier New";
+
 }
 
 
 @media (min-width: 768px) {
 
-    body > div > main > section > div > div > div img {
+    main {
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+    main > section > div > div > a img {
         width: 100px !important;
     }
 
-    body > div > main > div > div {
+    main > div > div {
         transform: scale(0.9);
     }
 
-    body > div > main > section > div > div > div {
+    main > section > div > div > a {
         transform: scale(0.9);
         margin: 0 !important;
         padding: 40px !important;
@@ -44,4 +159,3 @@ body > div > main > section > div > div > div * {
 
 
 }
-

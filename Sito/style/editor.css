@@ -1,40 +1,26 @@
-main > div:nth-child(1) > div > div button, select, input {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 0px !important;
-    background-color: transparent;
-    border: 1px solid lightslategray !important;
-    color: black;
-    width: 100% !important;
-    height: 50px !important;
-    margin: 10px 0 0 0;
-
-}
-
-main > div:nth-child(1) > div div {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-
-}
-
-
-main > div:nth-child(1) > div button:hover, select:hover {
-    background-color: #f1f1f1 !important;
-}
-
-main > div:nth-child(1) > div {
-    padding: 0 !important;
-    margin: 0 !important;
-
+main label, main button {
+    margin-top: 20px;
+    margin-bottom: 0 !important;
+    font-size: x-large;
+    color: #333333;
 }
 
 .active {
-    background-color: green !important;
+    background-color: chartreuse !important;
 }
 
-code {
-    margin: 50px;
+main button:hover, main select:hover {
+    background-color: #f1f1f1 !important;
+    color: black !important;
 }
+
+
+main button, main select, main input {
+    color:  black !important;
+    text-align: center !important;
+    outline: none;
+    font-weight: lighter !important;
+    width: 100% !important;
+    border-color: #333333 !important;
+}
+
