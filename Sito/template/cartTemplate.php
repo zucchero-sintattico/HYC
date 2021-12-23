@@ -38,14 +38,13 @@
                         </article>
                     </a>
                     <div class="row justify-content-center my-4">
-                        <p> Delete Product </p>
-                        <script>$("main > section > div.container-fluid > div > div > div > p").on('click', function () {
+                        <a href="#" class="text-danger" id="delete<?php echo $articolo["IdProd"] ?>"> Delete Product </a>
+                        <script>$(`main > section > div.container-fluid > div > div > div > #delete<?php echo $articolo["IdProd"] ?>`).on('click', function () {
                                 console.log("chaimo");
                             removeProdAndRefreshCart(<?php echo $articolo["IdProd"] ?>);
 
                             });</script>
-                      <!--  <a href="../removedArticleFromCart.php?IdProd=<?php echo $articolo["IdProd"] ?>" class="text-danger">Delete from cart</a> -->
-                    </div>
+                     </div>
 
                 </div>
             <?php endforeach;?>
@@ -54,7 +53,7 @@
     <?php if(count($templateParams["query"]) > 0) : ?>
     <div class="row">
         <div class="col-12 text-center">
-            <a href="../checkout.php?id=<?php echo getLoggedUserID() ; ?>">Checkout</a>
+            <a href="../checkout.php">Checkout</a>
         </div>
     </div>
     <?php endif; ?>
