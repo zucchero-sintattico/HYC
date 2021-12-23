@@ -149,6 +149,47 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getOrdersMatchingUser($id)
+    {
+        $query = "SELECT o.IdOrdine as OrdineId, p.*
+            FROM Carrello c, Ordine o, ProdottoInCarrello pic, Prodotto p
+            WHERE c.IdUtente = ?
+            AND o.IdCarrello = c.IdCarrello
+            AND pic.IdProd = p.IdProd
+            AND pic.IdCarrello = c.IdCarrello
+            ORDER BY o.IdOrdine";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $resultFetched = $result->fetch_all(MYSQLI_ASSOC);
+
+        $ordersArrayOrderedByIndex = array();
+
+        foreach ($resultFetched as $productOrdered){
+
+            $productOrderId = $productOrdered["OrdineId"];
+
+            if(!isset($ordersArrayOrderedByIndex[$productOrderId])){
+                $ordersArrayOrderedByIndex[$productOrderId] = array();
+            }
+            $ordersArrayOrderedByIndex[$productOrderId][] = ($productOrdered);
+        }
+        return $ordersArrayOrderedByIndex;
+    }
+
+    public function getUserInfoById($id)
+    {
+        $query = "SELECT *
+            FROM Utente u
+            WHERE u.IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getNotificationByUserId($id)
     {
         $query = "SELECT * FROM `Notifica` WHERE IdUtente = ?";
