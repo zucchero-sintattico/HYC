@@ -25,8 +25,7 @@ if(isset($_POST["username"])
 }
 
 if(isUserLoggedIn()){
-    $templateParams["title"] = "HYC - Admin";
-    $templateParams["name"] = "profileTemplate.php";
+    header("location: profile.php");
 }
 else{
     $templateParams["title"] = "HYC - Register";
