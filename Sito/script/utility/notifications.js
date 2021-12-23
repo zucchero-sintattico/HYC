@@ -23,6 +23,7 @@ $(document).on('ready', function () {
     //notification selector
     const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5) > a");
     let notificationDropDown = null;
+    const header = $("header")
     notificationToggle.on('click', function () {
 
         if (notificationDropDown == null) {
@@ -32,10 +33,10 @@ $(document).on('ready', function () {
             notificationDropDown.css("background", "#f1f1f1")
 
             if($(window).width() < 768){
-                notificationDropDown.css("top", -$(window).height()+30);
+                notificationDropDown.css("top", -$(window).height()+header.height() );
                 notificationDropDown.css("right", 0);
                 notificationDropDown.css("width", "95%");
-                notificationDropDown.css("height", $(window).height()-30);
+                notificationDropDown.css("height", $(window).height()-header.height());
             }else{
                 notificationDropDown.css("width", 200);
                 notificationDropDown.css("height", 300);
