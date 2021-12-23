@@ -120,6 +120,7 @@ $(document).on('ready', function () {
 
         $(".missedInputClass2").remove();
         $(".infoStatusUpdate2").remove();
+        $(".passDontMatch").remove();
 
         if(!validateFormInput("div.mt-3:nth-child(2) > form:nth-child(2) input")){
             $(".not-filled").css("border-color","red");
