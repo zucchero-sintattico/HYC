@@ -126,11 +126,13 @@
                             <p>Profile</p>
                         </a>
                     </li><li>
-                        <a href="#" >
+                        <a href="#">
                             <img src="../img/nav/bell.svg" alt=""/>
                             <p id="notification">Notifications</p>
                         </a>
+
                     </li>
+
                 </ul>
             </nav>
         </div>
