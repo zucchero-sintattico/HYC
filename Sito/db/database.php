@@ -208,16 +208,6 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getNotificationByUserId($id)
-    {
-        $query = "SELECT * FROM `Notifica` WHERE IdUtente = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-
-    }
 
 
     /** Return the last IdUtente of the DB to be attached to the cart */
@@ -394,14 +384,23 @@ class DatabaseHelper
     }
 
     public function readAllNotifications($IdUser){
-        $query = "UPDATE Notifica SET Letto = 1 
-                    WHERE Notifica.IdNotifica 
-                              IN(SELECT IdNotifica FROM Notifica where Notifica.IdUtente = ?);";
+        $query = "SELECT * FROM Notifica WHERE IdUtente = ?;";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $IdUser);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastNotificationByUserId($id)
+    {
+        $query = "SELECT * FROM `Notifica` WHERE IdUtente = ? AND Letto = 0 ORDER BY IdNotifica LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+
     }
 
 
