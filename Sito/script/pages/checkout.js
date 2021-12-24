@@ -15,13 +15,13 @@ function checkoutIsOk(data) {
                                         <div class="py-2"> <span class="d-block text-muted">Order Date</span> <span>${orderInfo['Data']}</span> </div>
                                     </td>
                                     <td>
-                                        <div class="py-2"> <span class="d-block text-muted">Order No</span> <span>M${orderInfo['IdOrdine']}</span> </div>
+                                        <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>M${orderInfo['IdOrdine']}</span> </div>
                                     </td>
                                     <td>
                                         <div class="py-2"> <span class="d-block text-muted">Payment</span> <span><img src="https://img.icons8.com/color/48/000000/mastercard.png" width="20" /></span> </div>
                                     </td>
                                     <td>
-                                        <div class="py-2"> <span class="d-block text-muted">Shiping Address</span> <span>Via Cesare Pavese, 50, Cesena FC</span> </div>
+                                        <div class="py-2"> <span class="d-block text-muted">Shipping Address</span> <span>Via Cesare Pavese, 50, Cesena FC</span> </div>
                                     </td>
                                 </tr>
                             </tbody>
