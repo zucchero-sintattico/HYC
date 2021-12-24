@@ -44,6 +44,8 @@ $(document).on('ready', function () {
                 notificationDropDown.css("height", 400);
                 notificationDropDown.css("top", 60);
                 notificationDropDown.css("right", 30);
+                notificationDropDown.css("-webkit-box-shadow", "-6px 7px 4px 1px rgba(0,0,0,0.56)");
+                notificationToggle.css(" box-shadow", "-6px 7px 4px 1px rgba(0,0,0,0.56)")
             }
 
         } else {
