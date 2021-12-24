@@ -364,6 +364,23 @@ class DatabaseHelper
         $stmt->execute();
     }
 
+    /** Return the last order by the User */
+    public function getLastOrderOfUser($IdUser){
+        $query = "Select * from Carrello where Carrello.IdUtente = ? order by IdCarrello DESC LIMIT 1;";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cart = (($result->fetch_all(MYSQLI_ASSOC))[0])['IdCarrello'];
+
+        $query = "Select * from Ordine where Ordine.IdCarrello = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $cart);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return ($result->fetch_all(MYSQLI_ASSOC))[0];
+    }
+
     public function editOrderStatus($IdOrder, $Status){
         $query = "UPDATE Ordine SET Stato = ? WHERE Ordine.IdOrdine = ?";
         $stmt = $this->db->prepare($query);
