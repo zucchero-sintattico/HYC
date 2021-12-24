@@ -1,12 +1,17 @@
+const formOneInputsSelector = $("div.p-2:nth-child(1) > form:nth-child(2) input");
+const formTwoInputsSelector = $("div.mt-3:nth-child(2) > form:nth-child(2) input");
+
 function didNotFIllInAllInput(formNumb, promptErrorMessage){
     return `<div class="row text-danger missedInputClass`+ formNumb +`"> <p>` + promptErrorMessage +`</p> </div>`
 }
+
+
 
 function passwordsError(promptErrorMessage){
     return `<div class="row text-danger passDontMatch"> <p>` + promptErrorMessage +`</p> </div>`
 }
 
-function validateFormInput(selector){
+function validateFormInput(selector,arePasswordsToMatch){
     let valid = true;
 
     $(selector).each(function (){
@@ -16,27 +21,22 @@ function validateFormInput(selector){
         }
     })
 
-    if($("#pass1").val() !== $("#pass2").val()){
-        valid = false;
+    if(arePasswordsToMatch){
+        if($("#pass1").val() !== $("#pass2").val()){
+            valid = false;
+            $("div.m-3:nth-child(3) > div:nth-child(1)").append(passwordsError( "Confirm password doesn't match new one"));
+        }
     }
 
     return valid;
 }
 
-function printInformationUpdateStatusFormOne(message, messageColor){
-    return `<div class='row text-` + messageColor + ` infoStatusUpdate1'> <p> ` + message + ` </p> </div>`
+function printInformationUpdateStatus(formNumb, message, messageColor){
+    return `<div class='row text-` + messageColor + ` infoStatusUpdate`+ formNumb +`'> <p> ` + message + ` </p> </div>`
 }
 
-function printInformationUpdateStatusFormTwo(message, messageColor){
-    return `<div class='row text-` + messageColor + ` infoStatusUpdate2'> <p> ` + message + ` </p> </div>`
-}
-
-function clearInputFormOneFromNotFilledClass(){
-    $("div.p-2:nth-child(1) > form:nth-child(2) input").removeClass("not-filled");
-}
-
-function clearInputFormTwoFromNotFilledClass(){
-    $("div.mt-3:nth-child(2) > form:nth-child(2) input").removeClass("not-filled");
+function clearInputOnFormFromNotFilledClass(selector){
+    selector.removeClass("not-filled");
 }
 
 $(document).on('ready', function () {
@@ -49,11 +49,17 @@ $(document).on('ready', function () {
             $(this).removeClass("not-filled");
             $(this).css("border-color","gray");
         }
+
+        if(validateFormInput("div.p-2:nth-child(1) > form:nth-child(2) input")){
+            $(".missedInputClass1").remove();
+        }
+
     });
 
     $("div.mt-3:nth-child(2) > form:nth-child(2) input").on("change", function (){
 
         $(".infoStatusUpdate2").remove();
+        $(".missedInputClass2").remove();
 
         if($(this).hasClass("not-filled")){
             $(this).removeClass("not-filled");
@@ -74,15 +80,17 @@ $(document).on('ready', function () {
 
     });
 
+
+
     $("div.row:nth-child(5) > div:nth-child(1) > button:nth-child(1)").on("click", function (event){
         event.preventDefault();
 
         $(".missedInputClass1").remove();
-        clearInputFormOneFromNotFilledClass();
+        clearInputOnFormFromNotFilledClass(formOneInputsSelector);
 
-        if(!validateFormInput("div.p-2:nth-child(1) > form:nth-child(2) input")){
+        if(!validateFormInput("div.p-2:nth-child(1) > form:nth-child(2) input",false)){
             $(".not-filled").css("border-color","red");
-            $("div.row:nth-child(5) > div:nth-child(1)").append(didNotFIllInAllInput(1, "You first need to fill in all information required "));
+            $("div.m-3:nth-child(5) > div:nth-child(1)").append(didNotFIllInAllInput(1, "You first need to fill in all information required "));
         }else{
             let passwordInserted = $("div.row:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").val();
 
@@ -104,10 +112,12 @@ $(document).on('ready', function () {
 
                 $(".infoStatusUpdate1").remove();
                 if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
-                    $("div.row:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatusFormOne("Wrong password", "danger"));
+                    $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Wrong password", "danger"));
+                    $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
-                    $("div.row:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatusFormOne("Information correctly updated", "success"));
+                    $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Information correctly updated", "success"));
                     $("div.col-3:nth-child(3) > label:nth-child(1) > p:nth-child(2)").text("Hi " + userData.username) ;
+                    $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
                 }
             });
         }
@@ -116,31 +126,37 @@ $(document).on('ready', function () {
 
     $("div.m-3:nth-child(3) > div:nth-child(1) > button:nth-child(1)").on("click", function (event) {
         event.preventDefault();
-        clearInputFormTwoFromNotFilledClass();
+        clearInputOnFormFromNotFilledClass(formTwoInputsSelector);
 
         $(".missedInputClass2").remove();
         $(".infoStatusUpdate2").remove();
         $(".passDontMatch").remove();
 
-        if(!validateFormInput("div.mt-3:nth-child(2) > form:nth-child(2) input")){
+        if(!validateFormInput("div.mt-3:nth-child(2) > form:nth-child(2) input",true)){
             $(".not-filled").css("border-color","red");
             $("div.m-3:nth-child(3) > div:nth-child(1)").append(didNotFIllInAllInput(2, "You first need to fill in all information required "));
         }else{
             let passwordInserted = $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").val();
             let pass2 = $("#pass2").val();
             let baseUrl = "API/api-profile-update.php";
-            let dataToUpdate = {newPass: pass2, currentPass: passwordInserted};
+
+            let dataToUpdate = {
+                newPass: pass2,
+                currentPass: passwordInserted
+            };
 
             $.post(baseUrl, {passToUpdate: dataToUpdate}, function (data) {
                 let parsedJSONinfo = JSON.parse(data);
 
                 if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
-                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatusFormTwo("Wrong password", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Wrong password", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "samePass"){
-                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatusFormTwo("New password has to be different from current one", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"New password has to be different from current one", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
-                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatusFormTwo("Password successfully updated", "success"));
-
+                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Password successfully updated", "success"));
+                    $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
                 }
             })
 
