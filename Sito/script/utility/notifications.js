@@ -9,7 +9,7 @@ $(document).on('ready', function () {
         ws.onmessage = function (e) {
             console.log(e.data);
             if (e.data === "update_notification") {
-                $.post("/API/api-notification.php", function (data) {
+                $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
                     let popUp_notification = $(".alert").show();
                     popUp_notification.append(data);
