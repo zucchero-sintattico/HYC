@@ -12,7 +12,7 @@ $(document).on('ready', function () {
                 $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
                     let popUp_notification = $(".alert").show();
-                    popUp_notification.append(data);
+                    popUp_notification.append(data.Descrizione);
                     $("#notification").css("color", "red");
                 });
             }
