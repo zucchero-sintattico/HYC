@@ -130,6 +130,10 @@ header > div {
     width: 100%;
 }
 
+header > div > div{
+    margin: auto;
+}
+
 header > div > div img {
     width: 100%;
 }
@@ -140,11 +144,12 @@ header > div > div:nth-child(3) {
 
 header > div > div:nth-child(2) {
     text-align: left;
-    font-size: clamp(1rem, -0.875rem + 2.333vw, 3.5rem);
 }
 
-header > div > div:nth-child(2) > p {
-    line-height: 15px;
+header > div > div:nth-child(2) > h2 {
+    font-weight: bolder;
+    font-size: 15px;
+
 }
 
 header > div:nth-child(1) > div:nth-child(1){
@@ -266,6 +271,15 @@ body main {
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
+
+    header > div > div img {
+        width: 70%;
+    }
+
+    header > div > div:nth-child(2) > h2 {
+        font-size: 25px;
+    }
+
     body nav {
         position: static;
         margin-bottom: 10px;

@@ -75,17 +75,17 @@
     <div class="row">
         <header>
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <a href="../index.php">
                         <img src="../img/logos/logo.png">
                     </a>
                 </div>
                 <div class="col-6">
-                    <p>You select the code that inspires you the most.
+                    <h2>You select the code that inspires you the most.
                         We frame it and make sure it arrives to your home.
-                    </p>
+                    </h2>
                 </div>
-                <div class="col-3">
+                <div class="col-2">
                     <label><?php
                         if (isUserLoggedIn()) {
                             echo "<script>let userId =".getLoggedUserID().";</script>";
