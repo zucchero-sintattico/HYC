@@ -11,7 +11,7 @@ $(document).on('ready', function () {
             if (e.data === "update_notification") {
                 $.post("/API/api-notification.php", function (data) {
                     data = JSON.parse(data);
-                    popUp_notification = $(".alert").show();
+                    let popUp_notification = $(".alert").show();
                     popUp_notification.append(data);
                     $("#notification").css("color", "red");
                 });
