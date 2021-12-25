@@ -126,7 +126,7 @@ nav > ul li a:hover {
 
 header > div {
     background-color: Gainsboro;
-    padding: 20px 0 20px 40px;
+    padding: 10px 0 10px 40px;
     width: 100%;
 }
 
@@ -164,7 +164,7 @@ body > div > div > div > form > label {
 header > div > div > h2 {
     color: black;
     text-align: left;
-    font-size: 20px;
+    font-size: 8px !important;
 }
 
 header > div:nth-child(1) >  div:nth-child(2){
@@ -272,12 +272,16 @@ body main {
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
 
+    header > div > div{
+        margin: auto;
+    }
+
     header > div > div img {
         width: 70%;
     }
 
     header > div > div:nth-child(2) > h2 {
-        font-size: 25px;
+        font-size: 20px !important;
     }
 
     body nav {
