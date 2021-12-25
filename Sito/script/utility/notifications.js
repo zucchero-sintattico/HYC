@@ -10,9 +10,9 @@ $(document).on('ready', function () {
             console.log(e.data);
             if (e.data === "update_notification") {
                 $.post("/API/api-notification.php", function (data) {
-                    console.log("notifiche = ", data)
-
-
+                    data = JSON.parse(data);
+                    popUp_notification = $(".alert").show();
+                    popUp_notification.append(data);
                     $("#notification").css("color", "red");
                 });
             }
