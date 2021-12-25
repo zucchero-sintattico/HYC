@@ -394,7 +394,7 @@ class DatabaseHelper
 
     public function getLastNotificationByUserId($id)
     {
-        $query = "SELECT * FROM `Notifica` WHERE IdUtente = ? AND Letto = 0 ORDER BY IdNotifica LIMIT 1";
+        $query = "SELECT * FROM `Notifica` WHERE IdUtente = ? AND Letto = 0 ORDER BY -IdNotifica LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $id);
         $stmt->execute();
