@@ -59,7 +59,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProductByCategory($category)
+    public function getProductsByCategory($category)
     {
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
        Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
@@ -75,7 +75,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getProductByTitle($Titolo)
+    public function getProductsByTitle($Titolo)
     {
         $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
                     FROM Prodotto p, ProdottoInVetrina pv 
