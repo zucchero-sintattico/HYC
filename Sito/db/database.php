@@ -101,7 +101,7 @@ class DatabaseHelper
 
     public function getProductsByLanguage($language)
     {
-        $query = "SELECT * FROM `prodotto` WHERE NomeLinguaggio = ?";
+        $query = "SELECT * FROM Prodotto WHERE NomeLinguaggio = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $language);
         $stmt->execute();
@@ -249,7 +249,7 @@ class DatabaseHelper
 
     public function updateUserPass($idUtente, $passToUpdate){
         $query = "UPDATE Utente SET Password = ? 
-                    WHERE Utente.idUtente = ?";
+                    WHERE Utente.IdUtente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("si",
             $passToUpdate,
@@ -311,7 +311,7 @@ class DatabaseHelper
 
     /** ADD a product to the Showcase */
     public function addProductToShowCase($IdProd, $PopIndex, $Descrizione, $IdCategoria){
-        $query = "INSERT INTO Prodottoinvetrina (IdProd, IndicePopolarita, Descrizione, IdCategoria) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO ProdottoInVetrina (IdProd, IndicePopolarita, Descrizione, IdCategoria) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("iisi", $IdProd, $PopIndex, $Descrizione, $IdCategoria);
         $stmt->execute();
@@ -335,7 +335,7 @@ class DatabaseHelper
     /** Add a product to a cart */
     public function addProductInCart($IdProd, $IdUser){
         $cart = $this->getLastCartOfUser($IdUser);
-        $query = "INSERT INTO Prodottoincarrello (IdCarrello, IdProd) VALUES (?, ?)";
+        $query = "INSERT INTO ProdottoInCarrello (IdCarrello, IdProd) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $cart, $IdProd);
         $stmt->execute();
@@ -344,9 +344,9 @@ class DatabaseHelper
     /** Remove a product from a cart */
     public function removeProductFromCart($IdProd, $IdUser){
         $cart = $this->getLastCartOfUser($IdUser);
-        $query = "DELETE FROM Prodottoincarrello 
-                    WHERE prodottoincarrello.IdCarrello = ? 
-                      AND prodottoincarrello.IdProd = ?";
+        $query = "DELETE FROM ProdottoInCarrello 
+                    WHERE ProdottoInCarrello.IdCarrello = ? 
+                      AND ProdottoInCarrello.IdProd = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $cart,$IdProd);
         $stmt->execute();
