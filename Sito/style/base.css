@@ -130,6 +130,10 @@ header > div {
     width: 100%;
 }
 
+header {
+    width: 100%;
+}
+
 header > div > div{
     margin: auto;
 }

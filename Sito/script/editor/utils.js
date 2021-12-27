@@ -81,14 +81,45 @@ function executeButtonAnimation(button){
     );
 }
 
+function showPreviewPostAddition(quadroHTML){
+    return `<div class="col d-flex justify-content-center">
+
+                <div class="row justify-content-center">
+                        <code>
+                            `+ quadroHTML.html() +`
+                        </code>
+                        
+                        <div class="col m-5 ">
+                            <div class="row mt-3 border-bottom">
+                                <a href="index.php">Continue shopping</a>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <a href="cart.php">Go to cart</a>
+                            </div>
+                        </div>
+                        
+                </div>
+                
+                
+                
+            </div>`;
+
+}
+
 $(document).on('ready', function () {
 
     $("main > div > div > div > button").on("click", function (event) {
         $(this).attr("disabled", "disabled");
-
+        quadro.disable();
+        let quadroHTML = $("code");
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
-
+        window.setTimeout(() => {
+                $("main").empty();
+                $("main").append(showPreviewPostAddition(quadroHTML));
+                $('code > .CodeMirror:nth-child(3)').remove();
+            }, 1500);
 
         $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
             console.log(data);

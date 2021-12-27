@@ -123,7 +123,7 @@
             <div class="row justify-content-center">
                 <code>
                     <script>
-                        let quadro = new CodeSquare($('script').last().parent().get(0));
+                        let quadro = new CodeSquare($('code').get(0));
                         quadro.getSquare();
 
                         quadro.updateStyle();
@@ -143,7 +143,7 @@
 
     <div class="row justify-content-end">
         <div class="col-4">
-            <button class="bnt" type="button">Add to Cart</button>
+            <button class="bnt" type="button" <?php if(!isUserLoggedIn()){echo "disabled";}; ?>>Add to Cart</button>
         </div>
     </div>
 
