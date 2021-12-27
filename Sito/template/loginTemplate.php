@@ -21,5 +21,5 @@
 </div>
 
 <div class="row justify-content-center">
-    <a href="../register.php">Sing Up</a>
+    <a href="../register.php">Sign Up</a>
 </div>
