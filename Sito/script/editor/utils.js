@@ -127,14 +127,18 @@ $(document).on('ready', function () {
 
     });
 
-    quadro.setStyle($('#style').val());
-    quadro.setFramecolor($('#frame-color').val());
-    quadro.setStyle($('#style').val());
+    const styleElem = $('#style');
+    const frameColorElem = $('#frame-color');
+    const fontSizeElem = $('#fontSize');
+
+    quadro.setStyle(styleElem.val());
+    quadro.setFramecolor(frameColorElem.val());
+
     quadro.setWidth($('#width .active  input').val());
     quadro.setHeight($('#height .active  input').val());
-    quadro.setFontSize($('#fontSize').val());
+    quadro.setFontSize(fontSizeElem.val());
     quadro.updateStyle();
-    $('#style').on('change', (function () {
+    styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
         console.log("test");
     }));
@@ -143,7 +147,7 @@ $(document).on('ready', function () {
         quadro.setLanguages($('#language').val());
     }));
 
-    $('#frame-color').on('change', (function () {
+    frameColorElem.on('change', (function () {
         quadro.setFramecolor($('#frame-color').val());
     }));
 
@@ -158,7 +162,7 @@ $(document).on('ready', function () {
         quadro.updateStyle();
     }));
 
-    $('#fontSize').on('change', (function () {
+    fontSizeElem.on('change', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
     }));

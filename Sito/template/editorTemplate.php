@@ -20,17 +20,17 @@
                         <label>Width(cm)</label>
                         <div class="col" id="width">
                             <div class="btn-group-toggle" data-toggle="buttons">
-                                <label class="btn active border border-secondary" id="width30">
-                                    <input type="radio" name="options" id="width30" value="100" checked> 100
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="100"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="width30" value="100" <?php if($templateParams["product"]["Larghezza"]=="100"){echo " checked ";}?> > 100
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="width70" value="120"> 120
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="120"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="width70" value="120"<?php if($templateParams["product"]["Larghezza"]=="120"){echo " checked ";}?>> 120
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="width100" value="150"> 150
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="150"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="width100" value="150"<?php if($templateParams["product"]["Larghezza"]=="150"){echo " checked ";}?>> 150
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="width120" value="170"> 170
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="170"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="width120" value="170"<?php if($templateParams["product"]["Larghezza"]=="170"){echo " checked ";}?>> 170
                                 </label>
                             </div>
                         </div>
@@ -39,17 +39,17 @@
                         <label>Height(cm)</label>
                         <div class="col" id="height">
                             <div class="btn-group-toggle" data-toggle="buttons">
-                                <label class="btn active border border-secondary">
-                                    <input type="radio" name="options" id="height30" value="100" checked>100
+                                <label class='btn<?php if($templateParams["product"]["Altezza"]=="100"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="height30" value="100"<?php if($templateParams["product"]["Altezza"]=="100"){echo " checked ";}?>>100
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="height70" value="120">120
+                                <label class='btn<?php if($templateParams["product"]["Altezza"]=="120"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="height70" value="120"<?php if($templateParams["product"]["Altezza"]=="120"){echo " checked ";}?>>120
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="height100" value="150">150
+                                <label class='btn<?php if($templateParams["product"]["Altezza"]=="150"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="height100" value="150"<?php if($templateParams["product"]["Altezza"]=="150"){echo " checked ";}?>>150
                                 </label>
-                                <label class="btn border border-secondary">
-                                    <input type="radio" name="options" id="height120" value="170">170
+                                <label class='btn<?php if($templateParams["product"]["Altezza"]=="170"){echo " active ";}?> border border-secondary'>
+                                    <input type="radio" name="options" id="height120" value="170"<?php if($templateParams["product"]["Altezza"]=="170"){echo " checked ";}?>>170
                                 </label>
                             </div>
                         </div>
@@ -125,7 +125,6 @@
                     <script>
                         let quadro = new CodeSquare($('code').get(0));
                         quadro.getSquare();
-
                         quadro.updateStyle();
                         quadro.widthScale(350);
                         quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
