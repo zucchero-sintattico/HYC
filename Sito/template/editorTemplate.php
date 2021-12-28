@@ -20,17 +20,17 @@
                         <label>Width(cm)</label>
                         <div class="col" id="width">
                             <div class="btn-group-toggle" data-toggle="buttons">
-                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="100"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="width30" value="100" <?php if($templateParams["product"]["Larghezza"]=="100"){echo " checked ";}?> > 100
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="100"){echo " active ";}?> border border-secondary'> 100
+                                    <input title="with of 100 cm" type="radio" name="options" id="width30" value="100" <?php if($templateParams["product"]["Larghezza"]=="100"){echo " checked ";}?> >
                                 </label>
-                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="120"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="width70" value="120"<?php if($templateParams["product"]["Larghezza"]=="120"){echo " checked ";}?>> 120
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="120"){echo " active ";}?> border border-secondary'> 120
+                                    <input title="with of 120 cm" type="radio" name="options" id="width70" value="120"<?php if($templateParams["product"]["Larghezza"]=="120"){echo " checked ";}?>>
                                 </label>
-                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="150"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="width100" value="150"<?php if($templateParams["product"]["Larghezza"]=="150"){echo " checked ";}?>> 150
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="150"){echo " active ";}?> border border-secondary'>150
+                                    <input title="with of 150 cm" type="radio" name="options" id="width100" value="150"<?php if($templateParams["product"]["Larghezza"]=="150"){echo " checked ";}?>>
                                 </label>
-                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="170"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="width120" value="170"<?php if($templateParams["product"]["Larghezza"]=="170"){echo " checked ";}?>> 170
+                                <label class='btn<?php if($templateParams["product"]["Larghezza"]=="170"){echo " active ";}?> border border-secondary'>170
+                                    <input title="with of 170 cm" type="radio" name="options" id="width120" value="170"<?php if($templateParams["product"]["Larghezza"]=="170"){echo " checked ";}?>>
                                 </label>
                             </div>
                         </div>
@@ -40,16 +40,16 @@
                         <div class="col" id="height">
                             <div class="btn-group-toggle" data-toggle="buttons">
                                 <label class='btn<?php if($templateParams["product"]["Altezza"]=="100"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="height30" value="100"<?php if($templateParams["product"]["Altezza"]=="100"){echo " checked ";}?>>100
+                                    <input title="height of 100 cm" type="radio" name="options" id="height30" value="100"<?php if($templateParams["product"]["Altezza"]=="100"){echo " checked ";}?>>100
                                 </label>
                                 <label class='btn<?php if($templateParams["product"]["Altezza"]=="120"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="height70" value="120"<?php if($templateParams["product"]["Altezza"]=="120"){echo " checked ";}?>>120
+                                    <input title="height of 100 cm" type="radio" name="options" id="height70" value="120"<?php if($templateParams["product"]["Altezza"]=="120"){echo " checked ";}?>>120
                                 </label>
                                 <label class='btn<?php if($templateParams["product"]["Altezza"]=="150"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="height100" value="150"<?php if($templateParams["product"]["Altezza"]=="150"){echo " checked ";}?>>150
+                                    <input title="height of 100 cm" type="radio" name="options" id="height100" value="150"<?php if($templateParams["product"]["Altezza"]=="150"){echo " checked ";}?>>150
                                 </label>
                                 <label class='btn<?php if($templateParams["product"]["Altezza"]=="170"){echo " active ";}?> border border-secondary'>
-                                    <input type="radio" name="options" id="height120" value="170"<?php if($templateParams["product"]["Altezza"]=="170"){echo " checked ";}?>>170
+                                    <input title="height of 100 cm" type="radio" name="options" id="height120" value="170"<?php if($templateParams["product"]["Altezza"]=="170"){echo " checked ";}?>>170
                                 </label>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                     <label>FontSize</label>
                 </div>
                 <label class="btn">
-                    <input type="number" value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
+                    <input title="chose font size" type="number" value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
                            id="fontSize">
                 </label>
 
@@ -71,7 +71,7 @@
             <div class="row justify-content-center">
                 <div class="col-10">
                     <label>Title</label>
-                    <input class="form-control form-control-lg text-center" type="text"
+                    <input title="write title" class="form-control form-control-lg text-center" type="text"
                            placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
 
                 </div>
@@ -81,7 +81,7 @@
             <div class="row justify-content-center">
                 <div class="col-10 justify-content-center">
                     <label>Style</label>
-                    <select class="custom-select" id="style">
+                    <select title="select style" class="custom-select" id="style">
                         <?php foreach ($templateParams['themes'] as $theme): ?>
                             <?php if ($theme['NomeTema'] == $templateParams["product"]["NomeTema"]): ?>
                                 <option selected="selected"> <?php echo $theme['NomeTema']; ?></option>
@@ -96,7 +96,7 @@
             <div class="row justify-content-center">
                 <div class="col-10 justify-content-center">
                     <label>Language</label>
-                    <select id="language" class="custom-select">
+                    <select title="select lenguage" id="language" class="custom-select">
                         <?php foreach ($templateParams['languages'] as $language): ?>
                             <?php if ($language['NomeLinguaggio'] == $templateParams["product"]["NomeLinguaggio"]): ?>
                                 <option selected="selected"> <?php echo $language['NomeLinguaggio']; ?></option>
@@ -112,7 +112,7 @@
             <div class="row justify-content-center">
                 <div class="col-10 justify-content-center">
                     <label>Code frame color</label>
-                    <input class="custom-select" id="frame-color" type="color" value="#ff0000">
+                    <input title="select the frame color" class="custom-select" id="frame-color" type="color" value="#ff0000">
                 </div>
             </div>
         </div>
