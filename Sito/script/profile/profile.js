@@ -106,7 +106,7 @@ $(document).on('ready', function () {
 
             let userData = {
                 nome: $("#first_name").val(),
-                cognome: $("#last_name").val(),
+                surname: $("#last_name").val(),
                 username: $("#username").val(),
                 email: $("#email").val(),
                 password: passwordInserted
@@ -119,7 +119,10 @@ $(document).on('ready', function () {
                 let parsedJSONinfo = JSON.parse(data);
 
                 $(".infoStatusUpdate1").remove();
-                if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
+                if(parsedJSONinfo.informationUpdateStatus==="emailNotValid"){
+                    $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Insert a valid email address", "danger"));
+                    $("#email").css("border-color","red");
+                }else if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Wrong password", "danger"));
                     $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
@@ -132,6 +135,12 @@ $(document).on('ready', function () {
                         $(".missedInputClass1").remove();
                         clearInputOnFormFromNotFilledClass(formOneInputsSelector);
                         $(".infoStatusUpdate1").remove();
+                        //UPDATE DATA
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(2)").text(`NAME: ${userData.nome}`);
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(3)").text(`SURNAME: ${userData.surname}`);
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(4)").text(`USERNAME: ${userData.username}`);
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(5)").text(`EMAIL: ${userData.email}`);
+                        $(".col-2 > label:nth-child(1) > p:nth-child(2)").text(`Hi ${userData.username}`);
                     }, 500);
                 }
             });
