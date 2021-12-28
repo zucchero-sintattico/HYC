@@ -41,6 +41,14 @@ function clearInputOnFormFromNotFilledClass(selector){
 
 $(document).on('ready', function () {
 
+    $(".notEditableInfo").show();
+    $(".editableInfo").hide()
+
+    $("#EditProfileBtn").on("click", function(){
+        $(".notEditableInfo").hide();
+        $(".editableInfo").show()
+    });
+
     $("div.p-2:nth-child(1) > form:nth-child(2) input").on("change", function (){
 
         $(".infoStatusUpdate1").remove();
@@ -118,6 +126,13 @@ $(document).on('ready', function () {
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Information correctly updated", "success"));
                     $("div.col-3:nth-child(3) > label:nth-child(1) > p:nth-child(2)").text("Hi " + userData.username) ;
                     $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
+                    window.setTimeout(() => {
+                        $(".notEditableInfo").show();
+                        $(".editableInfo").hide()
+                        $(".missedInputClass1").remove();
+                        clearInputOnFormFromNotFilledClass(formOneInputsSelector);
+                        $(".infoStatusUpdate1").remove();
+                    }, 500);
                 }
             });
         }
@@ -157,6 +172,13 @@ $(document).on('ready', function () {
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Password successfully updated", "success"));
                     $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
+                    window.setTimeout(() => {
+                        $(".notEditableInfo").show();
+                        $(".editableInfo").hide();
+                        clearInputOnFormFromNotFilledClass(formTwoInputsSelector);
+                        $(".infoStatusUpdate2").remove();
+                    }, 500);
+
                 }
             })
 
