@@ -112,7 +112,7 @@ class DatabaseHelper
     public function getProductsInCart($idUser)
     {
         $cart = $this->getLastCartOfUser($idUser);
-        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
+        $query = "SELECT p.IdProd, Quantità, Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
          FROM Prodotto p, ProdottoInCarrello pc, Carrello c
             WHERE p.IdProd = pc.IdProd
               AND pc.IdCarrello = c.IdCarrello 
@@ -297,13 +297,14 @@ class DatabaseHelper
 
     /** Edit a product on the DB */
     public function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                                 $NomeTema){
+                                 $NomeTema, $IdProd){
         $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                       NomeTema) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                       NomeTema)
+                    WHERE IdProd = ?
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssisiiisss", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-            $NomeTema);
+        $stmt->bind_param("ssisiiisssi", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+            $NomeTema, $IdProd);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -338,6 +339,17 @@ class DatabaseHelper
         $query = "INSERT INTO ProdottoInCarrello (IdCarrello, IdProd) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $cart, $IdProd);
+        $stmt->execute();
+    }
+
+    /** Change product quantity in cart */
+    public function changeProductQuantityInCart($IdProd, $IdUser, $Quantità){
+        $cart = $this->getLastCartOfUser($IdUser);
+        $query = "UPDATE ProdottoInCarrello
+                    SET Quantità = ?
+                    WHERE IdProd = ? and IdCarrello = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iii", $Quantità,  $IdProd, $cart);
         $stmt->execute();
     }
 

@@ -153,6 +153,8 @@ function generateCart(data){
                                         <script>
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${products[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();
+                                            quadri[${i}].setWidth(${products[i]["Larghezza"]});
+                                            quadri[${i}].setHeight(${products[i]["Altezza"]});
                                             quadri[${i}].setPadding(${products[i]["Padding"]});
                                             quadri[${i}].setFramecolor('${products[i]["Colore_frame"]}');
                                             quadri[${i}].setFontSize(${products[i]["Dimensione_font"]});
@@ -170,11 +172,17 @@ function generateCart(data){
                                 </div>
                             </article>                
                         </a>
-                        <div class="row justify-content-center my-4">
+                        <div class="row justify-content-center mt-2">
+                            <label for="quantity${products[i]["IdProd"]}">Quantity:</label><input id="quantity${products[i]["IdProd"]}" type="number" min="1" max="" name="quantity" value="${products[i]["Quantità"]}" title="Qty" class="input-text text-center">
+                        </div>
+                        <div class="row justify-content-center mt-2 mb-4">
                             <a href="#" class="text-danger" id="delete${products[i]["IdProd"]}"> Delete Product </a>
                                 <script>
                                     $("#delete${products[i]["IdProd"]}").on('click', function () {
                                         removeProdAndRefreshCart(${products[i]["IdProd"]});
+                                    });
+                                    $("#quantity${products[i]["IdProd"]}").on('change', function () {
+                                        changeProdQuantity(${products[i]["IdProd"]}, $(this).val());
                                     });
                                 </script>
                         </div>
@@ -251,13 +259,21 @@ function removeProdAndRefreshCart(idProd) {
     prod = {
         IdProd : idProd
     }
-    console.log(prod);
     $.post("/API/api-cart-removeElement.php", prod, function (data) {
         if(data['Empty'] == 1){
             data['Products'] = new Array();
             data['Prices'] = new Array();
         }
         getArticleInCart(data);
-        // Da controllare PHP come genera Carrello e replicare GRAZZZZZIE
+    });
+}
+
+function changeProdQuantity(idProd, quantity) {
+    dataIn = {
+        IdProd : idProd,
+        Quantity : quantity
+    }
+    $.post("/API/api-cart-changeQuantityElement.php", dataIn, function (data) {
+        getArticleInCart(data);
     });
 }
