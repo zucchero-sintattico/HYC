@@ -24,14 +24,40 @@ function createCategories(data) {
                         <script>
                         $("#category${data[i]['IdCategoria']}").on('click',function (){
                             createCatalogWithCategories(${data[i]['IdCategoria']});
-                        })</script>
-                       
+                        })</script>      
             `;
         content += categoria;
     }
 
     return horizontalSection(content, "Categories");
 }
+
+function generateCategoriesAndRelativeProducts(data){
+    $("main").append("<div class='row mainContainer'><div class='col categories'></div></div>");
+
+    for(let i=0; i<data.length; i++){
+
+        let singleCategory = `<div class="col categoria${data[i]['IdCategoria']}">
+                                    <h3>${data[i]['Tipo']}</h3>
+                                    <div class="row listaCategoria${data[i]['IdCategoria']}">
+                                    </div>
+                              </div>`;
+
+        $(".categories").append(singleCategory);
+        let selector = ".listaCategoria".concat(data[i]['IdCategoria']);
+        addProductsToCategoryList(data[i]['IdCategoria'], selector);
+    }
+}
+
+function addProductsToCategoryList(idCategory,selector){
+    $.getJSON("/API/api-search.php?cat=" + idCategory, function (data) {
+        let results = data['Results'];
+        quadri = [];
+        let products = createProductsOfCategoryFromData(results);
+        $(selector).append(products);
+    });
+}
+
 
 
 function createLanguages(data) {
@@ -85,13 +111,56 @@ function createPopularArticles(data) {
                             });
                             </script>
                         </code>
-
                 </a>
-
             `;
         content += prodottoPopolare;
     }
     return horizontalSection(content, "Most Popular Products");
+}
+
+
+function fillHomePage(data) {
+    let img = createImages();
+    generateCategoriesAndRelativeProducts(data['Categorie']);
+    //let linguaggi = createLanguages(data['Linguaggi']);
+    //let prodottiPopolari = createPopularArticles(data['ProdottiPopolari']);
+    const main = $("main");
+    main.append(img);
+}
+
+function createProductsOfCategoryFromData(data) {
+    let content = '';
+    quadri = [];
+    for (let i = 0; i < data.length; i++) {
+        let result = `
+                        <a href="../editor.php?id=${data[i]["IdProd"]}">
+                            <article>
+                               <div class="col-12">
+                                    <h2>${data[i]["Titolo"]}</h2>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <code id="quadro${data[i]["IdProd"]}">
+                                        <script>
+                                            quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
+                                            quadri[${i}].getSquare();
+                                            quadri[${i}].setPadding(0);
+                                            quadri[${i}].setFramecolor("transparent")
+                                            quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                                            quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                                            quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                                            quadri[${i}].disable();
+                                            quadri[${i}].widthScale(300);
+                                            quadri[${i}].updateStyle();
+                                            quadri[${i}].setText('${data[i]["Codice"]}');
+                                        </script>
+                                    </code>
+                                </div>
+                            </article>                
+                         </a>          
+            `;
+        content += result;
+    }
+    return content;
 }
 
 function getFilteredArticles(data, filterName) {
@@ -239,20 +308,6 @@ function createCatalogByLanguages(idLang) {
         main.html("");
         main.append(articles);
     });
-}
-
-function fillHomePage(data) {
-    let img = createImages();
-    let categorie = createCategories(data['Categorie']);
-    let linguaggi = createLanguages(data['Linguaggi']);
-    let prodottiPopolari = createPopularArticles(data['ProdottiPopolari']);
-    const main = $("main");
-    main.append(img);
-    main.append(categorie);
-    main.append(img);
-    main.append(linguaggi);
-    main.append(img);
-    main.append(prodottiPopolari);
 }
 
 function removeProdAndRefreshCart(idProd) {
