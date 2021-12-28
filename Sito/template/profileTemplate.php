@@ -28,26 +28,26 @@
                     <?php endfor; ?>
         </div>
     </div>
-    <div class="col">
 
+    <div class="col editableInfo">
         <div class="col border p-2">
             <h2>Edit your profile information</h2>
             <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
                 <div class="form-group">
                     <label for="first_name">First name</label>
-                    <input type="text" class="form-control" autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name</label>
-                    <input type="text" class="form-control" autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="twitter_name">Username</label>
-                    <input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
+                    <input type="email" class="form-control" required autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
                 </div>
                 <div class="row m-3">
                     <div class="col pr-4">
@@ -87,5 +87,17 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="col notEditableInfo">
+        <div class="col border p-2">
+            <h2>Profile information</h2>
+            <p>NAME: <?php echo $templateParams["userInfo"]["Nome"]; ?></p>
+            <p>SURNAME: <?php echo $templateParams["userInfo"]["Cognome"]; ?></p>
+            <p>USERNAME: <?php echo $templateParams["userInfo"]["Username"]; ?></p>
+            <p>EMAIL: <?php echo $templateParams["userInfo"]["Email"]; ?></p>
+            <button class="btn btn-dark" id="EditProfileBtn">Edit profile information</button>
+        </div>
+    </div>
 
 </div>
