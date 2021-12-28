@@ -14,7 +14,7 @@ if (isUserLoggedIn()) {
     $sum = 0;
     $i = 0;
     foreach ($templateParams['query'] as $articolo){
-        $sum = $sum + getPrice($articolo['Altezza'], $articolo['Larghezza']);
+        $sum = $sum + getPrice($articolo['Altezza'], $articolo['Larghezza'], $articolo['Quantità']);
         $i = $i + 1;
     }
     $templateParams['totPrice'] = $sum;

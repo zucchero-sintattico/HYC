@@ -33,17 +33,40 @@
                                 </code>
                             </div>
                             <div class="row">
-                                <p class="col-12 font-weight-bold">Price: €<?php echo getPrice($articolo["Altezza"], $articolo["Larghezza"]) ?></p>
+                                <p class="col-12 font-weight-bold">Price: €<?php echo getPrice($articolo["Altezza"], $articolo["Larghezza"], $articolo["Quantità"]) ?></p>
                             </div>
                         </article>
                     </a>
-                    <div class="row justify-content-center my-4">
-                        <a href="#" class="text-danger" id="delete<?php echo $articolo["IdProd"] ?>"> Delete Product </a>
-                        <script>$(`main > section > div.container-fluid > div > div > div > #delete<?php echo $articolo["IdProd"] ?>`).on('click', function () {
-                                console.log("chaimo");
-                            removeProdAndRefreshCart(<?php echo $articolo["IdProd"] ?>);
+                    <div class="row justify-content-center mt-2">
+                        <input id="minus<?php echo $articolo["IdProd"]; ?>" type="button" value="-" class="minus"><input id="quantity<?php echo $articolo["IdProd"]; ?>" type="number" min="1" max="" name="quantity" value="<?php echo $articolo["Quantità"];?>" title="Qty" class="input-text text-center" size="4" pattern=""><input id="plus<?php echo $articolo["IdProd"]; ?>" type="button" value="+" class="plus">
+                    </div>
+                    <div class="row justify-content-center mt-2 mb-4">
+                        <a href="#" class="text-danger" id="delete<?php echo $articolo["IdProd"]; ?>"> Delete Product </a>
+                        <script>
+                            $(`main > section > div.container-fluid > div > div > div > #delete<?php echo $articolo["IdProd"] ?>`).on('click', function () {
+                                removeProdAndRefreshCart(<?php echo $articolo["IdProd"] ?>);
+                            });
 
-                            });</script>
+                            $("#quantity<?php echo $articolo["IdProd"]; ?>").on('change', function () {
+                                changeProdQuantity(<?php echo $articolo["IdProd"] ?>, $(this).val());
+                            });
+
+                            $("#minus<?php echo $articolo["IdProd"]; ?>").on('click', function () {
+                                let newVal = parseInt($("#quantity<?php echo $articolo["IdProd"]; ?>").val()) - 1;
+                                $("#quantity<?php echo $articolo["IdProd"]; ?>").val(newVal);
+                                // Create a new 'change' event
+                                var event = new Event('change');
+                                $("#quantity<?php echo $articolo["IdProd"]; ?>").dispatchEvent(event);
+                            });
+
+                            $("#plus<?php echo $articolo["IdProd"]; ?>").on('click', function () {
+                                let newVal = parseInt($("#quantity<?php echo $articolo["IdProd"]; ?>").val()) + 1;
+                                $("#quantity<?php echo $articolo["IdProd"]; ?>").val(newVal);
+                                // Create a new 'change' event
+                                var event = new Event('change');
+                                $("#quantity<?php echo $articolo["IdProd"]; ?>").dispatchEvent(event);
+                            });
+                        </script>
                      </div>
 
                 </div>

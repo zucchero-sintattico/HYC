@@ -1,16 +1,16 @@
 -- *********************************************
--- * Standard SQL generation                   
+-- * Standard SQL generation
 -- *--------------------------------------------
--- * DB-MAIN version: 11.0.1              
--- * Generator date: Dec  4 2018              
--- * Generation date: Fri Dec  3 17:20:04 2021 
--- * LUN file: C:\Users\Stefano\Downloads\Hang-Your-Code.lun 
--- * Schema: logico3/SQL 
--- ********************************************* 
+-- * DB-MAIN version: 11.0.1
+-- * Generator date: Dec  4 2018
+-- * Generation date: Fri Dec  3 17:20:04 2021
+-- * LUN file: C:\Users\Stefano\Downloads\Hang-Your-Code.lun
+-- * Schema: logico3/SQL
+-- *********************************************
 
 
 -- Database Section
--- ________________ 
+-- ________________
 
 create
 database HYC;
@@ -23,7 +23,7 @@ HYC;
 
 
 -- Tables Section
--- _____________ 
+-- _____________
 
 create table Carrello
 (
@@ -60,13 +60,13 @@ create table Prodotto
     Colore_frame        varchar(10)   not null,
     Larghezza           int          not null,
     Titolo              varchar(40)  not null,
-    
+
     Altezza             int          not null,
     Padding             int          not null,
     Dimensione_font     int          not null,
     Mostra_numero_linee char         not null,
     NomeLinguaggio      varchar(40)  not null,
-   
+
     NomeTema            varchar(40)  not null,
     constraint ID_Prodotto_ID primary key (IdProd)
 );
@@ -117,6 +117,7 @@ create table ProdottoInCarrello
 (
     IdCarrello int not null AUTO_INCREMENT,
     IdProd     int not null,
+    Quantità int DEFAULT 1,
     constraint ID_ProdottoInCarrello_ID primary key (IdCarrello, IdProd)
 );
 
@@ -133,7 +134,7 @@ create table Utente
 
 
 -- Constraints Section
--- ___________________ 
+-- ___________________
 
 alter table Ordine
     add constraint SID_Ordin_Carre_FK
@@ -187,7 +188,7 @@ alter table Carrello
 
 
 -- Index Section
--- _____________ 
+-- _____________
 
 create unique index ID_Carrello_IND
     on Carrello (IdCarrello);

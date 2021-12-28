@@ -85,8 +85,8 @@
                                 </code>
                             </div>
                         </div>
-                    <div class="d-flex flex-column px-3"> <b class="h5"><?php echo $articolo['Titolo'] ; ?></b> <a href="#" class="h5 text-primary">quadro<?php echo $articolo["IdProd"] ?></a> </div>
-                    <div class="ml-auto"> <b class="h5">$<?php echo getPrice($articolo['Altezza'], $articolo['Larghezza']);?></b> </div>
+                    <div class="d-flex flex-column px-3"> <b class="h5"><?php echo $articolo['Titolo'] ; ?></b> <a href="#" class="h5 text-primary">quadro<?php echo $articolo["IdProd"] ?></a> <p>x<?php echo $articolo["Quantità"] ;?></p> </div>
+                    <div class="ml-auto"> <b class="h5">$<?php echo getPrice($articolo['Altezza'], $articolo['Larghezza'], $articolo['Quantità']);?></b> </div>
                 </div>
                 <?php endforeach?>
                 <div class="my-3"> <input type="text" class="w-100 form-control text-center" placeholder="Gift Card or Promo Card"> </div>
