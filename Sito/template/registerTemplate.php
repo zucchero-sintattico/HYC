@@ -15,7 +15,7 @@
                 <label for="username">Username:</label><input type="text" id="username" name="username"/>
             </li>
             <li>
-                <label for="mail">Mail:</label><input type="text" id="mail" name="mail"/>
+                <label for="mail">Mail:</label><input type="email" id="mail" name="mail"/>
             </li>
             <li>
                 <label for="password">Password:</label><input type="password" id="password" name="password"/>
