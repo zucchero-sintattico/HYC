@@ -7,7 +7,8 @@ class CodeSquare {
         this._frame_color = 'red';
         this._width = 100;
         this._height = 100;
-        this._padding = 7;
+        this._padding = 0;
+        this._frame_size = 7;
         this._font_size = 4;
         this._lineNumbers = true;
         this.codeMirror = null;
@@ -24,9 +25,8 @@ class CodeSquare {
 
     getSquare() {
         let square = $(this._querySelector);
+
         square.css("width", this._width);
-        square.css("padding", this._padding);
-        square.css("background-color", this._frame_color);
         this.codeMirror = CodeMirror(this._querySelector, {
             lineNumbers: this._lineNumbers,
             tabSize: 2,
@@ -67,7 +67,7 @@ class CodeSquare {
     setFramecolor(color) {
         let square = $(this._querySelector);
         this._frame_color = color;
-        square.css("background-color", this._frame_color);
+        square.css("border-color",  this._frame_color);
 
     }
 
@@ -124,6 +124,10 @@ class CodeSquare {
         square.find(".CodeMirror-scroll").css("height", h);
         square.find(".CodeMirror").css("font-size", this._font_size*mul);
         square.css("padding", this._padding*mul);
+        square.css("background-color", square.find(".CodeMirror").css("background-color"));
+        square.css("border-style", "ridge");
+        square.css("border-color", this._frame_color);
+        square.css("border-width", this._frame_size*mul);
     }
 
     set title(value) {
