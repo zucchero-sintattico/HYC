@@ -101,7 +101,7 @@ class DatabaseHelper
 
     public function getProductsByLanguage($language)
     {
-        $query = "SELECT * FROM Prodotto WHERE NomeLinguaggio = ?";
+        $query = "SELECT * FROM ProdottoInVetrina piv, Prodotto p WHERE piv.IdProd = p.IdProd AND NomeLinguaggio = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $language);
         $stmt->execute();
