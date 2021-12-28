@@ -1,4 +1,3 @@
-
 class CodeSquare {
     constructor(querySelector) {
         this._value = "console.log('ciao mondo')";
@@ -7,7 +6,7 @@ class CodeSquare {
         this._frame_color = 'red';
         this._width = 100;
         this._height = 100;
-        this._padding = 0;
+        this._padding = 5;
         this._frame_size = 7;
         this._font_size = 4;
         this._lineNumbers = true;
@@ -124,7 +123,9 @@ class CodeSquare {
         square.find(".CodeMirror-scroll").css("height", h);
         square.find(".CodeMirror").css("font-size", this._font_size*mul);
         square.css("padding", this._padding*mul);
-        square.css("background-color", square.find(".CodeMirror").css("background-color"));
+        let background_color_after_frame = square.find(".CodeMirror").css("background-color");
+
+        square.css("background-color", "white" );
         square.css("border-style", "ridge");
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
