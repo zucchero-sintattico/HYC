@@ -173,7 +173,7 @@ function generateCart(data){
                             </article>                
                         </a>
                         <div class="row justify-content-center mt-2">
-                            <input id="minus${products[i]["IdProd"]}" type="button" value="-" class="minus"><input id="quantity${products[i]["IdProd"]}" type="number" min="1" max="" name="quantity" value="${products[i]["Quantità"]}" title="Qty" class="input-text text-center" size="4" pattern=""><input id="plus${products[i]["IdProd"]}" type="button" value="+" class="plus">
+                            <label for="quantity${products[i]["IdProd"]}">Quantity:</label><input id="quantity${products[i]["IdProd"]}" type="number" min="1" max="" name="quantity" value="${products[i]["Quantità"]}" title="Qty" class="input-text text-center">
                         </div>
                         <div class="row justify-content-center mt-2 mb-4">
                             <a href="#" class="text-danger" id="delete${products[i]["IdProd"]}"> Delete Product </a>
@@ -183,14 +183,6 @@ function generateCart(data){
                                     });
                                     $("#quantity${products[i]["IdProd"]}").on('change', function () {
                                         changeProdQuantity(${products[i]["IdProd"]}, $(this).val());
-                                    });
-                                    
-                                    $("#minus${products[i]["IdProd"]}").on('click', function () {
-                                        $("#quantity${products[i]["IdProd"]}").val($(this).val() - 1);
-                                    });
-        
-                                    $("#plus${products[i]["IdProd"]}").on('click', function () {
-                                        $("#quantity${products[i]["IdProd"]}").val($(this).val() + 1);
                                     });
                                 </script>
                         </div>
