@@ -64,7 +64,7 @@ function createProductsOfCategoryFromData(data) {
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
  
-                           
+              
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();                        
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
