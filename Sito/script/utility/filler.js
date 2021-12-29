@@ -42,7 +42,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts, getType) {
     $.getJSON("/API/api-search.php?"+ getType +"=" + tipologiaLista, function (data) {
         let results = data['Results'];
-        let products = createProductsOfCategoryFromData(results);
+        let products = createProductsOfCategoryFromData(results,getType);
 
         $(selectorToWhereToAddProducts).append(products);
 
@@ -55,16 +55,16 @@ function fillHomePage(data) {
     //let linguaggi = createLanguages(data['Linguaggi']);
 }
 
-function createProductsOfCategoryFromData(data) {
+function createProductsOfCategoryFromData(data, cat) {
     let content = '';
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
                 <a href="editor.php?id=${data[i]["IdProd"]}" class="col-4 d-flex justify-content-center" >
-                        <code id="quadro${data[i]["IdProd"]}">
+                        <code id="quadro${cat}${data[i]["IdProd"]}">
                             <script>
                             
-                            quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
+                            quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
                             quadri[${i}].getSquare();                        
                             quadri[${i}].setWidth(${data[i]["Larghezza"]});
                             quadri[${i}].setHeight(${data[i]["Altezza"]});
