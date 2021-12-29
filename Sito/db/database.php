@@ -367,11 +367,10 @@ class DatabaseHelper
     public function createOrder($IdUser){
         $cart = $this->getLastCartOfUser($IdUser);
         $query = "INSERT INTO Ordine (IdCarrello, Data, Stato) 
-                    VALUES (?, ?, ?);";
+                    VALUES (?, DATE(NOW()), ?);";
         $stmt = $this->db->prepare($query);
-        $date = date("y/m/d");
         $status = 'Processed';
-        $stmt->bind_param("iss", $cart, $date, $status);
+        $stmt->bind_param("is", $cart, $status);
         $stmt->execute();
     }
 
