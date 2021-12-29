@@ -369,7 +369,7 @@ class DatabaseHelper
         $query = "INSERT INTO Ordine (IdCarrello, Data, Stato) 
                     VALUES (?, DATE(NOW()), ?);";
         $stmt = $this->db->prepare($query);
-        $status = 'Processed';
+        $status = 'P';
         $stmt->bind_param("is", $cart, $status);
         $stmt->execute();
     }
