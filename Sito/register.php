@@ -16,8 +16,9 @@ if(isset($_POST["username"])
     && $_POST["username"] != ""){
 
         if (filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
-            $dbh->registerUser($_POST["name"],$_POST["surname"],$_POST["username"],$_POST["mail"], $_POST["password"]);
-            $login_result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
+            $pwd = hash('sha512',  $_POST["password"]);
+            $dbh->registerUser($_POST["name"],$_POST["surname"],$_POST["username"],$_POST["mail"], $pwd);
+            $login_result = $dbh->checkLogin($_POST["username"],$pwd);
             registerLoggedUser($login_result[0]);
         }else{
             $templateParams["errorelogin"] = "Error! Please compile email correct";
