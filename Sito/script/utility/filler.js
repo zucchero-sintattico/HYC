@@ -60,10 +60,11 @@ function createProductsOfCategoryFromData(data) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-2 d-flex justify-content-center" >
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-4 d-flex justify-content-center" >
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
-                            if($('#quadro${data[i]["IdProd"]}').parent().parent().find('.CodeMirror').length === 0){
+ 
+                           
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();                        
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
@@ -77,8 +78,8 @@ function createProductsOfCategoryFromData(data) {
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
                                 quadri[${i}].setText('${data[i]["Codice"]}'); 
-                             }
-                            checkOnResize("code","col-2","col");
+                            
+                            checkOnResize("code","col-4","col");
                             
                             $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                 window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
