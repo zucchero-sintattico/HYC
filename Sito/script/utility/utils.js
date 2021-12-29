@@ -16,6 +16,7 @@ function checkerSize(selector, initialFrom, initialTo){
 
 
 
+
 function checkOnResize(selector,initialFrom,initialTo) {
     checkerSize(selector,initialFrom,initialTo);
     $(window).on('resize', function () {

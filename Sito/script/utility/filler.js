@@ -1,5 +1,4 @@
 // Functions that fill the pages
-
 function createImages(){
     return `
         <div class="text-center">
@@ -45,6 +44,7 @@ function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts
         let products = createProductsOfCategoryFromData(results,getType);
 
         $(selectorToWhereToAddProducts).append(products);
+        $(selectorToWhereToAddProducts).find("p").css("opacity", 0);
 
     });
 }
@@ -60,32 +60,36 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-4 d-flex justify-content-center" >
-                        <code id="quadro${cat}${data[i]["IdProd"]}">
+                    <div class="col-2">
+                        <div id="quadro${cat}${data[i]["IdProd"]}">
                             <script>
+                                quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
+                                quadri[${i}].getSquare();                        
+                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                quadri[${i}].setHeight(${data[i]["Altezza"]});
+                                quadri[${i}].setPadding(0);
+                                quadri[${i}].setFramecolor("transparent");
+                                quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                                quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                                quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                                quadri[${i}].disable();
+                                quadri[${i}].widthScale(300);
+                                quadri[${i}].updateStyle();
+                                quadri[${i}].setText('${data[i]["Codice"]}'); 
+                                quadri[${i}].createAnimationAndSetDescriptionInformation();     
+                                
+                                checkOnResize("code","col-4","col");
+                                
+                                $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
+                                    window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
+                                });
+                            </script>  
                             
-                            quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
-                            quadri[${i}].getSquare();                        
-                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                            quadri[${i}].setHeight(${data[i]["Altezza"]});
-                            quadri[${i}].setPadding(0);
-                            quadri[${i}].setFramecolor("transparent");
-                            quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                            quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                            quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                            quadri[${i}].disable();
-                            quadri[${i}].widthScale(300);
-                            quadri[${i}].updateStyle();
-                            quadri[${i}].setText('${data[i]["Codice"]}'); 
-                                                        
-                            checkOnResize("code","col-4","col");
-                            
-                            $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
-                                window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
-                            });
-                            </script>
-                        </code>
-                </a>      
+                        </div>
+                        
+                        <p>${data[i]["Descrizione"]}</p>
+                        <a href="editor.php?id=${data[i]["IdProd"]}" class="stretched-link"></a>
+                    </div>
             `;
         content += result;
     }

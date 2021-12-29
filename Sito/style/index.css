@@ -10,6 +10,7 @@
     }
 }
 
+
 @keyframes productsMovement {
     0% {
         transform: scale(1,1);
@@ -91,6 +92,7 @@ main > section > div > div > div > a > article{
     color: black;
     margin-top: 5%;
 }
+
 
 body a:hover{
     text-decoration: none;

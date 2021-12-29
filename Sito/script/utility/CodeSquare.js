@@ -1,4 +1,76 @@
 
+function animateProductsOnHover(product, forward, description){
+    if(forward){
+
+        description.animate([
+                {
+                    opacity: 0
+                },
+                {
+                    opacity: 1,
+                    zIndex: 3000
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
+        product.animate([
+                {
+                    transformOrigin: "center",
+                    transform: "scale(1,1)",
+                    opacity: 1
+                },
+                {
+                    transformOrigin: "center",
+                    transform: "scale(1.35, 1.35)",
+                    opacity: 0.9,
+                    zIndex: 3000
+                }],
+
+            {
+                duration: 500, iterations: 1, fill: "forwards", delay:300, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+    }else{
+
+        description.animate([
+                {
+                    opacity: 1
+                },
+                {
+                    opacity: 0,
+                    zIndex: 0
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+        product.animate(
+            {
+                transformOrigin: "center",
+                transform: "scale(1, 1)",
+                opacity: 1,
+                zIndex: 0
+            },
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+
+    }
+
+
+
+}
+
+let numClick = 0;
+
 class CodeSquare {
     constructor(querySelector) {
         this._value = "console.log('ciao mondo')";
@@ -95,6 +167,29 @@ class CodeSquare {
         this.codeMirror.setOption("lineNumbers", this._lineNumbers);
     }
 
+    createAnimationAndSetDescriptionInformation(){
+        let square = $(this._querySelector);
+
+        square.parent().on("mouseenter", function(){
+            if($(window).width() > 768){
+                let description = $(this).find("p");
+                animateProductsOnHover(($(this))[0], true, description[0]);
+            }
+
+        });
+
+        square.parent().on("mouseleave", function(){
+            if($(window).width() > 768){
+                let description = $(this).find("p");
+                animateProductsOnHover(($(this))[0], false, description[0]);
+            }
+        });
+
+
+    }
+
+
+
     disable() {
         let square = $(this._querySelector);
         square.find("textarea").css("caret-color", "transparent");
@@ -128,6 +223,7 @@ class CodeSquare {
         square.css("border-style", "ridge");
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
+
     }
 
     set title(value) {
@@ -148,6 +244,10 @@ class CodeSquare {
     }
 
     get value() {
+
+        this._value.append("`");
+        this._value.prepend("`");
+
         return this._value;
     }
 

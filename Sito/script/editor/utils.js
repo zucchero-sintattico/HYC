@@ -81,13 +81,31 @@ function executeButtonAnimation(button){
     );
 }
 
-function showPreviewPostAddition(quadroHTML){
+function showPreviewPostAddition(){
+    let quadroJsonInfo = quadro.toJSON();
+    console.log(quadroJsonInfo.value);
     return `<div class="col d-flex justify-content-center">
 
                 <div class="row justify-content-center">
-                        <code>
-                            `+ quadroHTML.html() +`
-                        </code>
+                        <div id="codeContainer">
+                            <script>
+                                let addedToCartSquare = new CodeSquare(document.querySelector('#codeContainer'));
+                                addedToCartSquare.getSquare();                        
+                                addedToCartSquare.setWidth(${quadroJsonInfo.width});
+                                addedToCartSquare.setHeight(${quadroJsonInfo.height});
+                                addedToCartSquare.setPadding(${quadroJsonInfo.padding});
+                                addedToCartSquare.setFramecolor('${quadroJsonInfo.frame_color}');
+                                addedToCartSquare.setFontSize(${quadroJsonInfo.font_size});
+                                addedToCartSquare.setLanguages('${quadroJsonInfo.language}');
+                                addedToCartSquare.setStyle('${quadroJsonInfo.theme}');
+                                addedToCartSquare.disable();
+                                addedToCartSquare.widthScale(300);
+                                addedToCartSquare.updateStyle();
+                                addedToCartSquare.setText('${quadroJsonInfo.value}');  
+                                
+                                checkOnResize("code","col-4","col");
+                            </script>
+                        </div>
                         
                         <div class="col m-5 ">
                             <div class="row mt-3 border-bottom">
@@ -111,14 +129,17 @@ $(document).on('ready', function () {
 
     $("main > div > div > div > button").on("click", function (event) {
         $(this).attr("disabled", "disabled");
-        quadro.disable();
-        let quadroHTML = $("code");
+        let generatedSquare = showPreviewPostAddition();
+
+        $("main").append(generatedSquare);
+
+        $("#codeContainer").parent().parent().hide();
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
         window.setTimeout(() => {
-                $("main").empty();
-                $("main").append(showPreviewPostAddition(quadroHTML));
-                $('code > .CodeMirror:nth-child(3)').remove();
+                //$("main").empty();
+                $("#codeContainer").parent().parent().show();
+                $('#codeContainer > .CodeMirror:nth-child(3)').remove();
             }, 1500);
 
         $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
