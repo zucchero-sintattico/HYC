@@ -9,7 +9,7 @@ class CodeSquare {
         this._padding = 5;
         this._frame_size = 7;
         this._font_size = 4;
-        this._lineNumbers = true;
+        this._lineNumbers = "1";
         this.codeMirror = null;
         this._scaledWidth = 100;
         this._querySelector = querySelector;
@@ -194,10 +194,10 @@ class CodeSquare {
             language : this.language,
             theme : this.theme,
             frame_color: this.frame_color,
-            width : this.width,
-            height : this.height,
-            padding : this.padding,
-            font_size : this.font_size,
+            width : parseInt(this.width),
+            height : parseInt(this.height),
+            padding : parseInt(this.padding),
+            font_size : parseInt(this.font_size),
             lineNumbers : this.lineNumbers,
             title : this.title
         }
