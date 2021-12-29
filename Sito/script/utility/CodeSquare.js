@@ -1,6 +1,6 @@
 class CodeSquare {
     constructor(querySelector) {
-        this._value = "console.log('ciao mondo')";
+        this._value = '';
         this._language = 'javascript';
         this._theme = 'monokai';
         this._frame_color = 'red';
@@ -140,7 +140,7 @@ class CodeSquare {
     }
 
     get code(){
-        return this.codeMirror.getValue();
+        return `\`${this._value}\``;
     }
 
 

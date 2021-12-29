@@ -134,7 +134,7 @@
                         quadro.getSquare();
                         quadro.updateStyle();
                         quadro.widthScale(350);
-                        quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
+                        quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                         if ($(window).width() < 700) {
                             quadro.widthScale($(window).width() - 20);
                         }

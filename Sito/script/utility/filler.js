@@ -76,7 +76,7 @@ function createPopularArticles(data) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
-                                quadri[${i}].setText('${data[i]["Codice"]}'); 
+                                quadri[${i}].setText(${data[i]["Codice"]}); 
                              }
                             checkOnResize("code","col-5","col");
                             
@@ -118,7 +118,7 @@ function getFilteredArticles(data, filterName) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${data[i]["Codice"]}');
+                                            quadri[${i}].setText(${data[i]["Codice"]});
                                         </script>
                                     </code>
                                 </div>
@@ -163,7 +163,7 @@ function generateCart(data){
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${products[i]["Codice"]}');
+                                            quadri[${i}].setText(${products[i]["Codice"]});
                                         </script>
                                     </code>
                                 </div>
