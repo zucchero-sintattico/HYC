@@ -122,7 +122,7 @@ $(document).on('ready', function () {
             }, 1500);
 
         $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
-            console.log(data);
+            console.log(quadro.toJSON());
         });
 
     });

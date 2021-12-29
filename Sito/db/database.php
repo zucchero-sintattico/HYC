@@ -279,8 +279,7 @@ class DatabaseHelper
     /** Insert a new Product on the Db */
     public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                                    $NomeTema){
-        $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                       NomeTema) 
+        $query = "INSERT INTO Prodotto (`Codice`, `Colore_frame`, `Larghezza`, `Titolo`, `Altezza`, `Padding`, `Dimensione_font`, `Mostra_numero_linee`, `NomeLinguaggio`, `NomeTema`) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssisiiisss", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
@@ -368,11 +367,10 @@ class DatabaseHelper
     public function createOrder($IdUser){
         $cart = $this->getLastCartOfUser($IdUser);
         $query = "INSERT INTO Ordine (IdCarrello, Data, Stato) 
-                    VALUES (?, ?, ?);";
+                    VALUES (?, DATE(NOW()), ?);";
         $stmt = $this->db->prepare($query);
-        $date = date("y/m/d");
-        $status = 'Processed';
-        $stmt->bind_param("iss", $cart, $date, $status);
+        $status = 'P';
+        $stmt->bind_param("is", $cart, $status);
         $stmt->execute();
     }
 
