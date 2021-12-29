@@ -140,7 +140,7 @@ class CodeSquare {
     }
 
     get code(){
-        return `\`${this._value}\``;
+        return `\`${this.codeMirror.getValue()}\``;
     }
 
 
