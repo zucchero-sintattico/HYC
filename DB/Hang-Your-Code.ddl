@@ -56,7 +56,7 @@ create table Notifica
 create table Prodotto
 (
     IdProd              int          not null AUTO_INCREMENT,
-    Codice              varchar(150) not null,
+    Codice              varchar(1500) not null,
     Colore_frame        varchar(10)   not null,
     Larghezza           int          not null,
     Titolo              varchar(40)  not null,

@@ -60,25 +60,25 @@ function createProductsOfCategoryFromData(data) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-2 d-flex justify-content-center" >
+                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-4 d-flex justify-content-center" >
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
-
-                                quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
-                                quadri[${i}].getSquare();                        
-                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                quadri[${i}].setPadding(0);
-                                quadri[${i}].setFramecolor("transparent");
-                                quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                                quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                                quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                                quadri[${i}].disable();
-                                quadri[${i}].widthScale(300);
-                                quadri[${i}].updateStyle();
-                                quadri[${i}].setText('${data[i]["Codice"]}'); 
-                             
-                            checkOnResize("code","col-2","col");
+                            
+                            quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
+                            quadri[${i}].getSquare();                        
+                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                            quadri[${i}].setHeight(${data[i]["Altezza"]});
+                            quadri[${i}].setPadding(0);
+                            quadri[${i}].setFramecolor("transparent");
+                            quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                            quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                            quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                            quadri[${i}].disable();
+                            quadri[${i}].widthScale(300);
+                            quadri[${i}].updateStyle();
+                            quadri[${i}].setText('${data[i]["Codice"]}'); 
+                                                        
+                            checkOnResize("code","col-4","col");
                             
                             $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                 window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
