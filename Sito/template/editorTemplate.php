@@ -78,7 +78,7 @@
             <div class="row justify-content-center">
                 <div class="col-10">
                     <label>Title</label>
-                    <input title="write title" class="form-control form-control-lg text-center" type="text"
+                    <input title="write title" class="form-control form-control-lg text-center" id="title_form" type="text"
                            placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
 
                 </div>

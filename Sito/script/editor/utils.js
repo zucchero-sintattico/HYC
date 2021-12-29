@@ -130,10 +130,10 @@ $(document).on('ready', function () {
     const styleElem = $('#style');
     const frameColorElem = $('#frame-color');
     const fontSizeElem = $('#fontSize');
-
+    const titleElem = $('#title_form')
     quadro.setStyle(styleElem.val());
     quadro.setFramecolor(frameColorElem.val());
-
+    quadro.title = titleElem.attr('placeholder');
     quadro.setWidth($('#width .active  input').val());
     quadro.setHeight($('#height .active  input').val());
     quadro.setFontSize(fontSizeElem.val());
@@ -165,6 +165,10 @@ $(document).on('ready', function () {
     fontSizeElem.on('change', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
+    }));
+
+    titleElem.on('keyup', (function () {
+        quadro.title = titleElem.val();
     }));
 
 
