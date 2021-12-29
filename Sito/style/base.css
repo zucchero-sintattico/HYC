@@ -150,7 +150,7 @@ header > div > div:nth-child(2) {
     text-align: left;
 }
 
-header > div > div:nth-child(2) > h2 {
+header > div > div:nth-child(2) > p {
     font-weight: bolder;
     font-size: 15px;
 
