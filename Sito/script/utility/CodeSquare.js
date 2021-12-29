@@ -199,7 +199,6 @@ class CodeSquare {
             padding : this.padding,
             font_size : this.font_size,
             lineNumbers : this.lineNumbers,
-            description : "",
             title : this.title
         }
     }
