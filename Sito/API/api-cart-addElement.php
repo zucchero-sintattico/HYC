@@ -13,8 +13,8 @@ if(isUserLoggedIn() && isset($_POST["title"])){
         $_POST["lineNumbers"],
         $_POST["language"],
         $_POST["theme"]);
-    $dbh->addProductInCart($product_id, getLoggedUserID());
-    echo "success";
+    $result = $dbh->addProductInCart($product_id, getLoggedUserID());
+    echo $result;
 }
 
 

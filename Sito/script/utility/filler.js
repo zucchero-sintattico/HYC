@@ -1,14 +1,20 @@
 // Functions that fill the pages
 function createImages(){
-    return `
-        <div class="text-center">
-          <img src="img/paintings/quadriTrasparentiExample.png" class="rounded" alt="...">
+    let image = `
+        <div class="row no-wrap">
+          <img src="img/paintings/room1.jpg" alt="...">
+          <img src="img/paintings/room2.jpg" alt="...">
+          <img src="img/paintings/room3.jpg" alt="...">
+          <img src="img/paintings/room4.jpg" alt="...">
         </div>
     `;
+
+    $("main").append(image);
+
 }
 
 function generateCategoriesAndRelativeProducts(categorie, linguaggi){
-    $("main").append("<div class='row mainContainer'><div class='col categories'></div></div>");
+    $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'></div></div>");
 
     for(let i=0; i<categorie.length; i++){
 
@@ -50,9 +56,9 @@ function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts
 }
 
 function fillHomePage(data) {
-    let img = createImages();
+    createImages();
     generateCategoriesAndRelativeProducts(data['Categorie'], data['Linguaggi']);
-    //let linguaggi = createLanguages(data['Linguaggi']);
+
 }
 
 function createProductsOfCategoryFromData(data, cat) {
@@ -61,7 +67,7 @@ function createProductsOfCategoryFromData(data, cat) {
     for (let i = 0; i < data.length; i++) {
         let result = `
                     <div class="col-2">
-                        <div id="quadro${cat}${data[i]["IdProd"]}">
+                        <div class="row" id="quadro${cat}${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();                        
@@ -75,10 +81,12 @@ function createProductsOfCategoryFromData(data, cat) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
-                                quadri[${i}].setText('${data[i]["Codice"]}'); 
+                                quadri[${i}].setText(${data[i]["Codice"]}); 
                                 quadri[${i}].createAnimationAndSetDescriptionInformation();     
                                 
-                                checkOnResize("code","col-4","col");
+                                checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-2","col");
+                                
+                                quadri[${i}].setDestinationOnClick("editor.php?id=${data[i]["IdProd"]}");
                                 
                                 $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                     window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
@@ -120,7 +128,7 @@ function getFilteredArticles(data, filterName) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${data[i]["Codice"]}');
+                                            quadri[${i}].setText(${data[i]["Codice"]});
                                         </script>
                                     </code>
                                 </div>
@@ -165,7 +173,7 @@ function generateCart(data){
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${products[i]["Codice"]}');
+                                            quadri[${i}].setText(${products[i]["Codice"]});
                                         </script>
                                     </code>
                                 </div>

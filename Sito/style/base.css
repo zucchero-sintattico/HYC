@@ -130,6 +130,12 @@ header > div {
     width: 100%;
 }
 
+body > div > div:nth-child(2){
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    background-color: #E0E0E0;
+}
+
 header {
     width: 100%;
 }
@@ -150,9 +156,9 @@ header > div > div:nth-child(2) {
     text-align: left;
 }
 
-header > div > div:nth-child(2) > h2 {
-    font-weight: bolder;
-    font-size: 15px;
+header > div > div:nth-child(2) > p {
+    font-size: 12px;
+    line-height: 12px !important;
 
 }
 
@@ -284,8 +290,10 @@ body main {
         width: 70%;
     }
 
-    header > div > div:nth-child(2) > h2 {
+    header > div > div:nth-child(2) > p {
         font-size: 20px !important;
+        line-height: 20px !important;
+
     }
 
     body nav {

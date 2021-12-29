@@ -1,11 +1,6 @@
-
 function animateProductsOnHover(product, forward, description){
     if(forward){
-
         description.animate([
-                {
-                    opacity: 0
-                },
                 {
                     opacity: 1,
                     zIndex: 3000
@@ -17,11 +12,6 @@ function animateProductsOnHover(product, forward, description){
         );
 
         product.animate([
-                {
-                    transformOrigin: "center",
-                    transform: "scale(1,1)",
-                    opacity: 1
-                },
                 {
                     transformOrigin: "center",
                     transform: "scale(1.35, 1.35)",
@@ -38,11 +28,8 @@ function animateProductsOnHover(product, forward, description){
 
         description.animate([
                 {
-                    opacity: 1
-                },
-                {
                     opacity: 0,
-                    zIndex: 0
+                    zIndex: 10
                 }],
 
             {
@@ -55,7 +42,7 @@ function animateProductsOnHover(product, forward, description){
                 transformOrigin: "center",
                 transform: "scale(1, 1)",
                 opacity: 1,
-                zIndex: 0
+                zIndex: 10
             },
             {
                 duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
@@ -69,20 +56,18 @@ function animateProductsOnHover(product, forward, description){
 
 }
 
-let numClick = 0;
-
 class CodeSquare {
     constructor(querySelector) {
-        this._value = "console.log('ciao mondo')";
+        this._value = '';
         this._language = 'javascript';
         this._theme = 'monokai';
         this._frame_color = 'red';
         this._width = 100;
         this._height = 100;
-        this._padding = 0;
+        this._padding = 5;
         this._frame_size = 7;
         this._font_size = 4;
-        this._lineNumbers = true;
+        this._lineNumbers = "1";
         this.codeMirror = null;
         this._scaledWidth = 100;
         this._querySelector = querySelector;
@@ -94,6 +79,12 @@ class CodeSquare {
         this._querySelector = querySelector
     }
 
+    setDestinationOnClick(dest){
+        let square = $(this._querySelector);
+        square.on("click", function(){
+            window.location.replace(dest);
+        })
+    }
 
     getSquare() {
         let square = $(this._querySelector);
@@ -170,10 +161,10 @@ class CodeSquare {
     createAnimationAndSetDescriptionInformation(){
         let square = $(this._querySelector);
 
-        square.parent().on("mouseenter", function(){
+        square.on("mouseenter", function(){
             if($(window).width() > 768){
-                let description = $(this).find("p");
-                animateProductsOnHover(($(this))[0], true, description[0]);
+                let description = $(this).parent().find("p");
+                animateProductsOnHover($(this).parent()[0], true, description[0]);
             }
 
         });
@@ -188,14 +179,13 @@ class CodeSquare {
 
     }
 
-
-
     disable() {
         let square = $(this._querySelector);
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
         this.codeMirror.setOption("readOnly", "nocursor");
+
     }
 
     scale(mul) {
@@ -219,7 +209,9 @@ class CodeSquare {
         square.find(".CodeMirror-scroll").css("height", h);
         square.find(".CodeMirror").css("font-size", this._font_size*mul);
         square.css("padding", this._padding*mul);
-        square.css("background-color", square.find(".CodeMirror").css("background-color"));
+        let background_color_after_frame = square.find(".CodeMirror").css("background-color");
+
+        square.css("background-color", "white" );
         square.css("border-style", "ridge");
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
@@ -235,7 +227,7 @@ class CodeSquare {
     }
 
     get code(){
-        return this.codeMirror.getValue();
+        return `\`${this.codeMirror.getValue()}\``;
     }
 
 
@@ -293,12 +285,11 @@ class CodeSquare {
             language : this.language,
             theme : this.theme,
             frame_color: this.frame_color,
-            width : this.width,
-            height : this.height,
-            padding : this.padding,
-            font_size : this.font_size,
+            width : parseInt(this.width),
+            height : parseInt(this.height),
+            padding : parseInt(this.padding),
+            font_size : parseInt(this.font_size),
             lineNumbers : this.lineNumbers,
-            description : "",
             title : this.title
         }
     }

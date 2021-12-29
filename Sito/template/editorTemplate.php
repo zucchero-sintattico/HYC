@@ -1,4 +1,11 @@
 <div class="col-11">
+
+    <?php if(!isUserLoggedIn()){
+     echo   "<div class='col justify-content-center'><label class='alert alert-warning'>If you are not logged in, any changes will be lost.
+             <br> 
+             <a href='../login.php'>Click to log in</a></label></div>";
+    }?>
+
     <div class="row justify-content-center">
 
 
@@ -71,7 +78,7 @@
             <div class="row justify-content-center">
                 <div class="col-10">
                     <label>Title</label>
-                    <input title="write title" class="form-control form-control-lg text-center" type="text"
+                    <input title="write title" class="form-control form-control-lg text-center" id="title_form" type="text"
                            placeholder="<?php echo $templateParams["product"]["Titolo"] ?>">
 
                 </div>
@@ -127,7 +134,7 @@
                         quadro.getSquare();
                         quadro.updateStyle();
                         quadro.widthScale(350);
-                        quadro.setText('<?php echo $templateParams["product"]["Codice"]; ?>');
+                        quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                         if ($(window).width() < 700) {
                             quadro.widthScale($(window).width() - 20);
                         }

@@ -12,7 +12,13 @@ $(document).on('ready', function () {
                 $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
                     let popUp_notification = $(".alert").show();
-                    popUp_notification.append(data.Descrizione);
+                    let notificationHtml =
+                        `
+                            <label style="font-weight: bold">`+data.TipoNotifica+`
+                            <p>`+data.Descrizione+`</p>
+                            </label>              
+                        `;
+                    popUp_notification.append(notificationHtml);
                     $("#notification").css("color", "red");
                 });
             }
@@ -31,13 +37,24 @@ $(document).on('ready', function () {
 
                 notificationToggle.append(`<div></div>`);
                 notificationDropDown = notificationToggle.children().next();
+
                 for(let i = data.length-1; i>=0; i--){
-                    notificationDropDown.append("<p>"+data[i].Descrizione+"</p>");
+                    let notificationHtml =
+                        `
+                            <div class="col border border-end-dark">
+                            <label style="font-weight: bold">`+data[i].TipoNotifica+`
+                            <p style="text-align: left">`+data[i].Descrizione+`</p>
+                            </label>
+                            </div>
+                        
+                        `;
+                    notificationDropDown.append(notificationHtml);
                 }
 
                 notificationDropDown.css("position", "absolute");
                 notificationDropDown.css("background", "#f1f1f1");
                 notificationDropDown.css("overflow-y", "scroll");
+                notificationDropDown.css("overflow-x", "hidden");
                 notificationDropDown.css("z-index", 999999);
 
                 if ($(window).width() < 768) {

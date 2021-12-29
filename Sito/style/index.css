@@ -38,10 +38,21 @@
     }
 }
 
+
 main > section > div > div {
     overflow-x: auto;
     overflow-y: hidden;
     height: 35%;
+}
+
+main > div img{
+    width: 25%;
+    padding-top: 0px !important;
+}
+
+main > div:first-child{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
 }
 
 main > section > div > div > a, main > section > div > div > article, main > section > div > div > section{
@@ -93,6 +104,11 @@ main > section > div > div > div > a > article{
     margin-top: 5%;
 }
 
+.categories > div > div > div {
+    position: relative;
+    z-index: 10;
+    user-select: none;
+}
 
 body a:hover{
     text-decoration: none;

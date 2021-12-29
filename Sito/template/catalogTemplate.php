@@ -92,7 +92,7 @@
                                     quadro<?php echo $articolo["IdProd"] ?>.disable();
                                     quadro<?php echo $articolo["IdProd"] ?>.widthScale(300);
                                     quadro<?php echo $articolo["IdProd"] ?>.updateStyle();
-                                    uadro<?php echo $articolo["IdProd"] ?>.setText('<?php echo $articolo["Codice"] ?>');
+                                    uadro<?php echo $articolo["IdProd"] ?>.setText(<?php echo $articolo["Codice"] ?>);
                                 </script>
                             </code>
                         </div>

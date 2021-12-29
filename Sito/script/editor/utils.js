@@ -101,9 +101,9 @@ function showPreviewPostAddition(){
                                 addedToCartSquare.disable();
                                 addedToCartSquare.widthScale(300);
                                 addedToCartSquare.updateStyle();
-                                addedToCartSquare.setText('${quadroJsonInfo.value}');  
+                                addedToCartSquare.setText(${quadroJsonInfo.value});  
                                 
-                                checkOnResize("code","col-4","col");
+                                checkOnResize("#codeContainer","col-4","col");
                             </script>
                         </div>
                         
@@ -131,19 +131,17 @@ $(document).on('ready', function () {
         $(this).attr("disabled", "disabled");
         let generatedSquare = showPreviewPostAddition();
 
-        $("main").append(generatedSquare);
-
-        $("#codeContainer").parent().parent().hide();
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
         window.setTimeout(() => {
-                //$("main").empty();
+                $("main > div:first-child").hide();
+                $("main").append(generatedSquare);
                 $("#codeContainer").parent().parent().show();
                 $('#codeContainer > .CodeMirror:nth-child(3)').remove();
             }, 1500);
 
         $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
-            console.log(data);
+            console.log(quadro.toJSON());
         });
 
     });
@@ -151,10 +149,10 @@ $(document).on('ready', function () {
     const styleElem = $('#style');
     const frameColorElem = $('#frame-color');
     const fontSizeElem = $('#fontSize');
-
+    const titleElem = $('#title_form')
     quadro.setStyle(styleElem.val());
     quadro.setFramecolor(frameColorElem.val());
-
+    quadro.title = titleElem.attr('placeholder');
     quadro.setWidth($('#width .active  input').val());
     quadro.setHeight($('#height .active  input').val());
     quadro.setFontSize(fontSizeElem.val());
@@ -186,6 +184,10 @@ $(document).on('ready', function () {
     fontSizeElem.on('change', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
+    }));
+
+    titleElem.on('keyup', (function () {
+        quadro.title = titleElem.val();
     }));
 
 
