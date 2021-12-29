@@ -63,10 +63,7 @@ function createProductsOfCategoryFromData(data) {
                 <a href="editor.php?id=${data[i]["IdProd"]}" class="col-2 d-flex justify-content-center" >
                         <code id="quadro${data[i]["IdProd"]}">
                             <script>
-                            let par = $('#quadro${data[i]["IdProd"]}').parent().parent();
-                            console.log(par);
-                            console.log(par.find('.CodeMirror').length);
-                            if(par.find('.CodeMirror').length === 0){
+                            if($('#quadro${data[i]["IdProd"]}').parent().parent().find('.CodeMirror').length === 0){
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                 quadri[${i}].getSquare();                        
                                 quadri[${i}].setWidth(${data[i]["Larghezza"]});
