@@ -151,8 +151,8 @@ header > div > div:nth-child(2) {
 }
 
 header > div > div:nth-child(2) > p {
-    font-weight: bolder;
-    font-size: 15px;
+    font-size: 12px;
+    line-height: 12px !important;
 
 }
 
@@ -284,8 +284,10 @@ body main {
         width: 70%;
     }
 
-    header > div > div:nth-child(2) > h2 {
+    header > div > div:nth-child(2) > p {
         font-size: 20px !important;
+        line-height: 20px !important;
+
     }
 
     body nav {
