@@ -279,8 +279,7 @@ class DatabaseHelper
     /** Insert a new Product on the Db */
     public function createProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                                    $NomeTema){
-        $query = "INSERT INTO Prodotto (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                       NomeTema) 
+        $query = "INSERT INTO Prodotto (`Codice`, `Colore_frame`, `Larghezza`, `Titolo`, `Altezza`, `Padding`, `Dimensione_font`, `Mostra_numero_linee`, `NomeLinguaggio`, `NomeTema`) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssisiiisss", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
