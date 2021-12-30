@@ -169,9 +169,7 @@ function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts
 }
 
 function fillHomePage(data) {
-    createImages();
     generateCategoriesAndRelativeProducts(data['Categorie'], data['Linguaggi']);
-
 }
 
 function createProductsOfCategoryFromData(data, cat) {
@@ -179,7 +177,7 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-2">
+                    <div class="col-4">
                         
                         <h4 class="paintingInfo titolo">${data[i]["Titolo"]}</h4>
                         
@@ -201,8 +199,8 @@ function createProductsOfCategoryFromData(data, cat) {
                                     
                                     quadri[${i}].setText(${data[i]["Codice"]}); 
                                     quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
-                                    
-                                    checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-2","col");
+                                    quadri[${i}].disablePadding();
+                                    checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-4","col");
      
                                     $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                         window.location.href = "editor.php?id=${data[i]["IdProd"]}"         

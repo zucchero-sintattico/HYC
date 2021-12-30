@@ -120,7 +120,7 @@ class CodeSquare {
     createAnimationAndSetDescriptionInformation(dest){
         this.setDestinationOnClick(dest);
         let square = $(this._querySelector);
-
+        square.css("background-color","transparent");
         square.parent().css("box-sizing", "border-box");
         square.parent().css("overflow", "hidden");
 
@@ -274,6 +274,7 @@ class CodeSquare {
 
     disablePadding(){
         this._padding = 0
+        let square = $(this._querySelector);
         square.css("padding", this._padding);
         square.css("background-color","transparent");
     }

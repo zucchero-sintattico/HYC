@@ -10,7 +10,7 @@ function getRelativeOffset(start, end) {
 function handleObjectsMovement(relative){
     let stuffToTraslate = [];
 
-    const mainDiv = document.querySelector("main > div > div:nth-child(1) :not(#insertToCart)");
+    const mainDiv = document.querySelector("main > div *:not(button)");
 
     let relativePosition = getRelativeOffset(mainDiv, relative);
 
