@@ -1,5 +1,5 @@
 <div class="row container-fluid justify-content-center">
-    <div class="col-10">
+    <div class="col-10 justify-content-center">
 
         <?php if (!isUserLoggedIn()) {
             echo "<div class='col justify-content-center'><label class='alert alert-warning'>If you are not logged in, any changes will be lost.
@@ -118,7 +118,7 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-10">
+                    <div class="col-10 justify-content-center">
                         <label>Title</label>
                         <input title="write title" class="form-control form-control-lg text-center" id="title_form"
                                type="text"
@@ -186,10 +186,7 @@
                     </code>
 
                 </div>
-                <button id="insertToCart" class="mt-5" type="button" <?php if (!isUserLoggedIn()) {
-                    echo "disabled";
-                }; ?>>Add to Cart
-                </button>
+
             </div>
 
         </div>
@@ -198,5 +195,14 @@
     </div>
 
 
-
+</div>
+<div class="row justify-content-center">
+    <div class="row-10 justify-content-end">
+        <div class="col justify-content-end">
+            <button id="insertToCart" class="mt-5" type="button" <?php if (!isUserLoggedIn()) {
+                echo "disabled";
+            }; ?>>Add to Cart
+            </button>
+        </div>
+    </div>
 </div>
