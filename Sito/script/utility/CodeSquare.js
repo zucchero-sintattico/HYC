@@ -232,8 +232,7 @@ class CodeSquare {
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
-        square.find(".CodeMirror").css("CodeMirror-cursor","pointer");
-        square.parent().css("cursor","pointer !important");
+        square.find(".CodeMirror-lines").css("cursor","pointer");
         this.codeMirror.focus();
         this.codeMirror.setOption("readOnly", "nocursor");
 
