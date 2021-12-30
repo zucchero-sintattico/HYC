@@ -129,6 +129,7 @@ create table Utente
     Username   varchar(40) not null,
     Email      varchar(40) not null,
     Password   varchar(40) not null,
+    IsAdmin bit default 0,
     constraint ID_Utente_ID primary key (IdUtente)
 );
 

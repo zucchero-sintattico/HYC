@@ -430,6 +430,34 @@ class DatabaseHelper
 
     }
 
+    /**
+     * @param $IdUtente
+     * @return 1 if the User is an Admin
+     *
+     */
+    public function isUserAdmin($IdUtente){
+        $query = "SELECT IsAdmin FROM Utente WHERE IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUtente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return ($result->fetch_all(MYSQLI_ASSOC))[0];
+    }
+
+    /**
+     * Set a new User as Admin
+     *
+     * @param $IdUtente
+     * @param $AdminValue
+     * @return void
+     */
+    public function setUserAdmin($IdUtente, $AdminValue){
+        $query = "UPDATE Utente SET IsAdmin = ? where IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $AdminValue, $IdUtente);
+        $stmt->execute();
+    }
+
 
 
 
