@@ -3,7 +3,7 @@ require_once '../bootstrap.php';
 if(isset($_GET["key"])){
     // Filtra per nome
     $templateParams['query'] = $dbh -> getProductsByTitle($_GET["key"]);
-    $data = array("Results"=>$templateParams['query'], "Title" => "Results for ".$_GET["key"].":");
+    $data = array("Results"=>$templateParams['query'], "Title" => $_GET["key"]);
 }
 // Filtra per categoria
 else if(isset($_GET["cat"])){
