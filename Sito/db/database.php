@@ -441,10 +441,10 @@ class DatabaseHelper
         $stmt->bind_param("i", $IdUtente);
         $stmt->execute();
         $result = $stmt->get_result();
-        if(($result->fetch_all(MYSQLI_ASSOC))[0] == 0){
-            return false;
+        if(($result->fetch_all(MYSQLI_ASSOC))[0]['IsAdmin'] == 0){
+            return (bool)0;
         }
-        return true;
+        return (bool)1;
     }
 
     /**
