@@ -94,13 +94,14 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                         <p>Sfoglia tutti</p>
                                     </div>
                                     
-                                    <div class="row listaCategoria${categorie[i]['IdCategoria']}">
+                                    <div class="container listaCategoria${categorie[i]['IdCategoria']}">
+                                        <div class="row"></div>
                                     </div>
                               </div>`;
 
         $(".categories").append(singleCategory);
 
-        let selector = ".listaCategoria".concat(categorie[i]['IdCategoria']);
+        let selector = `.listaCategoria${categorie[i]['IdCategoria']} > div`;
         addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
 
         $(selector).css("overflowX","hidden");
@@ -133,12 +134,13 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
                                     </div>
-                                    <div class="row flex-row flex-nowrap listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
+                                    <div class="container listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
+                                        <div class="row"></div>
                                     </div>
                               </div>`;
 
         $(".categories").append(singleCategory);
-        let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']}`;
+        let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']} > div`;
         addProductsToSpecifiedList(linguaggi[i]['NomeLinguaggio'], selector, "lan",);
 
         let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
@@ -184,7 +186,7 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-4 productWhole">
+                    <div class="productWhole">
                         
                         <h4 class="paintingInfo titolo">${data[i]["Titolo"]}</h4>
                         <div class="row justify-content-center">

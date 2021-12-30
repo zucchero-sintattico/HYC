@@ -44,6 +44,9 @@ body > div > main > section > header > h1{
     padding-top: 3%;
 }
 
+.container{
+    width: 100%;
+}
 
 main > section > div > div > div > a > article{
     background-color: #E0E0E0 !important;
