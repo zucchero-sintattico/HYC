@@ -51,7 +51,7 @@ function animateProductsOnHover(product, forward, title, description){
                 }],
 
             {
-                duration: 100, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.01,1,-0.18)"
             }
         );
 
@@ -63,7 +63,7 @@ function animateProductsOnHover(product, forward, title, description){
                     }],
 
                 {
-                    duration: 300, iterations: 1, fill: "forwards", delay: 200, easing: "cubic-bezier(1,.02,.5,1.37)"
+                    duration: 50, iterations: 1, fill: "forwards", delay: 50, easing: "cubic-bezier(1,.02,.5,1.37)"
                 }
             );
         }
@@ -76,7 +76,7 @@ function animateProductsOnHover(product, forward, title, description){
                 zIndex: 10
             },
             {
-                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.02,.5,1.37)"
             }
         );
 
@@ -123,19 +123,20 @@ class CodeSquare {
         let square = $(this._querySelector);
         square.css("background-color","transparent");
         square.parent().parent().css("box-sizing", "border-box");
-        square.parent().parent().find(".info").hide();
-
 
         square.on("mouseenter", function(){
+            $(".categories > div").css("z-index",10);
             square.parent().parent().css("z-index", 9000);
             square.parent().parent().find(".info").css("display", "inline-block");
+            square.parent().parent().parent().parent().parent().css("z-index",99999);
+
             $(this).css("cursor", "pointer");
             if($(window).width() > 768){
 
                 //square.parent().parent().css("position", "relative");
                 let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
-                square.parent().parent().find(".info").css("position","absolute");
-                square.parent().parent().find(".info").show();
+
+                square.parent().parent().find(".info").css("z-index", 99999);
                 animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
                 window.setTimeout(() => {
                     $(this).parent().parent().css("cursor", "pointer");
@@ -155,12 +156,14 @@ class CodeSquare {
                 let descriptionAndTitle = $(this).find(".paintingInfo");
 
                 animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
-                square.parent().parent().find(".info").hide();
+
+                square.parent().parent().find(".info").css("z-index",9000);
+
                 window.setTimeout(() => {
                     $(this).css("cursor", "revert");
                     $(this).off("click");
                     square.parent().css("z-index", 10);
-                    }, 200);
+                    }, 300);
 
             }
         });
