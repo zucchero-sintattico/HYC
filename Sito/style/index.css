@@ -143,6 +143,12 @@ h4 {
 
 h3{
     display: inline-block;
+    font-weight: bold;
+    color: black;
+}
+
+h3:hover{
+    cursor: pointer;
 }
 
 body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{

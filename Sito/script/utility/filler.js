@@ -13,13 +13,87 @@ function createImages(){
 
 }
 
+function addH3Animation(){
+    let h3s = $("h3");
+    h3s.next().css("opacity",0);
+    h3s.next().css("font-size","20px");
+    h3s.next().css("font-weight","bold");
+    h3s.next().next().css("opacity",0);
+
+    h3s.each(function(){
+        $(this).on("mouseenter",function(){
+            $(this).css("color", "#E0E0E0");
+            $(this).next()[0].animate([
+                    {
+                        opacity: 1,
+                        transform: "translateX(150px) translateY(4px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-out"
+                }
+            );
+
+            $(this).next().next()[0].animate([
+                {
+                    transform: "translateX(-20px) translateY(7px)",
+                },
+                {
+                    opacity: 1,
+                    transform: "translateX(5px) translateY(7px)",
+                }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-out"
+                }
+            );
+
+        })
+
+        $(this).on("mouseleave",function(){
+            $(this).css("color", "black");
+            $(this).next()[0].animate([
+                    {
+                        opacity: 0,
+                        transform: "translateX(0px) translateY(4px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-in"
+                }
+            );
+
+            $(this).next().next()[0].animate([
+                {
+                    transform: "translateY(7px)",
+                },
+                    {
+                        opacity: 0,
+                        transform: "translateX(-20px) translateY(7px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-in"
+                }
+            );
+
+        })
+
+    })
+}
+
 function generateCategoriesAndRelativeProducts(categorie, linguaggi){
     $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'></div></div>");
 
     for(let i=0; i<categorie.length; i++){
 
         let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
-                                    <h3>${categorie[i]['Tipo']}:</h3>
+                                    <div class="row">
+                                        <h3>${categorie[i]['Tipo']}:</h3>
+                                        <p> > </p>
+                                        <p>Sfoglia tutti</p>
+                                    </div>
+                                    
                                     <div class="row listaCategoria${categorie[i]['IdCategoria']}">
                                     </div>
                               </div>`;
@@ -41,13 +115,16 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
             });
         })
 
-
     }
 
     for(let i=0; i<linguaggi.length; i++){
 
         let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
-                                    <h3>${linguaggi[i]['NomeLinguaggio']}</h3>
+                                    <div class="row">
+                                        <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
+                                        <p> > </p>
+                                        <p>Sfoglia tutti</p>
+                                    </div>
                                     <div class="row listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
                                     </div>
                               </div>`;
@@ -57,11 +134,10 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         addProductsToSpecifiedList(linguaggi[i]['NomeLinguaggio'], selector, "lan",);
 
         let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
-        
+
         $(h3ParentSelector).find("h3").on("click", function () {
             console.log("clicca");
             $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
-                console.log()
                 let articoli = data["Results"];
                 let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
                 const main = $("main");
@@ -70,6 +146,8 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         })
 
     }
+
+    addH3Animation();
 
 }
 
@@ -101,27 +179,29 @@ function createProductsOfCategoryFromData(data, cat) {
                         
                         <div class="row" id="quadro${cat}${data[i]["IdProd"]}">
                             <script>
-                                quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
-                                quadri[${i}].getSquare();                        
-                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                quadri[${i}].setPadding(0);
-                                quadri[${i}].setFramecolor("transparent");
-                                quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                                quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                                quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                                quadri[${i}].disable();
-                                quadri[${i}].widthScale(300);
-                                quadri[${i}].updateStyle();
-                                
-                                quadri[${i}].setText(${data[i]["Codice"]}); 
-                                quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
-                                
-                                checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-2","col");
- 
-                                $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
-                                    window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
-                                });
+                                if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
+                                    quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
+                                    quadri[${i}].getSquare();                        
+                                    quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                    quadri[${i}].setHeight(${data[i]["Altezza"]});
+                                    quadri[${i}].setPadding(0);
+                                    quadri[${i}].setFramecolor("transparent");
+                                    quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                                    quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                                    quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                                    quadri[${i}].disable();
+                                    quadri[${i}].widthScale(300);
+                                    quadri[${i}].updateStyle();
+                                    
+                                    quadri[${i}].setText(${data[i]["Codice"]}); 
+                                    quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
+                                    
+                                    checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-2","col");
+     
+                                    $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
+                                        window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
+                                    });
+                                }
                             </script>  
                             
                         </div>
@@ -152,6 +232,8 @@ function getFilteredArticles(data, filterName) {
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();
                                             quadri[${i}].setPadding(0);
+                                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                            quadri[${i}].setHeight(${data[i]["Altezza"]});
                                             quadri[${i}].setFramecolor("transparent")
                                             quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
                                             quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');

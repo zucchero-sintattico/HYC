@@ -1,29 +1,24 @@
 $(document).on('ready', function () {
-    let backMainSetted = false;
-    let backmain = "";
 
     $("#searchField").on('input', function (event) {
         event.preventDefault();
-        if (!backMainSetted) {
-            backmain = "";
-            backmain = $("main").html();
-            backMainSetted = true;
-        }
-        let main = $("main");
-        main.html("");
+
         if ($("#searchField").val() !== "") {
-
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
+                $("main div").hide();
+                $(".searchResults").remove();
                 let articoli = data["Results"];
-                const main = $("main");
-                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
-                main.html(risultatiRicerca);
-
+                $("main").append(`<div class="row justify-content-center">
+                                            <div class='col  searchResults'></div>
+                                        </div>`);
+                $(".searchResults").append(`<h2>Results for "${data["Title"]}"</h2>`);
+                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
+                $(".searchResults").show();
             });
         } else {
-            backMainSetted = false;
-            const main = $("main");
-            main.html(backmain);
+            $("main div").show();
+            $(".searchResults").hide();
+            $(".searchResults").remove();
         }
     });
 

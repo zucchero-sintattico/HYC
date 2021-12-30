@@ -6,7 +6,8 @@ function animateProductsOnHover(product, forward, title, description){
         product.animate([
                 {
                     borderStyle: "solid",
-                    borderColor: "#E0E0E0"
+                    borderColor: "#E0E0E0",
+                    backgroundColor: "white"
                 }],
 
             {
@@ -31,7 +32,7 @@ function animateProductsOnHover(product, forward, title, description){
                 {
                     transformOrigin: "center",
                     transform: "scale(1.35, 1.35)",
-                    opacity: 0.9,
+                    opacity: 1,
                     zIndex: 3000
                 }],
 
@@ -45,6 +46,7 @@ function animateProductsOnHover(product, forward, title, description){
         product.animate([
                 {
                     borderStyle: "none",
+                    backgroundColor: "transparent"
                 }],
 
             {
@@ -64,6 +66,7 @@ function animateProductsOnHover(product, forward, title, description){
                 }
             );
         }
+
         product.animate(
             {
                 transformOrigin: "center",
@@ -232,8 +235,8 @@ class CodeSquare {
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
-        square.find(".CodeMirror").css("CodeMirror-cursor","pointer");
-        square.parent().css("cursor","pointer !important");
+        square.find(".CodeMirror").css("cursor","pointer !important");
+
         this.codeMirror.focus();
         this.codeMirror.setOption("readOnly", "nocursor");
 
