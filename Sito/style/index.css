@@ -60,8 +60,12 @@ main > section > div > div > div > a > article{
 
 .categories > div > div > div {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     user-select: none;
+}
+
+.productWhole{
+    z-index: 10;
 }
 
 body a:hover{

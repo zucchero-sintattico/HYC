@@ -145,7 +145,7 @@ class CodeSquare {
 
         square.parent().parent().on("mouseleave", function(){
             if($(window).width() > 768){
-                $(".productWhole").css("z-index", 10);
+
 
                 //square.parent().css("position", "static");
                 let descriptionAndTitle = $(this).find(".paintingInfo");
@@ -155,7 +155,8 @@ class CodeSquare {
                 window.setTimeout(() => {
                     $(this).css("cursor", "revert");
                     $(this).off("click");
-                    }, 100);
+                    $(".productWhole").css("z-index", 10);
+                    }, 200);
 
             }
         });
