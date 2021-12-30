@@ -106,7 +106,7 @@ h3:hover{
 }
 
 .infoWrapper p{
-    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{

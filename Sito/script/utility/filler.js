@@ -216,8 +216,8 @@ function createProductsOfCategoryFromData(data, cat) {
                                     </script>  
                                 </div>
                         </div>
-                        <div class="col-6 infoWrapper">
-                            <p class="paintingInfo info">${data[i]["Descrizione"]}</p>
+                        <div class="col infoWrapper">
+                            <p class="text-center paintingInfo info">${data[i]["Descrizione"]}</p>
                         </div>
                     </div>
             `;
