@@ -133,6 +133,18 @@ body > div > main > section > div > div > div > a > article > div:nth-child(1){
     text-align: center;
 }
 
+h4 {
+    text-align: center;
+    background-color: #E4E4E4;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 2px 0px;
+}
+
+h3{
+    display: inline-block;
+}
+
 body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{
     width: 100%;
     font-size: 20px;

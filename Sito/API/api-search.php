@@ -16,7 +16,6 @@ else{
     $templateParams['query'] = $dbh -> getProductsByLanguage($_GET['lan']);
     $templateParams['filterName'] = $_GET["lan"];
     $data = array("Results"=>$templateParams['query'], "Title" => $templateParams['filterName']);
-
 }
 
 

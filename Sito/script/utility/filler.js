@@ -19,14 +19,29 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
     for(let i=0; i<categorie.length; i++){
 
         let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
-                                    <h3>${categorie[i]['Tipo']}</h3>
+                                    <h3>${categorie[i]['Tipo']}:</h3>
                                     <div class="row listaCategoria${categorie[i]['IdCategoria']}">
                                     </div>
                               </div>`;
 
         $(".categories").append(singleCategory);
+
         let selector = ".listaCategoria".concat(categorie[i]['IdCategoria']);
         addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
+
+        let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
+
+        $(h3ParentSelector).find("h3").on("click", function () {
+            console.log("clicca");
+            $.getJSON("/API/api-search.php?cat=" + categorie[i]['IdCategoria'], function (data) {
+                let articoli = data["Results"];
+                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
+                const main = $("main");
+                main.html(risultatiRicerca);
+            });
+        })
+
+
     }
 
     for(let i=0; i<linguaggi.length; i++){
@@ -40,6 +55,20 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         $(".categories").append(singleCategory);
         let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']}`;
         addProductsToSpecifiedList(linguaggi[i]['NomeLinguaggio'], selector, "lan",);
+
+        let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
+        
+        $(h3ParentSelector).find("h3").on("click", function () {
+            console.log("clicca");
+            $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
+                console.log()
+                let articoli = data["Results"];
+                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
+                const main = $("main");
+                main.html(risultatiRicerca);
+            });
+        })
+
     }
 
 }
