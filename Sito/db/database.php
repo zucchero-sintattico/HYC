@@ -432,7 +432,7 @@ class DatabaseHelper
 
     /**
      * @param $IdUtente
-     * @return 1 if the User is an Admin
+     * @return true if the User is an Admin
      *
      */
     public function isUserAdmin($IdUtente){
@@ -441,7 +441,10 @@ class DatabaseHelper
         $stmt->bind_param("i", $IdUtente);
         $stmt->execute();
         $result = $stmt->get_result();
-        return ($result->fetch_all(MYSQLI_ASSOC))[0];
+        if(($result->fetch_all(MYSQLI_ASSOC))[0] == 0){
+            return false;
+        }
+        return true;
     }
 
     /**
