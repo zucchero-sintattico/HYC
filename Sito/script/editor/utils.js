@@ -118,9 +118,7 @@ function showPreviewPostAddition(){
                         </div>
                         
                 </div>
-                
-                
-                
+
             </div>`;
 
 }

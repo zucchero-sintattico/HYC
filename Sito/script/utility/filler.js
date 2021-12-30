@@ -82,12 +82,10 @@ function createProductsOfCategoryFromData(data, cat) {
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
                                 quadri[${i}].setText(${data[i]["Codice"]}); 
-                                quadri[${i}].createAnimationAndSetDescriptionInformation();     
+                                quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
                                 
                                 checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-2","col");
-                                
-                                quadri[${i}].setDestinationOnClick("editor.php?id=${data[i]["IdProd"]}");
-                                
+ 
                                 $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                     window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
                                 });
@@ -96,7 +94,7 @@ function createProductsOfCategoryFromData(data, cat) {
                         </div>
                         
                         <p>${data[i]["Descrizione"]}</p>
-                        <a href="editor.php?id=${data[i]["IdProd"]}" class="stretched-link"></a>
+                        
                     </div>
             `;
         content += result;

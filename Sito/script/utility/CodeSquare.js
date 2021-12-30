@@ -1,5 +1,16 @@
 function animateProductsOnHover(product, forward, description){
     if(forward){
+        product.animate([
+                {
+                    borderStyle: "solid",
+                    borderColor: "#E0E0E0"
+                }],
+
+            {
+                duration: 100, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
         description.animate([
                 {
                     opacity: 1,
@@ -25,6 +36,16 @@ function animateProductsOnHover(product, forward, description){
         );
 
     }else{
+
+        product.animate([
+                {
+                    borderStyle: "none",
+                }],
+
+            {
+                duration: 100, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
 
         description.animate([
                 {
@@ -72,7 +93,7 @@ class CodeSquare {
         this._scaledWidth = 100;
         this._querySelector = querySelector;
         this._title="Title";
-
+        this._dest = "";
     }
 
     setQuerySelector(querySelector){
@@ -80,10 +101,48 @@ class CodeSquare {
     }
 
     setDestinationOnClick(dest){
+        this._dest = dest;
         let square = $(this._querySelector);
         square.on("click", function(){
             window.location.replace(dest);
         })
+    }
+
+    createAnimationAndSetDescriptionInformation(dest){
+        this.setDestinationOnClick(dest);
+        let square = $(this._querySelector);
+
+        square.parent().css("box-sizing", "border-box");
+        square.parent().css("overflow", "hidden");
+
+        console.log(dest);
+        square.on("mouseenter", function(){
+            $(this).css("cursor", "pointer");
+            if($(window).width() > 768){
+                let description = $(this).parent().find("p");
+
+                animateProductsOnHover($(this).parent()[0], true, description[0]);
+                window.setTimeout(() => {
+                    $(this).parent().css("cursor", "pointer");
+                    $(this).parent().on("click", function(){
+                        window.location.replace(dest);
+                    })
+                }, 600);
+            }
+
+        });
+
+        square.parent().on("mouseleave", function(){
+            if($(window).width() > 768){
+                let description = $(this).find("p");
+                animateProductsOnHover(($(this))[0], false, description[0]);
+                window.setTimeout(() => {
+                    $(this).css("cursor", "revert");
+                    $(this).off("click");
+                    }, 100);
+            }
+        });
+
     }
 
     getSquare() {
@@ -158,32 +217,17 @@ class CodeSquare {
         this.codeMirror.setOption("lineNumbers", this._lineNumbers);
     }
 
-    createAnimationAndSetDescriptionInformation(){
-        let square = $(this._querySelector);
 
-        square.on("mouseenter", function(){
-            if($(window).width() > 768){
-                let description = $(this).parent().find("p");
-                animateProductsOnHover($(this).parent()[0], true, description[0]);
-            }
-
-        });
-
-        square.parent().on("mouseleave", function(){
-            if($(window).width() > 768){
-                let description = $(this).find("p");
-                animateProductsOnHover(($(this))[0], false, description[0]);
-            }
-        });
-
-
-    }
 
     disable() {
         let square = $(this._querySelector);
+        console.log("disabling");
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
+        square.find(".CodeMirror").css("CodeMirror-cursor","pointer");
+        square.parent().css("cursor","pointer !important");
+        this.codeMirror.focus();
         this.codeMirror.setOption("readOnly", "nocursor");
 
     }
