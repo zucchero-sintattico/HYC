@@ -269,6 +269,12 @@ class CodeSquare {
 
     }
 
+    disablePadding(){
+        this._padding = 0
+        square.css("padding", this._padding);
+        square.css("background-color","transparent");
+    }
+
     set title(value) {
         this._title = value;
     }
