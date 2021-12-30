@@ -121,19 +121,22 @@ class CodeSquare {
         this.setDestinationOnClick(dest);
         let square = $(this._querySelector);
         square.css("background-color","transparent");
-        square.parent().css("box-sizing", "border-box");
-        square.parent().css("overflow", "hidden");
+        square.parent().parent().css("box-sizing", "border-box");
 
-        console.log(dest);
+
         square.on("mouseenter", function(){
+            square.parent().parent().css("z-index", 9000);
             $(this).css("cursor", "pointer");
             if($(window).width() > 768){
-                let descriptionAndTitle = $(this).parent().find(".paintingInfo");
+                square.parent().parent().parent().css("overflow-y", "visible");
+                square.parent().parent().parent().css("overflow-x", "visible");
+                //square.parent().parent().css("position", "relative");
+                let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
 
-                animateProductsOnHover($(this).parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
+                animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
                 window.setTimeout(() => {
-                    $(this).parent().css("cursor", "pointer");
-                    $(this).parent().on("click", function(){
+                    $(this).parent().parent().css("cursor", "pointer");
+                    $(this).parent().parent().on("click", function(){
                         window.location.replace(dest);
                     })
                 }, 600);
@@ -141,15 +144,21 @@ class CodeSquare {
 
         });
 
-        square.parent().on("mouseleave", function(){
+        square.parent().parent().on("mouseleave", function(){
             if($(window).width() > 768){
+                square.parent().parent().css("z-index", 10);
+                square.parent().parent().css("overflow-y", "hidden");
+                square.parent().parent().css("overflow-x", "hidden");
+                //square.parent().css("position", "static");
                 let descriptionAndTitle = $(this).find(".paintingInfo");
 
                 animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
+
                 window.setTimeout(() => {
                     $(this).css("cursor", "revert");
                     $(this).off("click");
                     }, 100);
+
             }
         });
 

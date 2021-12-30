@@ -103,6 +103,11 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let selector = ".listaCategoria".concat(categorie[i]['IdCategoria']);
         addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
 
+        $(selector).css("overflowX","hidden");
+        $(selector).css("overflowY","hidden");
+        $(selector).css("white-space", "nowrap");
+
+
         let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
 
         $(h3ParentSelector).find("h3").on("click", function () {
@@ -122,13 +127,13 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
     for(let i=0; i<linguaggi.length; i++){
 
-        let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
+        let singleCategory = `<div class="container-fluid ${linguaggi[i]['NomeLinguaggio']} m-5">
                                     <div class="row">
                                         <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
                                     </div>
-                                    <div class="row listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
+                                    <div class="row flex-row flex-nowrap listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
                                     </div>
                               </div>`;
 
@@ -152,6 +157,8 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         })
 
     }
+
+    $(".categories button").css("font-size", 20);
 
     addH3Animation();
 
@@ -177,41 +184,41 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-4">
+                    <div class="col-4 productWhole">
                         
                         <h4 class="paintingInfo titolo">${data[i]["Titolo"]}</h4>
-                        
-                        <div class="row" id="quadro${cat}${data[i]["IdProd"]}">
-                            <script>
-                                if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
-                                    quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
-                                    quadri[${i}].getSquare();                        
-                                    quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                    quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                    quadri[${i}].setPadding(0);
-                                    quadri[${i}].setFramecolor("transparent");
-                                    quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                                    quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                                    quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                                    quadri[${i}].disable();
-                                    quadri[${i}].widthScale(300);
-                                    quadri[${i}].updateStyle();
-                                    
-                                    quadri[${i}].setText(${data[i]["Codice"]}); 
-                                    quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
-                                    quadri[${i}].disablePadding();
-                                    checkOnResize("#quadro${cat}${data[i]["IdProd"]}","col-4","col");
-     
-                                    $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
-                                        window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
-                                    });
-                                }
-                            </script>  
-                            
+                        <div class="row justify-content-center">
+                            <div id="quadro${cat}${data[i]["IdProd"]}">
+                                    <script>
+                                        if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
+                                            quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
+                                            quadri[${i}].getSquare();                        
+                                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                            quadri[${i}].setHeight(${data[i]["Altezza"]});
+                                            quadri[${i}].setPadding(0);
+                                            quadri[${i}].setFramecolor("transparent");
+                                            quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
+                                            quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
+                                            quadri[${i}].setStyle('${data[i]["NomeTema"]}');
+                                            quadri[${i}].disable();
+                                            quadri[${i}].widthScale(300);
+                                            quadri[${i}].updateStyle();
+                                            
+                                            quadri[${i}].setText(${data[i]["Codice"]}); 
+                                            quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
+                                            quadri[${i}].disablePadding();
+                                            checkOnResize("#quadro${cat}${data[i]["IdProd"]}","row","col");
+             
+                                            $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
+                                                window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
+                                            });
+                                        }
+                                    </script>  
+                                </div>
                         </div>
-                        
-                        <p class="paintingInfo info">${data[i]["Descrizione"]}</p>
-                        
+                        <div class="col-6 infoWrapper">
+                            <p class="paintingInfo info">${data[i]["Descrizione"]}</p>
+                        </div>
                     </div>
             `;
         content += result;

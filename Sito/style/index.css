@@ -105,6 +105,10 @@ h3:hover{
     cursor: pointer;
 }
 
+.infoWrapper p{
+    word-wrap: break-word;
+}
+
 body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{
     width: 100%;
     font-size: 20px;
