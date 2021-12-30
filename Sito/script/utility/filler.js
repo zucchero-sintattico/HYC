@@ -185,8 +185,8 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div style="width:370px", class="productWhole">
-                        <div class="paintingInfo paintingTitle">
+                    <div style="width:370px", class="col productWhole">
+                        <div class="row paintingInfo paintingTitle">
                             <label>${data[i]["Titolo"]}</label>
                         </div>
                         
@@ -219,7 +219,7 @@ function createProductsOfCategoryFromData(data, cat) {
                                     </script>  
                                 </div>
                         </div>
-                        <div class="col infoWrapper">
+                        <div class="row infoWrapper">
                             <p class="text-center paintingInfo info">${data[i]["Descrizione"]}</p>
                         </div>
                     </div>

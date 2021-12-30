@@ -64,9 +64,7 @@ main > section > div > div > div > a > article{
     user-select: none;
 }
 
-.productWhole{
-    z-index: 10;
-}
+
 
 body a:hover{
     text-decoration: none;

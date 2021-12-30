@@ -5,8 +5,6 @@ function animateProductsOnHover(product, forward, title, description){
     if(forward){
         product.animate([
                 {
-                    borderStyle: "solid",
-                    borderColor: "#E0E0E0",
                     backgroundColor: "white"
                 }],
 
@@ -16,10 +14,14 @@ function animateProductsOnHover(product, forward, title, description){
         );
 
         for(let i = 0; i< informationStack.length; i++){
+            let opac = 1;
+            if(i==0){
+               opac = 0.8;
+            }
             informationStack[i].animate([
                     {
-                        opacity: 1,
-                        zIndex: 3000
+                        opacity: opac,
+                        zIndex: 99999
                     }],
 
                 {
@@ -33,7 +35,7 @@ function animateProductsOnHover(product, forward, title, description){
                     transformOrigin: "center",
                     transform: "scale(1.35, 1.35)",
                     opacity: 1,
-                    zIndex: 3000
+                    zIndex: 99999
                 }],
 
             {
@@ -45,7 +47,6 @@ function animateProductsOnHover(product, forward, title, description){
 
         product.animate([
                 {
-                    borderStyle: "none",
                     backgroundColor: "transparent"
                 }],
 
@@ -122,16 +123,19 @@ class CodeSquare {
         let square = $(this._querySelector);
         square.css("background-color","transparent");
         square.parent().parent().css("box-sizing", "border-box");
+        square.parent().parent().find(".info").hide();
 
 
         square.on("mouseenter", function(){
-            $(".productWhole").css("z-index", 9000);
+            square.parent().parent().css("z-index", 9000);
+            square.parent().parent().find(".info").css("display", "inline-block");
             $(this).css("cursor", "pointer");
             if($(window).width() > 768){
 
                 //square.parent().parent().css("position", "relative");
                 let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
-
+                square.parent().parent().find(".info").css("position","absolute");
+                square.parent().parent().find(".info").show();
                 animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
                 window.setTimeout(() => {
                     $(this).parent().parent().css("cursor", "pointer");
@@ -151,11 +155,11 @@ class CodeSquare {
                 let descriptionAndTitle = $(this).find(".paintingInfo");
 
                 animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
-
+                square.parent().parent().find(".info").hide();
                 window.setTimeout(() => {
                     $(this).css("cursor", "revert");
                     $(this).off("click");
-                    $(".productWhole").css("z-index", 10);
+                    square.parent().css("z-index", 10);
                     }, 200);
 
             }

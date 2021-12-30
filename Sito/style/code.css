@@ -26,8 +26,17 @@
     white-space: pre-wrap;
 }
 
-.infoWrapper p{
+.productWhole{
+    z-index: 10;
     position: static;
+}
+
+.infoWrapper p{
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 999999;
+    border-color: #E0E0E0;
 }
 
 .paintingTitle{
