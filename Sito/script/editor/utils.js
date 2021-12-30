@@ -10,7 +10,7 @@ function getRelativeOffset(start, end) {
 function handleObjectsMovement(relative){
     let stuffToTraslate = [];
 
-    const mainDiv = document.querySelector("main > div > div:nth-child(1)");
+    const mainDiv = document.querySelector("main > div > div:nth-child(1) :not(#insertToCart)");
 
     let relativePosition = getRelativeOffset(mainDiv, relative);
 
@@ -125,7 +125,7 @@ function showPreviewPostAddition(){
 
 $(document).on('ready', function () {
 
-    $("main > div > div > div > button").on("click", function (event) {
+    $("#insertToCart").on("click", function (event) {
         $(this).attr("disabled", "disabled");
         let generatedSquare = showPreviewPostAddition();
 
