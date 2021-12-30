@@ -221,48 +221,6 @@ function createProductsOfCategoryFromData(data, cat) {
     return content;
 }
 
-function getFilteredArticles(data, filterName) {
-    let content = '';
-    quadri = [];
-    for (let i = 0; i < data.length; i++) {
-        let result = `
-                    <div class="col-12 col-md-6">
-                        <a href="../editor.php?id=${data[i]["IdProd"]}">
-                            <article>
-                               <div class="col-12">
-                                    <h2>${data[i]["Titolo"]}</h2>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <code id="quadro${data[i]["IdProd"]}">
-                                        <script>
-                                            quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
-                                            quadri[${i}].getSquare();
-                                            quadri[${i}].setPadding(0);
-                                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                            quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                            quadri[${i}].setFramecolor("transparent")
-                                            quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                                            quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                                            quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                                            quadri[${i}].disable();
-                                            quadri[${i}].widthScale(300);
-                                            quadri[${i}].updateStyle();
-                                            quadri[${i}].setText(${data[i]["Codice"]});
-                                        </script>
-                                    </code>
-                                </div>
-                                <div class="row">
-                                    <p class="col-12">${data[i]["Descrizione"]}</p>
-                                </div>
-                            </article>                
-                         </a>
-                    </div>
-             
-            `;
-        content += result;
-    }
-    return adaptableSection(content, filterName);
-}
 
 function generateCart(data){
     let content = '';
@@ -363,7 +321,7 @@ function createCatalogByLanguages(idLang) {
         let results = data['Results'];
         let languageName = data['Title'];
         quadri = [];
-        let articles = getFilteredArticles(results, languageName);
+        let articles = createProductsOfCategoryFromData(results, languageName);
         const main = $("main");
         main.html("");
         main.append(articles);

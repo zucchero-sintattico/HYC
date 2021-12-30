@@ -11,7 +11,7 @@ $(document).on('ready', function () {
                 $("main").append(`<div class="row justify-content-center">
                                             <div class='col  searchResults'></div>
                                         </div>`);
-                $(".searchResults").append(`<h2>Results for "${data["Title"]}"</h2>`);
+                $(".searchResults").append(`<h2>Search results for "${data["Title"]}"</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
             });
