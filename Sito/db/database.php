@@ -75,6 +75,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllProducts()
+    {
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
+       Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
+       NomeLinguaggio, NomeTema, Tipo
+            FROM Prodotto p, ProdottoInVetrina pv, Categoria c
+            WHERE p.IdProd = pv.IdProd";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getProductsByTitle($Titolo)
     {
         $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
