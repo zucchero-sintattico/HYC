@@ -106,12 +106,15 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
 
         $(h3ParentSelector).find("h3").on("click", function () {
-            console.log("clicca");
             $.getJSON("/API/api-search.php?cat=" + categorie[i]['IdCategoria'], function (data) {
                 let articoli = data["Results"];
-                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
-                const main = $("main");
-                main.html(risultatiRicerca);
+                $("main div").hide();
+                $("main").append(`<div class="row justify-content-center">
+                                            <div class='col searchResults'></div>
+                                        </div>`);
+                $(".searchResults").append(`<h2>${data["Title"]}</h2>`);
+                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
+                $(".searchResults").show();
             });
         })
 
@@ -136,12 +139,15 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
 
         $(h3ParentSelector).find("h3").on("click", function () {
-            console.log("clicca");
             $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
                 let articoli = data["Results"];
-                let risultatiRicerca = getFilteredArticles(articoli, data["Title"]);
-                const main = $("main");
-                main.html(risultatiRicerca);
+                $("main div").hide();
+                $("main").append(`<div class="row justify-content-center">
+                                            <div class='col searchResults'></div>
+                                        </div>`);
+                $(".searchResults").append(`<h2>${data["Title"]}</h2>`);
+                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
+                $(".searchResults").show();
             });
         })
 
@@ -345,7 +351,7 @@ function createCatalogWithCategories(idCategory) {
         let results = data['Results'];
         let categoryName = data['Title'];
         quadri = [];
-        let articles = getFilteredArticles(results, categoryName);
+        let articles = createProductsOfCategoryFromData(results, categoryName);
         const main = $("main");
         main.html("");
         main.append(articles);
