@@ -1,4 +1,7 @@
-function animateProductsOnHover(product, forward, description){
+function animateProductsOnHover(product, forward, title, description){
+
+    let informationStack = [title, description];
+
     if(forward){
         product.animate([
                 {
@@ -11,16 +14,18 @@ function animateProductsOnHover(product, forward, description){
             }
         );
 
-        description.animate([
-                {
-                    opacity: 1,
-                    zIndex: 3000
-                }],
+        for(let i = 0; i< informationStack.length; i++){
+            informationStack[i].animate([
+                    {
+                        opacity: 1,
+                        zIndex: 3000
+                    }],
 
-            {
-                duration: 300, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
-            }
-        );
+                {
+                    duration: 300, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
+                }
+            );
+        }
 
         product.animate([
                 {
@@ -47,17 +52,18 @@ function animateProductsOnHover(product, forward, description){
             }
         );
 
-        description.animate([
+        for(let i = 0; i< informationStack.length; i++) {
+            informationStack[i].animate([
+                    {
+                        opacity: 0,
+                        zIndex: 10
+                    }],
+
                 {
-                    opacity: 0,
-                    zIndex: 10
-                }],
-
-            {
-                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
-            }
-        );
-
+                    duration: 300, iterations: 1, fill: "forwards", delay: 200, easing: "cubic-bezier(1,.02,.5,1.37)"
+                }
+            );
+        }
         product.animate(
             {
                 transformOrigin: "center",
@@ -119,9 +125,9 @@ class CodeSquare {
         square.on("mouseenter", function(){
             $(this).css("cursor", "pointer");
             if($(window).width() > 768){
-                let description = $(this).parent().find("p");
+                let descriptionAndTitle = $(this).parent().find(".paintingInfo");
 
-                animateProductsOnHover($(this).parent()[0], true, description[0]);
+                animateProductsOnHover($(this).parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
                 window.setTimeout(() => {
                     $(this).parent().css("cursor", "pointer");
                     $(this).parent().on("click", function(){
@@ -134,8 +140,9 @@ class CodeSquare {
 
         square.parent().on("mouseleave", function(){
             if($(window).width() > 768){
-                let description = $(this).find("p");
-                animateProductsOnHover(($(this))[0], false, description[0]);
+                let descriptionAndTitle = $(this).find(".paintingInfo");
+
+                animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
                 window.setTimeout(() => {
                     $(this).css("cursor", "revert");
                     $(this).off("click");

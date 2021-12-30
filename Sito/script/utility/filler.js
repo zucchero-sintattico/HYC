@@ -50,7 +50,7 @@ function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts
         let products = createProductsOfCategoryFromData(results,getType);
 
         $(selectorToWhereToAddProducts).append(products);
-        $(selectorToWhereToAddProducts).find("p").css("opacity", 0);
+        $(selectorToWhereToAddProducts).find(".paintingInfo").css("opacity", 0);
 
     });
 }
@@ -67,6 +67,9 @@ function createProductsOfCategoryFromData(data, cat) {
     for (let i = 0; i < data.length; i++) {
         let result = `
                     <div class="col-2">
+                        
+                        <h4 class="paintingInfo titolo">${data[i]["Titolo"]}</h4>
+                        
                         <div class="row" id="quadro${cat}${data[i]["IdProd"]}">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
@@ -81,6 +84,7 @@ function createProductsOfCategoryFromData(data, cat) {
                                 quadri[${i}].disable();
                                 quadri[${i}].widthScale(300);
                                 quadri[${i}].updateStyle();
+                                
                                 quadri[${i}].setText(${data[i]["Codice"]}); 
                                 quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
                                 
@@ -93,7 +97,7 @@ function createProductsOfCategoryFromData(data, cat) {
                             
                         </div>
                         
-                        <p>${data[i]["Descrizione"]}</p>
+                        <p class="paintingInfo info">${data[i]["Descrizione"]}</p>
                         
                     </div>
             `;
