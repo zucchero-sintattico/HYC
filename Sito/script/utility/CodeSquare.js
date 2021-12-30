@@ -125,11 +125,10 @@ class CodeSquare {
 
 
         square.on("mouseenter", function(){
-            square.parent().parent().css("z-index", 9000);
+            $(".productWhole").css("z-index", 9000);
             $(this).css("cursor", "pointer");
             if($(window).width() > 768){
-                square.parent().parent().parent().css("overflow-y", "visible");
-                square.parent().parent().parent().css("overflow-x", "visible");
+
                 //square.parent().parent().css("position", "relative");
                 let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
 
@@ -146,9 +145,8 @@ class CodeSquare {
 
         square.parent().parent().on("mouseleave", function(){
             if($(window).width() > 768){
-                square.parent().parent().css("z-index", 10);
-                square.parent().parent().css("overflow-y", "hidden");
-                square.parent().parent().css("overflow-x", "hidden");
+                $(".productWhole").css("z-index", 10);
+
                 //square.parent().css("position", "static");
                 let descriptionAndTitle = $(this).find(".paintingInfo");
 

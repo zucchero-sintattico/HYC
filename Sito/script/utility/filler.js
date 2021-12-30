@@ -104,10 +104,9 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let selector = `.listaCategoria${categorie[i]['IdCategoria']} > div`;
         addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
 
-        $(selector).css("overflowX","hidden");
-        $(selector).css("overflowY","hidden");
+        $(selector).css("overflowX","visible");
+        $(selector).css("overflowY","visible");
         $(selector).css("white-space", "nowrap");
-
 
         let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
 
@@ -128,7 +127,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
     for(let i=0; i<linguaggi.length; i++){
 
-        let singleCategory = `<div class="container-fluid ${linguaggi[i]['NomeLinguaggio']} m-5">
+        let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
                                     <div class="row">
                                         <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
                                         <p> > </p>
@@ -186,9 +185,11 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="productWhole">
+                    <div style="width:370px", class="productWhole">
+                        <div class="paintingInfo paintingTitle">
+                            <label>${data[i]["Titolo"]}</label>
+                        </div>
                         
-                        <h4 class="paintingInfo titolo">${data[i]["Titolo"]}</h4>
                         <div class="row justify-content-center">
                             <div id="quadro${cat}${data[i]["IdProd"]}">
                                     <script>
