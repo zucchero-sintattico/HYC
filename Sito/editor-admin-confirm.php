@@ -3,7 +3,7 @@
 // Controllo admin
 require_once 'bootstrap.php';
 // Redirect a catalogo admin
-header("Location: admin.php");
+header("location: admin.php");
 if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
 
     // Mode edit
