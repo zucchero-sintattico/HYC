@@ -127,6 +127,8 @@ main {
     margin-left: 50px;
 }
 
+
+
 @media screen and (prefers-reduced-motion) {
     * {
         animation: none;
@@ -135,7 +137,7 @@ main {
 }
 
 @media (max-width: 768px) {
-    
+
     main{
         margin-right: 2px;
         margin-left: 2px;
@@ -145,7 +147,11 @@ main {
         z-index: 10 !important;
     }
 
-
+    .categories, .categories > div > div:nth-child(2) {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        padding: 0px !important;
+    }
 
     .categories > div > div:nth-child(2) > div{
         overflow-y: hidden;
@@ -157,8 +163,7 @@ main {
     }
 
     .categories > div > div:nth-child(2){
-        overflow-y: hidden;
-        overflow-x: auto;
+
         padding-top: 0;
         padding-bottom: 0;
 

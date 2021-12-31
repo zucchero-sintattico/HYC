@@ -125,7 +125,7 @@ nav > ul li a:hover {
 }
 
 nav{
-    z-index: 999999;
+    z-index: 9999999 !important;
 }
 
 header > div {
@@ -224,8 +224,6 @@ body nav > ul > li > a {
     text-decoration: none;
 }
 
-
-
 nav > ul > li > a > p {
     display: none;
 }
@@ -304,7 +302,7 @@ body main {
         position: static;
         margin-bottom: 10px;
         position: relative;
-        z-index:99999;
+        z-index: 9999999 !important;
     }
 
     body nav > ul > li:not(:last-child) {
