@@ -15,15 +15,16 @@ function createImages(){
 
 function addH3Animation(){
     let h3s = $("h3");
-    h3s.next().css("opacity",0);
-    h3s.next().css("font-size","20px");
-    h3s.next().css("font-weight","bold");
     h3s.next().next().css("opacity",0);
+    h3s.next().next().css("font-size","20px");
+    h3s.next().next().css("font-weight","bold");
+    h3s.next().next().next().css("opacity",0);
 
     h3s.each(function(){
         $(this).on("mouseenter",function(){
+            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "white", "important");
             $(this).css("color", "#E0E0E0");
-            $(this).next()[0].animate([
+            $(this).next().next()[0].animate([
                     {
                         opacity: 1,
                         transform: "translateX(150px) translateY(4px)",
@@ -34,7 +35,7 @@ function addH3Animation(){
                 }
             );
 
-            $(this).next().next()[0].animate([
+            $(this).next().next().next()[0].animate([
                 {
                     transform: "translateX(-20px) translateY(7px)",
                 },
@@ -51,8 +52,9 @@ function addH3Animation(){
         })
 
         $(this).on("mouseleave",function(){
+            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "black", "important");
             $(this).css("color", "black");
-            $(this).next()[0].animate([
+            $(this).next().next()[0].animate([
                     {
                         opacity: 0,
                         transform: "translateX(0px) translateY(4px)",
@@ -63,7 +65,7 @@ function addH3Animation(){
                 }
             );
 
-            $(this).next().next()[0].animate([
+            $(this).next().next().next()[0].animate([
                 {
                     transform: "translateY(7px)",
                 },
@@ -90,6 +92,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
                                     <div class="row">
                                         <h3>${categorie[i]['Tipo']}:</h3>
+                                        <p class="isFirstP"> > </p>
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
                                     </div>
@@ -130,6 +133,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
                                     <div class="row">
                                         <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
+                                        <p class="isFirstP"> > </p>
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
                                     </div>
@@ -159,8 +163,22 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
     }
 
-    $(".categories button").css("font-size", 20);
 
+
+
+    $(".isFirstP").each(function(){
+        $(this).css("color","white");
+        $(this).css("font-size", "28px");
+        $(this).css("font-weight","bold");
+    })
+
+    $(".categories > div > div:first-child").on("mouseenter", function(){
+        $(this).find("p").first().css("color", "black");
+    });
+
+    $(".categories > div > div:first-child").on("mouseleave", function(){
+        $(this).find("p").first().css("color", "white");
+    });
     addH3Animation();
 
 }
@@ -185,7 +203,7 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div style="width:370px", class="col productWhole">
+                    <div style="width:370px; max-width: 500px", class="col productWhole">
                         <div class="row paintingInfo paintingTitle">
                             <label>${data[i]["Titolo"]}</label>
                         </div>

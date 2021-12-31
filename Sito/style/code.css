@@ -29,14 +29,18 @@
 .productWhole{
     z-index: 10;
     position: static;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
 }
 
 .infoWrapper p{
     width: 100%;
     position: absolute;
     background-color: white;
-    z-index: 999999;
+    z-index: 100;
     border-color: #E0E0E0;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
 }
 
 .paintingTitle{
@@ -48,6 +52,8 @@
     width: 100%;
     padding: 0 0;
     vertical-align: text-top;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
 }
 
 .paintingInfo > label {

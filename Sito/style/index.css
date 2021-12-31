@@ -89,9 +89,6 @@ body > div > main > section > div > div > div > a > article > div:nth-child(1){
     text-align: center;
 }
 
-.categories > div > div:first-child{
-    background-color: white;
-}
 
 h3{
     display: inline-block;
