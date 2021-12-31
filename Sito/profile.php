@@ -5,7 +5,6 @@ $templateParams["title"] = "HYC - profile";
 $templateParams['style'] = "style/profile.css";
 
 if(isUserLoggedIn()) {
-    echo "OOOO";
     $templateParams["name"] = "profileTemplate.php";
     $templateParams["userID"] = getLoggedUserID();
     $templateParams["userName"] = getNameUserID();
