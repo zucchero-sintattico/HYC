@@ -107,8 +107,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let selector = `.listaCategoria${categorie[i]['IdCategoria']} > div`;
         addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
 
-        $(selector).css("overflowX","visible");
-        $(selector).css("overflowY","visible");
+
         $(selector).css("white-space", "nowrap");
 
         let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
@@ -117,10 +116,11 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
             $.getJSON("/API/api-search.php?cat=" + categorie[i]['IdCategoria'], function (data) {
                 let articoli = data["Results"];
                 $("main div").hide();
-                $("main").append(`<div class="row justify-content-center">
-                                            <div class='col searchResults'></div>
-                                        </div>`);
-                $(".searchResults").append(`<h2>${data["Title"]}</h2>`);
+                $("main").append(`<div class="container">
+                                            <div class="col categRes"></div>
+                                            <div class="row searchResults"></div>
+                                    </div>`);
+                $(".categRes").append(`<h2>${data["Title"]}</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
             });
@@ -152,10 +152,11 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
             $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
                 let articoli = data["Results"];
                 $("main div").hide();
-                $("main").append(`<div class="row justify-content-center">
-                                            <div class='col searchResults'></div>
-                                        </div>`);
-                $(".searchResults").append(`<h2>${data["Title"]}</h2>`);
+                $("main").append(`<div class="container">
+                                            <div class="col categRes"></div>
+                                            <div class="row searchResults"></div>
+                                    </div>`);
+                $(".categRes").append(`<h2>${data["Title"]}</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
             });
@@ -228,7 +229,8 @@ function createProductsOfCategoryFromData(data, cat) {
                                             quadri[${i}].setText(${data[i]["Codice"]}); 
                                             quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
                                             quadri[${i}].disablePadding();
-                                            checkOnResize("#quadro${cat}${data[i]["IdProd"]}","row","col");
+                                            let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
+                                            checkOnResize(parent,"row","col", true);
              
                                             $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
                                                 window.location.href = "editor.php?id=${data[i]["IdProd"]}"         

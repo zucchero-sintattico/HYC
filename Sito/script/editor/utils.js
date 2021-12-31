@@ -103,7 +103,7 @@ function showPreviewPostAddition(){
                                 addedToCartSquare.updateStyle();
                                 addedToCartSquare.setText(${quadroJsonInfo.value});  
                                 
-                                checkOnResize("#codeContainer","col-4","col");
+                                checkOnResize($("#codeContainer").parent(),"col-4","col");
                             </script>
                         </div>
                         

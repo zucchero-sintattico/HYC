@@ -9,7 +9,7 @@ function animateProductsOnHover(product, forward, title, description){
                 }],
 
             {
-                duration: 100, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
             }
         );
 
@@ -25,7 +25,7 @@ function animateProductsOnHover(product, forward, title, description){
                     }],
 
                 {
-                    duration: 300, iterations: 1, fill: "forwards", delay:500, easing: "cubic-bezier(1,.01,1,-0.18)"
+                    duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
                 }
             );
         }
@@ -39,7 +39,7 @@ function animateProductsOnHover(product, forward, title, description){
                 }],
 
             {
-                duration: 500, iterations: 1, fill: "forwards", delay:300, easing: "cubic-bezier(1,.02,.5,1.37)"
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
             }
         );
 
@@ -143,14 +143,13 @@ class CodeSquare {
                     $(this).parent().parent().on("click", function(){
                         window.location.replace(dest);
                     })
-                }, 600);
+                }, 500);
             }
 
         });
 
         square.parent().parent().on("mouseleave", function(){
             if($(window).width() > 768){
-
 
                 //square.parent().css("position", "static");
                 let descriptionAndTitle = $(this).find(".paintingInfo");
@@ -163,7 +162,7 @@ class CodeSquare {
                     $(this).css("cursor", "revert");
                     $(this).off("click");
                     square.parent().css("z-index", 10);
-                    }, 300);
+                    }, 100);
 
             }
         });

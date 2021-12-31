@@ -8,10 +8,11 @@ $(document).on('ready', function () {
                 $("main div").hide();
                 $(".searchResults").remove();
                 let articoli = data["Results"];
-                $("main").append(`<div class="row justify-content-center">
-                                            <div class='col  searchResults'></div>
-                                        </div>`);
-                $(".searchResults").append(`<h2>Search results for "${data["Title"]}"</h2>`);
+                $("main").append(`<div class="container">
+                                            <div class="col categRes"></div>
+                                            <div class="row searchResults"></div>
+                                    </div>`);
+                $(".categRes").append(`<h2>Search results for "${data["Title"]}"</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
             });
