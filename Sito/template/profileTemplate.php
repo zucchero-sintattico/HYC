@@ -20,6 +20,7 @@
                                         <p>Quantity: <?php echo $templateParams["ordersHistory"][$i][$j]["Quantità"] ?></p>
                                         <?php
                                             $costoProdotto = getPrice($templateParams["ordersHistory"][$i][$j]["Larghezza"],$templateParams["ordersHistory"][$i][$j]["Altezza"], ($templateParams["ordersHistory"][$i][$j])['Quantità']);
+
                                             $totaleOrdine += $costoProdotto;
                                         ?>
                                         <div class="row d-flex justify-content-start pl-4"><p>Prezzo: <?php echo $costoProdotto ?>€</p></div>

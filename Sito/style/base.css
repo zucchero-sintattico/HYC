@@ -124,10 +124,20 @@ nav > ul li a:hover {
     text-decoration: none;
 }
 
+nav{
+    z-index: 9999999 !important;
+}
+
 header > div {
     background-color: Gainsboro;
     padding: 10px 0 10px 40px;
     width: 100%;
+}
+
+body > div > div:nth-child(2){
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    background-color: #E0E0E0;
 }
 
 header {
@@ -189,8 +199,8 @@ body nav {
     width: 100%;
     position: fixed;
     bottom: 0;
-    z-index: 100;
     padding: 0 !important;
+    z-index:99999;
 }
 
 body nav > ul {
@@ -213,8 +223,6 @@ body nav > ul > li > a {
     padding: 10px 0;
     text-decoration: none;
 }
-
-
 
 nav > ul > li > a > p {
     display: none;
@@ -293,6 +301,8 @@ body main {
     body nav {
         position: static;
         margin-bottom: 10px;
+        position: relative;
+        z-index: 9999999 !important;
     }
 
     body nav > ul > li:not(:last-child) {

@@ -10,7 +10,7 @@ function getRelativeOffset(start, end) {
 function handleObjectsMovement(relative){
     let stuffToTraslate = [];
 
-    const mainDiv = document.querySelector("main > div > div:nth-child(1)");
+    const mainDiv = document.querySelector("main > div *:not(button)");
 
     let relativePosition = getRelativeOffset(mainDiv, relative);
 
@@ -81,13 +81,31 @@ function executeButtonAnimation(button){
     );
 }
 
-function showPreviewPostAddition(quadroHTML){
+function showPreviewPostAddition(){
+    let quadroJsonInfo = quadro.toJSON();
+    console.log(quadroJsonInfo.value);
     return `<div class="col d-flex justify-content-center">
 
                 <div class="row justify-content-center">
-                        <code>
-                            `+ quadroHTML.html() +`
-                        </code>
+                        <div id="codeContainer">
+                            <script>
+                                let addedToCartSquare = new CodeSquare(document.querySelector('#codeContainer'));
+                                addedToCartSquare.getSquare();                        
+                                addedToCartSquare.setWidth(${quadroJsonInfo.width});
+                                addedToCartSquare.setHeight(${quadroJsonInfo.height});
+                                addedToCartSquare.setPadding(${quadroJsonInfo.padding});
+                                addedToCartSquare.setFramecolor('${quadroJsonInfo.frame_color}');
+                                addedToCartSquare.setFontSize(${quadroJsonInfo.font_size});
+                                addedToCartSquare.setLanguages('${quadroJsonInfo.language}');
+                                addedToCartSquare.setStyle('${quadroJsonInfo.theme}');
+                                addedToCartSquare.disable();
+                                addedToCartSquare.widthScale(300);
+                                addedToCartSquare.updateStyle();
+                                addedToCartSquare.setText(${quadroJsonInfo.value});  
+                                
+                                checkOnResize($("#codeContainer").parent(),"col-4","col");
+                            </script>
+                        </div>
                         
                         <div class="col m-5 ">
                             <div class="row mt-3 border-bottom">
@@ -100,25 +118,24 @@ function showPreviewPostAddition(quadroHTML){
                         </div>
                         
                 </div>
-                
-                
-                
+
             </div>`;
 
 }
 
 $(document).on('ready', function () {
 
-    $("main > div > div > div > button").on("click", function (event) {
+    $("#insertToCart").on("click", function (event) {
         $(this).attr("disabled", "disabled");
-        quadro.disable();
-        let quadroHTML = $("code");
+        let generatedSquare = showPreviewPostAddition();
+
         window.setTimeout(() => { handleObjectsMovement(this); }, 0);
         window.setTimeout(() => { executeButtonAnimation(this); }, 750);
         window.setTimeout(() => {
-                $("main").empty();
-                $("main").append(showPreviewPostAddition(quadroHTML));
-                $('code > .CodeMirror:nth-child(3)').remove();
+                $("main > div:first-child").hide();
+                $("main").append(generatedSquare);
+                $("#codeContainer").parent().parent().show();
+                $('#codeContainer > .CodeMirror:nth-child(3)').remove();
             }, 1500);
 
         $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
@@ -130,7 +147,10 @@ $(document).on('ready', function () {
     const styleElem = $('#style');
     const frameColorElem = $('#frame-color');
     const fontSizeElem = $('#fontSize');
-    const titleElem = $('#title_form')
+    const titleElem = $('#title_form');
+    const languageElem = $("#language");
+
+    quadro.setLanguages(languageElem.val());
     quadro.setStyle(styleElem.val());
     quadro.setFramecolor(frameColorElem.val());
     quadro.title = titleElem.attr('placeholder');
@@ -138,11 +158,12 @@ $(document).on('ready', function () {
     quadro.setHeight($('#height .active  input').val());
     quadro.setFontSize(fontSizeElem.val());
     quadro.updateStyle();
+
     styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
     }));
 
-    $('#language').on('change', (function () {
+    languageElem.on('change', (function () {
         quadro.setLanguages($('#language').val());
     }));
 

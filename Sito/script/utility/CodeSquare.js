@@ -1,3 +1,92 @@
+function animateProductsOnHover(product, forward, title, description){
+
+    let informationStack = [title, description];
+
+    if(forward){
+        product.animate([
+                {
+                    backgroundColor: "white"
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
+        for(let i = 0; i< informationStack.length; i++){
+            let opac = 1;
+            if(i==0){
+               opac = 0.8;
+            }
+            informationStack[i].animate([
+                    {
+                        opacity: opac,
+                        zIndex: 99999
+                    }],
+
+                {
+                    duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+                }
+            );
+        }
+
+        product.animate([
+                {
+                    transformOrigin: "center",
+                    transform: "scale(1.35, 1.35)",
+                    opacity: 1,
+                    zIndex: 99999
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+    }else{
+
+        product.animate([
+                {
+                    backgroundColor: "transparent"
+                }],
+
+            {
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
+        for(let i = 0; i< informationStack.length; i++) {
+            informationStack[i].animate([
+                    {
+                        opacity: 0,
+                        zIndex: 10
+                    }],
+
+                {
+                    duration: 50, iterations: 1, fill: "forwards", delay: 50, easing: "cubic-bezier(1,.02,.5,1.37)"
+                }
+            );
+        }
+
+        product.animate(
+            {
+                transformOrigin: "center",
+                transform: "scale(1, 1)",
+                opacity: 1,
+                zIndex: 10
+            },
+            {
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+
+    }
+
+
+
+}
+
 class CodeSquare {
     constructor(querySelector) {
         this._value = '';
@@ -14,13 +103,71 @@ class CodeSquare {
         this._scaledWidth = 100;
         this._querySelector = querySelector;
         this._title="Title";
-
+        this._dest = "";
     }
 
     setQuerySelector(querySelector){
         this._querySelector = querySelector
     }
 
+    setDestinationOnClick(dest){
+        this._dest = dest;
+        let square = $(this._querySelector);
+        square.on("click", function(){
+            window.location.replace(dest);
+        })
+    }
+
+    createAnimationAndSetDescriptionInformation(dest){
+        this.setDestinationOnClick(dest);
+        let square = $(this._querySelector);
+        square.css("background-color","transparent");
+        square.parent().parent().css("box-sizing", "border-box");
+
+        square.on("mouseenter", function(){
+            $(".categories > div").css("z-index",10);
+            square.parent().parent().css("z-index", 9000);
+            square.parent().parent().find(".info").css("display", "inline-block");
+            square.parent().parent().parent().parent().parent().css("z-index",99999);
+
+            $(this).css("cursor", "pointer");
+            if($(window).width() > 768){
+
+                //square.parent().parent().css("position", "relative");
+                let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
+
+                square.parent().parent().find(".info").css("z-index", 99999);
+                animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
+                window.setTimeout(() => {
+                    $(this).parent().parent().css("cursor", "pointer");
+                    $(this).parent().parent().on("click", function(){
+                        window.location.replace(dest);
+                    })
+                }, 500);
+            }
+
+        });
+
+        square.parent().parent().on("mouseleave", function(){
+            if($(window).width() > 768){
+
+                //square.parent().css("position", "static");
+                let descriptionAndTitle = $(this).find(".paintingInfo");
+
+                animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
+
+                square.parent().parent().find(".info").css("z-index",9000);
+
+                window.setTimeout(() => {
+                    $(this).css("cursor", "revert");
+                    $(this).off("click");
+                    square.parent().css("z-index", 10);
+                    }, 100);
+
+            }
+        });
+
+    }
 
     getSquare() {
         let square = $(this._querySelector);
@@ -94,12 +241,19 @@ class CodeSquare {
         this.codeMirror.setOption("lineNumbers", this._lineNumbers);
     }
 
+
+
     disable() {
         let square = $(this._querySelector);
+        console.log("disabling");
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
+        square.find(".CodeMirror-lines").css("cursor","pointer");
+
+        this.codeMirror.focus();
         this.codeMirror.setOption("readOnly", "nocursor");
+
     }
 
     scale(mul) {
@@ -129,10 +283,12 @@ class CodeSquare {
         square.css("border-style", "ridge");
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
+
     }
 
     disablePadding(){
         this._padding = 0
+        let square = $(this._querySelector);
         square.css("padding", this._padding);
         square.css("background-color","transparent");
     }
@@ -155,6 +311,10 @@ class CodeSquare {
     }
 
     get value() {
+
+        this._value.append("`");
+        this._value.prepend("`");
+
         return this._value;
     }
 

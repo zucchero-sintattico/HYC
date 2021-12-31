@@ -19,18 +19,23 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
+    <!--Notification setting-->
+
+    <?php header('Access-Control-Allow-Origin: *'); ?>
+
     <!-- Import CodeMirror -->
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/python/python.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/clike/clike.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-light.min.css">
+    <?php foreach ($templateParams["themes"] as $theme): ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/<?php echo $theme["NomeTema"];?>.css">
+    <?php endforeach;?>
+
+    <?php foreach ($templateParams["languages"] as $language): ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/<?php echo $language["NomeLinguaggio"];?>/<?php echo $language["NomeLinguaggio"];?>.min.js"></script>
+    <?php endforeach;?>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Fine import CodeMirror -->
 
@@ -54,7 +59,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
 
-    <?php header('Access-Control-Allow-Origin: *'); ?>
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):

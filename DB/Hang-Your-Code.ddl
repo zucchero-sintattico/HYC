@@ -47,7 +47,7 @@ create table Notifica
     IdNotifica   int     not null AUTO_INCREMENT,
     TipoNotifica    varchar (15)    not null,
     Data       date    not null,
-    Descrizione      varchar(100) not null,
+    Descrizione      varchar(500) not null,
     IdUtente    int     not null,
     Letto   INT not null,
     constraint ID_Notifica_ID primary key (IdNotifica)
@@ -59,7 +59,7 @@ create table Prodotto
     Codice              varchar(1500) not null,
     Colore_frame        varchar(10)   not null,
     Larghezza           int          not null,
-    Titolo              varchar(40)  not null,
+    Titolo              varchar(500)  not null,
 
     Altezza             int          not null,
     Padding             int          not null,
@@ -107,7 +107,7 @@ create table ProdottoInVetrina
     IdProdInVetrina  int not null AUTO_INCREMENT,
     IdProd           int not null,
     IndicePopolarita int not null,
-    Descrizione         varchar(100),
+    Descrizione         varchar(2500),
     IdCategoria         int          not null,
     constraint ID_ProdottoInVetrina_ID primary key (IdProdInVetrina),
     constraint SID_Prodo_Prodo_ID unique (IdProd)
