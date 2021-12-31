@@ -36,6 +36,7 @@ function checkoutIsOk(data) {
 
 function validateInput() {
     let valid = true;
+
     $("input:not(:first, :last)").each(function () {
         if($(this).val() == ""){
             valid = false;
@@ -46,11 +47,18 @@ function validateInput() {
             $(this).css("border", "1px solid lightgray");
         }
     })
+
+    if($("#details > form > div:nth-child(2) > input").val().length != 16){
+        valid = false;
+        $("#details > form > div:nth-child(2) > input").addClass("notValid");
+    }
+
     return valid;
 }
 
 $(document).on('ready', function () {
     let validateSignal = false;
+
     $('main > div > div.row > div.col-lg-6.col-md-8.col-sm-10.offset-lg-0.offset-md-2.offset-sm-1.pt-lg-0.pt-3 > div.row.pt-lg-3.pt-2.buttons.mb-sm-0.mb-2 > div.col-md-6.pt-md-0.pt-3 > div'
     ).on('click', function () {
         if(validateInput()){
@@ -59,8 +67,7 @@ $(document).on('ready', function () {
                 main.html("");
                 main.append(checkoutIsOk(data));
             });
-        }
-        else{
+        }else{
             $('input').filter('.notValid').css("border", "1px solid red");
             if(!validateSignal){
                 $(this).parent().parent().parent().append(`
@@ -77,6 +84,6 @@ $(document).on('ready', function () {
     });
     $('body > div > main > div > div.row > div.col-lg-6.col-md-8.col-sm-10.offset-lg-0.offset-md-2.offset-sm-1.pt-lg-0.pt-3 > div.row.pt-lg-3.pt-2.buttons.mb-sm-0.mb-2 > div:nth-child(1) > div'
     ).on('click', function () {
-        window.location = "/cart.php";
+        window.location = "/index.php";
     })
 });
