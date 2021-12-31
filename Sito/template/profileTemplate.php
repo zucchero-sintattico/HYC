@@ -18,16 +18,17 @@
                                         <p>Colore Frame: <?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?></p>
                                         <p>Linguaggio: <?php echo $templateParams["ordersHistory"][$i][$j]["NomeLinguaggio"] ?></p>
                                         <?php
-                                            $costoProdotto = getPrice($templateParams["ordersHistory"][$i][$j]["Larghezza"],$templateParams["ordersHistory"][$i][$j]["Altezza"]);
+                                            $costoProdotto = getPrice($templateParams["ordersHistory"][$i][$j]["Larghezza"],$templateParams["ordersHistory"][$i][$j]["Altezza"], ($templateParams["ordersHistory"][$i][$j])['Quantità']);
                                             $totaleOrdine += $costoProdotto;
                                         ?>
                                         <div class="row d-flex justify-content-start pl-4"><p>Prezzo: <?php echo $costoProdotto ?>€</p></div>
+                                        <div class="row d-flex justify-content-start pl-4"><p>Shipping: <?php echo $SHIPPING_COST ?>€</p></div>
                                     </div>
 
                                 </div>
                             <?php endfor; ?>
                         </div>
-                        <div class="row d-flex justify-content-end pr-4"><h4>Totale ordine: <?php echo $totaleOrdine ?>€</h4></div>
+                        <div class="row d-flex justify-content-end pr-4"><h4>Totale ordine: <?php echo $totaleOrdine + $SHIPPING_COST?>€</h4></div>
                     <?php endfor; ?>
         </div>
     </div>

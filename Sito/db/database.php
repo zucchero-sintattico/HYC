@@ -146,6 +146,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * get Standard Product info
+     */
     public function getProductById($id)
     {
         $query = "SELECT IdProd, Codice, Colore_frame, Larghezza,
@@ -160,9 +163,26 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Get Product in Showcase info
+     */
+    public function getProductInShowCaseById($id){
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
+       Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
+       NomeLinguaggio, NomeTema, Descrizione, IdCategoria
+            FROM Prodotto p, ProdottoInVetrina pc 
+            WHERE p.IdProd = pc.IdProd
+                  and p.IdProd = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getOrdersMatchingUser($id)
     {
-        $query = "SELECT o.IdOrdine as OrdineId, p.*
+        $query = "SELECT o.IdOrdine as OrdineId, p.*, pic.Quantità
             FROM Carrello c, Ordine o, ProdottoInCarrello pic, Prodotto p
             WHERE c.IdUtente = ?
             AND o.IdCarrello = c.IdCarrello

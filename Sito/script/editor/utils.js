@@ -140,7 +140,6 @@ $(document).on('ready', function () {
     quadro.updateStyle();
     styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
-        console.log("test");
     }));
 
     $('#language').on('change', (function () {

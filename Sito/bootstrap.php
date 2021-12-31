@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("db/database.php");
+$SHIPPING_COST = 10;
 $dbh = new DatabaseHelper("localhost", "root", "", "HYC");
 
 
