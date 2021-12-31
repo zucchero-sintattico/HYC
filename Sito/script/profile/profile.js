@@ -49,7 +49,7 @@ $(document).on('ready', function () {
         $(".editableInfo").show()
     });
 
-    $("div.p-2:nth-child(1) > form:nth-child(2) input").on("change", function (){
+    $("div.p-2:nth-child(1) > form:nth-child(2) input").on("keyup", function (){
 
         $(".infoStatusUpdate1").remove();
 
@@ -64,7 +64,7 @@ $(document).on('ready', function () {
 
     });
 
-    $("div.mt-3:nth-child(2) > form:nth-child(2) input").on("change", function (){
+    $("div.mt-3:nth-child(2) > form:nth-child(2) input").on("keyup", function (){
 
         $(".infoStatusUpdate2").remove();
         $(".missedInputClass2").remove();
