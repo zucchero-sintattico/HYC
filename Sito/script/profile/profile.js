@@ -141,7 +141,7 @@ $(document).on('ready', function () {
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(4)").text(`USERNAME: ${userData.username}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(5)").text(`EMAIL: ${userData.email}`);
                         $(".col-2 > label:nth-child(1) > p:nth-child(2)").text(`Hi ${userData.username}`);
-                    }, 500);
+                    }, 1000);
                 }
             });
         }
@@ -186,7 +186,7 @@ $(document).on('ready', function () {
                         $(".editableInfo").hide();
                         clearInputOnFormFromNotFilledClass(formTwoInputsSelector);
                         $(".infoStatusUpdate2").remove();
-                    }, 500);
+                    }, 1000);
 
                 }
             })
