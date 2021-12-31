@@ -441,10 +441,8 @@ class DatabaseHelper
         $stmt->bind_param("i", $IdUtente);
         $stmt->execute();
         $result = $stmt->get_result();
-        if(($result->fetch_all(MYSQLI_ASSOC))[0] == 0){
-            return false;
-        }
-        return true;
+        return ($result->fetch_all(MYSQLI_ASSOC))[0];
+
     }
 
     /**
