@@ -180,7 +180,10 @@
                             if($templateParams['mode'] == "edit"):
                         ?>
                             $('#submit').on('click', function () {
-                                $.post("../editor-admin-confirm.php", quadro.toJSONInShowCase($('#description_form').val(), $('#category option:selected').val()));
+                                $.post("../editor-admin-confirm.php", quadro.toJSONInShowCase($('#description_form').val(), $('#category option:selected').val()), function () {
+                                    window.location.replace("../admin.php")
+                                });
+
                             });
 
                         <?php
