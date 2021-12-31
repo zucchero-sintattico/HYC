@@ -75,6 +75,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllProducts()
+    {
+        $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
+       Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
+       NomeLinguaggio, NomeTema, Tipo
+            FROM Prodotto p, ProdottoInVetrina pv, Categoria c
+            WHERE p.IdProd = pv.IdProd";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getProductsByTitle($Titolo)
     {
         $query = "SELECT distinct p.IdProd, Codice, Colore_frame, Larghezza, Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio, NomeTema 
@@ -430,6 +443,37 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
 
+    }
+
+    /**
+     * @param $IdUtente
+     * @return true if the User is an Admin
+     *
+     */
+    public function isUserAdmin($IdUtente){
+        $query = "SELECT IsAdmin FROM Utente WHERE IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $IdUtente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if(($result->fetch_all(MYSQLI_ASSOC))[0]['IsAdmin'] == 0){
+            return (bool)0;
+        }
+        return (bool)1;
+    }
+
+    /**
+     * Set a new User as Admin
+     *
+     * @param $IdUtente
+     * @param $AdminValue
+     * @return void
+     */
+    public function setUserAdmin($IdUtente, $AdminValue){
+        $query = "UPDATE Utente SET IsAdmin = ? where IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $AdminValue, $IdUtente);
+        $stmt->execute();
     }
 
 

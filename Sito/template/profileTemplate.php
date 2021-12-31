@@ -1,6 +1,9 @@
 <div class="row">
     <div class="col border ml-5">
         <h2>Welcome <?php echo $templateParams["userInfo"]["Nome"]; ?></h2>
+        <?php if($templateParams['isAdmin']){
+           echo  "<a href='../admin.php'>Admin Page</a>";
+        }?>
         <h3>Order history</h3>
         <div class="col border text-center">
                     <?php for($i=0;$i<count($templateParams["ordersHistory"]);$i++): ?>
