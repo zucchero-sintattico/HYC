@@ -2,7 +2,8 @@
 session_start();
 require_once("db/database.php");
 $dbh = new DatabaseHelper("localhost", "root", "", "HYC");
-
+$templateParams['languages'] = $dbh->getLanguages();
+$templateParams["themes"] = $dbh->getThemes();
 
 function getPrice($height, $width, $quantity){
     $price = (($height * $width) / 7000) * $quantity;
