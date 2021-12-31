@@ -133,6 +133,14 @@ main {
         margin-left: 2px;
     }
 
+    main{
+        z-index: 10 !important;
+    }
+
+    nav{
+        z-index: 9999999;
+    }
+
     .categories > div > div:nth-child(2) > div{
         overflow-y: hidden;
         overflow-x: auto;
