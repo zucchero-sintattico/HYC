@@ -116,9 +116,9 @@
                         <select title="select category" class="custom-select" id="category">
                             <?php foreach ($templateParams['categories'] as $category): ?>
                                 <?php if ($category['IdCategoria'] == $templateParams['product']['IdCategoria']): ?>
-                                    <option selected="selected"> <?php echo $category['Tipo']; ?></option>
+                                    <option selected="selected" value="<?php echo $category['IdCategoria']; ?>"> <?php echo $category['Tipo']; ?></option>
                                 <?php else: ?>
-                                    <option> <?php echo $category['Tipo']; ?></option>
+                                    <option value="<?php echo $category['IdCategoria']; ?>"> <?php echo $category['Tipo']; ?></option>
                                 <?php endif; ?>
                             <?php endforeach; ?>
                         </select>
@@ -180,10 +180,7 @@
                             if($templateParams['mode'] == "edit"):
                         ?>
                             $('#submit').on('click', function () {
-                                console.log($('#category').id);
-                                $.post("../editor-admin-confirm.php", quadro.toJSONInShowCase($('#description_form').val(), $('#category').val()), function (data){
-
-                                });
+                                $.post("../editor-admin-confirm.php", quadro.toJSONInShowCase($('#description_form').val(), $('#category option:selected').val()));
                             });
 
                         <?php

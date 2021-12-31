@@ -9,7 +9,7 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     $templateParams['themes'] = $dbh->getThemes();
     $templateParams['categories'] = $dbh->getCategorie();
 
-    $templateParams['js'] = array("script/editor/utils.js");
+    $templateParams['js'] = array("script/editorAdmin/editorAdmin.js");
 
     if($_GET['mode'] == "edit"){
         $templateParams['product'] = ($dbh->getProductInShowCaseById($_GET["id"]))[0];
