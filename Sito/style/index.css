@@ -127,6 +127,13 @@ main {
     margin-left: 50px;
 }
 
+@media screen and (prefers-reduced-motion) {
+    * {
+        animation: none;
+        transition: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     main{
         margin-right: 2px;
@@ -137,9 +144,7 @@ main {
         z-index: 10 !important;
     }
 
-    nav{
-        z-index: 9999999;
-    }
+
 
     .categories > div > div:nth-child(2) > div{
         overflow-y: hidden;

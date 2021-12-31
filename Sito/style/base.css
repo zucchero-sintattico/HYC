@@ -124,6 +124,10 @@ nav > ul li a:hover {
     text-decoration: none;
 }
 
+nav{
+    z-index: 999999;
+}
+
 header > div {
     background-color: Gainsboro;
     padding: 10px 0 10px 40px;
@@ -195,8 +199,8 @@ body nav {
     width: 100%;
     position: fixed;
     bottom: 0;
-    z-index: 100;
     padding: 0 !important;
+    z-index:99999;
 }
 
 body nav > ul {
@@ -299,6 +303,8 @@ body main {
     body nav {
         position: static;
         margin-bottom: 10px;
+        position: relative;
+        z-index:99999;
     }
 
     body nav > ul > li:not(:last-child) {
