@@ -8,6 +8,10 @@ main > section > div > div {
     height: 35%;
 }
 
+.categories > div > div:nth-child(2) {
+    overflow-y: hidden;
+}
+
 main > div img{
     width: 25%;
     padding-top: 0px !important;
