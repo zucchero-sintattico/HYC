@@ -16,7 +16,6 @@ function checkerSize(selector, initialFrom, initialTo){
     }
 }
 
-let hasAlreadySwappedToMobile = false;
 
 function checkOnResize(selector, initialFrom, initialTo) {
     checkerSize(selector,initialFrom,initialTo);

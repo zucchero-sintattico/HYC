@@ -37,7 +37,7 @@
                 <div class="h6 text-center">Payment</div>
                 <form>
                     <div class="form-group"> <label class="text-muted">Name on card</label> <input type="text" placeholder="Insert name on card" class="form-control"> </div>
-                    <div class="form-group"> <label class="text-muted">Number of card</label> <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control"> </div>
+                    <div class="form-group"> <label class="text-muted">Number of card</label> <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control"> </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Expiration</label>

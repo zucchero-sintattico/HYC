@@ -125,23 +125,46 @@ function showPreviewPostAddition(){
 
 $(document).on('ready', function () {
 
-    $("#insertToCart").on("click", function (event) {
-        $(this).attr("disabled", "disabled");
-        let generatedSquare = showPreviewPostAddition();
+    $("#insertToCart").parent().on("click", function(){
+        $(".errorMessageLoginClick").remove();
+        $("#insertToCart").css("background-color", "transparent");
 
-        window.setTimeout(() => { handleObjectsMovement(this); }, 0);
-        window.setTimeout(() => { executeButtonAnimation(this); }, 750);
-        window.setTimeout(() => {
+        $.get("bootstrap.php?infoSession=isUserLoggedIn", function (data) {
+            if(data==="false"){
+                $(".row-10 > div:nth-child(1)").append("<p class='errorMessageLoginClick'>You first need to login</p>")
+                $(".errorMessageLoginClick").css("color", "red");
+                $(".errorMessageLoginClick").css("position", "absolute");
+                $(".errorMessageLoginClick").css("font-size", "12px");
+                $("#insertToCart").css("background-color", "red");
+            }
+        })
+
+    })
+
+    $("body").on("click", function(){
+        $(".errorMessageLoginClick").remove();
+        $("#insertToCart").css("background-color", "transparent");
+    })
+
+    $("#insertToCart").on("click", function (event) {
+        if($(this).hasClass("buttonActivated")){
+            $(this).attr("disabled", "disabled");
+
+            let generatedSquare = showPreviewPostAddition();
+
+            window.setTimeout(() => { handleObjectsMovement(this); }, 0);
+            window.setTimeout(() => { executeButtonAnimation(this); }, 750);
+            window.setTimeout(() => {
                 $("main > div:first-child").hide();
                 $("main").append(generatedSquare);
                 $("#codeContainer").parent().parent().show();
                 $('#codeContainer > .CodeMirror:nth-child(3)').remove();
             }, 1500);
 
-        $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
-            console.log(quadro.toJSON());
-        });
-
+            $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
+                console.log(quadro.toJSON());
+            });
+        }
     });
 
     const styleElem = $('#style');

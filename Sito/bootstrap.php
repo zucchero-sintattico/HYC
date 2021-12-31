@@ -11,9 +11,20 @@ function getPrice($height, $width, $quantity){
     return round($price, 2);
 }
 
+if(isset($_GET["infoSession"])){
+    if($_GET["infoSession"] == "isUserLoggedIn"){
+        if(isUserLoggedIn()){
+            echo "true";
+        }else{
+            echo "false";
+        }
+    }
+}
+
 function isUserLoggedIn(){
     return !empty($_SESSION['IdUtente']);
 }
+
 function getLoggedUserID(){
     return $_SESSION["IdUtente"];
 }

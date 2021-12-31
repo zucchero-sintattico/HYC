@@ -177,7 +177,7 @@
                             let quadro = new CodeSquare($('code').get(0));
                             quadro.getSquare();
                             quadro.updateStyle();
-                            quadro.widthScale(350);
+                            quadro.widthScale(400);
                             quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                         </script>
                     </code>
@@ -196,9 +196,11 @@
 <div class="row justify-content-center">
     <div class="row-10 justify-content-end">
         <div class="col justify-content-end">
-            <button id="insertToCart" class="mt-5" type="button" <?php if (!isUserLoggedIn()) {
-                echo "disabled";
-            }; ?>>Add to Cart
+            <button id="insertToCart" type="button" class="button<?php if (!isUserLoggedIn()) {
+                echo "Disabled";
+            }else{
+                echo "Activated";
+            }; ?>">Add to Cart
             </button>
         </div>
     </div>
