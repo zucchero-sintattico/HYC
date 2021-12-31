@@ -5,7 +5,7 @@ $(document).on("ready", function (event) {
         fillHomePage(data);
         let categoriesContainer = $(".categories > div > div:nth-child(2)");
         checkOnResize(categoriesContainer,"container", "container-fluid ");
-        checkOnResize(categoriesContainer.find("> div"),"row", "row flex-row flex-nowrap overflow-auto");
+        checkOnResize(categoriesContainer.find("> div"),"row", "row flex-row flex-nowrap");
     });
 
 });

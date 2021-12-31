@@ -9,7 +9,7 @@ main > section > div > div {
 }
 
 .categories > div > div:nth-child(2) {
-    overflow-y: hidden;
+    overflow-y: visible;
 }
 
 main > div img{
@@ -122,28 +122,32 @@ body > div > main > section > div > div > div > a > article > div:nth-child(3) >
     font: 17px "Courier New";
 }
 
+main {
+    margin-right: 50px;
+    margin-left: 50px;
+}
 
-@media (min-width: 768px) {
-
-    main {
-        margin-right: 50px;
-        margin-left: 50px;
+@media (max-width: 768px) {
+    main{
+        margin-right: 2px;
+        margin-left: 2px;
     }
 
-    main > section > div > div > a img {
-        width: 100px !important;
+    .categories > div > div:nth-child(2) > div{
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
-    main > div > div {
-        transform: scale(0.9);
-    }
+    .categories > div > div:nth-child(2){
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding-top: 0;
+        padding-bottom: 0;
 
-    main > section > div > div > a {
-        transform: scale(0.9);
-        margin: 0 !important;
-        padding: 40px !important;
-        width: 90px !important;
     }
-
 
 }
