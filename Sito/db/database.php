@@ -175,6 +175,18 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProductDescriptionById($id)
+    {
+        $query = "SELECT Descrizione
+            FROM Prodotto p, ProdottoInVetrina piv
+            WHERE p.IdProd = ? AND piv.IdProd = p.IdProd";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getOrdersMatchingUser($id)
     {
         $query = "SELECT o.IdOrdine as OrdineId, p.*

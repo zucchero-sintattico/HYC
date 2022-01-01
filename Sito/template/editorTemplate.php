@@ -114,7 +114,6 @@
                                id="fontSize">
                     </label>
 
-
                 </div>
 
                 <div class="row justify-content-center">
@@ -166,6 +165,22 @@
                                value="#ff0000">
                     </div>
                 </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-10 text-center">
+                        <button class="dropdown-toggle btn btn-outline-secondary" type="button" data-toggle="collapse"
+                                data-target="#collapseDescription"
+                                aria-expanded="false" aria-controls="collapseDescription">Code Description
+                        </button>
+                    </div>
+                </div>
+
+                <div class="collapse row justify-content-center p-3" id="collapseDescription">
+                    <div class="col-10 justify-content-center">
+                        <p><?php echo $templateParams["productDescription"]; ?></p>
+                    </div>
+                </div>
+
             </div>
 
 
