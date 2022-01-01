@@ -368,4 +368,21 @@ class CodeSquare {
             title : this.title
         }
     }
+
+    toJSONInShowCase(desc, cat){
+        return {
+            value : this.code,
+            language : this.language,
+            theme : this.theme,
+            frame_color: this.frame_color,
+            width : parseInt(this.width),
+            height : parseInt(this.height),
+            padding : parseInt(this.padding),
+            font_size : parseInt(this.font_size),
+            lineNumbers : this.lineNumbers,
+            title : this.title,
+            description: desc,
+            category: cat
+        }
+    }
 }

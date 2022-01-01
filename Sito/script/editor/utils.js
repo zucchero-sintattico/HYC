@@ -184,7 +184,6 @@ $(document).on('ready', function () {
 
     styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
-        console.log("test");
     }));
 
     languageElem.on('change', (function () {

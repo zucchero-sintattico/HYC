@@ -3,8 +3,8 @@ function checkoutIsOk(data) {
     let orderInfo = data['OrderInfo'];
     let content = `
     <section>
-        <div class="row">
-            <div class="col-6 align-middle font-weight-bold offset-3 mt-4 bg-white border border-success text-center">
+        <div class="row justify-content-center">
+            <div class="col-10 align-middle font-weight-bold  mt-4 bg-white border border-success text-center">
                 <div class="invoice p-5">
                     <h2>Your order Confirmed!</h2> <span class="font-weight-bold d-block mt-4">Hello, ${userName}</span> <span>You order has been confirmed and will be shipped in next two days!</span>
                     <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
@@ -16,9 +16,6 @@ function checkoutIsOk(data) {
                                     </td>
                                     <td>
                                         <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>M${orderInfo['IdOrdine']}</span> </div>
-                                    </td>
-                                    <td>
-                                        <div class="py-2"> <span class="d-block text-muted">Payment</span> <span><img src="https://img.icons8.com/color/48/000000/mastercard.png" width="20" /></span> </div>
                                     </td>
                                     <td>
                                         <div class="py-2"> <span class="d-block text-muted">Shipping Address</span> <span>Via Cesare Pavese, 50, Cesena FC</span> </div>

@@ -48,7 +48,10 @@
                             });
 
                             $("#quantity<?php echo $articolo["IdProd"]; ?>").on('change', function () {
-                                changeProdQuantity(<?php echo $articolo["IdProd"] ?>, $(this).val());
+                                if(parseInt($(this).val()) < 1){
+                                    $(this).val(1);
+                                }
+                                changeProdQuantity(<?php echo $articolo["IdProd"]; ?>, $(this).val());
                             });
 
                         </script>
