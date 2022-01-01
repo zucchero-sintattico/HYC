@@ -25,18 +25,73 @@ function checkOnResize(selector, initialFrom, initialTo) {
     });
 }
 
+let hasAlreadySwapped = false;
+
 function modifyIndexIfMobile(){
 
+    let scrollbarIndicator = `<img src="img/logos/square.gif" class='rounded p-2 m-1' alt='scrollbar icon percentage indicator'>`;
+
     if ($(window).width() < 768) {
-        $(".mobilePedix").each(function(){
-            if($(this).prev().find(".productWhole").length > 1){
-                $(this).show();
-            }else{
-                $(this).hide();
-            }
-        });
+        if(!hasAlreadySwapped){
+
+            $(".scrollbarIndicator").each(function(){
+
+                let numProducts  = $(this).parent().find(".productWhole").length;
+
+                if(numProducts > 1){
+                    $(this).show();
+                    for(let i=0;i<numProducts;i++){
+
+                        $(this).append(scrollbarIndicator);
+                    }
+                    let singleSpace = 100/numProducts;
+                    $(this).find("img").css("max-width", `${singleSpace}%`);
+                    //$(this).find("img").css("max-height", `30%`);
+
+                    $(this).prev().find(" > div").on("scroll",function (){
+                        let scrollPercentage = 100*this.scrollLeft/this.scrollWidth/(1-this.clientWidth/this.scrollWidth);
+                        let scrollVisibleWidth = $(this).width();
+                        let scrolledWidth = this.scrollLeft;
+                        let currentlyVisible = [];
+                        $(this).find(".productWhole").each(function(){
+                            let offsetPr = (this.offsetLeft+($(this).width()/2))-scrolledWidth;
+                            if(offsetPr > 0 && offsetPr < scrollVisibleWidth){
+                                currentlyVisible.push($(this).index());
+                            }
+
+                        });
+
+                        $(this).parent().parent().find("img").each(function(){
+                            if(currentlyVisible.includes($(this).index())){
+                                $(this).css("transform", "scale(1.4,1.4)");
+                                $(this).attr("src", "img/logos/greySquare.jpg")
+                            }else{
+                                $(this).css("transform", "scale(1,1)");
+                                $(this).attr("src", "img/logos/square.gif")
+                            }
+                        })
+
+                    });
+
+                    $(".categories > div > div img").each(function(){
+                        if($(this).index()==0){
+                            $(this).css("transform", "scale(1.37,1.37)");
+                            $(this).attr("src", "img/logos/greySquare.jpg")
+                        }
+                    });
+
+                }else{
+                    $(this).hide();
+                }
+            });
+            hasAlreadySwapped = true
+        }
+
     } else {
-        $(".mobilePedix").hide();
+        hasAlreadySwapped = false;
+        $(".scrollbarIndicator").hide();
+        console.log("HO SVUOTATOOOOOO");
+        $(".scrollbarIndicator").empty();
     }
 }
 

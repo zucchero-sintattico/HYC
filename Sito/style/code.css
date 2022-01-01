@@ -72,3 +72,10 @@
     width: 100%;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .paintingTitle{
+        opacity: 1 !important;
+        position: static !important;
+    }
+}
