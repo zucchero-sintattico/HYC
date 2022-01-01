@@ -23,14 +23,14 @@
 
                                             $totaleOrdine += $costoProdotto;
                                         ?>
-                                        <div class="row d-flex justify-content-start pl-4"><p>Prezzo: <?php echo $costoProdotto ?>€</p></div>
+                                        <div class="row d-flex justify-content-start pl-4"><p>Price: <?php echo $costoProdotto ?>€</p></div>
                                         <div class="row d-flex justify-content-start pl-4"><p>Shipping: <?php echo $SHIPPING_COST ?>€</p></div>
                                     </div>
 
                                 </div>
                             <?php endfor; ?>
                         </div>
-                        <div class="row d-flex justify-content-end pr-4"><h4>Totale ordine: <?php echo $totaleOrdine + $SHIPPING_COST?>€</h4></div>
+                        <div class="row d-flex justify-content-end pr-4"><h4>Total: <?php echo $totaleOrdine + $SHIPPING_COST?>€</h4></div>
                     <?php endfor; ?>
         </div>
     </div>

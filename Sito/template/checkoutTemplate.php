@@ -62,7 +62,7 @@
                     <div class="h6"> <a href="../cart.php">Edit</a> </div>
                 </div>
                 <?php foreach($templateParams['query'] as $articolo) : ?>
-                <div class="d-flex justify-content-between align-items-center pt-3 pb-2 border-bottom">
+                <div class="d-flex pt-3 pb-2 border-bottom">
                         <div class="item pr-2">
                             <!-- Code -->
                             <div class="row">
