@@ -89,7 +89,7 @@
                         We frame it and make sure it arrives to your home.
                     </p>
                 </div>
-                <div class="col-2 pr-3">
+                <div class="col-2 pr-5">
                     <label><?php
                         if (isUserLoggedIn()) {
                             echo "<script>let userId =".getLoggedUserID().";</script>";

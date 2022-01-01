@@ -296,7 +296,10 @@ function generateCart(data){
                                     $("#delete${products[i]["IdProd"]}").on('click', function () {
                                         removeProdAndRefreshCart(${products[i]["IdProd"]});
                                     });
-                                    $("#quantity${products[i]["IdProd"]}").on('change', function () {
+                                    $("#quantity${products[i]["IdProd"]}").on('keyup', function () {
+                                        if(parseInt($(this).val()) < 1){
+                                            $(this).val(1);
+                                        }
                                         changeProdQuantity(${products[i]["IdProd"]}, $(this).val());
                                     });
                                 </script>
