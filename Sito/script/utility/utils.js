@@ -19,7 +19,6 @@ function checkerSize(selector, initialFrom, initialTo){
 
 function checkOnResize(selector, initialFrom, initialTo) {
     checkerSize(selector,initialFrom,initialTo);
-    modifyIndexIfMobile();
     $(window).on('resize', function () {
         modifyIndexIfMobile();
         checkerSize(selector,initialFrom,initialTo);
@@ -30,23 +29,21 @@ let hasAlreadySwapped = false;
 
 function modifyIndexIfMobile(){
 
-    let scrollbarIndicator = `<img src="img/logos/square.svg" class='rounded p-3' alt='scrollbar icon percentage indicator'>`;
+    let scrollbarIndicator = `<img src="img/logos/square.gif" class='rounded p-3' alt='scrollbar icon percentage indicator'>`;
 
     if ($(window).width() < 768) {
         if(!hasAlreadySwapped){
 
-
-
             $(".scrollbarIndicator").each(function(){
 
+                let numProducts  = $(this).parent().find(".productWhole").length;
 
-
-                let numProducts  = $(this).prev().find(".productWhole").length;
                 if(numProducts > 1){
                     $(this).show();
-                    for(let i=0;i<numProducts;i++){
-                        $(this).append(scrollbarIndicator);
 
+                    for(let i=0;i<numProducts;i++){
+
+                        $(this).append(scrollbarIndicator);
                     }
                     let singleSpace = 100/numProducts;
                     $(this).find("img").css("max-width", `${singleSpace}%`);
@@ -68,11 +65,10 @@ function modifyIndexIfMobile(){
                         $(this).parent().parent().find("img").each(function(){
                             if(currentlyVisible.includes($(this).index())){
                                 $(this).css("transform", "scale(1.3,1.3)");
-                                $(this).css("background-color", "grey");
+                                $(this).css("filter", "brightness(0.5)");
                             }else{
                                 $(this).css("transform", "scale(1,1)");
-                                $(this).css("background-color", "transparent");
-
+                                $(this).css("filter", "brightness(1)");
                             }
                         })
 
@@ -88,6 +84,7 @@ function modifyIndexIfMobile(){
     } else {
         hasAlreadySwapped = false;
         $(".scrollbarIndicator").hide();
+        console.log("HO SVUOTATOOOOOO");
         $(".scrollbarIndicator").empty();
     }
 }
