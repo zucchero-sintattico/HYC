@@ -29,7 +29,7 @@ let hasAlreadySwapped = false;
 
 function modifyIndexIfMobile(){
 
-    let scrollbarIndicator = `<img src="img/logos/square.gif" class='rounded p-3' alt='scrollbar icon percentage indicator'>`;
+    let scrollbarIndicator = `<img src="img/logos/square.gif" class='rounded p-2 m-1' alt='scrollbar icon percentage indicator'>`;
 
     if ($(window).width() < 768) {
         if(!hasAlreadySwapped){
@@ -40,7 +40,6 @@ function modifyIndexIfMobile(){
 
                 if(numProducts > 1){
                     $(this).show();
-
                     for(let i=0;i<numProducts;i++){
 
                         $(this).append(scrollbarIndicator);
@@ -64,15 +63,22 @@ function modifyIndexIfMobile(){
 
                         $(this).parent().parent().find("img").each(function(){
                             if(currentlyVisible.includes($(this).index())){
-                                $(this).css("transform", "scale(1.3,1.3)");
-                                $(this).css("filter", "brightness(0.5)");
+                                $(this).css("transform", "scale(1.4,1.4)");
+                                $(this).attr("src", "img/logos/greySquare.jpg")
                             }else{
                                 $(this).css("transform", "scale(1,1)");
-                                $(this).css("filter", "brightness(1)");
+                                $(this).attr("src", "img/logos/square.gif")
                             }
                         })
 
-                    })
+                    });
+
+                    $(".categories > div > div img").each(function(){
+                        if($(this).index()==0){
+                            $(this).css("transform", "scale(1.37,1.37)");
+                            $(this).attr("src", "img/logos/greySquare.jpg")
+                        }
+                    });
 
                 }else{
                     $(this).hide();
