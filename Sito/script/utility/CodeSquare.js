@@ -126,7 +126,7 @@ class CodeSquare {
         let animDurationBeforeChangePage = 750;
         let windowWidthHalf = $(window).height()/2;
         let windowHeightHalf = $(window).width()/2;
-
+        $("body").css("overflow","hidden");
         $("body")[0].animate({
             transformOrigin: `${windowWidthHalf} ${windowHeightHalf}`,
             transform:"scale(1.04,1.04)",
