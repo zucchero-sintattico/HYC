@@ -74,8 +74,10 @@ function modifyIndexIfMobile(){
                     });
 
                     $(this).find("img").on("click", function(){
+
                         let index = $(this).index();
                         let scrollableArea = $(this).parent().prev().find(">div");
+                        scrollableArea.stop();
                         let elemToScrollToPos = scrollableArea.find(".productWhole").eq(index)[0].offsetLeft;
                         scrollableArea.scrollLeft(elemToScrollToPos);
                     });
