@@ -126,6 +126,8 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
             });
         })
 
+
+
     }
 
     for(let i=0; i<linguaggi.length; i++){
@@ -233,7 +235,9 @@ function createProductsOfCategoryFromData(data, cat) {
                                             checkOnResize(parent,"row","col", true);
              
                                             $('#quadro${data[i]["IdProd"]}').on("touchstart", function(event) {
-                                                window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
+                                                                                              
+                                                window.location.href = "editor.php?id=${data[i]["IdProd"]}" 
+                                                        
                                             });
                                         }
                                     </script>  

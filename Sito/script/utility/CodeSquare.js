@@ -83,9 +83,9 @@ function animateProductsOnHover(product, forward, title, description){
 
     }
 
-
-
 }
+
+let goToEditorAnimStarted = false;
 
 class CodeSquare {
     constructor(querySelector) {
@@ -113,9 +113,32 @@ class CodeSquare {
     setDestinationOnClick(dest){
         this._dest = dest;
         let square = $(this._querySelector);
+        let refer = this;
         square.on("click", function(){
-            window.location.replace(dest);
+
+            refer.resetClickFunctionAndAnimation(dest)
+
         })
+    }
+
+    resetClickFunctionAndAnimation(dest){
+        goToEditorAnimStarted = true;
+        let animDurationBeforeChangePage = 750;
+        let windowWidthHalf = $(window).height()/2;
+        let windowHeightHalf = $(window).width()/2;
+
+        $("body")[0].animate({
+            transformOrigin: `${windowWidthHalf} ${windowHeightHalf}`,
+            transform:"scale(1.04,1.04)",
+            backgroundColor: "#989898",
+            filter: "blur(2px)",
+            opacity: 0.5
+        },{duration:animDurationBeforeChangePage, easing:"ease-out", fill:"forwards"});
+
+        window.setTimeout(()=>{
+            window.location.replace(dest);
+            goToEditorAnimStarted = false;
+        },animDurationBeforeChangePage)
     }
 
     createAnimationAndSetDescriptionInformation(dest){
@@ -123,7 +146,7 @@ class CodeSquare {
         let square = $(this._querySelector);
         square.css("background-color","transparent");
         square.parent().parent().css("box-sizing", "border-box");
-
+        let refer = this;
         square.on("mouseenter", function(){
             $(".categories > div").css("z-index",10);
             square.parent().parent().css("z-index", 9000);
@@ -131,6 +154,7 @@ class CodeSquare {
             square.parent().parent().parent().parent().parent().css("z-index",99999);
 
             $(this).css("cursor", "pointer");
+
             if($(window).width() > 768){
 
                 //square.parent().parent().css("position", "relative");
@@ -138,11 +162,12 @@ class CodeSquare {
 
                 square.parent().parent().find(".info").css("z-index", 99999);
                 animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
+
                 window.setTimeout(() => {
                     $(this).parent().parent().css("cursor", "pointer");
                     $(this).parent().parent().on("click", function(){
-                        window.location.replace(dest);
-                    })
+                        refer.resetClickFunctionAndAnimation(dest)
+                    });
                 }, 500);
             }
 
@@ -150,19 +175,19 @@ class CodeSquare {
 
         square.parent().parent().on("mouseleave", function(){
             if($(window).width() > 768){
+                if(!goToEditorAnimStarted){
+                    let descriptionAndTitle = $(this).find(".paintingInfo");
 
-                //square.parent().css("position", "static");
-                let descriptionAndTitle = $(this).find(".paintingInfo");
+                    animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
 
-                animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
+                    square.parent().parent().find(".info").css("z-index",9000);
 
-                square.parent().parent().find(".info").css("z-index",9000);
-
-                window.setTimeout(() => {
-                    $(this).css("cursor", "revert");
-                    $(this).off("click");
-                    square.parent().css("z-index", 10);
+                    window.setTimeout(() => {
+                        $(this).css("cursor", "revert");
+                        $(this).off("click");
+                        square.parent().css("z-index", 10);
                     }, 100);
+                }
 
             }
         });

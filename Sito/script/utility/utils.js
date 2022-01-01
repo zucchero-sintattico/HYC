@@ -82,6 +82,15 @@ function modifyIndexIfMobile(){
                         scrollableArea.scrollLeft(elemToScrollToPos);
                     });
 
+                    $(this).find("img").on("click", function(){
+
+                        let index = $(this).index();
+                        let scrollableArea = $(this).parent().prev().find(">div");
+                        scrollableArea.stop();
+                        let elemToScrollToPos = scrollableArea.find(".productWhole").eq(index)[0].offsetLeft;
+                        scrollableArea.scrollLeft(elemToScrollToPos);
+                    });
+
                     $(".categories > div > div img").each(function(){
                         if($(this).index()==0){
                             $(this).css("transform", "scale(1.37,1.37)");
