@@ -26,11 +26,11 @@ $(document).on("ready", function (event) {
                         if(prevScrollTop < actualScrollTop){
                             randomValue = -randomValue;
                         }
-                        $(this)[0].animate([{transform: `translateY(${randomValue}px)`,easing:"ease-out"},{transform: `translateY(0)`,easing:"ease-out"}],{duration: 400})
+                        $(this)[0].animate([{transform: `translateY(${randomValue}px)`,easing:"linear"},{transform: `translateY(0)`,easing:"linear"}],{duration: 400})
                     });
 
             prevScrollTop = actualScrollTop;
-            }, 50);
+            }, 150);
         })
 
         window.setTimeout(() => {
