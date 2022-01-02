@@ -128,8 +128,8 @@
                 <div class="row justify-content-center">
                     <div class="col-10">
                         <label for="description_form">Description</label>
-                        <input title="write description" class="form-control form-control-lg text-center" id="description_form" type="text"
-                               placeholder="<?php echo $templateParams["product"]["Descrizione"] ?>">
+                        <textarea title="write description" class="form-control form-control-lg text-center" id="description_form" type="text"
+                               ><?php echo $templateParams["product"]["Descrizione"] ?></textarea>
                     </div>
                 </div>
 

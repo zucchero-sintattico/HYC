@@ -361,7 +361,7 @@ class DatabaseHelper
         /** Edit a product on the DB */
         public
         function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                             $NomeTema, $IdProd)
+                             $NomeTema, $IdProd, $Description, $IdCategory)
         {
             $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
                        NomeTema)
@@ -371,6 +371,16 @@ class DatabaseHelper
             $stmt->bind_param("ssisiiisssi", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                 $NomeTema, $IdProd);
             $stmt->execute();
+
+
+            $query = "UPDATE ProdottoInVetrina SET ()
+                    WHERE IdProd = ?
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ssisiiisssi", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+                $NomeTema, $IdProd);
+            $stmt->execute();
+
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
         }
