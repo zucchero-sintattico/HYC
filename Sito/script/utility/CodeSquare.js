@@ -394,7 +394,7 @@ class CodeSquare {
         }
     }
 
-    toJSONInShowCase(desc, cat){
+    toJSONInShowCase(desc, cat, id){
         return {
             value : this.code,
             language : this.language,
@@ -407,7 +407,8 @@ class CodeSquare {
             lineNumbers : this.lineNumbers,
             title : this.title,
             description: desc,
-            category: cat
+            category: cat,
+            idProd: id
         }
     }
 }

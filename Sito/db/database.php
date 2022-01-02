@@ -361,28 +361,33 @@ class DatabaseHelper
         /** Edit a product on the DB */
         public
         function editProduct($Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                             $NomeTema, $IdProd, $Description, $IdCategory)
+                             $NomeTema, $Description, $IdCategory,  $IdProd)
         {
-            $query = "UPDATE Prodotto SET (Codice, Colore_frame, Larghezza, Titolo, Altezza, Padding, Dimensione_font, Mostra_numero_linee, NomeLinguaggio,
-                       NomeTema)
-                    WHERE IdProd = ?
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $query = "UPDATE Prodotto SET 
+                    Codice = ?,
+                    Colore_frame = ?,
+                    Larghezza = ?,
+                    Titolo = ?,
+                    Altezza = ?,
+                    Padding = ?,
+                    Dimensione_font = ?,
+                    Mostra_numero_linee = ?,
+                    NomeLinguaggio = ?,
+                    NomeTema = ?
+                    WHERE IdProd = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param("ssisiiisssi", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
+            $stmt->bind_param("ssisiiisssi",  $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
                 $NomeTema, $IdProd);
             $stmt->execute();
 
 
-            $query = "UPDATE ProdottoInVetrina SET ()
-                    WHERE IdProd = ?
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            $query = "UPDATE ProdottoInVetrina SET 
+                             Descrizione = ?, 
+                             IdCategoria = ?
+                    WHERE IdProd = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param("ssisiiisssi", $Codice, $Colore_frame, $Larghezza, $Titolo, $Altezza, $Padding, $Dimensione_font, $Mostra_numero_linee, $NomeLinguaggio,
-                $NomeTema, $IdProd);
+            $stmt->bind_param("sii", $Description, $IdCategory, $IdProd);
             $stmt->execute();
-
-            $result = $stmt->get_result();
-            return $result->fetch_all(MYSQLI_ASSOC);
         }
 
         /** ADD a product to the Showcase */

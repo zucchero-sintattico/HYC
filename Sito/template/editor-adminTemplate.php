@@ -180,8 +180,8 @@
                             if($templateParams['mode'] == "edit"):
                         ?>
                             $('#submit').on('click', function () {
-                                $.post("../editor-admin-confirm.php", quadro.toJSONInShowCase($('#description_form').val(), $('#category option:selected').val()), function () {
-                                    window.location.replace("../admin.php")
+                                $.post("../editor-admin-confirm.php?mode=edit", quadro.toJSONInShowCase($('#description_form').val(), parseInt($('#category option:selected').val()), <?php echo $templateParams['id'];?>), function (data) {
+                                window.location.replace("../admin.php")
                                 });
 
                             });
@@ -189,7 +189,19 @@
                         <?php
                             endif;
                         ;?>
+                        <?php
+                            if($templateParams['mode'] == "add"):
+                        ?>
+                        $('#submit').on('click', function () {
+                            $.post("../editor-admin-confirm.php?mode=add", quadro.toJSONInShowCase($('#description_form').val(), parseInt($('#category option:selected').val()), <?php echo $templateParams['id'];?>), function (data) {
+                                window.location.replace("../admin.php")
+                            });
 
+                        });
+
+                        <?php
+                        endif;
+                        ;?>
 
 
 

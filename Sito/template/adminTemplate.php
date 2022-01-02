@@ -3,7 +3,7 @@
     <h1>Admin Page</h1>
 
     <section>
-        <a href="../adminEditor.php">Aggiungi Quadro</a>
+        <a href="../editor-admin.php?mode=add">Aggiungi Quadro</a>
     </section>
 
     <section>

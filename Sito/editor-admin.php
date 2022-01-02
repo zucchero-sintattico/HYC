@@ -8,6 +8,10 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     $templateParams['languages'] = $dbh->getLanguages();
     $templateParams['themes'] = $dbh->getThemes();
     $templateParams['categories'] = $dbh->getCategorie();
+    if(isset($_GET['id'])){
+
+        $templateParams['id'] = $_GET['id'];
+    }
 
     $templateParams['js'] = array("script/editorAdmin/editorAdmin.js");
 
@@ -17,6 +21,19 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     }
     if($_GET['mode'] == "add"){
         // Add a product
+        $templateParams['product'] = [
+            "Larghezza" => 100,
+            "Altezza" => 100,
+            "Titolo" => "",
+            "Colore_frame" => "red",
+            "NomeTema" => "midnight",
+            "Padding" => 3,
+            "Linguaggio" => "clike",
+            "IdCategoria" => 1,
+            "Descrizione" => "",
+            "Codice" => "``",
+            "Dimensione_font" => 4
+        ];
         $templateParams['mode'] = "add";
     }
 } else {
