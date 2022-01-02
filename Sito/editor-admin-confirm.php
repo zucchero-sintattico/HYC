@@ -18,7 +18,11 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
             $_POST["font_size"],
             $_POST["lineNumbers"],
             $_POST["language"],
-            $_POST["theme"]);
+            $_POST["theme"],
+            $_POST["description"],
+            $_POST["category"],
+            $_POST["idProd"]);
+
     }
 
     // Mode add
