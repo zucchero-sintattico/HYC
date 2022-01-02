@@ -21,7 +21,7 @@
                         quadri[<?php echo$i?>].setStyle('<?php echo $square['NomeTema'] ?>');
                         quadri[<?php echo$i?>].setHeight(<?php echo $square['Altezza'] ?>);
                         quadri[<?php echo$i?>].widthScale(200);
-
+                        quadri[<?php echo$i?>].setFramecolor('<?php echo $square['Colore_frame'] ?>')
                         quadri[<?php echo$i?>].updateStyle();
                         quadri[<?php echo$i?>].setText(<?php echo $square['Codice'] ?>);
                         quadri[<?php echo$i?>].disable();
@@ -30,10 +30,12 @@
                     </script>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="coll">
-                    <p>info varie</p>
-                    <a href="../editor-admin.php?mode=edit&id=<?php echo $square['IdProd'] ?>">edit | </a>
-                    <a href="../editor-admin.php?mode=del&id=<?php echo $square['IdProd'] ?>">del</a>
+                    <div class="col text-center">
+                    <p><?php echo $square['Titolo'] ?></p>
+                        <p><?php echo $square['Altezza'] ?>x<?php echo $square['Larghezza'] ?></p>
+                    <a href="../editor-admin.php?mode=edit&id=<?php echo $square['IdProd'] ?>">Edit</a>
+                        <label> | </label>
+                    <a href="../editor-admin.php?mode=del&id=<?php echo $square['IdProd'] ?>">Delete</a>
                     </div>
                 </div>
             </div>

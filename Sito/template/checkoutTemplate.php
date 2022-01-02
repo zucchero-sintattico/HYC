@@ -82,7 +82,7 @@
                         <div class="item pr-2">
                             <!-- Code -->
                             <div class="row">
-                                <code id="quadro<?php echo $articolo["IdProd"] ?>">
+                                <div id="quadro<?php echo $articolo["IdProd"] ?>">
                                     <script>
                                         let quadro<?php echo $articolo["IdProd"] ?> = new CodeSquare(document.querySelector('#quadro<?php echo $articolo["IdProd"] ?>'));
                                         quadro<?php echo $articolo["IdProd"] ?>.getSquare();
@@ -98,7 +98,7 @@
                                         quadro<?php echo $articolo["IdProd"] ?>.updateStyle();
                                         quadro<?php echo $articolo["IdProd"] ?>.setText(<?php echo $articolo["Codice"] ;?>);
                                     </script>
-                                </code>
+                                </div>
                             </div>
                         </div>
                     <div class="d-flex flex-column px-3"> <b class="h5"><?php echo $articolo['Titolo'] ; ?></b> <a href="#" class="h5 text-primary">quadro<?php echo $articolo["IdProd"] ?></a> <p>x<?php echo $articolo["Quantità"] ;?></p> </div>
