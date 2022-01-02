@@ -234,8 +234,7 @@ function createProductsOfCategoryFromData(data, cat) {
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
                                             checkOnResize(parent,"row","col", true);
              
-                                            $("quadro${cat}${data[i]["IdProd"]}").on("touchstart click", function(event) {
-                                                cosole.log("touchstart");                            
+                                            $('#quadro${cat}${data[i]["IdProd"]}').on("click", function(event) {                         
                                                 window.location.href = "editor.php?id=${data[i]["IdProd"]}" 
                                                         
                                             });
