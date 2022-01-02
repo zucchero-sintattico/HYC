@@ -20,6 +20,7 @@ $(document).on('ready', function () {
                         `;
                     popUp_notification.append(notificationHtml);
                     $("#notification").css("color", "red");
+                    $("#notification").prev()[0].style.animation="bellRingSpinMovement 0.2s 3 ease-in";
                 });
             }
         }
@@ -30,8 +31,9 @@ $(document).on('ready', function () {
     const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5)");
     let notificationDropDown = null;
     const header = $("header")
-    notificationToggle.children().on('click', function () {
 
+    notificationToggle.children().on('click', function () {
+        $("#notification").css("color", "black");
         if (notificationDropDown == null) {
             $.getJSON("/API/api-notification.php?filter=all", function (data) {
 

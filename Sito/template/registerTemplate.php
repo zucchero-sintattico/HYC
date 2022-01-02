@@ -2,7 +2,7 @@
     <form action="#" method="POST">
         <h2>Register</h2>
         <?php if (isset($templateParams["errorelogin"])): ?>
-            <p><?php echo $templateParams["errorelogin"]; ?></p>
+            <p class="errorInRegister"><?php echo $templateParams["errorelogin"]; ?></p>
         <?php endif; ?>
         <ul>
             <li>
@@ -21,7 +21,7 @@
                 <label for="password">Password:</label><input type="password" id="password" name="password"/>
             </li>
             <li>
-                <input type="submit" name="submit" value="Invia"/>
+                <input type="submit" name="submit" value="Send" id="sendBtn"/>
             </li>
         </ul>
     </form>

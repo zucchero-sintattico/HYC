@@ -32,33 +32,40 @@ function checkoutIsOk(data) {
 }
 
 function validateInput() {
-    let valid = true;
+    let state = "valid";
+
+    if($("#details > form > div:nth-child(2) > input").val().length != 16){
+        state = "wrongCardNumberLength"
+        $("#details > form > div:nth-child(2) > input").addClass("notValid");
+    }
 
     $("input:not(:first, :last)").each(function () {
         if($(this).val() == ""){
-            valid = false;
+            state = "notValid";
             $(this).addClass("notValid");
-        }
-        else{
+        }else{
             $(this).removeClass("notValid");
             $(this).css("border", "1px solid lightgray");
         }
     })
 
-    if($("#details > form > div:nth-child(2) > input").val().length != 16){
-        valid = false;
-        $("#details > form > div:nth-child(2) > input").addClass("notValid");
-    }
 
-    return valid;
+
+    return state;
 }
 
 $(document).on('ready', function () {
-    let validateSignal = false;
+
+    //inizializzare il datepicker di Bootstrap
+
 
     $('main > div > div.row > div.col-lg-6.col-md-8.col-sm-10.offset-lg-0.offset-md-2.offset-sm-1.pt-lg-0.pt-3 > div.row.pt-lg-3.pt-2.buttons.mb-sm-0.mb-2 > div.col-md-6.pt-md-0.pt-3 > div'
     ).on('click', function () {
-        if(validateInput()){
+
+        $(".errorMessagePrompted").remove();
+
+        let messageOnValidate = validateInput()
+        if(messageOnValidate == "valid"){
             $.post("/API/api-checkout.php", function (data){
                 const main = $('main');
                 main.html("");
@@ -66,16 +73,22 @@ $(document).on('ready', function () {
             });
         }else{
             $('input').filter('.notValid').css("border", "1px solid red");
-            if(!validateSignal){
-                $(this).parent().parent().parent().append(`
-                    <div class="row mt-4">
-                        <div class="col-12 text-center">
-                            <p class="text-danger">Please compile every Field</p>
-                        </div>
-                    </div>
-                `);
-                validateSignal = true;
+
+            let messageToLog = "";
+
+            if(messageOnValidate == "notValid"){
+                messageToLog = "Please compile every Field";
+            }else if(messageOnValidate == "wrongCardNumberLength"){
+                messageToLog = "Please insert correct card number length";
             }
+
+            $(this).parent().parent().parent().append(`
+                <div class="row mt-4 errorMessagePrompted">
+                    <div class="col-12 text-center">
+                        <p class="text-danger">${messageToLog}</p>
+                    </div>
+                </div>
+            `);
 
         }
     });
@@ -83,4 +96,11 @@ $(document).on('ready', function () {
     ).on('click', function () {
         window.location = "/index.php";
     })
+
+    $("#datepicker").datepicker( {
+        format: "mm-yyyy",
+        viewMode: "months",
+        minViewMode: "months"
+    });
+
 });

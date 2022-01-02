@@ -276,14 +276,27 @@ class DatabaseHelper
         public
         function registerUser($Nome, $Cognome, $Username, $Email, $Password)
         {
-            $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
-                VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->db->prepare($query);
-            $stmt->bind_param("sssss", $Nome, $Cognome, $Username, $Email, $Password);
-            $stmt->execute();
-            $userId = $this->getLastUser();
-            $this->getNewCartForUser($userId);
+            if(strlen($Password) < 8){
+                return "passwordTooShort";
+            }
 
+            $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
+            $stmt1 = $this->db->prepare($lookForUsernameQuery);
+            $stmt1->bind_param("ss",$Username, $Email);
+            $stmt1->execute();
+            $resLookUp = $stmt1->get_result();
+
+            if(count($resLookUp->fetch_all(MYSQLI_ASSOC)) == 0){
+                $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
+                VALUES (?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param("sssss", $Nome, $Cognome, $Username, $Email, $Password);
+                $stmt->execute();
+                $userId = $this->getLastUser();
+                $this->getNewCartForUser($userId);
+                return "registrationSuccessfull";
+            }
+            return "duplicateEmailOrUsername";
         }
 
         public

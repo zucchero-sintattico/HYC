@@ -8,24 +8,32 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>City</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Cesena" disabled></div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="text" value="Cesena" disabled>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Zip code</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="47522" disabled> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="text" value="47522" disabled>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Address</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group"> <label>State</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="text" value="Italy" disabled> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="text" value="Italy" disabled>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -36,17 +44,25 @@
             <div id="details" class="bg-white rounded pb-5">
                 <div class="h6 text-center">Payment</div>
                 <form>
-                    <div class="form-group"> <label class="text-muted">Name on card</label> <input type="text" placeholder="Insert name on card" class="form-control"> </div>
-                    <div class="form-group"> <label class="text-muted">Number of card</label> <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control"> </div>
+                    <div class="form-group"> <label class="text-muted">Name on card</label>
+                        <input type="text" placeholder="Insert name on card" class="form-control">
+                    </div>
+                    <div class="form-group"> <label class="text-muted">Number of card</label>
+                        <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control">
+                    </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group"> <label>Expiration</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="month" placeholder="Insert expiration date" required></div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="month" placeholder="Insert expiration date" required>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group"> <label>CVV</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2"> <input type="password" placeholder="Insert CVV" required> </div>
+                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
+                                    <input type="password" placeholder="Insert CVV" required>
+                                </div>
                             </div>
                         </div>
                     </div>
