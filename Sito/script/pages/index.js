@@ -19,8 +19,7 @@ $(document).on("ready", function (event) {
         $(window).on("scroll", function(){
             clearTimeout(scrollTimeout);
             let actualScrollTop = $(this).scrollTop();
-            console.log("actual->"+actualScrollTop)
-            console.log("prev->"+prevScrollTop)
+
             scrollTimeout = setTimeout(function (){
                     $(".productWhole").each(function(){
                         let randomValue = Math.random() * 30;

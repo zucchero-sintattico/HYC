@@ -133,7 +133,7 @@ class CodeSquare {
             backgroundColor: "#989898",
             filter: "blur(2px)",
             opacity: 0.5
-        },{duration:animDurationBeforeChangePage, easing:"ease-out", fill:"forwards"});
+        },{ duration:animDurationBeforeChangePage, easing:"ease-out", fill:"forwards" });
 
         window.setTimeout(()=>{
             window.location.replace(dest);
