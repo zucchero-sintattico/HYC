@@ -119,6 +119,11 @@ class CodeSquare {
             refer.resetClickFunctionAndAnimation(dest)
 
         })
+        this.codeMirror.on("focus", function(){
+
+            refer.resetClickFunctionAndAnimation(dest)
+
+        })
     }
 
     resetClickFunctionAndAnimation(dest){
@@ -209,6 +214,10 @@ class CodeSquare {
             matchBrackets: true
         });
 
+        return this.codeMirror;
+    }
+
+    get objsectOfSquare(){
         return this.codeMirror;
     }
 
