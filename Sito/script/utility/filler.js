@@ -233,12 +233,11 @@ function createProductsOfCategoryFromData(data, cat) {
                                             quadri[${i}].disablePadding();
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
                                             checkOnResize(parent,"row","col", true);
-             
-                                            $("quadro${cat}${data[i]["IdProd"]}").on("touchstart click", function(event) {
-                                                cosole.log("touchstart");                            
-                                                window.location.href = "editor.php?id=${data[i]["IdProd"]}" 
-                                                        
-                                            });
+                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("position", "relative");
+                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("z-index", "-1");
+                           
+
+       
                                         }
                                     </script>  
                                 </div>

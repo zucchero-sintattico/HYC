@@ -119,6 +119,11 @@ class CodeSquare {
             refer.resetClickFunctionAndAnimation(dest)
 
         })
+        this.codeMirror.on("focus", function(){
+
+            refer.resetClickFunctionAndAnimation(dest)
+
+        })
     }
 
     resetClickFunctionAndAnimation(dest){
@@ -209,6 +214,10 @@ class CodeSquare {
             matchBrackets: true
         });
 
+        return this.codeMirror;
+    }
+
+    get objsectOfSquare(){
         return this.codeMirror;
     }
 
@@ -394,7 +403,7 @@ class CodeSquare {
         }
     }
 
-    toJSONInShowCase(desc, cat){
+    toJSONInShowCase(desc, cat, id){
         return {
             value : this.code,
             language : this.language,
@@ -407,7 +416,8 @@ class CodeSquare {
             lineNumbers : this.lineNumbers,
             title : this.title,
             description: desc,
-            category: cat
+            category: cat,
+            idProd: id
         }
     }
 }
