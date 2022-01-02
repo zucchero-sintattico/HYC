@@ -1,7 +1,7 @@
 <?php
 
 // Controllo admin
-require_once 'bootstrap.php';
+require_once '../bootstrap.php';
 // Redirect a catalogo admin
 
 if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
