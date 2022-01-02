@@ -206,7 +206,7 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div style="width:370px; max-width: 500px", class="col productWhole">
+                    <div  class="col productWhole">
                         <div class="row paintingInfo paintingTitle">
                             <label>${data[i]["Titolo"]}</label>
                         </div>
@@ -234,10 +234,9 @@ function createProductsOfCategoryFromData(data, cat) {
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
                                             checkOnResize(parent,"row","col", true);
              
-                                            $('#quadro${data[i]["IdProd"]}').unbind("click").click( function(event) {
-                                                                                              
+                                            $("quadro${cat}${data[i]["IdProd"]}").on("touchstart click", function(event) {   
+                                                cosole.log("touchstart")
                                                 window.location.href = "editor.php?id=${data[i]["IdProd"]}" 
-                                                        
                                             });
                                         }
                                     </script>  

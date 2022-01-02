@@ -169,4 +169,8 @@ main {
 
     }
 
+    .productWhole{
+        touch-action: manipulation;
+    }
+
 }
