@@ -22,5 +22,13 @@ main button, main select, main input {
     font-weight: lighter !important;
     width: 100% !important;
     border-color: #333333 !important;
+    background-color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: thin;
+
 }
+
+
+
 

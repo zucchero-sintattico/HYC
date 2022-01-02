@@ -14,23 +14,28 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script
     <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+    <!--Notification setting-->
+
+    <?php header('Access-Control-Allow-Origin: *'); ?>
 
     <!-- Import CodeMirror -->
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/python/python.min.js"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/clike/clike.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/monokai.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/base16-light.min.css">
+    <?php foreach ($templateParams["themes"] as $theme): ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/<?php echo $theme["NomeTema"];?>.css">
+    <?php endforeach;?>
+
+    <?php foreach ($templateParams["languages"] as $language): ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/mode/<?php echo $language["NomeLinguaggio"];?>/<?php echo $language["NomeLinguaggio"];?>.min.js"></script>
+    <?php endforeach;?>
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- Fine import CodeMirror -->
 
@@ -54,7 +59,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams['style'] ?>">
     <link rel="shortcut icon" href="../img/icon/favicon.ico">
 
-    <?php header('Access-Control-Allow-Origin: *'); ?>
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):
@@ -75,9 +79,9 @@
     <div class="row">
         <header>
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <a href="../index.php">
-                        <img src="../img/logos/logo.png">
+                        <img src="../img/logos/logo.png" alt="Hang your Code Logo">
                     </a>
                 </div>
                 <div class="col-6">
@@ -85,11 +89,11 @@
                         We frame it and make sure it arrives to your home.
                     </p>
                 </div>
-                <div class="col-3">
+                <div class="col-2 pr-5">
                     <label><?php
                         if (isUserLoggedIn()) {
                             echo "<script>let userId =".getLoggedUserID().";</script>";
-                            echo "Hi ".getNameUserID()."\n";
+                            echo "<p>Hi ".getNameUserID()."</p>";
                             echo "<a href='../logout.php'>LogOut</a>";
                         } else {
                             echo "<script> let userId = null </script>";
@@ -107,30 +111,32 @@
                 <ul>
                     <li>
                         <a href="../index.php">
-                            <img src="../img/nav/home.svg" alt=""/>
+                            <img src="../img/nav/home.svg" alt="home Button"/>
                             <p>Home</p>
                         </a>
                     </li><li>
                         <a href="/cart.php">
-                            <img src="../img/nav/cart2.svg" alt=""/>
+                            <img src="../img/nav/cart2.svg" alt="cart Button"/>
                             <p>Cart</p>
                         </a>
                     </li><li>
                         <a href="#" id="search">
-                            <img src="../img/nav/search2.svg" alt=""/>
+                            <img src="../img/nav/search2.svg" alt="search Button"/>
                             <p>Search</p>
                         </a>
                     </li><li>
                         <a href="/profile.php">
-                            <img src="../img/nav/user2.svg" alt=""/>
+                            <img src="../img/nav/user2.svg" alt="profile Button"/>
                             <p>Profile</p>
                         </a>
                     </li><li>
-                        <a href="#" >
-                            <img src="../img/nav/bell.svg" alt=""/>
+                        <a href="#">
+                            <img src="../img/nav/bell.svg" alt="notifications Button"/>
                             <p id="notification">Notifications</p>
                         </a>
+
                     </li>
+
                 </ul>
             </nav>
         </div>
@@ -140,7 +146,7 @@
     <div class="row">
         <div class="col-12">
             <form action="../search.php">
-                <label for="key">Search</label>
+                <label for="searchField">Search</label>
                 <input type="text" name="key" id ="searchField" autocomplete="off" placeholder="Search you article..."/>
                 <input type="submit" value="➜">
             </form>
@@ -152,7 +158,7 @@
 
     <div class="alert alert-success collapse" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong> You have been signed in successfully!
+
     </div>
 
     <main>
@@ -174,12 +180,12 @@
 
                 <!-- Right -->
                 <div class="col-6">
-                    <a style="width: 20%" href="https://www.instagram.com/zucchero_sintattico/" class="mr-2 me-4 text-reset">
-                        <i class="fa fa-instagram"></i>
+                    <a href="https://www.instagram.com/zucchero_sintattico/" title="instagram link" class="mr-2 me-4 text-reset">
+                        <span class="fa fa-instagram"></span>
                     </a>
 
-                    <a href="https://github.com/zucchero-sintattico" class="me-4 text-reset">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/zucchero-sintattico" title="github link" class="me-4 text-reset">
+                        <span class="fab fa-github"></span>
                     </a>
                 </div>
                 <!-- Right -->
@@ -196,7 +202,7 @@
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i> Hang Your Code
+                            <span class="fas fa-gem me-3"></span> Hang Your Code
                         </h6>
                         <p>
                             You select the code that inspires you the most.
@@ -212,13 +218,13 @@
                             Useful links
                         </h6>
                         <p>
-                            <a href="../index.php" class="text-reset">Home</a>
+                            <a href="../index.php" title="home link" class="text-reset">Home</a>
                         </p>
                         <p>
-                            <a href="../cart.php" class="text-reset">Cart</a>
+                            <a href="../cart.php" title="cart link" class="text-reset">Cart</a>
                         </p>
                         <p>
-                            <a href="../profile.php" class="text-reset">Profile</a>
+                            <a href="../profile.php" title="profile link" class="text-reset">Profile</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -229,12 +235,12 @@
                         <h6 class="text-uppercase fw-bold mb-4">
                             Contact
                         </h6>
-                        <p><i class="fas fa-home me-3"></i>  Via Cesare Pavese, 50, Cesena FC</p>
+                        <p><span class="fas fa-home me-3"></span>  Via Cesare Pavese, 50, Cesena FC</p>
                         <p>
-                            <i class="fas fa-envelope me-3"></i>
+                            <span class="fas fa-envelope me-3"></span>
                             info@hyc.com
                         </p>
-                        <p><i class="fas fa-phone me-3"></i> + 39 3667154519</p>
+                        <p><span class="fas fa-phone me-3"></span> + 39 3667154519</p>
                     </div>
                     <!-- Grid column -->
                 </div>
@@ -244,7 +250,7 @@
         <!-- Section: Links  -->
 
         <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-4">
             © 2021 Copyright
         </div>
         <!-- Copyright -->

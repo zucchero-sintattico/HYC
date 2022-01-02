@@ -2,5 +2,20 @@
 
 require_once '../bootstrap.php';
 
-$data = "";
+// Create the order
+$dbh -> createOrder(getLoggedUserID());
+
+// Get Order Info
+$orderInfo = $dbh -> getLastOrderOfUser(getLoggedUserID());
+
+// Create a notification
+$dbh -> createNotification("Processed", "Your order was processed correctly", getLoggedUserID());
+// Create Shipping ????
+
+// Give a new cart to the User
+$dbh -> getNewCartForUser(getLoggedUserID());
+
+$userName = getNameUserID();
+$data = array("UserName"=>$userName, "OrderInfo"=>$orderInfo);
+header('Content-Type: application/json');
 echo json_encode($data);

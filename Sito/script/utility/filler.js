@@ -1,139 +1,257 @@
 // Functions that fill the pages
-
 function createImages(){
-    return `
-        <div class="text-center">
-          <img src="img/paintings/quadriTrasparentiExample.png" class="rounded" alt="...">
+    let image = `
+        <div class="row no-wrap">
+          <img src="img/paintings/room1.jpg" alt="...">
+          <img src="img/paintings/room2.jpg" alt="...">
+          <img src="img/paintings/room3.jpg" alt="...">
+          <img src="img/paintings/room4.jpg" alt="...">
         </div>
     `;
+
+    $("main").append(image);
+
 }
 
-function createCategories(data) {
-    let content = '';
-    for (let i = 0; i < data.length; i++) {
-        let categoria = `
-                        <section class="col-3 d-flex justify-content-center text-center" id="category${data[i]['IdCategoria']}">    
-                            <div class="card card-block justify-content-center">
-                                <img class="card-img-top" src="img/logos/${data[i]['ImgCategoria']}"
-                                     alt="${data[i]['ImgCategoria']}">
-                                    <div class="class-footer mt-auto">
-                                        <p class="card-text">${data[i]['Tipo']}</p>
+function addH3Animation(){
+    let h3s = $("h3");
+    h3s.next().next().css("opacity",0);
+    h3s.next().next().css("font-size","20px");
+    h3s.next().next().css("font-weight","bold");
+    h3s.next().next().next().css("opacity",0);
+
+    h3s.each(function(){
+        $(this).on("mouseenter",function(){
+            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "white", "important");
+            $(this).css("color", "#E0E0E0");
+            $(this).next().next()[0].animate([
+                    {
+                        opacity: 1,
+                        transform: "translateX(150px) translateY(4px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-out"
+                }
+            );
+
+            $(this).next().next().next()[0].animate([
+                {
+                    transform: "translateX(-20px) translateY(7px)",
+                },
+                {
+                    opacity: 1,
+                    transform: "translateX(5px) translateY(7px)",
+                }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-out"
+                }
+            );
+
+        })
+
+        $(this).on("mouseleave",function(){
+            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "black", "important");
+            $(this).css("color", "black");
+            $(this).next().next()[0].animate([
+                    {
+                        opacity: 0,
+                        transform: "translateX(0px) translateY(4px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-in"
+                }
+            );
+
+            $(this).next().next().next()[0].animate([
+                {
+                    transform: "translateY(7px)",
+                },
+                    {
+                        opacity: 0,
+                        transform: "translateX(-20px) translateY(7px)",
+                    }],
+
+                {
+                    duration: 400, iterations: 1, fill: "forwards", delay:50, easing: "ease-in"
+                }
+            );
+
+        })
+
+    })
+}
+
+function generateCategoriesAndRelativeProducts(categorie, linguaggi){
+    $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'></div></div>");
+
+    for(let i=0; i<categorie.length; i++){
+
+        let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
+                                    <div class="row">
+                                        <h3>${categorie[i]['Tipo']}:</h3>
+                                        <p class="isFirstP"> > </p>
+                                        <p> > </p>
+                                        <p>Sfoglia tutti</p>
                                     </div>
-                            </div>
-                        </section>
-                        <script>
-                        $("#category${data[i]['IdCategoria']}").on('click',function (){
-                            createCatalogWithCategories(${data[i]['IdCategoria']});
-                        })</script>
-                       
-            `;
-        content += categoria;
+                                    
+                                    <div class="container listaCategoria${categorie[i]['IdCategoria']}">
+                                        <div class="row"></div>
+                                    </div>
+                              </div>`;
+
+        $(".categories").append(singleCategory);
+
+        let selector = `.listaCategoria${categorie[i]['IdCategoria']} > div`;
+        addProductsToSpecifiedList(categorie[i]['IdCategoria'], selector, "cat");
+
+
+        $(selector).css("white-space", "nowrap");
+
+        let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
+
+        $(h3ParentSelector).find("h3").on("click", function () {
+            $.getJSON("/API/api-search.php?cat=" + categorie[i]['IdCategoria'], function (data) {
+                let articoli = data["Results"];
+                $("main div").hide();
+                $("main").append(`<div class="container">
+                                            <div class="col categRes"></div>
+                                            <div class="row searchResults"></div>
+                                    </div>`);
+                $(".categRes").append(`<h2>${data["Title"]}</h2>`);
+                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
+                $(".searchResults").show();
+            });
+        })
+
+
+
     }
 
-    return horizontalSection(content, "Categories");
-}
+    for(let i=0; i<linguaggi.length; i++){
 
+        let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
+                                    <div class="row">
+                                        <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
+                                        <p class="isFirstP"> > </p>
+                                        <p> > </p>
+                                        <p>Sfoglia tutti</p>
+                                    </div>
+                                    <div class="container listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
+                                        <div class="row"></div>
+                                    </div>
+                              </div>`;
 
-function createLanguages(data) {
-    let content = '';
-    for (let i = 0; i < data.length; i++) {
-        let linguaggio = `
-                <section href="editor.php" class="col-3 d-flex justify-content-center text-center"  id="language${data[i]['NomeLinguaggio']}" >
-                    <div class="row justify-content-center">
-                        ${data[i]['NomeLinguaggio']}
-                    </div>
-                </section>
-                <script>
-                        $("#language${data[i]['NomeLinguaggio']}").on('click',function (){
-                            createCatalogByLanguages("${data[i]['NomeLinguaggio']}");
-                        })
-                </script>
-            `;
-        content += linguaggio;
+        $(".categories").append(singleCategory);
+        let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']} > div`;
+        addProductsToSpecifiedList(linguaggi[i]['NomeLinguaggio'], selector, "lan",);
+
+        let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
+
+        $(h3ParentSelector).find("h3").on("click", function () {
+            $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
+                let articoli = data["Results"];
+                $("main div").hide();
+                $("main").append(`<div class="container">
+                                            <div class="col categRes"></div>
+                                            <div class="row searchResults"></div>
+                                    </div>`);
+                $(".categRes").append(`<h2>${data["Title"]}</h2>`);
+                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
+                $(".searchResults").show();
+            });
+        })
+
     }
-    return horizontalSection(content, "Languages");
+
+
+
+
+    $(".isFirstP").each(function(){
+        $(this).css("color","white");
+        $(this).css("font-size", "28px");
+        $(this).css("font-weight","bold");
+    })
+
+    $(".categories > div > div:first-child").on("mouseenter", function(){
+        $(this).find("p").first().css("color", "black");
+    });
+
+    $(".categories > div > div:first-child").on("mouseleave", function(){
+        $(this).find("p").first().css("color", "white");
+    });
+    addH3Animation();
+
 }
 
+function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts, getType) {
+    $.getJSON("/API/api-search.php?"+ getType +"=" + tipologiaLista, function (data) {
+        let results = data['Results'];
+        let products = createProductsOfCategoryFromData(results,getType);
 
+        $(selectorToWhereToAddProducts).append(products);
+        $(selectorToWhereToAddProducts).find(".paintingInfo").css("opacity", 0);
 
-function createPopularArticles(data) {
-    let content = '';
-    for (let i = 0; i < data.length; i++) {
-        let prodottoPopolare = `
-                <a href="editor.php?id=${data[i]["IdProd"]}" class="col-5 d-flex justify-content-center" >
-                        <code id="quadro${data[i]["IdProd"]}">
-                            <script>
-                            if(!$('#quadro${data[i]["IdProd"]} > .CodeMirror').length){
-                                quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
-                                quadri[${i}].getSquare();                        
-                                quadri[${i}].setWidth(${data[i]["Larghezza"]});
-                                quadri[${i}].setHeight(${data[i]["Altezza"]});
-                                quadri[${i}].setPadding(0);
-                                quadri[${i}].setFramecolor("transparent");
-                                quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
-                                quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
-                                quadri[${i}].setStyle('${data[i]["NomeTema"]}');
-                                quadri[${i}].disable();
-                                quadri[${i}].widthScale(300);
-                                quadri[${i}].updateStyle();
-                                quadri[${i}].setText('${data[i]["Codice"]}'); 
-                             }
-                            checkOnResize("code","col-5","col");
-                            
-                            $('#quadro${data[i]["IdProd"]}').on("touchend", function(event) {
-                                window.location.href = "editor.php?id=${data[i]["IdProd"]}"         
-                            });
-                            </script>
-                        </code>
-
-                </a>
-
-            `;
-        content += prodottoPopolare;
-    }
-    return horizontalSection(content, "Most Popular Products");
+    });
 }
 
-function getFilteredArticles(data, filterName) {
+function fillHomePage(data) {
+    generateCategoriesAndRelativeProducts(data['Categorie'], data['Linguaggi']);
+}
+
+function createProductsOfCategoryFromData(data, cat) {
     let content = '';
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div class="col-12 col-md-6">
-                        <a href="../editor.php?id=${data[i]["IdProd"]}">
-                            <article>
-                               <div class="col-12">
-                                    <h2>${data[i]["Titolo"]}</h2>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <code id="quadro${data[i]["IdProd"]}">
-                                        <script>
-                                            quadri.push(new CodeSquare(document.querySelector('#quadro${data[i]["IdProd"]}')));
-                                            quadri[${i}].getSquare();
+                    <div style="width:370px; max-width: 500px", class="col productWhole">
+                        <div class="row paintingInfo paintingTitle">
+                            <label>${data[i]["Titolo"]}</label>
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                            <div id="quadro${cat}${data[i]["IdProd"]}">
+                                    <script>
+                                        if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
+                                            quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
+                                            quadri[${i}].getSquare();                        
+                                            quadri[${i}].setWidth(${data[i]["Larghezza"]});
+                                            quadri[${i}].setHeight(${data[i]["Altezza"]});
                                             quadri[${i}].setPadding(0);
-                                            quadri[${i}].setFramecolor("transparent")
+                                            quadri[${i}].setFramecolor("transparent");
                                             quadri[${i}].setFontSize(${data[i]["Dimensione_font"]});
                                             quadri[${i}].setLanguages('${data[i]["NomeLinguaggio"]}');
                                             quadri[${i}].setStyle('${data[i]["NomeTema"]}');
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${data[i]["Codice"]}');
-                                        </script>
-                                    </code>
+                                            
+                                            quadri[${i}].setText(${data[i]["Codice"]}); 
+                                            quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
+                                            quadri[${i}].disablePadding();
+                                            let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
+                                            checkOnResize(parent,"row","col", true);
+                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("position", "relative");
+                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("z-index", "-1");
+                           
+
+       
+                                        }
+                                    </script>  
                                 </div>
-                                <div class="row">
-                                    <p class="col-12">${data[i]["Descrizione"]}</p>
-                                </div>
-                            </article>                
-                         </a>
+                        </div>
+                        <div class="row infoWrapper">
+                            <p class="text-center paintingInfo info">${data[i]["Descrizione"]}</p>
+                        </div>
                     </div>
-             
             `;
         content += result;
     }
-    return adaptableSection(content, filterName);
+    return content;
 }
+
 
 function generateCart(data){
     let content = '';
@@ -153,6 +271,8 @@ function generateCart(data){
                                         <script>
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${products[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();
+                                            quadri[${i}].setWidth(${products[i]["Larghezza"]});
+                                            quadri[${i}].setHeight(${products[i]["Altezza"]});
                                             quadri[${i}].setPadding(${products[i]["Padding"]});
                                             quadri[${i}].setFramecolor('${products[i]["Colore_frame"]}');
                                             quadri[${i}].setFontSize(${products[i]["Dimensione_font"]});
@@ -161,7 +281,7 @@ function generateCart(data){
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            quadri[${i}].setText('${products[i]["Codice"]}');
+                                            quadri[${i}].setText(${products[i]["Codice"]});
                                         </script>
                                     </code>
                                 </div>
@@ -170,11 +290,20 @@ function generateCart(data){
                                 </div>
                             </article>                
                         </a>
-                        <div class="row justify-content-center my-4">
+                        <div class="row justify-content-center mt-2">
+                            <label for="quantity${products[i]["IdProd"]}">Quantity:</label><input id="quantity${products[i]["IdProd"]}" type="number" min="1" max="" name="quantity" value="${products[i]["Quantità"]}" title="Qty" class="input-text text-center">
+                        </div>
+                        <div class="row justify-content-center mt-2 mb-4">
                             <a href="#" class="text-danger" id="delete${products[i]["IdProd"]}"> Delete Product </a>
                                 <script>
                                     $("#delete${products[i]["IdProd"]}").on('click', function () {
                                         removeProdAndRefreshCart(${products[i]["IdProd"]});
+                                    });
+                                    $("#quantity${products[i]["IdProd"]}").on('keyup', function () {
+                                        if(parseInt($(this).val()) < 1){
+                                            $(this).val(1);
+                                        }
+                                        changeProdQuantity(${products[i]["IdProd"]}, $(this).val());
                                     });
                                 </script>
                         </div>
@@ -214,7 +343,7 @@ function createCatalogWithCategories(idCategory) {
         let results = data['Results'];
         let categoryName = data['Title'];
         quadri = [];
-        let articles = getFilteredArticles(results, categoryName);
+        let articles = createProductsOfCategoryFromData(results, categoryName);
         const main = $("main");
         main.html("");
         main.append(articles);
@@ -226,38 +355,32 @@ function createCatalogByLanguages(idLang) {
         let results = data['Results'];
         let languageName = data['Title'];
         quadri = [];
-        let articles = getFilteredArticles(results, languageName);
+        let articles = createProductsOfCategoryFromData(results, languageName);
         const main = $("main");
         main.html("");
         main.append(articles);
     });
 }
 
-function fillHomePage(data) {
-    let img = createImages();
-    let categorie = createCategories(data['Categorie']);
-    let linguaggi = createLanguages(data['Linguaggi']);
-    let prodottiPopolari = createPopularArticles(data['ProdottiPopolari']);
-    const main = $("main");
-    main.append(img);
-    main.append(categorie);
-    main.append(img);
-    main.append(linguaggi);
-    main.append(img);
-    main.append(prodottiPopolari);
-}
-
 function removeProdAndRefreshCart(idProd) {
     prod = {
         IdProd : idProd
     }
-    console.log(prod);
     $.post("/API/api-cart-removeElement.php", prod, function (data) {
         if(data['Empty'] == 1){
             data['Products'] = new Array();
             data['Prices'] = new Array();
         }
         getArticleInCart(data);
-        // Da controllare PHP come genera Carrello e replicare GRAZZZZZIE
+    });
+}
+
+function changeProdQuantity(idProd, quantity) {
+    dataIn = {
+        IdProd : idProd,
+        Quantity : quantity
+    }
+    $.post("/API/api-cart-changeQuantityElement.php", dataIn, function (data) {
+        getArticleInCart(data);
     });
 }

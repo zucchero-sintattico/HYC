@@ -124,10 +124,28 @@ nav > ul li a:hover {
     text-decoration: none;
 }
 
+nav{
+    z-index: 9999999 !important;
+}
+
 header > div {
     background-color: Gainsboro;
-    padding: 20px 0 20px 40px;
+    padding: 10px 0 10px 40px;
     width: 100%;
+}
+
+body > div > div:nth-child(2){
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    background-color: #E0E0E0;
+}
+
+header {
+    width: 100%;
+}
+
+header > div > div{
+    margin: auto;
 }
 
 header > div > div img {
@@ -140,11 +158,12 @@ header > div > div:nth-child(3) {
 
 header > div > div:nth-child(2) {
     text-align: left;
-    font-size: clamp(1rem, -0.875rem + 2.333vw, 3.5rem);
 }
 
 header > div > div:nth-child(2) > p {
-    line-height: 15px;
+    font-size: 12px;
+    line-height: 12px !important;
+
 }
 
 header > div:nth-child(1) > div:nth-child(1){
@@ -159,7 +178,7 @@ body > div > div > div > form > label {
 header > div > div > h2 {
     color: black;
     text-align: left;
-    font-size: 20px;
+    font-size: 8px !important;
 }
 
 header > div:nth-child(1) >  div:nth-child(2){
@@ -180,8 +199,8 @@ body nav {
     width: 100%;
     position: fixed;
     bottom: 0;
-    z-index: 100;
     padding: 0 !important;
+    z-index:99999;
 }
 
 body nav > ul {
@@ -204,8 +223,6 @@ body nav > ul > li > a {
     padding: 10px 0;
     text-decoration: none;
 }
-
-
 
 nav > ul > li > a > p {
     display: none;
@@ -266,9 +283,26 @@ body main {
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
+
+    header > div > div{
+        margin: auto;
+    }
+
+    header > div > div img {
+        width: 70%;
+    }
+
+    header > div > div:nth-child(2) > p {
+        font-size: 20px !important;
+        line-height: 20px !important;
+
+    }
+
     body nav {
         position: static;
         margin-bottom: 10px;
+        position: relative;
+        z-index: 9999999 !important;
     }
 
     body nav > ul > li:not(:last-child) {

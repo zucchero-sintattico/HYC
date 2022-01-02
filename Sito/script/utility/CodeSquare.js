@@ -1,32 +1,207 @@
+function animateProductsOnHover(product, forward, title, description){
+
+    let informationStack = [title, description];
+
+    if(forward){
+        product.animate([
+                {
+                    backgroundColor: "white"
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
+        for(let i = 0; i< informationStack.length; i++){
+            let opac = 1;
+            if(i==0){
+               opac = 0.8;
+            }
+            informationStack[i].animate([
+                    {
+                        opacity: opac,
+                        zIndex: 99999
+                    }],
+
+                {
+                    duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.01,1,-0.18)"
+                }
+            );
+        }
+
+        product.animate([
+                {
+                    transformOrigin: "center",
+                    transform: "scale(1.35, 1.35)",
+                    opacity: 1,
+                    zIndex: 99999
+                }],
+
+            {
+                duration: 300, iterations: 1, fill: "forwards", delay:200, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+    }else{
+
+        product.animate([
+                {
+                    backgroundColor: "transparent"
+                }],
+
+            {
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.01,1,-0.18)"
+            }
+        );
+
+        for(let i = 0; i< informationStack.length; i++) {
+            informationStack[i].animate([
+                    {
+                        opacity: 0,
+                        zIndex: 10
+                    }],
+
+                {
+                    duration: 50, iterations: 1, fill: "forwards", delay: 50, easing: "cubic-bezier(1,.02,.5,1.37)"
+                }
+            );
+        }
+
+        product.animate(
+            {
+                transformOrigin: "center",
+                transform: "scale(1, 1)",
+                opacity: 1,
+                zIndex: 10
+            },
+            {
+                duration: 50, iterations: 1, fill: "forwards", delay:50, easing: "cubic-bezier(1,.02,.5,1.37)"
+            }
+        );
+
+
+    }
+
+}
+
+let goToEditorAnimStarted = false;
 
 class CodeSquare {
     constructor(querySelector) {
-        this._value = "console.log('ciao mondo')";
+        this._value = '';
         this._language = 'javascript';
         this._theme = 'monokai';
         this._frame_color = 'red';
         this._width = 100;
         this._height = 100;
-        this._padding = 7;
+        this._padding = 5;
+        this._frame_size = 7;
         this._font_size = 4;
-        this._lineNumbers = true;
+        this._lineNumbers = "1";
         this.codeMirror = null;
         this._scaledWidth = 100;
         this._querySelector = querySelector;
         this._title="Title";
-
     }
 
     setQuerySelector(querySelector){
         this._querySelector = querySelector
     }
 
+    setDestinationOnClick(dest){
+        this._dest = dest;
+        let square = $(this._querySelector);
+        let refer = this;
+        square.on("click", function(){
+
+            refer.resetClickFunctionAndAnimation(dest)
+
+        })
+        this.codeMirror.on("focus", function(){
+
+            refer.resetClickFunctionAndAnimation(dest)
+
+        })
+    }
+
+    resetClickFunctionAndAnimation(dest){
+        goToEditorAnimStarted = true;
+        let animDurationBeforeChangePage = 750;
+        let windowWidthHalf = $(window).height()/2;
+        let windowHeightHalf = $(window).width()/2;
+        $("body").css("overflow","hidden");
+        $("body")[0].animate({
+            transformOrigin: `${windowWidthHalf} ${windowHeightHalf}`,
+            transform:"scale(1.04,1.04)",
+            backgroundColor: "#989898",
+            filter: "blur(2px)",
+            opacity: 0.5
+        },{ duration:animDurationBeforeChangePage, easing:"ease-out", fill:"forwards" });
+
+        window.setTimeout(()=>{
+            window.location.replace(dest);
+            goToEditorAnimStarted = false;
+        },animDurationBeforeChangePage)
+    }
+
+    createAnimationAndSetDescriptionInformation(dest){
+        this.setDestinationOnClick(dest);
+        let square = $(this._querySelector);
+        square.css("background-color","transparent");
+        square.parent().parent().css("box-sizing", "border-box");
+        let refer = this;
+        square.on("mouseenter", function(){
+            $(".categories > div").css("z-index",10);
+            square.parent().parent().css("z-index", 9000);
+            square.parent().parent().find(".info").css("display", "inline-block");
+            square.parent().parent().parent().parent().parent().css("z-index",99999);
+
+            $(this).css("cursor", "pointer");
+
+            if($(window).width() > 768){
+
+                //square.parent().parent().css("position", "relative");
+                let descriptionAndTitle = $(this).parent().parent().find(".paintingInfo");
+
+                square.parent().parent().find(".info").css("z-index", 99999);
+                animateProductsOnHover($(this).parent().parent()[0], true, descriptionAndTitle[0], descriptionAndTitle[1]);
+
+                window.setTimeout(() => {
+                    $(this).parent().parent().css("cursor", "pointer");
+                    $(this).parent().parent().on("click", function(){
+                        refer.resetClickFunctionAndAnimation(dest)
+                    });
+                }, 500);
+            }
+
+        });
+
+        square.parent().parent().on("mouseleave", function(){
+            if($(window).width() > 768){
+                if(!goToEditorAnimStarted){
+                    let descriptionAndTitle = $(this).find(".paintingInfo");
+
+                    animateProductsOnHover(($(this))[0], false, descriptionAndTitle[0], descriptionAndTitle[1]);
+
+                    square.parent().parent().find(".info").css("z-index",9000);
+
+                    window.setTimeout(() => {
+                        $(this).css("cursor", "revert");
+                        $(this).off("click");
+                        square.parent().css("z-index", 10);
+                    }, 100);
+                }
+
+            }
+        });
+
+    }
 
     getSquare() {
         let square = $(this._querySelector);
+
         square.css("width", this._width);
-        square.css("padding", this._padding);
-        square.css("background-color", this._frame_color);
         this.codeMirror = CodeMirror(this._querySelector, {
             lineNumbers: this._lineNumbers,
             tabSize: 2,
@@ -38,6 +213,10 @@ class CodeSquare {
             matchBrackets: true
         });
 
+        return this.codeMirror;
+    }
+
+    get objsectOfSquare(){
         return this.codeMirror;
     }
 
@@ -67,7 +246,7 @@ class CodeSquare {
     setFramecolor(color) {
         let square = $(this._querySelector);
         this._frame_color = color;
-        square.css("background-color", this._frame_color);
+        square.css("border-color",  this._frame_color);
 
     }
 
@@ -95,12 +274,19 @@ class CodeSquare {
         this.codeMirror.setOption("lineNumbers", this._lineNumbers);
     }
 
+
+
     disable() {
         let square = $(this._querySelector);
+        console.log("disabling");
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
+        square.find(".CodeMirror-lines").css("cursor","pointer");
+
+        this.codeMirror.focus();
         this.codeMirror.setOption("readOnly", "nocursor");
+
     }
 
     scale(mul) {
@@ -124,6 +310,20 @@ class CodeSquare {
         square.find(".CodeMirror-scroll").css("height", h);
         square.find(".CodeMirror").css("font-size", this._font_size*mul);
         square.css("padding", this._padding*mul);
+        let background_color_after_frame = square.find(".CodeMirror").css("background-color");
+
+        square.css("background-color", "white" );
+        square.css("border-style", "ridge");
+        square.css("border-color", this._frame_color);
+        square.css("border-width", this._frame_size*mul);
+
+    }
+
+    disablePadding(){
+        this._padding = 0
+        let square = $(this._querySelector);
+        square.css("padding", this._padding);
+        square.css("background-color","transparent");
     }
 
     set title(value) {
@@ -135,7 +335,7 @@ class CodeSquare {
     }
 
     get code(){
-        return this.codeMirror.getValue();
+        return `\`${this.codeMirror.getValue()}\``;
     }
 
 
@@ -144,6 +344,10 @@ class CodeSquare {
     }
 
     get value() {
+
+        this._value.append("`");
+        this._value.prepend("`");
+
         return this._value;
     }
 
@@ -189,13 +393,30 @@ class CodeSquare {
             language : this.language,
             theme : this.theme,
             frame_color: this.frame_color,
-            width : this.width,
-            height : this.height,
-            padding : this.padding,
-            font_size : this.font_size,
+            width : parseInt(this.width),
+            height : parseInt(this.height),
+            padding : parseInt(this.padding),
+            font_size : parseInt(this.font_size),
             lineNumbers : this.lineNumbers,
-            description : "",
             title : this.title
+        }
+    }
+
+    toJSONInShowCase(desc, cat, id){
+        return {
+            value : this.code,
+            language : this.language,
+            theme : this.theme,
+            frame_color: this.frame_color,
+            width : parseInt(this.width),
+            height : parseInt(this.height),
+            padding : parseInt(this.padding),
+            font_size : parseInt(this.font_size),
+            lineNumbers : this.lineNumbers,
+            title : this.title,
+            description: desc,
+            category: cat,
+            idProd: id
         }
     }
 }

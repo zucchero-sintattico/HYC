@@ -6,7 +6,6 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
 }
 
 .CodeMirror > textarea{
@@ -20,4 +19,62 @@
     overflow-y:hidden !important;
     border-radius: 20px;
     outline: none;
+}
+
+.infoWrapper p, .paintingTitle{
+    white-space: pre-wrap;
+}
+
+
+
+.productWhole{
+    z-index: 10;
+    position: static;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+.infoWrapper p{
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 100;
+    border-color: #E0E0E0;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.paintingTitle{
+    position: fixed;
+    text-align: center;
+    background-color: #E4E4E4;
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 100%;
+    padding: 0 0;
+    vertical-align: text-top;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+.paintingInfo > label {
+    vertical-align: text-top;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.info{
+    font-size: 11px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .paintingTitle{
+        opacity: 1 !important;
+        position: static !important;
+    }
 }

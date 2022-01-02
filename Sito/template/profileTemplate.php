@@ -1,62 +1,68 @@
 <div class="row">
     <div class="col border ml-5">
         <h2>Welcome <?php echo $templateParams["userInfo"]["Nome"]; ?></h2>
+        <?php if($templateParams['isAdmin']){
+           echo  "<a href='../admin.php'>Admin Page</a>";
+        }?>
         <h3>Order history</h3>
         <div class="col border text-center">
-                    <?php for($i=1;$i<=count($templateParams["ordersHistory"]);$i++): ?>
+                    <?php for($i=0;$i<count($templateParams["ordersHistory"]);$i++): ?>
                     <?php $totaleOrdine=0; ?>
-                        <div class="row d-flex justify-content-center"><h4>Ordine N°<?php echo $i ?></h4></div>
+                        <div class="row d-flex justify-content-center"><h4>Ordine N°<?php echo $i+1 ?></h4></div>
                         <div class="row">
                             <?php for($j=0;$j<count($templateParams["ordersHistory"][$i]);$j++): ?>
                                 <div class="col border">
-                                    <div class="col border-bottom"><p>Prodotto N°<?php echo $j+1 ?></p></div>
+                                    <div class="col border-bottom"><p>Product N°<?php echo $j+1 ?></p></div>
                                     <div class="col">
-                                        <p>Titolo: <?php echo $templateParams["ordersHistory"][$i][$j]["Titolo"] ?></p>
-                                        <p>Colore Frame: <?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?></p>
-                                        <p>Linguaggio: <?php echo $templateParams["ordersHistory"][$i][$j]["NomeLinguaggio"] ?></p>
+                                        <p>Title: <?php echo $templateParams["ordersHistory"][$i][$j]["Titolo"] ?></p>
+                                        <p>Frame Color: <?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?></p>
+                                        <p>Language: <?php echo $templateParams["ordersHistory"][$i][$j]["NomeLinguaggio"] ?></p>
+                                        <p>Quantity: <?php echo $templateParams["ordersHistory"][$i][$j]["Quantità"] ?></p>
                                         <?php
-                                            $costoProdotto = getPrice($templateParams["ordersHistory"][$i][$j]["Larghezza"],$templateParams["ordersHistory"][$i][$j]["Altezza"]);
+                                            $costoProdotto = getPrice($templateParams["ordersHistory"][$i][$j]["Larghezza"],$templateParams["ordersHistory"][$i][$j]["Altezza"], ($templateParams["ordersHistory"][$i][$j])['Quantità']);
+
                                             $totaleOrdine += $costoProdotto;
                                         ?>
-                                        <div class="row d-flex justify-content-start pl-4"><p>Prezzo: <?php echo $costoProdotto ?>€</p></div>
+                                        <div class="row d-flex justify-content-start pl-4"><p>Price: <?php echo $costoProdotto ?>€</p></div>
+                                        <div class="row d-flex justify-content-start pl-4"><p>Shipping: <?php echo $SHIPPING_COST ?>€</p></div>
                                     </div>
 
                                 </div>
                             <?php endfor; ?>
                         </div>
-                        <div class="row d-flex justify-content-end pr-4"><h4>Totale ordine: <?php echo $totaleOrdine ?>€</h4></div>
+                        <div class="row d-flex justify-content-end pr-4"><h4>Total: <?php echo $totaleOrdine + $SHIPPING_COST?>€</h4></div>
                     <?php endfor; ?>
         </div>
     </div>
-    <div class="col">
 
+    <div class="col editableInfo">
         <div class="col border p-2">
             <h2>Edit your profile information</h2>
             <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
                 <div class="form-group">
                     <label for="first_name">First name</label>
-                    <input type="text" class="form-control" autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="last_name">Last name</label>
-                    <input type="text" class="form-control" autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="twitter_name">Username</label>
-                    <input type="text" class="form-control" autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
+                    <input type="text" class="form-control" required autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
+                    <input type="email" class="form-control" required autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
                 </div>
                 <div class="row m-3">
                     <div class="col pr-4">
-                        <button type="submit" class="btn btn-dark">Confirm profile edit</button>
+                        <button class="btn btn-dark">Confirm profile edit</button>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="oldPass">Insert old password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Old password">
+                            <label for="oldPass">Insert current password to confirm edit</label>
+                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>
@@ -76,16 +82,28 @@
                 </div>
                 <div class="row m-3">
                     <div class="col pr-4">
-                        <button type="submit" class="btn btn-dark">Confirm profile edit</button>
+                        <button class="btn btn-dark">Confirm profile edit</button>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="oldPass">Insert old password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Old password">
+                            <label for="oldPass">Insert current password to confirm edit</label>
+                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="col notEditableInfo">
+        <div class="col border p-2">
+            <h2>Profile information</h2>
+            <p>NAME: <?php echo $templateParams["userInfo"]["Nome"]; ?></p>
+            <p>SURNAME: <?php echo $templateParams["userInfo"]["Cognome"]; ?></p>
+            <p>USERNAME: <?php echo $templateParams["userInfo"]["Username"]; ?></p>
+            <p>EMAIL: <?php echo $templateParams["userInfo"]["Email"]; ?></p>
+            <button class="btn btn-dark" id="EditProfileBtn">Edit profile information</button>
+        </div>
+    </div>
 
 </div>

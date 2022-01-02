@@ -1,0 +1,19 @@
+body > div > main > div:nth-child(1) > form{
+    background-color: whitesmoke;
+    margin: 10px;
+    padding: 10px 50px;
+    line-height: 30px;
+}
+
+.errorInRegister{
+    color: red;
+}
+
+li > label{
+    margin-right: 10px !important;
+}
+
+li > input:not(#sendBtn) {
+    float: right;
+    clear: both;
+}

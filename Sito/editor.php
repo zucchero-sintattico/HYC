@@ -6,7 +6,8 @@ $templateParams['style'] = "style/editor.css";
 $templateParams['languages'] = $dbh->getLanguages();
 $templateParams["themes"] = $dbh->getThemes();
 $templateParams["product"] = ($dbh->getProductById($_GET["id"]))[0];
-$templateParams["js"] = array("script/editor/utils.js");
+$templateParams["productDescription"] = ($dbh->getProductDescriptionById($_GET["id"]))[0]["Descrizione"];
+$templateParams["js"] = array("script/editor/utils.js", "script/utility/utils.js");
 
 require("template/base.php");
 

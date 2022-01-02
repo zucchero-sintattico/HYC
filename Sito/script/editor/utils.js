@@ -10,7 +10,7 @@ function getRelativeOffset(start, end) {
 function handleObjectsMovement(relative){
     let stuffToTraslate = [];
 
-    const mainDiv = document.querySelector("main > div > div:nth-child(1)");
+    const mainDiv = document.querySelector("main > div *:not(button)");
 
     let relativePosition = getRelativeOffset(mainDiv, relative);
 
@@ -81,38 +81,116 @@ function executeButtonAnimation(button){
     );
 }
 
+function showPreviewPostAddition(){
+    let quadroJsonInfo = quadro.toJSON();
+    console.log(quadroJsonInfo.value);
+    return `<div class="col d-flex justify-content-center">
+
+                <div class="row justify-content-center">
+                        <div id="codeContainer">
+                            <script>
+                                let addedToCartSquare = new CodeSquare(document.querySelector('#codeContainer'));
+                                addedToCartSquare.getSquare();                        
+                                addedToCartSquare.setWidth(${quadroJsonInfo.width});
+                                addedToCartSquare.setHeight(${quadroJsonInfo.height});
+                                addedToCartSquare.setPadding(${quadroJsonInfo.padding});
+                                addedToCartSquare.setFramecolor('${quadroJsonInfo.frame_color}');
+                                addedToCartSquare.setFontSize(${quadroJsonInfo.font_size});
+                                addedToCartSquare.setLanguages('${quadroJsonInfo.language}');
+                                addedToCartSquare.setStyle('${quadroJsonInfo.theme}');
+                                addedToCartSquare.disable();
+                                addedToCartSquare.widthScale(300);
+                                addedToCartSquare.updateStyle();
+                                addedToCartSquare.setText(${quadroJsonInfo.value});  
+                                
+                                checkOnResize($("#codeContainer").parent(),"col-4","col");
+                            </script>
+                        </div>
+                        
+                        <div class="col m-5 ">
+                            <div class="row mt-3 border-bottom">
+                                <a href="index.php">Continue shopping</a>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <a href="cart.php">Go to cart</a>
+                            </div>
+                        </div>
+                        
+                </div>
+
+            </div>`;
+
+}
+
 $(document).on('ready', function () {
 
-    $("main > div > div > div > button").on("click", function (event) {
-        $(this).attr("disabled", "disabled");
+    $("#insertToCart").parent().on("click", function(){
+        $(".errorMessageLoginClick").remove();
+        $("#insertToCart").css("background-color", "transparent");
 
-        window.setTimeout(() => { handleObjectsMovement(this); }, 0);
-        window.setTimeout(() => { executeButtonAnimation(this); }, 750);
+        $.get("bootstrap.php?infoSession=isUserLoggedIn", function (data) {
+            if(data==="false"){
+                $(".row-10 > div:nth-child(1)").append("<p class='errorMessageLoginClick'>You first need to login</p>")
+                $(".errorMessageLoginClick").css("color", "red");
+                $(".errorMessageLoginClick").css("position", "absolute");
+                $(".errorMessageLoginClick").css("font-size", "12px");
+                $("#insertToCart").css("background-color", "red");
+            }
+        })
 
+    })
 
-        $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
-            console.log(data);
-        });
+    $("body").on("click", function(){
+        $(".errorMessageLoginClick").remove();
+        $("#insertToCart").css("background-color", "transparent");
+    })
 
+    $("#insertToCart").on("click", function (event) {
+        if($(this).hasClass("buttonActivated")){
+            $(this).attr("disabled", "disabled");
+
+            let generatedSquare = showPreviewPostAddition();
+
+            window.setTimeout(() => { handleObjectsMovement(this); }, 0);
+            window.setTimeout(() => { executeButtonAnimation(this); }, 750);
+            window.setTimeout(() => {
+                $("main > div:first-child").hide();
+                $("main").append(generatedSquare);
+                $("#codeContainer").parent().parent().show();
+                $('#codeContainer > .CodeMirror:nth-child(3)').remove();
+            }, 1500);
+
+            $.post("API/api-cart-addElement.php", quadro.toJSON(), function (data){
+                console.log(quadro.toJSON());
+            });
+        }
     });
 
-    quadro.setStyle($('#style').val());
-    quadro.setFramecolor($('#frame-color').val());
-    quadro.setStyle($('#style').val());
+    const styleElem = $('#style');
+    const frameColorElem = $('#frame-color');
+    const fontSizeElem = $('#fontSize');
+    const titleElem = $('#title_form');
+    const languageElem = $("#language");
+
+    quadro.setLanguages(languageElem.val());
+    quadro.setStyle(styleElem.val());
+    quadro.setFramecolor(frameColorElem.val());
+    quadro.title = titleElem.attr('placeholder');
     quadro.setWidth($('#width .active  input').val());
     quadro.setHeight($('#height .active  input').val());
-    quadro.setFontSize($('#fontSize').val());
+    quadro.setFontSize(fontSizeElem.val());
     quadro.updateStyle();
-    $('#style').on('change', (function () {
+
+    styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
-        console.log("test");
     }));
 
-    $('#language').on('change', (function () {
+    languageElem.on('change', (function () {
         quadro.setLanguages($('#language').val());
     }));
 
-    $('#frame-color').on('change', (function () {
+    frameColorElem.on('change', (function () {
         quadro.setFramecolor($('#frame-color').val());
     }));
 
@@ -127,9 +205,13 @@ $(document).on('ready', function () {
         quadro.updateStyle();
     }));
 
-    $('#fontSize').on('change', (function () {
+    fontSizeElem.on('change', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
+    }));
+
+    titleElem.on('keyup', (function () {
+        quadro.title = titleElem.val();
     }));
 
 
