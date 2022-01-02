@@ -44,7 +44,7 @@ $(document).on('ready', function () {
                     let notificationHtml =
                         `
                             <div class="col border border-end-dark">
-                            <label style="font-weight: bold">`+data[i].TipoNotifica+`
+                            <label>`+data[i].TipoNotifica+" | "+data[i].Data+`
                             <p style="text-align: left">`+data[i].Descrizione+`</p>
                             </label>
                             </div>
