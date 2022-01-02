@@ -11,6 +11,9 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
     }
     else{
         registerLoggedUser($login_result[0]);
+        // Create a notification
+        $dbh -> createNotification("Login", "You have successfully logged in", getLoggedUserID());
+
     }
 }
 
@@ -18,7 +21,7 @@ if(isUserLoggedIn()){
     header("location: profile.php");
 }
 else{
-    $templateParams["title"] = "HYC- Login";
+    $templateParams["title"] = "HYC - Login";
     $templateParams["name"] = "loginTemplate.php";
 }
 require("template/base.php");

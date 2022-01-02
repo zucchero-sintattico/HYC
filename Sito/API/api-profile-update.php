@@ -24,6 +24,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                 updateNameAndUsername($_POST["dataToUpdate"]["username"],$_POST["dataToUpdate"]["nome"]);
                 $dbh->updateUserData(getLoggedUserID(), $_POST["dataToUpdate"]);
                 $response["informationUpdateStatus"] = "rightPass";
+                // Create a notification
+                $dbh -> createNotification("EditProfile", "Your information has been successfully changed", getLoggedUserID());
                 echo json_encode($response);
             }
 
