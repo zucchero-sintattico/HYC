@@ -45,6 +45,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
             }else{
                 $dbh->updateUserPass(getLoggedUserID(), $_POST["passToUpdate"]["newPass"]);
                 $response["informationUpdateStatus"] = "rightPass";
+                // Create a notification
+                $dbh -> createNotification("EditProfile", "Your information has been successfully changed", getLoggedUserID());
+
             }
 
             echo json_encode($response);
