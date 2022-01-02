@@ -193,7 +193,7 @@
                             if($templateParams['mode'] == "add"):
                         ?>
                         $('#submit').on('click', function () {
-                            $.post("../editor-admin-confirm.php?mode=add", quadro.toJSONInShowCase($('#description_form').val(), parseInt($('#category option:selected').val()), <?php echo $templateParams['id'];?>), function (data) {
+                            $.post("../editor-admin-confirm.php?mode=add", quadro.toJSONInShowCase($('#description_form').val(), parseInt($('#category option:selected').val()), 0), function (data) {
                                 window.location.replace("../admin.php")
                             });
 

@@ -17,10 +17,12 @@
                     <script>
                         quadri.push(new CodeSquare(document.querySelector('#square<?php echo $i ?>')));
                         quadri[<?php echo$i?>].getSquare();
-                        quadri[<?php echo$i?>].updateStyle();
                         quadri[<?php echo$i?>].setWidth(<?php echo $square['Larghezza'] ?>);
+                        quadri[<?php echo$i?>].setStyle('<?php echo $square['NomeTema'] ?>');
                         quadri[<?php echo$i?>].setHeight(<?php echo $square['Altezza'] ?>);
                         quadri[<?php echo$i?>].widthScale(200);
+
+                        quadri[<?php echo$i?>].updateStyle();
                         quadri[<?php echo$i?>].setText(<?php echo $square['Codice'] ?>);
                         quadri[<?php echo$i?>].disable();
 
@@ -30,7 +32,7 @@
                 <div class="row justify-content-center">
                     <div class="coll">
                     <p>info varie</p>
-                    <a href="#">edit | </a>
+                    <a href="../editor-admin.php?mode=edit&id=<?php echo $square['IdProd'] ?>">edit | </a>
                     <a href="#">del</a>
                     </div>
                 </div>
