@@ -33,7 +33,7 @@
                     <div class="coll">
                     <p>info varie</p>
                     <a href="../editor-admin.php?mode=edit&id=<?php echo $square['IdProd'] ?>">edit | </a>
-                    <a href="#">del</a>
+                    <a href="../editor-admin.php?mode=del&id=<?php echo $square['IdProd'] ?>">del</a>
                     </div>
                 </div>
             </div>

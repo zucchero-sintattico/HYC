@@ -406,15 +406,17 @@ class DatabaseHelper
         public
         function removeProduct($IdProd)
         {
-            $query = "DELETE FROM Prodotto WHERE Prodotto.IdProd = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bind_param("i", $IdProd);
-            $stmt->execute();
             /** Delete from ShowCase */
             $query = "DELETE FROM ProdottoInVetrina WHERE IdProd = ?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param("i", $IdProd);
             $stmt->execute();
+
+            $query = "DELETE FROM Prodotto WHERE Prodotto.IdProd = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("i", $IdProd);
+            $stmt->execute();
+
         }
 
         /** Add a product to a cart */

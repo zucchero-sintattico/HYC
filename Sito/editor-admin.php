@@ -36,6 +36,10 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
         ];
         $templateParams['mode'] = "add";
     }
+    if($_GET['mode'] = 'del'){
+        $dbh -> removeProduct($_GET['id']);
+        header("location: admin.php");
+    }
 } else {
     header("location: profile.php");
 }
