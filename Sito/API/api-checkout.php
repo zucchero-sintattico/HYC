@@ -9,7 +9,7 @@ $dbh -> createOrder(getLoggedUserID());
 $orderInfo = $dbh -> getLastOrderOfUser(getLoggedUserID());
 
 // Create a notification
-$dbh -> createNotification("Order Processed", "Your order #M".$orderInfo['IdOrdine']." was processed correctly", getLoggedUserID());
+$dbh -> createNotification("Order Processed", "Your order #".$orderInfo['IdOrdine']." was processed correctly", getLoggedUserID());
 // Create Shipping ????
 
 // Give a new cart to the User

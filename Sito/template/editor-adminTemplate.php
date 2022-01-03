@@ -195,6 +195,8 @@
                     <script>
                         let quadro = new CodeSquare($('code').get(0));
                         quadro.getSquare();
+                        quadro.setFramecolor('<?php echo $templateParams["product"]["Colore_frame"]; ?>');
+
                         quadro.updateStyle();
                         quadro.widthScale(350);
                         quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);

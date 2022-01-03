@@ -37,6 +37,8 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     }
     if($_GET['mode'] == 'del'){
         $dbh -> removeProduct($_GET['id']);
+        // Create a notification
+        $dbh -> createNotification("Product-Del", "The Product has been successfully deleted.", getLoggedUserID());
         header("location: admin.php");
     }
 } else {
