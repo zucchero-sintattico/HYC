@@ -200,11 +200,12 @@
                                 } else {
                                     quadro.widthScale($(window).width()-30);
                                 }
+                                quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                             });
                             const toolBox = $("main > div.row.container-fluid.justify-content-center.ml-1 > div");
                             checkOnResize(toolBox, "col-10 justify-content-center", "col justify-content-center")
 
-                            quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
+
                         </script>
 
 
