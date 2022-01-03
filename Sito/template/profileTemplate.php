@@ -62,7 +62,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="oldPass">Insert current password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
+                            <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="oldPass">Insert current password to confirm edit</label>
-                            <input type="password" class="form-control" autocomplete="new-password" id="oldPass" name="oldPass" placeholder="Current password">
+                            <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Current password">
                         </div>
                     </div>
                 </div>
