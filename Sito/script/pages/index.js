@@ -13,7 +13,7 @@ $(document).on("ready", function (event) {
         checkOnResize(categoriesScroller,"col", "col-10");
         checkOnResize(categoriesContainer,"container", "container-fluid ");
         checkOnResize(categoriesContainer.find("> div"),"row", "row flex-row flex-nowrap");
-        
+
         window.setTimeout(() => {
             modifyIndexIfMobile();
         }, 600);

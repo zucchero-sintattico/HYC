@@ -17,6 +17,7 @@ $(document).on('ready', function () {
                 $(".searchResults").show();
             });
         } else {
+            $(".categRes").empty();
             $("main div").show();
             $(".searchResults").hide();
             $(".searchResults").remove();
