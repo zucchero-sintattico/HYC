@@ -1,7 +1,9 @@
 <div class="row justify-content-center ">
     <form>
         <h2>Login</h2>
-
+        <?php if (isset($templateParams["errorelogin"])): ?>
+            <p><?php echo $templateParams["errorelogin"]; ?></p>
+        <?php endif; ?>
         <label for="username">Username</label>
         <input type="text" placeholder="Email or Phone" id="username">
 

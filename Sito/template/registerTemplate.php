@@ -15,7 +15,7 @@
 
         <label for="password">Password:</label><input type="password" id="password" name="password"/>
 
-        <input type="submit" name="submit" value="Send" id="sendBtn"/>
+        <input type="submit" name="submit" value="Sign Up" id="sendBtn"/>
         <div class="row justify-content-center">
             <a href="../login.php">Go to login</a>
         </div>

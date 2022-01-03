@@ -7,45 +7,41 @@ body{
 }
 
 main div:first-of-type{
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
-form{
-    height: 30%;
-    width: 80%;
+main form{
+    width: 90%;
     background-color: rgba(255,255,255,0);
-    border-radius: 10px;
+    border-radius: 5px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 25px 35px;
+    box-shadow: 0 0 20px rgba(8,7,16,0.6);
+    padding: 25px 35px 10px;
 }
-form *{
+main form *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h2{
-    font-size: 32px;
+main form h2{
+    font-size: 25px;
     font-weight: 500;
-    line-height: 42px;
+    line-height: 15px;
     text-align: center;
 }
 
-form div{
-    margin-top: 20px;
-}
 
-label{
+main label{
     display: block;
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 16px;
     font-weight: bold;
 }
 
-input:not(input:last-of-type){
+main input:not(input:last-of-type){
     display: block;
-    height: 50px;
+    height: 30px;
     width: 100%;
     background-color: rgba(255,255,255,10);
     border-radius: 3px;
@@ -56,7 +52,7 @@ input:not(input:last-of-type){
 }
 
 main > div:nth-child(1) > form > input[type=submit]:last-of-type{
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
     background-color: black;
     color: white;
@@ -68,7 +64,7 @@ main > div:nth-child(1) > form > input[type=submit]:last-of-type{
 }
 
 @media (min-width: 768px) {
-    form{
-        width: 400px;
+    main form{
+        width: 600px;
     }
 }

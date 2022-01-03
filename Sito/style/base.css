@@ -269,11 +269,6 @@ body > div > div:nth-child(3) > div > form > input[type=submit]:hover {
     color: white;
 }
 
-body main {
-    margin-bottom: 100px;
-}
-
-
 @media (prefers-reduced-motion) {
     * {
         animation: none;
