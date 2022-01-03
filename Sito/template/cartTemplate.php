@@ -47,7 +47,7 @@
                                 removeProdAndRefreshCart(<?php echo $articolo["IdProd"] ?>);
                             });
 
-                            $("#quantity<?php echo $articolo["IdProd"]; ?>").on('change', function () {
+                            $("#quantity<?php echo $articolo["IdProd"]; ?>").on('change keyup', function () {
                                 if(parseInt($(this).val()) < 1){
                                     $(this).val(1);
                                 }
