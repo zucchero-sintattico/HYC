@@ -79,7 +79,7 @@ $(document).on('ready', function () {
             if(messageOnValidate == "notValid"){
                 messageToLog = "Please compile every Field";
             }else if(messageOnValidate == "wrongCardNumberLength"){
-                messageToLog = "Please insert correct card number length";
+                messageToLog = "Please insert correct card number length (16)";
             }
 
             $(this).parent().parent().parent().append(`

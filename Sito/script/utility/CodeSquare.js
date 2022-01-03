@@ -103,7 +103,6 @@ class CodeSquare {
         this._scaledWidth = 100;
         this._querySelector = querySelector;
         this._title="Title";
-        this._dest = "";
     }
 
     setQuerySelector(querySelector){

@@ -206,7 +206,7 @@ function createProductsOfCategoryFromData(data, cat) {
     quadri = [];
     for (let i = 0; i < data.length; i++) {
         let result = `
-                    <div style="width:370px; max-width: 500px", class="col productWhole">
+                    <div class="col productWhole">
                         <div class="row paintingInfo paintingTitle">
                             <label>${data[i]["Titolo"]}</label>
                         </div>
@@ -286,7 +286,7 @@ function generateCart(data){
                                     </code>
                                 </div>
                                 <div class="row">
-                                    <p href="#" class="col-12 font-weight-bold">Price: € ${prices[i]}</p>
+                                    <p class="col-12 font-weight-bold">Price: € ${prices[i]}</p>
                                 </div>
                             </article>                
                         </a>
@@ -299,7 +299,7 @@ function generateCart(data){
                                     $("#delete${products[i]["IdProd"]}").on('click', function () {
                                         removeProdAndRefreshCart(${products[i]["IdProd"]});
                                     });
-                                    $("#quantity${products[i]["IdProd"]}").on('keyup', function () {
+                                    $("#quantity${products[i]["IdProd"]}").on('keyup change', function () {
                                         if(parseInt($(this).val()) < 1){
                                             $(this).val(1);
                                         }

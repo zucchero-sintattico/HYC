@@ -79,8 +79,8 @@ class DatabaseHelper
     {
         $query = "SELECT p.IdProd, Codice, Colore_frame, Larghezza,
        Titolo, Descrizione, Altezza, Padding, Dimensione_font, Mostra_numero_linee,
-       NomeLinguaggio, NomeTema, Tipo
-            FROM Prodotto p, ProdottoInVetrina pv, Categoria c
+       NomeLinguaggio, NomeTema
+            FROM Prodotto p, ProdottoInVetrina pv
             WHERE p.IdProd = pv.IdProd";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -141,6 +141,7 @@ class DatabaseHelper
 
     public function checkLogin($username, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  Username = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $password);
@@ -152,6 +153,7 @@ class DatabaseHelper
 
     public function checkLoginById($idUtente, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  IdUtente = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $idUtente, $password);
@@ -302,6 +304,7 @@ class DatabaseHelper
             }
 
             if($this->checkIfUsernameOrPassNotAlreadyPresent("",$Username, $Email)){
+                $Password = hash('sha512', $Password);
                 $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($query);
@@ -317,15 +320,14 @@ class DatabaseHelper
         public
         function updateUserData($idUtente, $dataToUpdate)
         {
-            $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?, Password = ? 
+            $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?
                 WHERE Utente.idUtente = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param("sssssi",
+            $stmt->bind_param("ssssi",
                 $dataToUpdate["name"],
                 $dataToUpdate["surname"],
                 $dataToUpdate["username"],
                 $dataToUpdate["email"],
-                $dataToUpdate["password"],
                 $idUtente
             );
             return $stmt->execute();
@@ -334,6 +336,7 @@ class DatabaseHelper
         public
         function updateUserPass($idUtente, $passToUpdate)
         {
+            $passToUpdate = hash('sha512', $passToUpdate);
             $query = "UPDATE Utente SET Password = ? 
                     WHERE Utente.IdUtente = ?";
             $stmt = $this->db->prepare($query);

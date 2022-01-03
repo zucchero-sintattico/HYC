@@ -1,7 +1,7 @@
 <?php
 
 // Controllo admin
-require_once 'bootstrap.php';
+require_once '../bootstrap.php';
 // Redirect a catalogo admin
 
 if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
@@ -22,6 +22,9 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
             $_POST["description"],
             $_POST["category"],
             $_POST["idProd"]);
+        // Create a notification
+        $dbh -> createNotification("Product-Edit", "The Product has been successfully modified.", getLoggedUserID());
+
 
     }
 
@@ -39,6 +42,9 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
             $_POST["language"],
             $_POST["theme"]);
         $dbh -> addProductToShowCase($prodId, 10, $_POST['description'], $_POST['category']);
+        // Create a notification
+        $dbh -> createNotification("Product-Add", "The Product has been successfully added.", getLoggedUserID());
+
     }
 
 
