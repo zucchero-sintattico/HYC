@@ -26,6 +26,7 @@ if(isset($_POST["username"])
             }else if($result == "passwordTooShort"){
                 $templateParams["errorelogin"] = "Password has to be at least 8 characters long";
             }
+
         }else{
             $templateParams["errorelogin"] = "Error! Please compile email correct";
         }

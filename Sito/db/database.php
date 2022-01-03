@@ -141,6 +141,7 @@ class DatabaseHelper
 
     public function checkLogin($username, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  Username = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $password);
@@ -152,6 +153,7 @@ class DatabaseHelper
 
     public function checkLoginById($idUtente, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  IdUtente = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $idUtente, $password);
@@ -279,7 +281,7 @@ class DatabaseHelper
             if(strlen($Password) < 8){
                 return "passwordTooShort";
             }
-
+            $Password = hash('sha512', $Password);
             $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
             $stmt1 = $this->db->prepare($lookForUsernameQuery);
             $stmt1->bind_param("ss",$Username, $Email);
