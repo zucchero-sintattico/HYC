@@ -9,19 +9,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         $response = array("informationUpdateStatus"=>"");
 
-
-
         if(count($credentialsCheckResult)==0){
             $response["informationUpdateStatus"] = "wrongPass";
             echo json_encode($response);
-
+        }elseif(!$dbh->checkIfUsernameOrPassNotAlreadyPresent(getLoggedUserID(), $_POST["dataToUpdate"]["username"],$_POST["dataToUpdate"]["email"])){
+            $response["informationUpdateStatus"] = "alreadyPresent";
+            echo json_encode($response);
         }elseif(count($credentialsCheckResult)==1){
-
             if(!filter_var($_POST["dataToUpdate"]["email"], FILTER_VALIDATE_EMAIL)) {
                 $response["informationUpdateStatus"] = "emailNotValid";
                 echo json_encode($response);
             }else{
-                updateNameAndUsername($_POST["dataToUpdate"]["username"],$_POST["dataToUpdate"]["nome"]);
+                updateNameAndUsername($_POST["dataToUpdate"]["username"],$_POST["dataToUpdate"]["name"]);
                 $dbh->updateUserData(getLoggedUserID(), $_POST["dataToUpdate"]);
                 $response["informationUpdateStatus"] = "rightPass";
                 echo json_encode($response);
@@ -33,10 +32,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 
         $response = array("informationUpdateStatus"=>"");
 
-        if(count($credentialsCheckResult)==0){
+        if(strlen($_POST["passToUpdate"]["newPass"]) < 8){
+            $response["informationUpdateStatus"] = "passTooShort";
+            echo json_encode($response);
+        }elseif(count($credentialsCheckResult)==0){
             $response["informationUpdateStatus"] = "wrongPass";
             echo json_encode($response);
-
         }elseif(count($credentialsCheckResult)==1){
             if($_POST["passToUpdate"]["newPass"] == $_POST["passToUpdate"]["currentPass"]){
                 $response["informationUpdateStatus"] = "samePass";

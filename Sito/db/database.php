@@ -272,6 +272,27 @@ class DatabaseHelper
             return $user['IdUtente'];
         }
 
+        public function checkIfUsernameOrPassNotAlreadyPresent($UserId, $Username, $Email){
+            if(!empty($UserId)){
+                //vuol dire che mi sto registrando quindi quello username se presente è il mio
+                $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE (u.IdUtente <> ? AND (u.Username = ? OR u.Email = ?))";
+                $stmt1 = $this->db->prepare($lookForUsernameQuery);
+                $stmt1->bind_param("iss",$UserId,$Username, $Email);
+
+            }else{
+                $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
+                $stmt1 = $this->db->prepare($lookForUsernameQuery);
+                $stmt1->bind_param("ss",$Username, $Email);
+            }
+
+            $stmt1->execute();
+            $resLookUp = $stmt1->get_result();
+
+
+            return count($resLookUp->fetch_all(MYSQLI_ASSOC)) == 0;
+
+        }
+
         /** Insert a user into Db */
         public
         function registerUser($Nome, $Cognome, $Username, $Email, $Password)
@@ -280,13 +301,7 @@ class DatabaseHelper
                 return "passwordTooShort";
             }
 
-            $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
-            $stmt1 = $this->db->prepare($lookForUsernameQuery);
-            $stmt1->bind_param("ss",$Username, $Email);
-            $stmt1->execute();
-            $resLookUp = $stmt1->get_result();
-
-            if(count($resLookUp->fetch_all(MYSQLI_ASSOC)) == 0){
+            if($this->checkIfUsernameOrPassNotAlreadyPresent("",$Username, $Email)){
                 $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($query);
@@ -303,11 +318,11 @@ class DatabaseHelper
         function updateUserData($idUtente, $dataToUpdate)
         {
             $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?, Password = ? 
-                    WHERE Utente.idUtente = ?";
+                WHERE Utente.idUtente = ?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param("sssssi",
-                $dataToUpdate["nome"],
-                $dataToUpdate["cognome"],
+                $dataToUpdate["name"],
+                $dataToUpdate["surname"],
                 $dataToUpdate["username"],
                 $dataToUpdate["email"],
                 $dataToUpdate["password"],

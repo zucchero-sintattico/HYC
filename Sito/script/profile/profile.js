@@ -105,7 +105,7 @@ $(document).on('ready', function () {
             let baseUrl = "API/api-profile-update.php";
 
             let userData = {
-                nome: $("#first_name").val(),
+                name: $("#first_name").val(),
                 surname: $("#last_name").val(),
                 username: $("#username").val(),
                 email: $("#email").val(),
@@ -125,6 +125,9 @@ $(document).on('ready', function () {
                 }else if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Wrong password", "danger"));
                     $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
+                }else if(parsedJSONinfo.informationUpdateStatus === "alreadyPresent"){
+                    $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Email or Username already present", "danger"));
+                    $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Information correctly updated", "success"));
                     $("div.col-3:nth-child(3) > label:nth-child(1) > p:nth-child(2)").text("Hi " + userData.username) ;
@@ -136,7 +139,7 @@ $(document).on('ready', function () {
                         clearInputOnFormFromNotFilledClass(formOneInputsSelector);
                         $(".infoStatusUpdate1").remove();
                         //UPDATE DATA
-                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(2)").text(`NAME: ${userData.nome}`);
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(2)").text(`NAME: ${userData.name}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(3)").text(`SURNAME: ${userData.surname}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(4)").text(`USERNAME: ${userData.username}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(5)").text(`EMAIL: ${userData.email}`);
@@ -174,6 +177,9 @@ $(document).on('ready', function () {
 
                 if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Wrong password", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
+                }else if(parsedJSONinfo.informationUpdateStatus === "passTooShort"){
+                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"New password has to be 8 character long at least", "danger"));
                     $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "samePass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"New password has to be different from current one", "danger"));
