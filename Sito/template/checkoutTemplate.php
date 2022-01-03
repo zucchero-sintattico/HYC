@@ -48,7 +48,7 @@
                         <input type="text" placeholder="Insert name on card" class="form-control">
                     </div>
                     <div class="form-group"> <label class="text-muted">Number of card</label>
-                        <input type="number" placeholder="XXXX-XXXX-XXXX-XXXX" class="form-control">
+                        <input type="number" placeholder="XXXXXXXXXXXXXXXX" class="form-control">
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
