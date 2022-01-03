@@ -1,4 +1,4 @@
-<div class="row container-fluid justify-content-center">
+<div class="row container-fluid justify-content-center ml-1">
     <div class="col-10 justify-content-center">
 
         <?php if (!isUserLoggedIn()) {
@@ -7,7 +7,7 @@
              <a href='../login.php'>Click to log in</a></label></div>";
         } ?>
 
-        <div class="row justify-content-center mt-2">
+        <div class="row justify-content-center">
 
 
             <div class="col text-center mt-4">
@@ -185,17 +185,24 @@
 
 
             <!-- Console -->
-            <div class="col justify-content-center mt-5">
-                <div class="row justify-content-center">
-                    <code>
+            <div class="justify-content-center mt-5">
+
+                    <div id="editor">
                         <script>
-                            let quadro = new CodeSquare($('code').get(0));
+                            let quadro = new CodeSquare($('#editor').get(0));
                             quadro.getSquare();
                             quadro.updateStyle();
-                            quadro.widthScale(400);
+                            $(window).on('resize load', function (){
+                                if ($(window).width() > 400) {
+                                    quadro.widthScale(400);
+                                } else {
+                                    quadro.widthScale($(window).width()-30);
+                                }
+                            });
+
                             quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                         </script>
-                    </code>
+
 
                 </div>
 
@@ -213,7 +220,7 @@
         <div class="col justify-content-end">
             <button id="insertToCart" type="button" class="button<?php if (!isUserLoggedIn()) {
                 echo "Disabled";
-            }else{
+            } else {
                 echo "Activated";
             }; ?>">Add to Cart
             </button>
