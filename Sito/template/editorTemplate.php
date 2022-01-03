@@ -106,13 +106,15 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <label>FontSize</label>
+                        <label class="bnt">FontSize:
+                            <input title="chose font size" type="range" max="12" min="1"
+                                   value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
+                                   id="fontSize">
+                        </label>
+
                     </div>
-                    <label class="btn">
-                        <input title="chose font size" type="number"
-                               value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
-                               id="fontSize">
-                    </label>
+
+
 
                 </div>
 
@@ -193,8 +195,8 @@
                             quadro.getSquare();
                             quadro.updateStyle();
                             $(window).on('resize load', function (){
-                                if ($(window).width() > 400) {
-                                    quadro.widthScale(400);
+                                if ($(window).width() > 500) {
+                                    quadro.widthScale(500);
                                 } else {
                                     quadro.widthScale($(window).width()-30);
                                 }
