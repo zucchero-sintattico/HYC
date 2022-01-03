@@ -202,6 +202,7 @@
                                 }
                             });
 
+
                             quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
                         </script>
 
