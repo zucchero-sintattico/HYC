@@ -7,32 +7,32 @@
                 <form class="needs-validation">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>City</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="text" value="Cesena" disabled>
+                            <div class="form-group"> <label for="city">City</label>
+                                <div class="d-flex justify-content-start align-items-center rounded p-2">
+                                    <input id="city" type="text" value="Cesena" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>Zip code</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="text" value="47522" disabled>
+                            <div class="form-group"> <label for="zipCode">Zip code</label>
+                                <div class="d-flex justify-content-start align-items-center rounded p-2">
+                                    <input id="zipCode" type="text" value="47522" disabled>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>Address</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled>
+                            <div class="form-group"> <label for="addr">Address</label>
+                                <div class="d-flex justify-content-start align-items-center rounded p-2">
+                                    <input id="addr" type="text" value=" Via Cesare Pavese, 50, Cesena FC" disabled>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>State</label>
-                                <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="text" value="Italy" disabled>
+                            <div class="form-group"> <label for="state">State</label>
+                                <div class="d-flex justify-content-start align-items-center rounded p-2">
+                                    <input id="state" type="text" value="Italy" disabled>
                                 </div>
                             </div>
                         </div>
@@ -44,24 +44,24 @@
             <div id="details" class="bg-white rounded pb-5">
                 <div class="h6 text-center">Payment</div>
                 <form>
-                    <div class="form-group"> <label class="text-muted">Name on card</label>
-                        <input type="text" placeholder="Insert name on card" class="form-control">
+                    <div class="form-group"> <label for="cardname" class="text-muted">Name on card</label>
+                        <input id="cardname" type="text" placeholder="Insert name on card" class="form-control">
                     </div>
-                    <div class="form-group"> <label class="text-muted">Number of card</label>
-                        <input type="number" placeholder="XXXXXXXXXXXXXXXX" class="form-control">
+                    <div class="form-group"> <label for="cardNumb" class="text-muted">Number of card</label>
+                        <input id="cardNumb" type="number" placeholder="XXXXXXXXXXXXXXXX" class="form-control">
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>Expiration</label>
+                            <div class="form-group"> <label for="expiration">Expiration</label>
                                 <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="month" placeholder="Insert expiration date" required>
+                                    <input id="expiration" type="month" placeholder="Insert expiration date" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group"> <label>CVV</label>
+                            <div class="form-group"> <label for="cvv">CVV</label>
                                 <div class="d-flex jusify-content-start align-items-center rounded p-2">
-                                    <input type="password" placeholder="Insert CVV" required>
+                                    <input id="cvv" type="password" placeholder="Insert CVV" required>
                                 </div>
                             </div>
                         </div>
@@ -101,11 +101,11 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="d-flex flex-column px-3"> <b class="h5"><?php echo $articolo['Titolo'] ; ?></b> <a href="#" class="h5 text-primary">quadro<?php echo $articolo["IdProd"] ?></a> <p>x<?php echo $articolo["Quantità"] ;?></p> </div>
-                    <div class="ml-auto"> <b class="h5">$<?php echo getPrice($articolo['Altezza'], $articolo['Larghezza'], $articolo['Quantità']);?></b> </div>
+                    <div class="d-flex flex-column px-3"> <p class="font-weight-bold"><?php echo $articolo['Titolo'] ; ?></p> <a href="#" class="h5 text-primary">prod: #<?php echo $articolo["IdProd"] ?></a> <p>x<?php echo $articolo["Quantità"] ;?></p> </div>
+                    <div class="ml-auto"> <p class="font-weight-bold">$<?php echo getPrice($articolo['Altezza'], $articolo['Larghezza'], $articolo['Quantità']);?></p> </div>
                 </div>
                 <?php endforeach?>
-                <div class="my-3"> <input type="text" class="w-100 form-control text-center" placeholder="Gift Card or Promo Card"> </div>
+                <div class="my-3"> <label for="giftcard" class="">Insert a Coupon</label> <input id="giftcard" type="text" class="w-100 form-control text-center" placeholder="Gift Card or Promo Card"> </div>
                 <div class="d-flex align-items-center">
                     <div class="display-5">Subtotal</div>
                     <div class="ml-auto font-weight-bold">$<?php echo $templateParams['totPrice'] ;?></div>
