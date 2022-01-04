@@ -90,7 +90,7 @@ function modifyIndexIfMobile() {
                     }
 
                     let singleSpace = 100 / numProducts;
-                    $(this).find("img").css("max-width", `${singleSpace}%`);
+                    $(this).find("img").css("max-width", `55px`);
 
                     $(this).prev().find(" > div").on("scroll", function () {
                         let scrollPercentage = 100 * this.scrollLeft / this.scrollWidth / (1 - this.clientWidth / this.scrollWidth);
