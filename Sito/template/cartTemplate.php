@@ -62,7 +62,7 @@
         </div>
     </div>
     <?php if(count($templateParams["query"]) > 0) : ?>
-    <div class="row">
+    <div class="row m-4">
         <div class="col-12 text-center">
             <a href="../checkout.php">Checkout</a>
         </div>
