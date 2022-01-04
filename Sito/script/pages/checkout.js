@@ -70,6 +70,7 @@ $(document).on('ready', function () {
                 const main = $('main');
                 main.html("");
                 main.append(checkoutIsOk(data));
+
             });
         }else{
             $('input').filter('.notValid').css("border", "1px solid red");

@@ -1,6 +1,5 @@
 $(document).on('ready', function () {
 
-
     if (userId != null) {
         const ws = new WebSocket("ws://hangyourcode.shop:8000/notification");
         ws.onopen = function () {
@@ -8,9 +7,7 @@ $(document).on('ready', function () {
         };
         const popUpnotificationContainer = $('#popUpNotification');
 
-
         ws.onmessage = function (e) {
-            console.log(e.data);
             if (e.data === "update_notification") {
                 $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
