@@ -1,7 +1,7 @@
 <?php
 require_once '../bootstrap.php';
 
-if(isUserLoggedIn() && isset($_POST["title"])){
+if (isUserLoggedIn() && isset($_POST["title"])) {
 
     $data = $_POST["value"];
     $product_id = $dbh->createProduct(

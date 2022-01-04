@@ -28,7 +28,7 @@ HYC;
 create table Carrello
 (
     IdCarrello int not null AUTO_INCREMENT,
-    IdUtente int         not null,
+    IdUtente   int not null,
     constraint ID_Carrello_ID primary key (IdCarrello)
 );
 
@@ -44,30 +44,30 @@ create table Ordine
 
 create table Notifica
 (
-    IdNotifica   int     not null AUTO_INCREMENT,
-    TipoNotifica    varchar (15)    not null,
-    Data       date    not null,
-    Descrizione      varchar(500) not null,
-    IdUtente    int     not null,
-    Letto   INT not null,
+    IdNotifica   int          not null AUTO_INCREMENT,
+    TipoNotifica varchar(15)  not null,
+    Data         date         not null,
+    Descrizione  varchar(500) not null,
+    IdUtente     int          not null,
+    Letto        INT          not null,
     constraint ID_Notifica_ID primary key (IdNotifica)
 );
 
 create table Prodotto
 (
-    IdProd              int          not null AUTO_INCREMENT,
+    IdProd              int           not null AUTO_INCREMENT,
     Codice              varchar(1500) not null,
     Colore_frame        varchar(10)   not null,
-    Larghezza           int          not null,
+    Larghezza           int           not null,
     Titolo              varchar(500)  not null,
 
-    Altezza             int          not null,
-    Padding             int          not null,
-    Dimensione_font     int          not null,
-    Mostra_numero_linee char         not null,
-    NomeLinguaggio      varchar(40)  not null,
+    Altezza             int           not null,
+    Padding             int           not null,
+    Dimensione_font     int           not null,
+    Mostra_numero_linee char          not null,
+    NomeLinguaggio      varchar(40)   not null,
 
-    NomeTema            varchar(40)  not null,
+    NomeTema            varchar(40)   not null,
     constraint ID_Prodotto_ID primary key (IdProd)
 );
 
@@ -84,8 +84,8 @@ create table Spedizione
 
 create table Categoria
 (
-    Tipo        varchar(40) not null,
-    IdCategoria int         not null AUTO_INCREMENT,
+    Tipo         varchar(40) not null,
+    IdCategoria  int         not null AUTO_INCREMENT,
     ImgCategoria varchar(30) not null,
     constraint ID_Categoria_ID primary key (IdCategoria)
 );
@@ -107,8 +107,8 @@ create table ProdottoInVetrina
     IdProdInVetrina  int not null AUTO_INCREMENT,
     IdProd           int not null,
     IndicePopolarita int not null,
-    Descrizione         varchar(2500),
-    IdCategoria         int          not null,
+    Descrizione      varchar(2500),
+    IdCategoria      int not null,
     constraint ID_ProdottoInVetrina_ID primary key (IdProdInVetrina),
     constraint SID_Prodo_Prodo_ID unique (IdProd)
 );
@@ -117,19 +117,19 @@ create table ProdottoInCarrello
 (
     IdCarrello int not null AUTO_INCREMENT,
     IdProd     int not null,
-    Quantità int DEFAULT 1,
+    Quantità   int DEFAULT 1,
     constraint ID_ProdottoInCarrello_ID primary key (IdCarrello, IdProd)
 );
 
 create table Utente
 (
-    IdUtente     int         not null AUTO_INCREMENT,
-    Nome       varchar(40) not null,
-    Cognome    varchar(40) not null,
-    Username   varchar(40) not null,
-    Email      varchar(40) not null,
-    Password   varchar(128) not null,
-    IsAdmin bit default 0,
+    IdUtente int          not null AUTO_INCREMENT,
+    Nome     varchar(40)  not null,
+    Cognome  varchar(40)  not null,
+    Username varchar(40)  not null,
+    Email    varchar(40)  not null,
+    Password varchar(128) not null,
+    IsAdmin  bit default 0,
 
     constraint ID_Utente_ID primary key (IdUtente)
 );
