@@ -118,26 +118,22 @@
                             <img src="../img/nav/home.svg" alt="home Button"/>
                             <p>Home</p>
                         </a>
-                    </li>
-                    <li>
+                    </li><li>
                         <a href="/cart.php" class="cartHref">
                             <img src="../img/nav/cart2.svg" alt="cart Button"/>
                             <p>Cart</p>
                         </a>
-                    </li>
-                    <li>
+                    </li><li>
                         <a href="#" id="search" class="searchHref">
                             <img src="../img/nav/search2.svg" alt="search Button"/>
                             <p>Search</p>
                         </a>
-                    </li>
-                    <li>
+                    </li><li>
                         <a href="/profile.php" class="profileHref">
                             <img src="../img/nav/user2.svg" alt="profile Button"/>
                             <p>Profile</p>
                         </a>
-                    </li>
-                    <li>
+                    </li><li>
                         <a href="#">
                             <img src="../img/nav/bell.svg" alt="notifications Button"/>
                             <p id="notification">Notifications</p>
