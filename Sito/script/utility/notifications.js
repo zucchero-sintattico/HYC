@@ -39,7 +39,6 @@ $(document).on('ready', function () {
 
                 notificationToggle.append(`<div></div>`);
                 notificationDropDown = notificationToggle.children().next();
-
                 for(let i = data.length-1; i>=0; i--){
                     let notificationHtml =
                         `
