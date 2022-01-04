@@ -7,8 +7,8 @@ require_once '../bootstrap.php';
 if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
 
     // Mode edit
-    if(isset($_GET['mode']) && $_GET['mode'] == "edit"){
-        $dbh -> editProduct(
+    if (isset($_GET['mode']) && $_GET['mode'] == "edit") {
+        $dbh->editProduct(
             $_POST["value"],
             $_POST["frame_color"],
             $_POST["width"],
@@ -23,14 +23,14 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
             $_POST["category"],
             $_POST["idProd"]);
         // Create a notification
-        $dbh -> createNotification("Product-Edit", "The Product has been successfully modified.", getLoggedUserID());
+        $dbh->createNotification("Product-Edit", "The Product has been successfully modified.", getLoggedUserID());
 
 
     }
 
     // Mode add
-    if(isset($_GET['mode']) && $_GET['mode'] == "add"){
-        $prodId = $dbh -> createProduct(
+    if (isset($_GET['mode']) && $_GET['mode'] == "add") {
+        $prodId = $dbh->createProduct(
             $_POST["value"],
             $_POST["frame_color"],
             $_POST["width"],
@@ -41,9 +41,9 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
             $_POST["lineNumbers"],
             $_POST["language"],
             $_POST["theme"]);
-        $dbh -> addProductToShowCase($prodId, 10, $_POST['description'], $_POST['category']);
+        $dbh->addProductToShowCase($prodId, 10, $_POST['description'], $_POST['category']);
         // Create a notification
-        $dbh -> createNotification("Product-Add", "The Product has been successfully added.", getLoggedUserID());
+        $dbh->createNotification("Product-Add", "The Product has been successfully added.", getLoggedUserID());
 
     }
 

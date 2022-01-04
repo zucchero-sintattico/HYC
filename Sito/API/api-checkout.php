@@ -1,7 +1,7 @@
 <?php
 
-require_once '../bootstrap.php';
 
+require_once '../bootstrap.php';
 
 if (isUserLoggedIn()) {
     // Create the order
@@ -23,8 +23,7 @@ if (isUserLoggedIn()) {
     $data = array("UserName" => $userName, "OrderInfo" => $orderInfo);
     header('Content-Type: application/json');
     echo json_encode($data);
-}
-else{
+} else {
     echo("Not logged in");
 }
 
