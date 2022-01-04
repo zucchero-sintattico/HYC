@@ -4,6 +4,7 @@ body{
 
 .errorInRegister{
     color: red;
+    margin: auto;
 }
 
 main div:first-of-type{
