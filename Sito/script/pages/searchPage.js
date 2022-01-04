@@ -7,7 +7,7 @@ $(document).on('ready', function () {
         $("main div").hide();
         $("main").append(`<div class="container">
                                             <div class="col categRes"></div>
-                                            <div class="row searchResults"></div>
+                                            <div class="row m-auto pt-3 d-flex justify-content-center searchResults"></div>
                                     </div>`);
         $(".categRes").append(`<h2>Search results for "${data["Title"]}"</h2>`);
         $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));

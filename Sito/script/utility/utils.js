@@ -27,6 +27,22 @@ function checkOnResize(selector, initialFrom, initialTo) {
 
 let hasAlreadySwapped = false;
 
+
+function modifyProfileIfMobile(){
+
+    if($(window).width() < 768){
+        $(".orderHistory").hide();
+        $(".rowForOrderHistoryBtn").hide();
+        $("#orderHistoryBtn").show();
+        return true;
+    }else{
+        $("#orderHistoryBtn").hide();
+        $(".orderHistory").show();
+        $(".notEditableInfo").show();
+        return false;
+    }
+}
+
 function modifyIndexIfMobile(){
 
     if ($(window).width() < 768) {

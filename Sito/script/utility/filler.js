@@ -211,7 +211,7 @@ function createProductsOfCategoryFromData(data, cat) {
                             <label>${data[i]["Titolo"]}</label>
                         </div>
                         
-                        <div class="row justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <div id="quadro${cat}${data[i]["IdProd"]}">
                                     <script>
                                         if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
@@ -235,9 +235,6 @@ function createProductsOfCategoryFromData(data, cat) {
                                             checkOnResize(parent,"row","col", true);
                                             $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("position", "relative");
                                             $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("z-index", "-1");
-                           
-
-       
                                         }
                                     </script>  
                                 </div>
