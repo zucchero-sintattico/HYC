@@ -33,7 +33,7 @@
                                 </code>
                             </div>
                             <div class="row">
-                                <p class="col-12 font-weight-bold">Price: €<?php echo getPrice($articolo["Altezza"], $articolo["Larghezza"], $articolo["Quantità"]) ?></p>
+                                <p class="col-12 font-weight-bold">Price: € <?php echo getPrice($articolo["Altezza"], $articolo["Larghezza"], $articolo["Quantità"]) ?></p>
                             </div>
                         </article>
                     </a>
