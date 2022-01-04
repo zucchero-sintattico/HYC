@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import  Error
 import time
 import asyncio
-
+from datetime import datetime
 
 def make_notification(id, type, description):
     mydb = mysql.connector.connect(
@@ -36,9 +36,10 @@ def update_db():
     try:
         cursor.execute("USE HYC")
 
-        cursor.execute("SELECT * FROM `Notifica`")
+        cursor.execute("SELECT * FROM `Notifica`  ORDER BY -IdNotifica  LIMIT 1 ")
         row = cursor.fetchone()
         while row is not None:
+            print(row)
             return row
 
     except Error as e:
@@ -56,6 +57,7 @@ def thread_update_db():
             if notification != update_db():
                 notification = update_db()
                 user = notification[4]
+                print(user)
                 if notification[1] == "Order Processed":
                     time.sleep(5)
                     make_notification(user, "Order Shipped", "Your order has been  shipped")
