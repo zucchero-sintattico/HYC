@@ -1,22 +1,18 @@
 <?php
 
-
 require_once '../bootstrap.php';
 
 if (isUserLoggedIn()) {
     // Create the order
     $dbh->createOrder(getLoggedUserID());
 
-// Get Order Info
+    // Get Order Info
     $orderInfo = $dbh->getLastOrderOfUser(getLoggedUserID());
 
-// Create a notification
+    // Create a notification
     $dbh->createNotification("Order Processed", 'Your order #' . $orderInfo['IdOrdine'] . ' was processed correctly, go to <a href="../profile.php">Profile</a> to check it! ', getLoggedUserID());
-// Create a notification
-    $dbh->createNotification("Order Shipped", 'Your order #' . $orderInfo['IdOrdine'] . ' was leaved, go to <a href="../profile.php">Profile</a> to check it! ', getLoggedUserID());
-// Create Shipping ????
 
-// Give a new cart to the User
+    // Give a new cart to the User
     $dbh->getNewCartForUser(getLoggedUserID());
 
     $userName = getNameUserID();

@@ -74,7 +74,7 @@ function modifyProfileIfMobile(){
 
 $(document).on("ready", function(){
     let page = window.location.pathname;
-    console.log(page);
+
     if(page == "/index.php"){
         $(".indexHref > *").css("color", "red");
         $(".indexHref > p").css("font-size","23px");
