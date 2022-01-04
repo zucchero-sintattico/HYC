@@ -20,7 +20,23 @@ $(document).on('ready', function () {
 
                     popUpnotificationContainer.append(notificationHtml);
                     $("#notification").css("color", "red");
-                    $("#notification").prev()[0].css("animation", "bellRingSpinMovement 0.2s 3 ease-in");
+                    $("#notification").prev()[0].animate([
+                            {
+                                transform: "rotate(0deg) scale(1, 1)",
+                                easing: "ease-in"
+                            },
+                            {
+                                transform: "rotate(45deg) scale(1.2, 1.2)"
+                            },
+                            {
+                                transform: "rotate(0deg) scale(1, 1)",
+                                easing: "ease-out"
+                            }],
+
+                        {
+                            duration: 200, iterations: 3
+                        }
+                    );
                 });
             }
         }
