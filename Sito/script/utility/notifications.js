@@ -6,19 +6,22 @@ $(document).on('ready', function () {
         ws.onopen = function () {
             ws.send(userId);
         };
+        const popUpnotificationContainer = $('#popUpNotification');
+
+
         ws.onmessage = function (e) {
             console.log(e.data);
             if (e.data === "update_notification") {
                 $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
-                    let popUp_notification = $(".alert").show();
                     let notificationHtml =
-                        `
-                            <label style="font-weight: bold">`+data.TipoNotifica+`
-                            <p>`+data.Descrizione+`</p>
-                            </label>              
+                        `<div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <label style="font-weight: bold">`+data.TipoNotifica+`<p>`+data.Descrizione+`</p></label>  
+                         </div>         
                         `;
-                    popUp_notification.append(notificationHtml);
+
+                    popUpnotificationContainer.append(notificationHtml);
                     $("#notification").css("color", "red");
                     $("#notification").prev()[0].style.animation="bellRingSpinMovement 0.2s 3 ease-in";
                 });
