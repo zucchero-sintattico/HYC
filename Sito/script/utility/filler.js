@@ -118,7 +118,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                 $("main div").hide();
                 $("main").append(`<div class="container">
                                             <div class="col categRes"></div>
-                                            <div class="row searchResults"></div>
+                                            <div class="row m-auto pt-3 d-flex justify-content-center searchResults"></div>
                                     </div>`);
                 $(".categRes").append(`<h2>${data["Title"]}</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
@@ -211,7 +211,7 @@ function createProductsOfCategoryFromData(data, cat) {
                             <label>${data[i]["Titolo"]}</label>
                         </div>
                         
-                        <div class="row justify-content-center">
+                        <div class="col d-flex justify-content-center">
                             <div id="quadro${cat}${data[i]["IdProd"]}">
                                     <script>
                                     const frame = $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror');

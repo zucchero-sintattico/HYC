@@ -5,8 +5,6 @@ function didNotFIllInAllInput(formNumb, promptErrorMessage){
     return `<div class="row text-danger missedInputClass`+ formNumb +`"> <p>` + promptErrorMessage +`</p> </div>`
 }
 
-
-
 function passwordsError(promptErrorMessage){
     return `<div class="row text-danger passDontMatch"> <p>` + promptErrorMessage +`</p> </div>`
 }
@@ -39,15 +37,46 @@ function clearInputOnFormFromNotFilledClass(selector){
     selector.removeClass("not-filled");
 }
 
+let historyIsBeingShowed = false;
+
 $(document).on('ready', function () {
 
+    $(".discardChanges").on("click", function(event){
+        event.preventDefault();
+        $(".editableInfo").hide();
+        $(".notEditableInfo").show();
+    })
+
+    historyIsBeingShowed = modifyProfileIfMobile();
+    $("#orderHistoryBtn").on("click", function(event){
+        event.preventDefault();
+        if(!historyIsBeingShowed){
+            $("#orderHistoryBtn").text("Show Profile Information");
+            $(".orderHistory").show();
+            $(".editableInfo").hide();
+            $(".notEditableInfo").hide();
+            historyIsBeingShowed = true;
+        }else{
+            $("#orderHistoryBtn").text("Show Order History");
+            $(".orderHistory").hide();
+            $(".editableInfo").hide();
+            $(".notEditableInfo").show();
+            historyIsBeingShowed = false;
+        }
+
+    })
     $(".notEditableInfo").show();
     $(".editableInfo").hide()
 
-    $("#EditProfileBtn").on("click", function(){
+    $("#EditProfileBtn").on("click", function(event){
+        event.preventDefault();
         $(".notEditableInfo").hide();
         $(".editableInfo").show()
     });
+
+    $(window).on("resize",function(){
+        modifyProfileIfMobile();
+    })
 
     $("div.p-2:nth-child(1) > form:nth-child(2) input").on("keyup", function (){
 

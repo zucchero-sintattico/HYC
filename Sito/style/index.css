@@ -141,6 +141,10 @@ main {
     }
 }
 
+#searchField{
+    z-index: 9999999;
+}
+
 @media (max-width: 768px) {
 
     main{

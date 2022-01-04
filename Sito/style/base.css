@@ -104,6 +104,7 @@ nav > ul li:nth-child(1):hover img{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+
 nav > ul li:nth-child(2):hover img{
     animation: cartMovement 0.5s ease-out;
 }

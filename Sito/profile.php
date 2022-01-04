@@ -11,7 +11,7 @@ if(isUserLoggedIn()) {
     $templateParams["isAdmin"] = $dbh->isUserAdmin(getLoggedUserID());
     $templateParams["userInfo"] = ($dbh->getUserInfoById($templateParams["userID"]))[0];
     $templateParams["ordersHistory"] = $dbh->getOrdersMatchingUser($templateParams["userID"]);
-    $templateParams["js"] = array("script/profile/profile.js");
+    $templateParams["js"] = array("script/profile/profile.js","script/utility/utils.js");
 }else{
     header("location: login.php");
 }

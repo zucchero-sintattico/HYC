@@ -1,0 +1,25 @@
+.welcomingMessage{
+    font-weight: bold;
+}
+
+.rowForOrderHistoryBtn{
+    padding-left: 25px !important;
+}
+
+.frameColor{
+    display: inline-block;
+    padding: 2px;
+}
+
+.colorShower{
+    border-radius: 100%;
+}
+
+.editYourProfileContainer, .editYourPasswordContainer, .editableInfoCont{
+    width: 95%;
+}
+
+
+@media (max-width: 768px) {
+
+}

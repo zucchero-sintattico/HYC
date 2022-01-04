@@ -7,8 +7,8 @@ $templateParams['languages'] = $dbh->getLanguages();
 $templateParams["themes"] = $dbh->getThemes();
 
 function getPrice($height, $width, $quantity){
-    $price = (($height * $width) / 7000) * $quantity;
-    return round($price, 2);
+    $price = (($height * $width) / 1000) * $quantity;
+    return round($price, 2,PHP_ROUND_HALF_UP);
 }
 
 if(isset($_GET["infoSession"])){
