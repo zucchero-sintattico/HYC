@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../bootstrap.php';
 
 // Create the order
@@ -10,9 +11,6 @@ $orderInfo = $dbh -> getLastOrderOfUser(getLoggedUserID());
 
 // Create a notification
 $dbh -> createNotification("Order Processed", 'Your order #'.$orderInfo['IdOrdine'].' was processed correctly, go to <a href="../profile.php">Profile</a> to check it! ', getLoggedUserID());
-// Create a notification
-$dbh -> createNotification("Order Processed", 'Your order #'.$orderInfo['IdOrdine'].' was leaved, go to <a href="../profile.php">Profile</a> to check it! ', getLoggedUserID());
-// Create Shipping ????
 
 // Give a new cart to the User
 $dbh -> getNewCartForUser(getLoggedUserID());
