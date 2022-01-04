@@ -72,6 +72,24 @@ function modifyProfileIfMobile(){
     }
 }
 
+$(document).on("ready", function(){
+    let page = window.location.pathname;
+    console.log(page);
+    if(page == "/index.php"){
+        $(".indexHref > *").css("color", "red");
+        $(".indexHref > p").css("font-size","23px");
+    }else if(page == "/cart.php"){
+        $(".cartHref > *").css("color", "red");
+        $(".cartHref > p").css("font-size","23px");
+    }else if(page == "/profile.php"){
+        $(".profileHref > *").css("color", "red");
+        $(".profileHref > p").css("font-size","23px");
+    }else if(page == "/search.php"){
+        $(".searchHref > *").css("color", "red");
+        $(".searchHref > p").css("font-size","23px");
+    }
+})
+
 function modifyIndexIfMobile() {
 
     if ($(window).width() < 768) {
