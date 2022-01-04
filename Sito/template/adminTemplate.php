@@ -1,10 +1,14 @@
 
 <div class="col justify-content-center">
-    <h1>Admin Page</h1>
+    <div class="row justify-content-center">
+        <h1>Admin Page</h1>
+    </div>
+    <div class="row justify-content-center">
+        <section>
+            <a href="../editor-admin.php?mode=add">Add a Square</a>
+        </section>
+    </div>
 
-    <section>
-        <a href="../editor-admin.php?mode=add">Add a Square</a>
-    </section>
 
     <section>
         <h2>Product List</h2>
