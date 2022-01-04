@@ -12,7 +12,7 @@
         </div>
     <div class="row">
 
-        <div class="col border ml-5 mr-5 p-3 orderHistory">
+        <div class="col border ml-5 mr-5 mb-3 mt-3 p-3 orderHistory">
             <h3>Order history</h3>
             <div class="col border text-center">
                         <?php for($i=0;$i<count($templateParams["ordersHistory"]);$i++): ?>
