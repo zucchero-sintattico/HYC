@@ -3,6 +3,9 @@
 
         <div class="row d-flex justify-content-center welcomingMessage p-3">
             <h2>Welcome <?php echo $templateParams["userInfo"]["Nome"]; ?></h2>
+
+        </div>
+        <div class="row justify-content-center">
             <?php if($templateParams['isAdmin']){
                 echo  "<a href='../admin.php'>Admin Page</a>";
             }?>
