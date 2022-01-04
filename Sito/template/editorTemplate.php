@@ -115,7 +115,6 @@
                     </div>
 
 
-
                 </div>
 
                 <div class="row justify-content-center">
@@ -189,24 +188,24 @@
             <!-- Console -->
             <div class="justify-content-center mt-5">
 
-                    <div id="editor">
-                        <script>
-                            let quadro = new CodeSquare($('#editor').get(0));
-                            quadro.getSquare();
-                            quadro.updateStyle();
-                            $(window).on('resize load', function (){
-                                if ($(window).width() > 500) {
-                                    quadro.widthScale(500);
-                                } else {
-                                    quadro.widthScale($(window).width()-30);
-                                }
-                                quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
-                            });
-                            const toolBox = $("main > div.row.container-fluid.justify-content-center.ml-1 > div");
-                            checkOnResize(toolBox, "col-10 justify-content-center", "col justify-content-center")
+                <div id="editor">
+                    <script>
+                        let quadro = new CodeSquare($('#editor').get(0));
+                        quadro.getSquare();
+                        quadro.updateStyle();
+                        $(window).on('resize load', function () {
+                            if ($(window).width() > 500) {
+                                quadro.widthScale(500);
+                            } else {
+                                quadro.widthScale($(window).width() - 30);
+                            }
+                            quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
+                        });
+                        const toolBox = $("main > div.row.container-fluid.justify-content-center.ml-1 > div");
+                        checkOnResize(toolBox, "col-10 justify-content-center", "col justify-content-center")
 
 
-                        </script>
+                    </script>
 
 
                 </div>
