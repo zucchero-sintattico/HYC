@@ -20,7 +20,7 @@ $(document).on('ready', function () {
 
                     popUpnotificationContainer.append(notificationHtml);
                     $("#notification").css("color", "red");
-                    $("#notification").prev()[0].style.animation = "bellRingSpinMovement 0.2s 3 ease-in";
+                    $("#notification").prev()[0].css("animation", "bellRingSpinMovement 0.2s 3 ease-in");
                 });
             }
         }
@@ -43,9 +43,9 @@ $(document).on('ready', function () {
                     let notificationHtml =
                         `
                             <div class="col border border-end-dark">
-                            <div class="font-weight-bold">`+data[i].TipoNotifica+" | "+data[i].Data+`</div>
-                            <p style="text-align: left">`+data[i].Descrizione+`</p>
-                            
+                                <div class="font-weight-bold">`+data[i].TipoNotifica+" | "+data[i].Data+`</div>
+                                <p style="text-align: left">`+data[i].Descrizione+`</p>
+                                
                             </div>
                         
                         `;
