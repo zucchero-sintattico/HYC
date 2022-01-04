@@ -12,6 +12,7 @@ $orderInfo = $dbh -> getLastOrderOfUser(getLoggedUserID());
 // Create a notification
 $dbh -> createNotification("Order Processed", 'Your order #'.$orderInfo['IdOrdine'].' was processed correctly, go to <a href="../profile.php">Profile</a> to check it! ', getLoggedUserID());
 
+
 // Give a new cart to the User
 $dbh -> getNewCartForUser(getLoggedUserID());
 

@@ -15,7 +15,7 @@ function checkoutIsOk(data) {
                                         <div class="py-2"> <span class="d-block text-muted">Order Date</span> <span>${orderInfo['Data']}</span> </div>
                                     </td>
                                     <td>
-                                        <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>M${orderInfo['IdOrdine']}</span> </div>
+                                        <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>#${orderInfo['IdOrdine']}</span> </div>
                                     </td>
                                     <td>
                                         <div class="py-2"> <span class="d-block text-muted">Shipping Address</span> <span>Via Cesare Pavese, 50, Cesena FC</span> </div>
