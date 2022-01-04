@@ -50,8 +50,8 @@
             </div>
         </div>
 
-        <div class="col editableInfo">
-            <div class="col border p-2">
+        <div class="col editableInfo m-1">
+            <div class="col border p-2 m-3">
                 <h2>Edit your profile information</h2>
                 <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
                     <div class="form-group">
@@ -85,7 +85,7 @@
 
                 </form>
             </div>
-            <div class="col border mt-3 p-2">
+            <div class="col border m-3 p-2">
                 <h2>Edit password</h2>
                 <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
                     <div class="form-group">
@@ -112,8 +112,8 @@
             </div>
         </div>
 
-        <div class="col notEditableInfo">
-            <div class="col border p-2">
+        <div class="col notEditableInfo m-1">
+            <div class="col border p-2 m-3">
                 <h2>Profile information</h2>
                 <p>NAME: <?php echo $templateParams["userInfo"]["Nome"]; ?></p>
                 <p>SURNAME: <?php echo $templateParams["userInfo"]["Cognome"]; ?></p>

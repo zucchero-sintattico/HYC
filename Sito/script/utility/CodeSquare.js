@@ -317,6 +317,10 @@ class CodeSquare {
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
 
+        // for code validation
+        $("span").removeAttr("cm-text");
+        $("div").removeAttr("cm-not-content").removeAttr("autocorrect");
+
     }
 
     disablePadding(){

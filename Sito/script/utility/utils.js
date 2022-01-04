@@ -1,6 +1,6 @@
 let quadri = [];
 
-function checkerSize(selector, initialFrom, initialTo){
+function checkerSize(selector, initialFrom, initialTo) {
     if ($(window).width() < 768) {
 
         selector.each(function () {
@@ -18,69 +18,98 @@ function checkerSize(selector, initialFrom, initialTo){
 
 
 function checkOnResize(selector, initialFrom, initialTo) {
-    checkerSize(selector,initialFrom,initialTo);
+    checkerSize(selector, initialFrom, initialTo);
     $(window).on('resize', function () {
         modifyIndexIfMobile();
-        checkerSize(selector,initialFrom,initialTo);
+        checkerSize(selector, initialFrom, initialTo);
     });
 }
 
 let hasAlreadySwapped = false;
-
+let hasSwappedToMob = false;
+let hasSwappedBackToDesk = false;
 
 function modifyProfileIfMobile(){
 
     if($(window).width() < 768){
-        $(".orderHistory").hide();
-        $(".rowForOrderHistoryBtn").hide();
-        $("#orderHistoryBtn").show();
+
+        if(!hasSwappedToMob){
+            $(".orderHistory").hide();
+            $(".rowForOrderHistoryBtn").hide();
+            $("#orderHistoryBtn").show();
+
+            if($(".editableInfo").is(":visible")){
+                $(".notEditableInfo").hide();
+                $(".editableInfo").show();
+            }else{
+                $(".notEditableInfo").show();
+                $(".editableInfo").hide();
+            }
+
+            hasSwappedToMob = true;
+            hasSwappedBackToDesk = false;
+        }
         return true;
     }else{
-        $("#orderHistoryBtn").hide();
-        $(".orderHistory").show();
-        $(".notEditableInfo").show();
+        if(!hasSwappedBackToDesk){
+            $("#orderHistoryBtn").hide();
+            $(".orderHistory").show();
+
+            if($(".editableInfo").is(":visible")){
+                $(".notEditableInfo").hide();
+                $(".editableInfo").show();
+            }else{
+                $(".notEditableInfo").show();
+                $(".editableInfo").hide();
+            }
+
+            $("#orderHistoryBtn").text("Show Order History");
+            hasSwappedToMob = false;
+            hasSwappedBackToDesk = true;
+        }
+
         return false;
     }
 }
 
-function modifyIndexIfMobile(){
+function modifyIndexIfMobile() {
 
     if ($(window).width() < 768) {
         let scrollbarIndicator = `<img src="img/logos/square.gif" class='rounded p-2 m-1' alt='scrollbar icon percentage indicator'>`;
 
-        if(!hasAlreadySwapped){
+        if (!hasAlreadySwapped) {
 
-            $(".scrollbarIndicator").each(function(){
+            $(".scrollbarIndicator").each(function () {
 
-                let numProducts  = $(this).parent().find(".productWhole").length;
+                let numProducts = $(this).parent().find(".productWhole").length;
 
-                if(numProducts > 1){
+                if (numProducts > 1) {
                     $(this).show();
-                    for(let i=0;i<numProducts;i++){
+                    for (let i = 0; i < numProducts; i++) {
                         $(this).append(scrollbarIndicator);
                     }
 
-                    let singleSpace = 100/numProducts;
+                    let singleSpace = 100 / numProducts;
                     $(this).find("img").css("max-width", `${singleSpace}%`);
 
-                    $(this).prev().find(" > div").on("scroll",function (){
-                        let scrollPercentage = 100*this.scrollLeft/this.scrollWidth/(1-this.clientWidth/this.scrollWidth);
+                    $(this).prev().find(" > div").on("scroll", function () {
+                        let scrollPercentage = 100 * this.scrollLeft / this.scrollWidth / (1 - this.clientWidth / this.scrollWidth);
                         let scrollVisibleWidth = $(this).width();
                         let scrolledWidth = this.scrollLeft;
                         let currentlyVisible = [];
 
-                        $(this).find(".productWhole").each(function(){
-                            let offsetPr = (this.offsetLeft+($(this).width()/2))-scrolledWidth;
-                            if(offsetPr > 0 && offsetPr < scrollVisibleWidth){
+                        $(this).find(".productWhole").each(function () {
+                            let offsetPr = (this.offsetLeft + ($(this).width() / 2)) - scrolledWidth;
+                            if (offsetPr > 0 && offsetPr < scrollVisibleWidth) {
                                 currentlyVisible.push($(this).index());
                             }
                         });
 
-                        $(this).parent().parent().find("img").each(function(){
-                            if(currentlyVisible.includes($(this).index())){
+                        $(this).parent().parent().find("img").each(function () {
+                            if (currentlyVisible.includes($(this).index())) {
                                 $(this).css("transform", "scale(1.4,1.4)");
                                 $(this).attr("src", "img/logos/greySquare.jpg")
-                            }else{
+                            } else {
                                 $(this).css("transform", "scale(1,1)");
                                 $(this).attr("src", "img/logos/square.gif")
                             }
@@ -89,7 +118,7 @@ function modifyIndexIfMobile(){
 
                     });
 
-                    $(this).find("img").on("click", function(){
+                    $(this).find("img").on("click", function () {
 
                         let index = $(this).index();
                         let scrollableArea = $(this).parent().prev().find(">div");
@@ -98,7 +127,7 @@ function modifyIndexIfMobile(){
                         scrollableArea.scrollLeft(elemToScrollToPos);
                     });
 
-                    $(this).find("img").on("click", function(){
+                    $(this).find("img").on("click", function () {
 
                         let index = $(this).index();
                         let scrollableArea = $(this).parent().prev().find(">div");
@@ -107,14 +136,14 @@ function modifyIndexIfMobile(){
                         scrollableArea.scrollLeft(elemToScrollToPos);
                     });
 
-                    $(".categories > div > div img").each(function(){
-                        if($(this).index()==0){
+                    $(".categories > div > div img").each(function () {
+                        if ($(this).index() === 0) {
                             $(this).css("transform", "scale(1.37,1.37)");
                             $(this).attr("src", "img/logos/greySquare.jpg")
                         }
                     });
 
-                }else{
+                } else {
                     $(this).hide();
                 }
             });
@@ -127,6 +156,7 @@ function modifyIndexIfMobile(){
         $(".scrollbarIndicator").empty();
     }
 }
+
 
 
 

@@ -205,7 +205,7 @@ $(document).on('ready', function () {
         quadro.updateStyle();
     }));
 
-    fontSizeElem.on('change', (function () {
+    fontSizeElem.on('input', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
     }));

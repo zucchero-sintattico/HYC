@@ -1,4 +1,4 @@
-<div class="row container-fluid justify-content-center">
+<div class="row container-fluid justify-content-center ml-1">
     <div class="col-10 justify-content-center">
 
         <?php if (!isUserLoggedIn()) {
@@ -7,7 +7,7 @@
              <a href='../login.php'>Click to log in</a></label></div>";
         } ?>
 
-        <div class="row justify-content-center mt-2">
+        <div class="row justify-content-center">
 
 
             <div class="col text-center mt-4">
@@ -106,13 +106,15 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <label>FontSize</label>
+                        <label class="bnt">FontSize:
+                            <input title="chose font size" type="range" max="12" min="1"
+                                   value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
+                                   id="fontSize">
+                        </label>
+
                     </div>
-                    <label class="btn">
-                        <input title="chose font size" type="number"
-                               value="<?php echo $templateParams["product"]["Dimensione_font"] ?>"
-                               id="fontSize">
-                    </label>
+
+
 
                 </div>
 
@@ -185,17 +187,27 @@
 
 
             <!-- Console -->
-            <div class="col justify-content-center mt-5">
-                <div class="row justify-content-center">
-                    <code>
+            <div class="justify-content-center mt-5">
+
+                    <div id="editor">
                         <script>
-                            let quadro = new CodeSquare($('code').get(0));
+                            let quadro = new CodeSquare($('#editor').get(0));
                             quadro.getSquare();
                             quadro.updateStyle();
-                            quadro.widthScale(400);
-                            quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
+                            $(window).on('resize load', function (){
+                                if ($(window).width() > 500) {
+                                    quadro.widthScale(500);
+                                } else {
+                                    quadro.widthScale($(window).width()-30);
+                                }
+                                quadro.setText(<?php echo $templateParams["product"]["Codice"]; ?>);
+                            });
+                            const toolBox = $("main > div.row.container-fluid.justify-content-center.ml-1 > div");
+                            checkOnResize(toolBox, "col-10 justify-content-center", "col justify-content-center")
+
+
                         </script>
-                    </code>
+
 
                 </div>
 
@@ -213,7 +225,7 @@
         <div class="col justify-content-end">
             <button id="insertToCart" type="button" class="button<?php if (!isUserLoggedIn()) {
                 echo "Disabled";
-            }else{
+            } else {
                 echo "Activated";
             }; ?>">Add to Cart
             </button>
