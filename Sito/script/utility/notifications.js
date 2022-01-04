@@ -23,7 +23,7 @@ $(document).on('ready', function () {
 
                     popUpnotificationContainer.append(notificationHtml);
                     $("#notification").css("color", "red");
-                    $("#notification").prev()[0].style.animation="bellRingSpinMovement 0.2s 3 ease-in";
+                    $("#notification").prev()[0].style.animation = "bellRingSpinMovement 0.2s 3 ease-in";
                 });
             }
         }
