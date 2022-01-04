@@ -57,10 +57,10 @@ def thread_update_db():
                 notification = update_db()
                 user = notification[4]
                 if notification[1] == "Order Processed":
-                    time.sleep(4)
+                    time.sleep(5)
                     make_notification(user, "Order Shipped", "Your order has been  shipped")
                 elif notification[1] == "Order Shipped":
-                    time.sleep(4)
+                    time.sleep(5)
                     make_notification(user, "Order Delivered", "Order successfully delivered, go to <a href='../profile.php'>Profile</a> to check it")
             time.sleep(3)
 
