@@ -141,6 +141,10 @@ body > div > div:nth-child(2){
     background-color: #E0E0E0;
 }
 
+body main{
+    padding: 10px 0;
+}
+
 header {
     width: 100%;
 }
