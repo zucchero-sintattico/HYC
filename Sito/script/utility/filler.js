@@ -214,7 +214,8 @@ function createProductsOfCategoryFromData(data, cat) {
                         <div class="row justify-content-center">
                             <div id="quadro${cat}${data[i]["IdProd"]}">
                                     <script>
-                                        if( $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').length == 0){
+                                    const frame = $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror');
+                                        if(frame.length == 0){
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();                        
                                             quadri[${i}].setWidth(${data[i]["Larghezza"]});
@@ -227,17 +228,14 @@ function createProductsOfCategoryFromData(data, cat) {
                                             quadri[${i}].disable();
                                             quadri[${i}].widthScale(300);
                                             quadri[${i}].updateStyle();
-                                            
                                             quadri[${i}].setText(${data[i]["Codice"]}); 
                                             quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
                                             quadri[${i}].disablePadding();
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
                                             checkOnResize(parent,"row","col", true);
-                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("position", "relative");
-                                            $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror').css("z-index", "-1");
-                           
+                                            frame.css("position", "relative");
+                                            frame.css("z-index", "-1");
 
-       
                                         }
                                     </script>  
                                 </div>
