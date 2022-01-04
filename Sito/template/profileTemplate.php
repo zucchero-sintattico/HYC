@@ -51,42 +51,47 @@
         </div>
 
         <div class="col editableInfo m-1">
-            <div class="col border p-2 m-3">
+            <div class="col border p-2 m-3 editYourProfileContainer">
                 <h2>Edit your profile information</h2>
-                <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
-                    <div class="form-group">
-                        <label for="first_name">First name</label>
-                        <input type="text" class="form-control" required autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="last_name">Last name</label>
-                        <input type="text" class="form-control" required autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="twitter_name">Username</label>
-                        <input type="text" class="form-control" required autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" required autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
-                    </div>
-                    <div class="row m-3">
-                        <div class="col pr-4">
-                            <button class="btn btn-dark m-2">Confirm profile edit</button>
-                            <button class="btn btn-dark discardChanges m-2">Discard changes</button>
+                <div class="row d-flex justify-content-center m-3">
+
+                    <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
+                        <div class="form-group">
+                            <label for="first_name">First name</label>
+                            <input type="text" class="form-control" required autocomplete="off" id="first_name" name="first_name" placeholder="First name" value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="oldPass">Insert current password to confirm edit</label>
-                                <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Current password">
+                        <div class="form-group">
+                            <label for="last_name">Last name</label>
+                            <input type="text" class="form-control" required autocomplete="off" id="last_name" name="last_name" placeholder="Last name" value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="twitter_name">Username</label>
+                            <input type="text" class="form-control" required autocomplete="off" id="username" name="username" placeholder="Username" value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" required autocomplete="off" id="email" name="email" placeholder="Enter email" value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
+                        </div>
+                        <div class="row m-3">
+                            <div class="col pr-4">
+                                <button class="btn btn-dark m-2">Confirm profile edit</button>
+                                <button class="btn btn-dark discardChanges m-2">Discard changes</button>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="oldPass">Insert current password to confirm edit</label>
+                                    <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Password">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
 
-                </form>
+                </div>
+
             </div>
-            <div class="col border m-3 p-2">
+            <div class="col border m-3 p-2 editYourPasswordContainer">
                 <h2>Edit password</h2>
+                <div class="row d-flex justify-content-center m-3">
                 <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
                     <div class="form-group">
                         <label for="pass1">Insert new password</label>
@@ -104,16 +109,17 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="oldPass">Insert current password to confirm edit</label>
-                                <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Current password">
+                                <input type="password" class="form-control oldPass" autocomplete="new-password" name="oldPass" placeholder="Password">
                             </div>
                         </div>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
 
         <div class="col notEditableInfo m-1">
-            <div class="col border p-2 m-3">
+            <div class="col border p-2 m-3 editableInfoCont">
                 <h2>Profile information</h2>
                 <p>NAME: <?php echo $templateParams["userInfo"]["Nome"]; ?></p>
                 <p>SURNAME: <?php echo $templateParams["userInfo"]["Cognome"]; ?></p>
