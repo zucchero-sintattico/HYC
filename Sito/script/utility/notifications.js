@@ -39,9 +39,7 @@ $(document).on('ready', function () {
                             duration: 200, iterations: 3
                         }
                     );
-                    window.setTimeout(()=>{
-                        $("#notification").prev().css("filter", "none");
-                    },600)
+
                 });
             }
         }
@@ -55,6 +53,8 @@ $(document).on('ready', function () {
 
     notificationToggle.children().on('click', function () {
         $("#notification").css("color", "black");
+        $("#notification").prev().css("filter", "none");
+
         if (notificationDropDown == null) {
             $.getJSON("/API/api-notification.php?filter=all", function (data) {
 
