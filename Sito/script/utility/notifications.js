@@ -39,6 +39,9 @@ $(document).on('ready', function () {
                             duration: 200, iterations: 3
                         }
                     );
+                    window.setTimeout(()=>{
+                        $("#notification").prev().css("filter", "none");
+                    },250)
                 });
             }
         }

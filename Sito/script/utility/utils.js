@@ -78,15 +78,19 @@ $(document).on("ready", function(){
     if(page == "/index.php"){
         $(".indexHref > *").css("color", "red");
         $(".indexHref > p").css("font-size","23px");
+        $(".indexHref > img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/cart.php"){
         $(".cartHref > *").css("color", "red");
         $(".cartHref > p").css("font-size","23px");
+        $(".cartHref > img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/profile.php"){
         $(".profileHref > *").css("color", "red");
         $(".profileHref > p").css("font-size","23px");
+        $(".profileHref > img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/search.php"){
         $(".searchHref > *").css("color", "red");
         $(".searchHref > p").css("font-size","23px");
+        $(".searchHref > img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }
 })
 
