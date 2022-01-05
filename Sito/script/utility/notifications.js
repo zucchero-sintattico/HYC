@@ -21,6 +21,7 @@ $(document).on('ready', function () {
 
                     popUpnotificationContainer.append(notificationHtml);
                     $("#notification").css("color", "red");
+                    $("#notification").prev().css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
                     $("#notification").prev()[0].animate([
                             {
                                 transform: "rotate(0deg) scale(1, 1)",
