@@ -75,22 +75,22 @@ function modifyProfileIfMobile(){
 $(document).on("ready", function(){
     let page = window.location.pathname;
 
-    if(page == "/index.php" || page == ""){
+    if(page == "/index.php" || page == "/"){
         $(".indexHref > p").css("color", "#add8e6");
         $(".indexHref > p").css("font-size","23px");
-        $(".indexHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+        $(".indexHref img").css("filter", " invert(85%) sepia(28%) saturate(284%) hue-rotate(153deg) brightness(97%) contrast(86%)");
     }else if(page == "/cart.php"){
         $(".cartHref > p").css("color", "#add8e6");
         $(".cartHref > p").css("font-size","23px");
-        $(".cartHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+        $(".cartHref img").css("filter", " invert(85%) sepia(28%) saturate(284%) hue-rotate(153deg) brightness(97%) contrast(86%)");
     }else if(page == "/profile.php"){
         $(".profileHref > p").css("color", "#add8e6");
         $(".profileHref > p").css("font-size","23px");
-        $(".profileHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+        $(".profileHref img").css("filter", " invert(85%) sepia(28%) saturate(284%) hue-rotate(153deg) brightness(97%) contrast(86%)");
     }else if(page == "/search.php"){
         $(".searchHref > p").css("color", "#add8e6");
         $(".searchHref > p").css("font-size","23px");
-        $(".searchHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+        $(".searchHref img").css("filter", " invert(85%) sepia(28%) saturate(284%) hue-rotate(153deg) brightness(97%) contrast(86%)");
     }
 })
 
