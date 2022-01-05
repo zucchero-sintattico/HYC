@@ -75,20 +75,20 @@ function modifyProfileIfMobile(){
 $(document).on("ready", function(){
     let page = window.location.pathname;
 
-    if(page == "/index.php"){
-        $(".indexHref > p").css("color", "red");
+    if(page == "/index.php" || page == ""){
+        $(".indexHref > p").css("color", "#add8e6");
         $(".indexHref > p").css("font-size","23px");
         $(".indexHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/cart.php"){
-        $(".cartHref > p").css("color", "red");
+        $(".cartHref > p").css("color", "#add8e6");
         $(".cartHref > p").css("font-size","23px");
         $(".cartHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/profile.php"){
-        $(".profileHref > p").css("color", "red");
+        $(".profileHref > p").css("color", "#add8e6");
         $(".profileHref > p").css("font-size","23px");
         $(".profileHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }else if(page == "/search.php"){
-        $(".searchHref > p").css("color", "red");
+        $(".searchHref > p").css("color", "#add8e6");
         $(".searchHref > p").css("font-size","23px");
         $(".searchHref img").css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
     }
