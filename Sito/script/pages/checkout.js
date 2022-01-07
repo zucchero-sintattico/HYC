@@ -34,7 +34,7 @@ function checkoutIsOk(data) {
 function validateInput() {
     let state = "valid";
 
-    if($("#details > form > div:nth-child(2) > input").val().length != 16){
+    if($("#cardNumb").val().length != 16){
         state = "wrongCardNumberLength"
         $("#details > form > div:nth-child(2) > input").addClass("notValid");
     }
