@@ -13,7 +13,7 @@ function validateFormInput(selector,arePasswordsToMatch){
     let valid = true;
 
     $(selector).each(function (){
-        if($(this).val().length == 0){
+        if($(this).val().length === 0){
             valid = false;
             $(this).addClass("not-filled");
         }
@@ -142,8 +142,6 @@ $(document).on('ready', function () {
             };
 
             $.post(baseUrl,{dataToUpdate: userData},function (data) {
-
-                console.log(data);
 
                 let parsedJSONinfo = JSON.parse(data);
 
