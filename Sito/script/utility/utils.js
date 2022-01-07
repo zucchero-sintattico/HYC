@@ -29,19 +29,19 @@ let hasAlreadySwapped = false;
 let hasSwappedToMob = false;
 let hasSwappedBackToDesk = false;
 
-function modifyProfileIfMobile(){
+function modifyProfileIfMobile() {
 
-    if($(window).width() < 768){
+    if ($(window).width() < 768) {
 
-        if(!hasSwappedToMob){
+        if (!hasSwappedToMob) {
             $(".orderHistory").hide();
             $(".rowForOrderHistoryBtn").hide();
             $("#orderHistoryBtn").show();
 
-            if($(".editableInfo").is(":visible")){
+            if ($(".editableInfo").is(":visible")) {
                 $(".notEditableInfo").hide();
                 $(".editableInfo").show();
-            }else{
+            } else {
                 $(".notEditableInfo").show();
                 $(".editableInfo").hide();
             }
@@ -50,15 +50,15 @@ function modifyProfileIfMobile(){
             hasSwappedBackToDesk = false;
         }
         return true;
-    }else{
-        if(!hasSwappedBackToDesk){
+    } else {
+        if (!hasSwappedBackToDesk) {
             $("#orderHistoryBtn").hide();
             $(".orderHistory").show();
 
-            if($(".editableInfo").is(":visible")){
+            if ($(".editableInfo").is(":visible")) {
                 $(".notEditableInfo").hide();
                 $(".editableInfo").show();
-            }else{
+            } else {
                 $(".notEditableInfo").show();
                 $(".editableInfo").hide();
             }
@@ -72,24 +72,20 @@ function modifyProfileIfMobile(){
     }
 }
 
-$(document).on("ready", function(){
+$(document).on("ready", function () {
     let page = window.location.pathname;
-    const indexHref = $(".indexHref > p");
-    if(page === "/index.php" || page === "/"){
-        indexHref.css("color", "#5c80bc");
-        indexHref.css("font-size","23px");
+
+    if (page === "/index.php" || page === "/") {
+        $(".indexHref > p").css("color", "#5c80bc").css("font-size", "23px");
         $(".indexHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page === "/cart.php"){
-        indexHref.css("color", "#5c80bc");
-        indexHref.css("font-size","23px");
+    } else if (page === "/cart.php") {
+        $(".cartHref > p").css("color", "#5c80bc").css("font-size", "23px");
         $(".cartHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page === "/profile.php"){
-        indexHref.css("color", "#5c80bc");
-        indexHref.css("font-size","23px");
+    } else if (page === "/profile.php") {
+        $(".profileHref > p").css("color", "#5c80bc").css("font-size", "23px");
         $(".profileHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page === "/search.php"){
-        indexHref.css("color", "#5c80bc");
-        indexHref.css("font-size","23px");
+    } else if (page === "/search.php") {
+        $(".searchHref > p").css("color", "#5c80bc").css("font-size", "23px");
         $(".searchHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
     }
 })
@@ -174,7 +170,7 @@ function modifyIndexIfMobile() {
 
     } else {
         hasAlreadySwapped = false;
-        const  scrollbarIndicator = $(".scrollbarIndicator");
+        const scrollbarIndicator = $(".scrollbarIndicator");
         scrollbarIndicator.hide();
         scrollbarIndicator.empty();
     }
