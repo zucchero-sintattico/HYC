@@ -15,7 +15,7 @@
             <div class="row">
                 <script>quadri = []</script>
                 <?php foreach ($templateParams["products"] as $i => $square): ?>
-                    <div class="m-3 col justify-content-start">
+                    <div class="m-3 col">
                         <div id="square<?php echo $i ?>">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#square<?php echo $i ?>')));
@@ -23,7 +23,7 @@
                                 quadri[<?php echo $i?>].setWidth(<?php echo $square['Larghezza'] ?>);
                                 quadri[<?php echo $i?>].setStyle('<?php echo $square['NomeTema'] ?>');
                                 quadri[<?php echo $i?>].setHeight(<?php echo $square['Altezza'] ?>);
-                                quadri[<?php echo $i?>].widthScale(200);
+                                quadri[<?php echo $i?>].widthScale(270);
                                 quadri[<?php echo $i?>].setFramecolor('<?php echo $square['Colore_frame'] ?>')
                                 quadri[<?php echo $i?>].updateStyle();
                                 quadri[<?php echo $i?>].setText(<?php echo $square['Codice'] ?>);
