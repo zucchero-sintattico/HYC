@@ -11,11 +11,11 @@
 
     <section>
         <h2>Product List</h2>
-        <div class="container justify-content-end">
+        <div class="container">
             <div class="row">
                 <script>quadri = []</script>
                 <?php foreach ($templateParams["products"] as $i => $square): ?>
-                    <div class="m-3">
+                    <div class="m-3 col">
                         <div id="square<?php echo $i ?>">
                             <script>
                                 quadri.push(new CodeSquare(document.querySelector('#square<?php echo $i ?>')));
@@ -23,7 +23,7 @@
                                 quadri[<?php echo $i?>].setWidth(<?php echo $square['Larghezza'] ?>);
                                 quadri[<?php echo $i?>].setStyle('<?php echo $square['NomeTema'] ?>');
                                 quadri[<?php echo $i?>].setHeight(<?php echo $square['Altezza'] ?>);
-                                quadri[<?php echo $i?>].widthScale(200);
+                                quadri[<?php echo $i?>].widthScale(270);
                                 quadri[<?php echo $i?>].setFramecolor('<?php echo $square['Colore_frame'] ?>')
                                 quadri[<?php echo $i?>].updateStyle();
                                 quadri[<?php echo $i?>].setText(<?php echo $square['Codice'] ?>);
@@ -32,8 +32,8 @@
 
                             </script>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col text-center">
+                        <div class="row">
+                            <div class="col">
                                 <p><?php echo $square['Titolo'] ?></p>
                                 <p><?php echo $square['Altezza'] ?>x<?php echo $square['Larghezza'] ?></p>
                                 <a href="../editor-admin.php?mode=edit&id=<?php echo $square['IdProd'] ?>">Edit</a>
