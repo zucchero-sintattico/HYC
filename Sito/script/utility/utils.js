@@ -74,22 +74,22 @@ function modifyProfileIfMobile(){
 
 $(document).on("ready", function(){
     let page = window.location.pathname;
-
-    if(page == "/index.php" || page == "/"){
-        $(".indexHref > p").css("color", "#5c80bc");
-        $(".indexHref > p").css("font-size","23px");
+    const indexHref = $(".indexHref > p");
+    if(page === "/index.php" || page === "/"){
+        indexHref.css("color", "#5c80bc");
+        indexHref.css("font-size","23px");
         $(".indexHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page == "/cart.php"){
-        $(".cartHref > p").css("color", "#5c80bc");
-        $(".cartHref > p").css("font-size","23px");
+    }else if(page === "/cart.php"){
+        indexHref.css("color", "#5c80bc");
+        indexHref.css("font-size","23px");
         $(".cartHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page == "/profile.php"){
-        $(".profileHref > p").css("color", "#5c80bc");
-        $(".profileHref > p").css("font-size","23px");
+    }else if(page === "/profile.php"){
+        indexHref.css("color", "#5c80bc");
+        indexHref.css("font-size","23px");
         $(".profileHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
-    }else if(page == "/search.php"){
-        $(".searchHref > p").css("color", "#5c80bc");
-        $(".searchHref > p").css("font-size","23px");
+    }else if(page === "/search.php"){
+        indexHref.css("color", "#5c80bc");
+        indexHref.css("font-size","23px");
         $(".searchHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
     }
 })
@@ -174,8 +174,9 @@ function modifyIndexIfMobile() {
 
     } else {
         hasAlreadySwapped = false;
-        $(".scrollbarIndicator").hide();
-        $(".scrollbarIndicator").empty();
+        const  scrollbarIndicator = $(".scrollbarIndicator");
+        scrollbarIndicator.hide();
+        scrollbarIndicator.empty();
     }
 }
 

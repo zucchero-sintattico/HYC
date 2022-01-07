@@ -121,8 +121,9 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                             <div class="row m-auto pt-3 d-flex justify-content-center searchResults"></div>
                                     </div>`);
                 $(".categRes").append(`<h2>${data["Title"]}</h2>`);
-                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
-                $(".searchResults").show();
+                const searchResults = $(".searchResults");
+                searchResults.append(createProductsOfCategoryFromData(articoli, "res"));
+                searchResults.show();
             });
         })
 
@@ -159,8 +160,9 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                             <div class="row searchResults"></div>
                                     </div>`);
                 $(".categRes").append(`<h2>${data["Title"]}</h2>`);
-                $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
-                $(".searchResults").show();
+                const searchResults = $(".searchResults");
+                searchResults.append(createProductsOfCategoryFromData(articoli, "res"));
+                searchResults.show();
             });
         })
 
@@ -175,19 +177,21 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         $(this).css("font-weight","bold");
     })
 
-    $(".categories > div > div:first-child").on("mouseenter", function(){
+    const categoryAnimation = $(".categories > div > div:first-child");
+
+    categoryAnimation.on("mouseenter", function(){
         $(this).find("p").first().css("color", "black");
     });
 
-    $(".categories > div > div:first-child").on("mouseleave", function(){
+    categoryAnimation.on("mouseleave", function(){
         $(this).find("p").first().css("color", "white");
     });
     addH3Animation();
 
 }
 
-function addProductsToSpecifiedList(tipologiaLista, selectorToWhereToAddProducts, getType) {
-    $.getJSON("/API/api-search.php?"+ getType +"=" + tipologiaLista, function (data) {
+function addProductsToSpecifiedList(listTypology, selectorToWhereToAddProducts, getType) {
+    $.getJSON("/API/api-search.php?"+ getType +"=" + listTypology, function (data) {
         let results = data['Results'];
         let products = createProductsOfCategoryFromData(results,getType);
 
@@ -215,7 +219,7 @@ function createProductsOfCategoryFromData(data, cat) {
                             <div id="quadro${cat}${data[i]["IdProd"]}">
                                     <script>
                                     const frame = $('#quadro${cat}${data[i]["IdProd"]} .CodeMirror');
-                                        if(frame.length == 0){
+                                        if(frame.length === 0){
                                             quadri.push(new CodeSquare(document.querySelector('#quadro${cat}${data[i]["IdProd"]}')));
                                             quadri[${i}].getSquare();                        
                                             quadri[${i}].setWidth(${data[i]["Larghezza"]});
@@ -365,7 +369,7 @@ function removeProdAndRefreshCart(idProd) {
         IdProd : idProd
     }
     $.post("/API/api-cart-removeElement.php", prod, function (data) {
-        if(data['Empty'] == 1){
+        if(data['Empty'] === 1){
             data['Products'] = new Array();
             data['Prices'] = new Array();
         }

@@ -15,7 +15,7 @@ function animateProductsOnHover(product, forward, title, description){
 
         for(let i = 0; i< informationStack.length; i++){
             let opac = 1;
-            if(i==0){
+            if(i===0){
                opac = 0.8;
             }
             informationStack[i].animate([
@@ -130,8 +130,9 @@ class CodeSquare {
         let animDurationBeforeChangePage = 750;
         let windowWidthHalf = $(window).height()/2;
         let windowHeightHalf = $(window).width()/2;
-        $("body").css("overflow","hidden");
-        $("body")[0].animate({
+        const body = $("body");
+        body.css("overflow","hidden");
+        body[0].animate({
             transformOrigin: `${windowWidthHalf} ${windowHeightHalf}`,
             transform:"scale(1.04,1.04)",
             backgroundColor: "#989898",
