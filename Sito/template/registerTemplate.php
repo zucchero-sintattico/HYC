@@ -1,9 +1,12 @@
 <div class="row justify-content-center">
     <form action="#" method="POST">
         <h2>Register</h2>
-        <?php if (isset($templateParams["errorelogin"])): ?>
-            <p class="errorInRegister"><?php echo $templateParams["errorelogin"]; ?></p>
-        <?php endif; ?>
+
+        <div class="row justify-content-center">
+            <?php if (isset($templateParams["errorelogin"])): ?>
+                <p class="errorInRegister"><?php echo $templateParams["errorelogin"]; ?></p>
+            <?php endif; ?>
+        </div>
 
         <label for="name">Name:</label><input type="text" id="name" name="name" placeholder="Insert your name..."/>
 
