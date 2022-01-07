@@ -20,9 +20,10 @@ $(document).on('ready', function () {
                         `;
 
                     popUpnotificationContainer.append(notificationHtml);
-                    $("#notification").css("color", "red");
-                    $("#notification").prev().css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
-                    $("#notification").prev()[0].animate([
+                    const notification = $("#notification");
+                    notification.css("color", "red");
+                    notification.prev().css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+                    notification.prev()[0].animate([
                             {
                                 transform: "rotate(0deg) scale(1, 1)",
                                 easing: "ease-in"
@@ -49,11 +50,12 @@ $(document).on('ready', function () {
     //notification selector
     const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5)");
     let notificationDropDown = null;
-    const header = $("header")
+
 
     notificationToggle.children().on('click', function () {
-        $("#notification").css("color", "black");
-        $("#notification").prev().css("filter", "none");
+        const notification = $("#notification");
+        notification.css("color", "black");
+        notification.prev().css("filter", "none");
 
         if (notificationDropDown == null) {
             $.getJSON("/API/api-notification.php?filter=all", function (data) {
