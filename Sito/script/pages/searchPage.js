@@ -9,7 +9,9 @@ $(document).on('ready', function () {
                                             <div class="col categRes"></div>
                                             <div class="row m-auto pt-3 d-flex justify-content-center searchResults"></div>
                                     </div>`);
-        $(".categRes").append(`<h2>Search results for "${data["Title"]}"</h2>`);
+        $(".categRes").append(`<div class="row justify-content-center">
+                                  <h2>Search results for "${data["Title"]}"</h2>
+                                </div>`);
         $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
         $(".searchResults").show();
     });
