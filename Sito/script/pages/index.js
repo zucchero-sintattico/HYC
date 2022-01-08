@@ -3,13 +3,8 @@ $(document).on("ready", function (event) {
     const loadingGif = $("main > div:first-child");
     event.preventDefault();
     $.getJSON("/API/api-homepage.php", function (data) {
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
 
         fillHomePage(data);
-        loadingGif.remove();
-
         let categoriesContainer = $(".categories > div > div:nth-child(2)");
         let categoriesScroller = $(".categories > div");
 
@@ -24,5 +19,9 @@ $(document).on("ready", function (event) {
         window.setTimeout(() => {
             modifyIndexIfMobile();
         }, 600);
+
+        
+    }).done(function() {
+        loadingGif.remove();
     });
 });
