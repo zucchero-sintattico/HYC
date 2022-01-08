@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-10 offset-lg-0 offset-md-2 offset-sm-1">
             <div class="mobile h5">Shipping Address & Payment</div>
-            <div id="details" class="bg-white rounded pb-5">
+            <div id="" class="p-5 bg-white rounded pb-5">
                 <div class="h6 text-center">Shipping address</div>
                 <form class="needs-validation">
                     <div class="row">
@@ -41,7 +41,7 @@
                 </form>
             </div>
             <div class="mobile h5">Payment</div>
-            <div id="details" class="bg-white rounded pb-5">
+            <div id="" class="p-5 bg-white rounded pb-5">
                 <div class="h6 text-center">Payment</div>
                 <form>
                     <div class="form-group"><label for="cardname" class="text-muted">Name on card</label>
@@ -111,8 +111,7 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-                <div class="my-3"><label for="giftcard" class="">Insert a Coupon</label> <input id="giftcard"
-                                                                                                type="text"
+                <div class="my-3"><label for="giftcard" class="">Insert a Coupon</label> <input id="giftcard" type="text"
                                                                                                 class="w-100 form-control text-center"
                                                                                                 placeholder="Gift Card or Promo Card">
                 </div>
