@@ -318,8 +318,9 @@ class CodeSquare {
         square.css("border-width", this._frame_size*mul);
 
         // for code validation
-        $("span").removeAttr("cm-text");
-        $("div").removeAttr("cm-not-content").removeAttr("autocorrect");
+        $(".CodeMirror textarea").attr("title", "code main frame area");
+        $(".CodeMirror span").removeAttr("cm-text");
+        $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
 
     }
 
