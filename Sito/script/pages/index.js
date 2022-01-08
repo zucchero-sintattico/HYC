@@ -1,5 +1,5 @@
 $(document).on("ready", function (event) {
-    $("main").append("<div class='row justify-content-center'><img src='../img/loading/gear.gif' alt='loading...'></div>");
+    $("main").append("<div class='row justify-content-center'><img src='../img/loading/loading.png' alt='loading...'></div>");
     const loadingGif = $("main > div:first-child");
     event.preventDefault();
     $.getJSON("/API/api-homepage.php", function (data) {
