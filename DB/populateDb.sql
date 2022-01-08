@@ -144,6 +144,16 @@ INSERT INTO `Prodotto` (`IdProd`, `Codice`, `Colore_frame`, `Larghezza`, `Titolo
 VALUES (NULL, '`\n\n\n\n\n<a href = "https://www.slate.com">Slate</a>\n\n\n\n\n`',
         'red', '170', 'The HTML Hyperlink', '100', '3', '5', '1', 'htmlmixed', '3024-night');
 
+INSERT INTO `Prodotto` (`IdProd`, `Codice`, `Colore_frame`, `Larghezza`, `Titolo`, `Altezza`, `Padding`,
+                        `Dimensione_font`, `Mostra_numero_linee`, `NomeLinguaggio`, `NomeTema`)
+VALUES (NULL, '`float Q_rsqrt( float number )\n{\n	long i;\n	float x2, y;\n	const float threehalfs = 1.5F;\n\n	x2 = number * 0.5F;\n	y  = number;\n	i  = * ( long * ) &y;                       // evil floating point bit level hacking\n	i  = 0x5f3759df - ( i >> 1 );               // what the fuck? \n	y  = * ( float * ) &i;\n	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration\n //   y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed\n\n	return y;\n}`',
+        'red', '170', 'Fast inverse square root Quake 3', '100', '3', '5', '1', 'clike', 'seti');
+
+INSERT INTO `Prodotto` (`IdProd`, `Codice`, `Colore_frame`, `Larghezza`, `Titolo`, `Altezza`, `Padding`,
+                        `Dimensione_font`, `Mostra_numero_linee`, `NomeLinguaggio`, `NomeTema`)
+VALUES (NULL, '`\n\n\n\n\n: ( ) { : | : & } ; : \n\n\n\n\n`',
+        'red', '170', 'The One-Line Virus', '100', '3', '5', '1', 'clike', 'seti');
+
 
 
 INSERT INTO `ProdottoInVetrina` (`IdProdInVetrina`, `IdProd`, `IndicePopolarita`, `Descrizione`, `IdCategoria`)
@@ -192,3 +202,13 @@ INSERT INTO `ProdottoInVetrina` (`IdProdInVetrina`, `IdProd`, `IndicePopolarita`
 VALUES ( NULL, '11', '6'
        , 'In 1990 Tim Berners-Lee changed the world when he introduced the hyperlink, a snippet of code that lets anyone jump across the World Wide Web.'
        , '5');
+
+INSERT INTO `ProdottoInVetrina` (`IdProdInVetrina`, `IdProd`, `IndicePopolarita`, `Descrizione`, `IdCategoria`)
+VALUES ( NULL, '12', '6'
+       , 'Fast inverse square root, is an algorithm that estimates ( 1 / sqrt (x)), the reciprocal (or multiplicative inverse) of the square root of a 32-bit floating-point number x in IEEE 754 floating-point format. This operation is used in digital signal processing to normalize a vector, i.e., scale it to length 1. For example, computer graphics programs use inverse square roots to compute angles of incidence and reflection for lighting and shading. The algorithm is best known for its implementation in 1999 in the source code of Quake III Arena, a first-person shooter video game that made heavy use of 3D graphics. '
+       , '1');
+
+INSERT INTO `ProdottoInVetrina` (`IdProdInVetrina`, `IdProd`, `IndicePopolarita`, `Descrizione`, `IdCategoria`)
+VALUES ( NULL, '13', '6'
+       , 'The power of a single line of code—and the ever-surprising fragility of computers. What you see above is a one-line virus of sorts called a fork bomb. It takes some specific conditions to work (including an older, susceptible copy of the Unix operating system). But given those, if you type this command in Bash, it replicates itself over and over until it consumes all available memory in the computer and causes it to crash.'
+       , '6');
