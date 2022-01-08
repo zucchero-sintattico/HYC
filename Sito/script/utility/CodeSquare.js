@@ -279,7 +279,6 @@ class CodeSquare {
 
     disable() {
         let square = $(this._querySelector);
-        console.log("disabling");
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");

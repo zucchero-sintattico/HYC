@@ -18,10 +18,9 @@ $(document).on("ready", function (event) {
 
         window.setTimeout(() => {
             modifyIndexIfMobile();
+            loadingGif.remove();
         }, 600);
 
         
-    }).done(function() {
-        loadingGif.remove();
     });
 });
