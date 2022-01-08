@@ -73,8 +73,13 @@
 }
 
 body {
+    overflow-x: hidden;
+}
+
+body {
     font-family: 'Roboto Mono', monospace;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Works on Firefox */
@@ -283,6 +288,10 @@ body > div > div:nth-child(3) > div > form > input[type=submit]:hover {
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
 
     header > div > div{
         margin: auto;

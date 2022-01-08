@@ -30,10 +30,10 @@
                                     <div class="col border">
                                         <p>Title: <?php echo $templateParams["ordersHistory"][$i][$j]["Titolo"] ?></p>
                                         <div class="row d-flex justify-content-center">
-                                            <p class="frameColor">Frame color: </p>
-                                            <div class="row ml-2 mb-3 colorShower"
-                                                 style="background-color: <?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?>">
-                                                &nbsp;
+                                            <div class="row d-flex justify-content-center ml-2 mb-3 colorShower">
+                                                <label for="colorFrame">Frame color: </label>
+                                                <input type="color" id="colorFrame" name="colorFrame"
+                                                       value="<?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?>" disabled>
                                             </div>
                                         </div>
                                         <p>

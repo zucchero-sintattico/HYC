@@ -15,7 +15,7 @@ $(document).on('ready', function () {
                     let notificationHtml =
                         `<div class="alert alert-success" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <label style="font-weight: bold">`+data.TipoNotifica+`<p>`+data.Descrizione+`</p></label>  
+                                <label class="font-weight-bold">`+data.TipoNotifica+`<p>`+data.Descrizione+`</p></label>  
                          </div>         
                         `;
 
@@ -67,7 +67,7 @@ $(document).on('ready', function () {
                         `
                             <div class="col border border-end-dark">
                                 <div class="font-weight-bold">`+data[i].TipoNotifica+" | "+data[i].Data+`</div>
-                                <p style="text-align: left">`+data[i].Descrizione+`</p>
+                                <p class="text-left">`+data[i].Descrizione+`</p>
                                 
                             </div>
                         
