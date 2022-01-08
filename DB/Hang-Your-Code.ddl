@@ -67,7 +67,7 @@ create table Prodotto
     Mostra_numero_linee char          not null,
     NomeLinguaggio      varchar(40)   not null,
 
-    NomeTema            varchar(40)   not null,
+    NomeTema            varchar(100)   not null,
     constraint ID_Prodotto_ID primary key (IdProd)
 );
 
