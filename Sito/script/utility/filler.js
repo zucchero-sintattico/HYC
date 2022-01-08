@@ -86,7 +86,7 @@ function addH3Animation(){
 
 function generateCategoriesAndRelativeProducts(categorie, linguaggi){
     $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'></div></div>");
-    $("main > div:first-child").hide();
+    $("main > div:first-child").hide(); //  started hide, show after full loading
     for(let i=0; i<categorie.length; i++){
 
         let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">

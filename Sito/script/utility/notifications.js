@@ -85,7 +85,7 @@ $(document).on('ready', function () {
                     notificationDropDown.css("bottom", $("nav").height());
                     notificationDropDown.css("right", 0);
                     notificationDropDown.css("width", "100%");
-                    notificationDropDown.css("height", $(window).height() - 100);
+                    notificationDropDown.css("height", $(window).height()-10);
                 } else {
                     notificationDropDown.css("width", 400);
                     notificationDropDown.css("height", 400);
