@@ -15,6 +15,7 @@ $(document).on('ready', function () {
                 $(".categRes").append(`<h2>Search results for "${data["Title"]}"</h2>`);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
+                $('#searchField').trigger('focus');
             });
         } else {
             $(".categRes").empty();
