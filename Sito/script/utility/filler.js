@@ -236,10 +236,9 @@ function createProductsOfCategoryFromData(data, cat) {
                                             quadri[${i}].createAnimationAndSetDescriptionInformation("editor.php?id=${data[i]["IdProd"]}");     
                                             quadri[${i}].disablePadding();
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
-                                            checkOnResize(parent,"row","col", true);
-                                            frame.css("position", "relative");
-                                            frame.css("z-index", "-100");
-
+                                            checkOnResize(parent,"row","col");
+                                            $(".CodeMirror").css("position", "relative").css("z-index", "-1");
+       
                                         }
                                     </script>  
                                 </div>
