@@ -238,7 +238,7 @@ function createProductsOfCategoryFromData(data, cat) {
                                             let parent = $("#quadro${cat}${data[i]["IdProd"]}").parent();
                                             checkOnResize(parent,"row","col", true);
                                             frame.css("position", "relative");
-                                            frame.css("z-index", "-1");
+                                            frame.css("z-index", "-100");
 
                                         }
                                     </script>  

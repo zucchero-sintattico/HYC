@@ -47,7 +47,7 @@ create table Notifica
     IdNotifica   int          not null AUTO_INCREMENT,
     TipoNotifica varchar(15)  not null,
     Data         date         not null,
-    Descrizione  varchar(500) not null,
+    Descrizione  varchar(5000) not null,
     IdUtente     int          not null,
     Letto        INT          not null,
     constraint ID_Notifica_ID primary key (IdNotifica)
@@ -56,7 +56,7 @@ create table Notifica
 create table Prodotto
 (
     IdProd              int           not null AUTO_INCREMENT,
-    Codice              varchar(1500) not null,
+    Codice              varchar(15000) not null,
     Colore_frame        varchar(10)   not null,
     Larghezza           int           not null,
     Titolo              varchar(500)  not null,
