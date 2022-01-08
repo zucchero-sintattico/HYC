@@ -161,7 +161,6 @@
     <!-- Main -->
 
     <div id="popUpNotification"></div>
-
     <main>
         <?php
         if (isset($templateParams["name"])) {

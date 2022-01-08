@@ -2,6 +2,7 @@
     opacity: 0;
 }
 
+
 main > section > div > div {
     overflow-x: auto;
     overflow-y: hidden;
