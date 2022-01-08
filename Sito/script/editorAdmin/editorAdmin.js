@@ -111,7 +111,8 @@ $(document).on('ready', function () {
     const styleElem = $('#style');
     const frameColorElem = $('#frame-color');
     const fontSizeElem = $('#fontSize');
-    const titleElem = $('#title_form')
+    const titleElem = $('#title_form');
+    const languageElem = $("#language");
     quadro.setStyle(styleElem.val());
     quadro.setFramecolor(frameColorElem.val());
     quadro.title = titleElem.attr('placeholder');
@@ -119,11 +120,12 @@ $(document).on('ready', function () {
     quadro.setHeight($('#height .active  input').val());
     quadro.setFontSize(fontSizeElem.val());
     quadro.updateStyle();
+    quadro.setLanguages(languageElem.val());
     styleElem.on('change', (function () {
         quadro.setStyle($('#style').val());
     }));
 
-    $('#language').on('change', (function () {
+    languageElem.on('change', (function () {
         quadro.setLanguages($('#language').val());
     }));
 
