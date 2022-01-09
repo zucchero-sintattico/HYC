@@ -171,7 +171,7 @@
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-light text-muted">
         <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
             <!-- Left -->
             <div class="me-5 d-none d-lg-block col-6">
                 <span>Get connected with us on social networks:</span>
@@ -191,20 +191,22 @@
             </div>
             <!-- Right -->
 
-        </section>
+        </div>
         <!-- Section: Social media -->
 
         <!-- Section: Links  -->
-        <section class="">
+
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <span class="fas fa-gem me-3"></span> Hang Your Code
-                        </h6>
+
+                            <div class="text-uppercase fw-bold mb-4">
+                                <span class="fas fa-gem me-3"></span> Hang Your Code
+                            </div>
+
                         <p>
                             You select the code that inspires you the most.
                             We frame it and make sure it arrives to your home.
@@ -215,9 +217,11 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
+
+                            <div class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </div>
+
                         <p>
                             <a href="../index.php" title="home link" class="text-reset">Home</a>
                         </p>
@@ -233,21 +237,23 @@
                     <!-- Grid column -->
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
+           
+                        <div class="text-uppercase fw-bold mb-4">
                             Contact
-                        </h6>
+                        </div>
                         <p><span class="fas fa-home me-3"></span> Via Cesare Pavese, 50, Cesena FC</p>
                         <p>
                             <span class="fas fa-envelope me-3"></span>
                             info@hyc.com
                         </p>
                         <p><span class="fas fa-phone me-3"></span> + 39 3667154519</p>
+
                     </div>
                     <!-- Grid column -->
                 </div>
                 <!-- Grid row -->
             </div>
-        </section>
+
         <!-- Section: Links  -->
 
         <!-- Copyright -->

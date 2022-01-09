@@ -85,11 +85,11 @@ function addH2Animation(){
 }
 
 function generateCategoriesAndRelativeProducts(categorie, linguaggi){
-    $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'><div class='row d-flex justify-content-center'><h1>Categories</h1></div></div></div>");
+    $("main").append("<div class='row mainContainer pt-0 mt-0'><section class='col categories'><div class='row d-flex justify-content-center'><h1>Categories</h1></div></section></div>");
     $("main > div:first-child").hide(); //  started hide, show after full loading
     for(let i=0; i<categorie.length; i++){
 
-        let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
+        let singleCategory = `<section class="col categoria${categorie[i]['IdCategoria']} m-5">
                                     <div class="row">
                                         <h2>${categorie[i]['Tipo']}:</h2>
                                         <p class="isFirstP"> > </p>
@@ -100,7 +100,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                     <div class="container listaCategoria${categorie[i]['IdCategoria']}">
                                         <div class="row"></div>
                                     </div>
-                              </div>`;
+                              </section>`;
 
         $(".categories").append(singleCategory);
 
@@ -133,7 +133,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
     for(let i=0; i<linguaggi.length; i++){
 
-        let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
+        let singleCategory = `<section class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
                                     <div class="row">
                                         <h2>${linguaggi[i]['NomeLinguaggio']}:</h2>
                                         <p class="isFirstP"> > </p>
@@ -143,7 +143,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
                                     <div class="container listaLinguaggio${linguaggi[i]['NomeLinguaggio']}">
                                         <div class="row"></div>
                                     </div>
-                              </div>`;
+                              </section>`;
 
         $(".categories").append(singleCategory);
         let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']} > div`;
