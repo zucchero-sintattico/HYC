@@ -6,16 +6,16 @@ $(document).on("ready", function (event) {
     $.getJSON("/API/api-homepage.php", function (data) {
 
         fillHomePage(data);
-        let categoriesContainer = $(".categories > div > div:nth-child(2)");
-        let categoriesScroller = $(".categories > div");
+        let categoriesContainer = $(".categories > section > div:nth-child(2)");
+        let categoriesScroller = $("main >  section > section");
 
         $(categoriesScroller).append(`
             <div class='d-flex justify-content-center text-center scrollbarIndicator'>
             </div>`);
 
-        checkOnResize(categoriesScroller,"col", "col-10");
-        checkOnResize(categoriesContainer,"container", "container-fluid ");
-        checkOnResize(categoriesContainer.find("> div"),"row", "row flex-row flex-nowrap");
+        checkOnResize(categoriesScroller, "col", "col-10");
+        checkOnResize(categoriesContainer, "container", "container-fluid ");
+        checkOnResize(categoriesContainer.find("> div"), "row", "row flex-row flex-nowrap");
 
         window.setTimeout(() => {
             modifyIndexIfMobile();
@@ -29,6 +29,6 @@ $(document).on("ready", function (event) {
             $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
         }, 600);
 
-        
+
     });
 });
