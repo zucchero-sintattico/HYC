@@ -1,7 +1,10 @@
-
 $(document).on("ready", function (event) {
+    $("main").append("<div class='row justify-content-center'><img src='../img/loading/loading.png' alt='loading...'></div>");
+    const loadingGif = $("main > div:first-child");
+
     event.preventDefault();
     $.getJSON("/API/api-homepage.php", function (data) {
+
         fillHomePage(data);
         let categoriesContainer = $(".categories > div > div:nth-child(2)");
         let categoriesScroller = $(".categories > div");
@@ -16,6 +19,11 @@ $(document).on("ready", function (event) {
 
         window.setTimeout(() => {
             modifyIndexIfMobile();
+            loadingGif.remove();
+            const mainContent = $("main > div:nth-child(1)");
+            mainContent.show();
         }, 600);
+
+        
     });
 });
