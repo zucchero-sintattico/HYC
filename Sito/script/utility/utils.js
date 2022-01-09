@@ -88,6 +88,7 @@ $(document).on("ready", function () {
         $(".searchHref > p").css("color", "#5c80bc").css("font-size", "23px");
         $(".searchHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
     }
+
 })
 
 function modifyIndexIfMobile() {

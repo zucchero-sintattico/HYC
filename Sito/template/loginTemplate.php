@@ -1,6 +1,6 @@
 <div class="row justify-content-center ">
     <form action="#" method="POST">
-        <h2>Login</h2>
+        <h1>Login</h1>
         <?php if (isset($templateParams["errorelogin"])): ?>
             <p class="errorInRegister"><?php echo $templateParams["errorelogin"]; ?></p>
         <?php endif; ?>

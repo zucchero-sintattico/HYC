@@ -22,6 +22,11 @@ $(document).on("ready", function (event) {
             loadingGif.remove();
             const mainContent = $("main > div:nth-child(1)");
             mainContent.show();
+            //validation code
+            $("span").removeAttr("cm-text");
+            $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect");
+            $(".CodeMirror span").removeAttr("cm-text");
+            $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
         }, 600);
 
         
