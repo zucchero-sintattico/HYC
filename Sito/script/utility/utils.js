@@ -89,6 +89,15 @@ $(document).on("ready", function () {
         $(".searchHref img").css("filter", "invert(28%) sepia(17%) saturate(1598%) hue-rotate(178deg) brightness(89%) contrast(92%)");
     }
 
+    window.setTimeout(() => {
+        //validation code
+        $("span").removeAttr("cm-text");
+        $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect").removeAttr("wrap");
+        $(".CodeMirror span").removeAttr("cm-text");
+        $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
+        $(".cm-tab").removeAttr("cm-text");
+    },1200)
+
 })
 
 function modifyIndexIfMobile() {
