@@ -1,26 +1,46 @@
 $(document).on('ready', function () {
 
-
     if (userId != null) {
         const ws = new WebSocket("ws://hangyourcode.shop:8000/notification");
         ws.onopen = function () {
             ws.send(userId);
         };
+        const popUpnotificationContainer = $('#popUpNotification');
+
         ws.onmessage = function (e) {
             console.log(e.data);
             if (e.data === "update_notification") {
                 $.post("/API/api-notification.php?filter=last-one", function (data) {
                     data = JSON.parse(data);
-                    let popUp_notification = $(".alert").show();
                     let notificationHtml =
-                        `
-                            <label style="font-weight: bold">`+data.TipoNotifica+`
-                            <p>`+data.Descrizione+`</p>
-                            </label>              
+                        `<div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <label class="font-weight-bold">`+data.TipoNotifica+`<p>`+data.Descrizione+`</p></label>  
+                         </div>         
                         `;
-                    popUp_notification.append(notificationHtml);
-                    $("#notification").css("color", "red");
-                    $("#notification").prev()[0].style.animation="bellRingSpinMovement 0.2s 3 ease-in";
+
+                    popUpnotificationContainer.append(notificationHtml);
+                    const notification = $("#notification");
+                    notification.css("color", "red");
+                    notification.prev().css("filter", "invert(16%) sepia(96%) saturate(5152%) hue-rotate(356deg) brightness(97%) contrast(119%)");
+                    notification.prev()[0].animate([
+                            {
+                                transform: "rotate(0deg) scale(1, 1)",
+                                easing: "ease-in"
+                            },
+                            {
+                                transform: "rotate(45deg) scale(1.2, 1.2)"
+                            },
+                            {
+                                transform: "rotate(0deg) scale(1, 1)",
+                                easing: "ease-out"
+                            }],
+
+                        {
+                            duration: 200, iterations: 3
+                        }
+                    );
+
                 });
             }
         }
@@ -30,23 +50,25 @@ $(document).on('ready', function () {
     //notification selector
     const notificationToggle = $("body > div > div:nth-child(2) > div > nav > ul > li:nth-child(5)");
     let notificationDropDown = null;
-    const header = $("header")
+
 
     notificationToggle.children().on('click', function () {
-        $("#notification").css("color", "black");
+        const notification = $("#notification");
+        notification.css("color", "black");
+        notification.prev().css("filter", "none");
+
         if (notificationDropDown == null) {
             $.getJSON("/API/api-notification.php?filter=all", function (data) {
 
                 notificationToggle.append(`<div></div>`);
                 notificationDropDown = notificationToggle.children().next();
-
                 for(let i = data.length-1; i>=0; i--){
                     let notificationHtml =
                         `
                             <div class="col border border-end-dark">
-                            <label style="font-weight: bold">`+data[i].TipoNotifica+`
-                            <p style="text-align: left">`+data[i].Descrizione+`</p>
-                            </label>
+                                <div class="font-weight-bold">`+data[i].TipoNotifica+" | "+data[i].Data+`</div>
+                                <p class="text-left">`+data[i].Descrizione+`</p>
+                                
                             </div>
                         
                         `;
@@ -63,7 +85,7 @@ $(document).on('ready', function () {
                     notificationDropDown.css("bottom", $("nav").height());
                     notificationDropDown.css("right", 0);
                     notificationDropDown.css("width", "100%");
-                    notificationDropDown.css("height", $(window).height() - 100);
+                    notificationDropDown.css("height", $(window).height()-100);
                 } else {
                     notificationDropDown.css("width", 400);
                     notificationDropDown.css("height", 400);

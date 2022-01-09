@@ -131,10 +131,11 @@ $(document).on('ready', function () {
 
         $.get("bootstrap.php?infoSession=isUserLoggedIn", function (data) {
             if(data==="false"){
+                const errorMessageLoginClick = $(".errorMessageLoginClick");
                 $(".row-10 > div:nth-child(1)").append("<p class='errorMessageLoginClick'>You first need to login</p>")
-                $(".errorMessageLoginClick").css("color", "red");
-                $(".errorMessageLoginClick").css("position", "absolute");
-                $(".errorMessageLoginClick").css("font-size", "12px");
+                errorMessageLoginClick.css("color", "red");
+                errorMessageLoginClick.css("position", "absolute");
+                errorMessageLoginClick.css("font-size", "12px");
                 $("#insertToCart").css("background-color", "red");
             }
         })
@@ -205,7 +206,7 @@ $(document).on('ready', function () {
         quadro.updateStyle();
     }));
 
-    fontSizeElem.on('change', (function () {
+    fontSizeElem.on('input', (function () {
         quadro.setFontSize($('#fontSize').val());
         quadro.updateStyle();
     }));

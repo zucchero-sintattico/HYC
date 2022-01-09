@@ -15,7 +15,7 @@ function animateProductsOnHover(product, forward, title, description){
 
         for(let i = 0; i< informationStack.length; i++){
             let opac = 1;
-            if(i==0){
+            if(i===0){
                opac = 0.8;
             }
             informationStack[i].animate([
@@ -130,8 +130,9 @@ class CodeSquare {
         let animDurationBeforeChangePage = 750;
         let windowWidthHalf = $(window).height()/2;
         let windowHeightHalf = $(window).width()/2;
-        $("body").css("overflow","hidden");
-        $("body")[0].animate({
+        const body = $("body");
+        body.css("overflow","hidden");
+        body[0].animate({
             transformOrigin: `${windowWidthHalf} ${windowHeightHalf}`,
             transform:"scale(1.04,1.04)",
             backgroundColor: "#989898",
@@ -278,7 +279,6 @@ class CodeSquare {
 
     disable() {
         let square = $(this._querySelector);
-        console.log("disabling");
         square.find("textarea").css("caret-color", "transparent");
         square.find("textarea").prop('disabled', true);
         square.find(".CodeMirror").css("events", "none");
@@ -316,6 +316,12 @@ class CodeSquare {
         square.css("border-style", "ridge");
         square.css("border-color", this._frame_color);
         square.css("border-width", this._frame_size*mul);
+
+        // for code validation
+        $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect");;
+        $(".CodeMirror span").removeAttr("cm-text");
+        $("span").removeAttr("cm-text");
+        $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
 
     }
 

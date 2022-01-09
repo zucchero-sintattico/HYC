@@ -141,6 +141,7 @@ class DatabaseHelper
 
     public function checkLogin($username, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  Username = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $username, $password);
@@ -152,6 +153,7 @@ class DatabaseHelper
 
     public function checkLoginById($idUtente, $password)
     {
+        $password = hash('sha512', $password);
         $query = "SELECT IdUtente, Username, Nome FROM Utente WHERE  IdUtente = ? AND Password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is', $idUtente, $password);
@@ -272,6 +274,27 @@ class DatabaseHelper
             return $user['IdUtente'];
         }
 
+        public function checkIfUsernameOrPassNotAlreadyPresent($UserId, $Username, $Email){
+            if(!empty($UserId)){
+                //vuol dire che mi sto registrando quindi quello username se presente è il mio
+                $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE (u.IdUtente <> ? AND (u.Username = ? OR u.Email = ?))";
+                $stmt1 = $this->db->prepare($lookForUsernameQuery);
+                $stmt1->bind_param("iss",$UserId,$Username, $Email);
+
+            }else{
+                $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
+                $stmt1 = $this->db->prepare($lookForUsernameQuery);
+                $stmt1->bind_param("ss",$Username, $Email);
+            }
+
+            $stmt1->execute();
+            $resLookUp = $stmt1->get_result();
+
+
+            return count($resLookUp->fetch_all(MYSQLI_ASSOC)) == 0;
+
+        }
+
         /** Insert a user into Db */
         public
         function registerUser($Nome, $Cognome, $Username, $Email, $Password)
@@ -280,13 +303,8 @@ class DatabaseHelper
                 return "passwordTooShort";
             }
 
-            $lookForUsernameQuery = "SELECT u.Username FROM Utente u WHERE u.Username = ? OR u.Email = ?";
-            $stmt1 = $this->db->prepare($lookForUsernameQuery);
-            $stmt1->bind_param("ss",$Username, $Email);
-            $stmt1->execute();
-            $resLookUp = $stmt1->get_result();
-
-            if(count($resLookUp->fetch_all(MYSQLI_ASSOC)) == 0){
+            if($this->checkIfUsernameOrPassNotAlreadyPresent("",$Username, $Email)){
+                $Password = hash('sha512', $Password);
                 $query = "INSERT INTO Utente (Nome, Cognome, Username, Email, Password) 
                 VALUES (?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($query);
@@ -302,15 +320,14 @@ class DatabaseHelper
         public
         function updateUserData($idUtente, $dataToUpdate)
         {
-            $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?, Password = ? 
-                    WHERE Utente.idUtente = ?";
+            $query = "UPDATE Utente SET Nome = ?, Cognome = ?, Username = ?, Email = ?
+                WHERE Utente.idUtente = ?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param("sssssi",
-                $dataToUpdate["nome"],
-                $dataToUpdate["cognome"],
+            $stmt->bind_param("ssssi",
+                $dataToUpdate["name"],
+                $dataToUpdate["surname"],
                 $dataToUpdate["username"],
                 $dataToUpdate["email"],
-                $dataToUpdate["password"],
                 $idUtente
             );
             return $stmt->execute();
@@ -319,6 +336,7 @@ class DatabaseHelper
         public
         function updateUserPass($idUtente, $passToUpdate)
         {
+            $passToUpdate = hash('sha512', $passToUpdate);
             $query = "UPDATE Utente SET Password = ? 
                     WHERE Utente.IdUtente = ?";
             $stmt = $this->db->prepare($query);

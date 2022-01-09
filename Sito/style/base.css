@@ -73,8 +73,13 @@
 }
 
 body {
+    overflow-x: hidden;
+}
+
+body {
     font-family: 'Roboto Mono', monospace;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Works on Firefox */
@@ -103,6 +108,7 @@ body {
 nav > ul li:nth-child(1):hover img{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
+
 
 nav > ul li:nth-child(2):hover img{
     animation: cartMovement 0.5s ease-out;
@@ -138,6 +144,10 @@ body > div > div:nth-child(2){
     margin-bottom: 0px;
     padding-bottom: 0px;
     background-color: #E0E0E0;
+}
+
+body main{
+    padding: 10px 0;
 }
 
 header {
@@ -239,7 +249,7 @@ body > div > div:nth-child(3) > div > form {
     width: 60%;
     bottom: 10.5%;
     background-color: #E0E0E0;
-    z-index: 99;
+    z-index: 9999999999!important;
     padding-right: 0 !important;
 }
 
@@ -269,11 +279,6 @@ body > div > div:nth-child(3) > div > form > input[type=submit]:hover {
     color: white;
 }
 
-body main {
-    margin-bottom: 100px;
-}
-
-
 @media (prefers-reduced-motion) {
     * {
         animation: none;
@@ -283,6 +288,10 @@ body main {
 /* Regole per la visualizzazione Desktop-Mode*/
 /* Se il dispositivo ha una larghezza minima di 768px applico le seguenti regole*/
 @media (min-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
 
     header > div > div{
         margin: auto;
@@ -297,6 +306,7 @@ body main {
         line-height: 20px !important;
 
     }
+
 
     body nav {
         position: static;

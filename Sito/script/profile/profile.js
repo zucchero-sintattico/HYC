@@ -5,8 +5,6 @@ function didNotFIllInAllInput(formNumb, promptErrorMessage){
     return `<div class="row text-danger missedInputClass`+ formNumb +`"> <p>` + promptErrorMessage +`</p> </div>`
 }
 
-
-
 function passwordsError(promptErrorMessage){
     return `<div class="row text-danger passDontMatch"> <p>` + promptErrorMessage +`</p> </div>`
 }
@@ -15,7 +13,7 @@ function validateFormInput(selector,arePasswordsToMatch){
     let valid = true;
 
     $(selector).each(function (){
-        if($(this).val().length == 0){
+        if($(this).val().length === 0){
             valid = false;
             $(this).addClass("not-filled");
         }
@@ -39,15 +37,46 @@ function clearInputOnFormFromNotFilledClass(selector){
     selector.removeClass("not-filled");
 }
 
+let historyIsBeingShowed = false;
+
 $(document).on('ready', function () {
 
+    $(".discardChanges").on("click", function(event){
+        event.preventDefault();
+        $(".editableInfo").hide();
+        $(".notEditableInfo").show();
+    })
+
+    historyIsBeingShowed = modifyProfileIfMobile();
+    $("#orderHistoryBtn").on("click", function(event){
+        event.preventDefault();
+        if(!historyIsBeingShowed){
+            $("#orderHistoryBtn").text("Show Profile Information");
+            $(".orderHistory").show();
+            $(".editableInfo").hide();
+            $(".notEditableInfo").hide();
+            historyIsBeingShowed = true;
+        }else{
+            $("#orderHistoryBtn").text("Show Order History");
+            $(".orderHistory").hide();
+            $(".editableInfo").hide();
+            $(".notEditableInfo").show();
+            historyIsBeingShowed = false;
+        }
+
+    })
     $(".notEditableInfo").show();
     $(".editableInfo").hide()
 
-    $("#EditProfileBtn").on("click", function(){
+    $("#EditProfileBtn").on("click", function(event){
+        event.preventDefault();
         $(".notEditableInfo").hide();
         $(".editableInfo").show()
     });
+
+    $(window).on("resize",function(){
+        modifyProfileIfMobile();
+    })
 
     $("div.p-2:nth-child(1) > form:nth-child(2) input").on("keyup", function (){
 
@@ -105,7 +134,7 @@ $(document).on('ready', function () {
             let baseUrl = "API/api-profile-update.php";
 
             let userData = {
-                nome: $("#first_name").val(),
+                name: $("#first_name").val(),
                 surname: $("#last_name").val(),
                 username: $("#username").val(),
                 email: $("#email").val(),
@@ -113,8 +142,6 @@ $(document).on('ready', function () {
             };
 
             $.post(baseUrl,{dataToUpdate: userData},function (data) {
-
-                console.log(data);
 
                 let parsedJSONinfo = JSON.parse(data);
 
@@ -125,10 +152,14 @@ $(document).on('ready', function () {
                 }else if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Wrong password", "danger"));
                     $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
+                }else if(parsedJSONinfo.informationUpdateStatus === "alreadyPresent"){
+                    $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Email or Username already present", "danger"));
+                    $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
                     $("div.m-3:nth-child(5) > div:nth-child(1)").append(printInformationUpdateStatus(1,"Information correctly updated", "success"));
                     $("div.col-3:nth-child(3) > label:nth-child(1) > p:nth-child(2)").text("Hi " + userData.username) ;
                     $("div.m-3:nth-child(5) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
+                    $(".input").val("");
                     window.setTimeout(() => {
                         $(".notEditableInfo").show();
                         $(".editableInfo").hide()
@@ -136,7 +167,7 @@ $(document).on('ready', function () {
                         clearInputOnFormFromNotFilledClass(formOneInputsSelector);
                         $(".infoStatusUpdate1").remove();
                         //UPDATE DATA
-                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(2)").text(`NAME: ${userData.nome}`);
+                        $(".notEditableInfo > div:nth-child(1) > p:nth-child(2)").text(`NAME: ${userData.name}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(3)").text(`SURNAME: ${userData.surname}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(4)").text(`USERNAME: ${userData.username}`);
                         $(".notEditableInfo > div:nth-child(1) > p:nth-child(5)").text(`EMAIL: ${userData.email}`);
@@ -175,12 +206,16 @@ $(document).on('ready', function () {
                 if(parsedJSONinfo.informationUpdateStatus === "wrongPass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Wrong password", "danger"));
                     $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
+                }else if(parsedJSONinfo.informationUpdateStatus === "passTooShort"){
+                    $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"New password has to be 8 character long at least", "danger"));
+                    $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "samePass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"New password has to be different from current one", "danger"));
                     $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","red");
                 }else if(parsedJSONinfo.informationUpdateStatus === "rightPass"){
                     $("div.m-3:nth-child(3) > div:nth-child(1)").append(printInformationUpdateStatus(2,"Password successfully updated", "success"));
                     $("div.m-3:nth-child(3) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)").css("border-color","gray");
+                    $(".oldPass").val("");
                     window.setTimeout(() => {
                         $(".notEditableInfo").show();
                         $(".editableInfo").hide();

@@ -2,19 +2,8 @@
     opacity: 0;
 }
 
-main > section > div > div {
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 35%;
-}
-
-.categories > div > div:nth-child(2) {
+.categories > section > div:nth-child(2) {
     overflow-y: visible;
-}
-
-main > div img{
-    width: 25%;
-    padding-top: 0px !important;
 }
 
 main > div:first-child{
@@ -22,47 +11,12 @@ main > div:first-child{
     padding-top: 0px !important;
 }
 
-main > section > div > div > a, main > section > div > div > article, main > section > div > div > section{
-    padding: 3% 40%;
-    margin: 5px;
-    border: none;
-    border-radius: 10px;
-    background-color: #E0E0E0 !important;
-    color: black;
-}
-
-
-main > section > div > div > section img {
-    width: 40% !important;
-    margin: auto;
-    background-repeat: no-repeat;
-}
-
-main > section > div > div > a *:not(code, code *) {
-    background-color: #E0E0E0 !important;
-    border: none !important;
-}
-
-
-body > div > main > section > header > h1{
-    padding-top: 3%;
-}
-
 .container{
     width: 100%;
     max-width: 3000px;
 }
 
-main > section > div > div > div > a > article{
-    background-color: #E0E0E0 !important;
-    border-radius: 10px;
-    width: 100%;
-    padding: 3% 3%;
-    color: black;
-    margin-top: 5%;
-}
-
-.categories > div > div > div {
+.categories > section > div > div {
     position: relative;
     z-index: 2;
     user-select: none;
@@ -72,10 +26,6 @@ main > section > div > div > div > a > article{
 
 body a:hover{
     text-decoration: none;
-}
-
-body > div img {
-    padding: 3% 0;
 }
 
 body > div > main > section > div > div > section > div{
@@ -94,33 +44,16 @@ body > div > main > section > div > div > div > a > article > div:nth-child(1){
 }
 
 
-h3{
+h2{
     display: inline-block;
     font-weight: bold;
     color: black;
 }
 
-h3:hover{
+h2:hover{
     cursor: pointer;
 }
 
-body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{
-    width: 100%;
-    font-size: 20px;
-    font-family: "Courier New";
-    font-weight: bold;
-}
-
-body > div > main > section > div > div > div > a > article > div:nth-child(3){
-    padding-top: 20px;
-    text-align: center;
-}
-
-
-body > div > main > section > div > div > div > a > article > div:nth-child(3) > p{
-    width: 100%;
-    font: 17px "Courier New";
-}
 
 main {
     margin-right: 50px;
@@ -128,12 +61,21 @@ main {
 }
 
 
+.productWhole{
+    width:370px !important;
+    max-width: 500px !important;
+}
+
 
 @media screen and (prefers-reduced-motion) {
     * {
         animation: none;
         transition: none !important;
     }
+}
+
+#searchField{
+    z-index: 9999999;
 }
 
 @media (max-width: 768px) {
@@ -147,13 +89,13 @@ main {
         z-index: 10 !important;
     }
 
-    .categories, .categories > div > div:nth-child(2) {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-        padding: 0px !important;
+    .categories, .categories > section > div:nth-child(2) {
+        margin-left: 0!important;
+        margin-right: 0 !important;
+        padding: 0 !important;
     }
 
-    .categories > div > div:nth-child(2) > div{
+    .categories > section > div:nth-child(2) > div{
         overflow-y: hidden;
         overflow-x: auto;
         padding-top: 0;
@@ -162,7 +104,7 @@ main {
         margin-bottom: 0;
     }
 
-    .categories > div > div:nth-child(2){
+    .categories > section > div:nth-child(2){
 
         padding-top: 0;
         padding-bottom: 0;

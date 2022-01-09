@@ -51,7 +51,7 @@ body > div > main > section > div > div > div > a > article > div:nth-child(1){
     text-align: center;
 }
 
-body > div > main > section > div > div > div > a > article > div:nth-child(1) > h2{
+body > div > main > section > div > div > div > a > article > div:nth-child(1) > p{
     width: 100%;
     font-size: 20px;
     font-family: "Courier New";

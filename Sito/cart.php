@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 $templateParams['title'] = "HYC - Cart";
 $templateParams['style'] = "style/cart.css";
-$templateParams['js'] = array("script/utility/filler.js");
+$templateParams['js'] = array("script/utility/filler.js", "script/utility/utils.js");
 $templateParams['name'] = "template/cartTemplate.php";
 
 if (isUserLoggedIn()) {

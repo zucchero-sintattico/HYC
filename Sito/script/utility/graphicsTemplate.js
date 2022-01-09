@@ -19,7 +19,7 @@ function adaptableSection(content, title) {
                     <header class="text-center">
                         <h1>${title}</h1>
                     </header>
-                    <div class="container ">
+                    <div class="container-fluid">
                     <div class="row justify-content-center">                
                     `;
     result += content;

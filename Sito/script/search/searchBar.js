@@ -6,20 +6,31 @@ $(document).on('ready', function () {
         if ($("#searchField").val() !== "") {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 $("main div").hide();
+
                 $(".searchResults").remove();
+
                 let articoli = data["Results"];
                 $("main").append(`<div class="container">
                                             <div class="col categRes"></div>
-                                            <div class="row searchResults"></div>
+                                            <div class="row m-auto pt-3 d-flex justify-content-center searchResults"></div>
                                     </div>`);
-                $(".categRes").append(`<h2>Search results for "${data["Title"]}"</h2>`);
+                $(".categRes").append(`
+                                <div class="row justify-content-center">
+                                  <h2>Search results for "${data["Title"]}"</h2>
+                                </div>
+                                  `);
                 $(".searchResults").append(createProductsOfCategoryFromData(articoli, "res"));
                 $(".searchResults").show();
+                $('#searchField').trigger('focus');
             });
         } else {
-            $("main div").show();
-            $(".searchResults").hide();
-            $(".searchResults").remove();
+            if(window.location.pathname !== "/search.php"){
+                $(".categRes").empty();
+                $("main div").show();
+                $(".searchResults").hide();
+                $(".searchResults").remove();
+            }
+
         }
     });
 

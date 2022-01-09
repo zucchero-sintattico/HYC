@@ -8,7 +8,7 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     $templateParams['languages'] = $dbh->getLanguages();
     $templateParams['themes'] = $dbh->getThemes();
     $templateParams['categories'] = $dbh->getCategorie();
-    $templateParams['js'] = array("script/editorAdmin/editorAdmin.js");
+    $templateParams['js'] = array("script/editorAdmin/editorAdmin.js", "script/utility/utils.js");
 
     if(isset($_GET['id'])){
         $templateParams['id'] = $_GET['id'];
@@ -37,6 +37,8 @@ if (isUserLoggedIn() && $dbh->isUserAdmin(getLoggedUserID())) {
     }
     if($_GET['mode'] == 'del'){
         $dbh -> removeProduct($_GET['id']);
+        // Create a notification
+        $dbh -> createNotification("Product-Del", "The Product has been successfully deleted.", getLoggedUserID());
         header("location: admin.php");
     }
 } else {

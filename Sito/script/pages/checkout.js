@@ -15,7 +15,7 @@ function checkoutIsOk(data) {
                                         <div class="py-2"> <span class="d-block text-muted">Order Date</span> <span>${orderInfo['Data']}</span> </div>
                                     </td>
                                     <td>
-                                        <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>M${orderInfo['IdOrdine']}</span> </div>
+                                        <div class="py-2"> <span class="d-block text-muted">Order N°</span> <span>#${orderInfo['IdOrdine']}</span> </div>
                                     </td>
                                     <td>
                                         <div class="py-2"> <span class="d-block text-muted">Shipping Address</span> <span>Via Cesare Pavese, 50, Cesena FC</span> </div>
@@ -34,9 +34,9 @@ function checkoutIsOk(data) {
 function validateInput() {
     let state = "valid";
 
-    if($("#details > form > div:nth-child(2) > input").val().length != 16){
+    if($("#cardNumb").val().length != 16){
         state = "wrongCardNumberLength"
-        $("#details > form > div:nth-child(2) > input").addClass("notValid");
+        $("#cardNumb").addClass("notValid");
     }
 
     $("input:not(:first, :last)").each(function () {
@@ -70,6 +70,7 @@ $(document).on('ready', function () {
                 const main = $('main');
                 main.html("");
                 main.append(checkoutIsOk(data));
+
             });
         }else{
             $('input').filter('.notValid').css("border", "1px solid red");
@@ -79,7 +80,7 @@ $(document).on('ready', function () {
             if(messageOnValidate == "notValid"){
                 messageToLog = "Please compile every Field";
             }else if(messageOnValidate == "wrongCardNumberLength"){
-                messageToLog = "Please insert correct card number length";
+                messageToLog = "Please insert correct card number length (16)";
             }
 
             $(this).parent().parent().parent().append(`
