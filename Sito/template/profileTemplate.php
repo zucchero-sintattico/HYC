@@ -31,9 +31,9 @@
                                         <p>Title: <?php echo $templateParams["ordersHistory"][$i][$j]["Titolo"] ?></p>
                                         <div class="row d-flex justify-content-center">
                                             <div class="row d-flex justify-content-center ml-2 mb-3 colorShower">
-                                                <label for="colorFrame">Frame color: </label>
-                                                <input type="color" id="colorFrame" name="colorFrame"
-                                                       value="<?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?>" disabled>
+                                                <label>Frame color: </label>
+                                                <input type="color" name="colorFrame"
+                                                       value="<?php echo $templateParams["ordersHistory"][$i][$j]["Colore_frame"] ?>" disabled title="frame color">
                                             </div>
                                         </div>
                                         <p>
@@ -63,44 +63,34 @@
             <div class="col editableInfo m-1">
                 <div class="col border p-2 m-3 editYourProfileContainer">
                     <h2>Edit your profile information</h2>
-                    <div class="row d-flex justify-content-center m-3">
+                    <div class="col d-flex justify-content-center m-3">
 
                         <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
-                            <div class="form-group">
                                 <label for="first_name">First name</label>
-                                <input type="text" class="form-control" required autocomplete="off" id="first_name"
+                                <input type="text" required autocomplete="off" id="first_name"
                                        name="first_name" placeholder="First name"
-                                       value="<?php echo $templateParams["userInfo"]["Nome"]; ?>">
-                            </div>
-                            <div class="form-group">
+                                       value="<?php echo $templateParams["userInfo"]["Nome"]; ?>" title="first name">
                                 <label for="last_name">Last name</label>
-                                <input type="text" class="form-control" required autocomplete="off" id="last_name"
+                                <input type="text" required autocomplete="off" id="last_name"
                                        name="last_name" placeholder="Last name"
-                                       value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="twitter_name">Username</label>
-                                <input type="text" class="form-control" required autocomplete="off" id="username"
+                                       value="<?php echo $templateParams["userInfo"]["Cognome"]; ?>" title="last name">
+                                <label>Username</label>
+                                <input type="text" required autocomplete="off"
                                        name="username" placeholder="Username"
-                                       value="<?php echo $templateParams["userInfo"]["Username"]; ?>">
-                            </div>
-                            <div class="form-group">
+                                       value="<?php echo $templateParams["userInfo"]["Username"]; ?>" title="username">
                                 <label for="email">Email address</label>
-                                <input type="email" class="form-control" required autocomplete="off" id="email"
+                                <input type="email" required autocomplete="off" id="email"
                                        name="email" placeholder="Enter email"
-                                       value="<?php echo $templateParams["userInfo"]["Email"]; ?>">
-                            </div>
+                                       value="<?php echo $templateParams["userInfo"]["Email"]; ?>" title="email">
                             <div class="row m-3">
                                 <div class="col pr-4">
                                     <button class="btn btn-dark m-2">Confirm profile edit</button>
                                     <button class="btn btn-dark discardChanges m-2">Discard changes</button>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <label for="oldPass">Insert current password to confirm edit</label>
-                                        <input type="password" class="form-control oldPass" autocomplete="new-password"
-                                               name="oldPass" placeholder="Password">
-                                    </div>
+                                        <label>Insert current password to confirm edit</label>
+                                        <input type="password" class="oldPass" autocomplete="new-password"
+                                               name="oldPass" placeholder="Password" title="Insert current password to confirm edit">
                                 </div>
                             </div>
                         </form>
@@ -111,28 +101,22 @@
                 <div class="col border m-3 p-2 editYourPasswordContainer">
                     <h2>Edit password</h2>
                     <div class="row d-flex justify-content-center m-3">
-                        <form role="form" autocomplete="off" action="#" id="user_profile" method="POST">
-                            <div class="form-group">
+                        <form role="form" autocomplete="off" action="#" id="user_profile2" method="POST">
                                 <label for="pass1">Insert new password</label>
-                                <input type="password" class="form-control" autocomplete="new-password" id="pass1"
-                                       name="pass1" placeholder="New password">
-                            </div>
-                            <div class="form-group">
+                                <input type="password" autocomplete="new-password" id="pass1"
+                                       name="pass1" placeholder="New password" title="Insert new password">
                                 <label for="pass2">Confirm new Password</label>
-                                <input type="password" class="form-control" autocomplete="new-password" id="pass2"
-                                       name="pass2" placeholder="Repeat new password">
-                            </div>
+                                <input type="password" autocomplete="new-password" id="pass2"
+                                       name="pass2" placeholder="Repeat new password" title="Confirm new Password">
                             <div class="row m-3">
                                 <div class="col pr-4">
                                     <button class="btn btn-dark m-2">Confirm profile edit</button>
                                     <button class="btn btn-dark discardChanges m-2">Discard changes</button>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group">
-                                        <label for="oldPass">Insert current password to confirm edit</label>
-                                        <input type="password" class="form-control oldPass" autocomplete="new-password"
-                                               name="oldPass" placeholder="Password">
-                                    </div>
+                                        <label>Insert current password to confirm edit</label>
+                                        <input type="password" class="oldPass1" autocomplete="new-password"
+                                               name="oldPass1" placeholder="Password" title="Insert current password to confirm edit" title="Insert current password to confirm edit">
                                 </div>
                             </div>
                         </form>

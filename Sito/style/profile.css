@@ -19,6 +19,10 @@
     width: 95%;
 }
 
+input {
+    display: flex;
+    align-items: start;
+}
 
 @media (max-width: 768px) {
 
