@@ -95,13 +95,13 @@ body > div > main > section > div > div > div > a > article > div:nth-child(1){
 }
 
 
-h3{
+h2{
     display: inline-block;
     font-weight: bold;
     color: black;
 }
 
-h3:hover{
+h2:hover{
     cursor: pointer;
 }
 

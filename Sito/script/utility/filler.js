@@ -13,16 +13,16 @@ function createImages(){
 
 }
 
-function addH3Animation(){
-    let h3s = $("h3");
-    h3s.next().next().css("opacity",0);
-    h3s.next().next().css("font-size","20px");
-    h3s.next().next().css("font-weight","bold");
-    h3s.next().next().next().css("opacity",0);
+function addH2Animation(){
+    let h2s = $("h2");
+    h2s.next().next().css("opacity",0);
+    h2s.next().next().css("font-size","20px");
+    h2s.next().next().css("font-weight","bold");
+    h2s.next().next().next().css("opacity",0);
 
-    h3s.each(function(){
+    h2s.each(function(){
         $(this).on("mouseenter",function(){
-            //$(this).parent().find(".isFirstP")[0].style.setProperty("color", "white", "important");
+            $(this).parent().find(".isFirstP")[0].style.setProperty("opacity", "0", "important");
             $(this).css("color", "#545454");
             $(this).next().next()[0].animate([
                     {
@@ -52,8 +52,8 @@ function addH3Animation(){
         })
 
         $(this).on("mouseleave",function(){
-            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "black", "important");
-            $(this).css("color", "black");
+            $(this).parent().find(".isFirstP")[0].style.setProperty("opacity", "1", "important");
+            $(this).css("opacity", "1");
             $(this).next().next()[0].animate([
                     {
                         opacity: 0,
@@ -85,13 +85,13 @@ function addH3Animation(){
 }
 
 function generateCategoriesAndRelativeProducts(categorie, linguaggi){
-    $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'></div></div>");
+    $("main").append("<div class='row mainContainer pt-0 mt-0'><div class='col categories'><div class='row d-flex justify-content-center'><h1>Categories</h1></div></div></div>");
     $("main > div:first-child").hide(); //  started hide, show after full loading
     for(let i=0; i<categorie.length; i++){
 
         let singleCategory = `<div class="col categoria${categorie[i]['IdCategoria']} m-5">
                                     <div class="row">
-                                        <h3>${categorie[i]['Tipo']}:</h3>
+                                        <h2>${categorie[i]['Tipo']}:</h2>
                                         <p class="isFirstP"> > </p>
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
@@ -110,9 +110,9 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
         $(selector).css("white-space", "nowrap");
 
-        let h3ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
+        let h2ParentSelector = ".categoria".concat(categorie[i]['IdCategoria']);
 
-        $(h3ParentSelector).find("h3").on("click", function () {
+        $(h2ParentSelector).find("h2").on("click", function () {
             $.getJSON("/API/api-search.php?cat=" + categorie[i]['IdCategoria'], function (data) {
                 let articoli = data["Results"];
                 $("main div").hide();
@@ -135,7 +135,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
         let singleCategory = `<div class="col ${linguaggi[i]['NomeLinguaggio']} m-5">
                                     <div class="row">
-                                        <h3>${linguaggi[i]['NomeLinguaggio']}:</h3>
+                                        <h2>${linguaggi[i]['NomeLinguaggio']}:</h2>
                                         <p class="isFirstP"> > </p>
                                         <p> > </p>
                                         <p>Sfoglia tutti</p>
@@ -149,9 +149,9 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
         let selector = `.listaLinguaggio${linguaggi[i]['NomeLinguaggio']} > div`;
         addProductsToSpecifiedList(linguaggi[i]['NomeLinguaggio'], selector, "lan",);
 
-        let h3ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
+        let h2ParentSelector = ".".concat(linguaggi[i]['NomeLinguaggio']);
 
-        $(h3ParentSelector).find("h3").on("click", function () {
+        $(h2ParentSelector).find("h2").on("click", function () {
             $.getJSON("/API/api-search.php?lan=" + linguaggi[i]['NomeLinguaggio'], function (data) {
                 let articoli = data["Results"];
                 $("main div").hide();
@@ -172,7 +172,7 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
 
 
     $(".isFirstP").each(function(){
-        $(this).css("color","white");
+        $(this).css("opacity","0");
         $(this).css("font-size", "28px");
         $(this).css("font-weight","bold");
     })
@@ -180,13 +180,13 @@ function generateCategoriesAndRelativeProducts(categorie, linguaggi){
     const categoryAnimation = $(".categories > div > div:first-child");
 
     categoryAnimation.on("mouseenter", function(){
-        $(this).find("p").first().css("color", "black");
+        $(this).find("p").first().css("opacity", "1");
     });
 
     categoryAnimation.on("mouseleave", function(){
-        $(this).find("p").first().css("color", "white");
+        $(this).find("p").first().css("opacity", "0");
     });
-    addH3Animation();
+    addH2Animation();
 
 }
 
