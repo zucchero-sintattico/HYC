@@ -7,7 +7,7 @@ $(document).on("ready", function (event) {
 
         fillHomePage(data);
         let categoriesContainer = $(".categories > section > div:nth-child(2)");
-        let categoriesScroller = $("main >  section > section");
+        let categoriesScroller = $("main > div > section > section");
 
         $(categoriesScroller).append(`
             <div class='d-flex justify-content-center text-center scrollbarIndicator'>
