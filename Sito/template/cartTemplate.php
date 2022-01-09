@@ -11,7 +11,7 @@
                     <a href="../editor.php?id=<?php echo $articolo["IdProd"] ?>">
                         <article>
                             <div class="col-12">
-                                <h2><?php echo $articolo["Titolo"] ?></h2>
+                                <p class="h2"><?php echo $articolo["Titolo"] ?></p>
                             </div>
                             <div class="row justify-content-center">
                                 <code id="quadro<?php echo $articolo["IdProd"] ?>">
