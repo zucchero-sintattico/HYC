@@ -143,8 +143,8 @@
                     <div class="btn text-white ml-auto"><span class="fas fa-lock"></span> Process Order</div>
                 </div>
             </div>
-            <div class="text-muted pt-3" id="mobile"><span class="fas fa-lock"></span> Your information is save</div>
+            <div class="text-muted pt-3" id="mobile"><span class="fas fa-lock"></span> YYour information has been saved</div>
         </div>
     </div>
-    <div class="text-muted"><span class="fas fa-lock"></span> Your information is save</div>
+    <div class="text-muted"><span class="fas fa-lock"></span> Your information has been saved</div>
 </div>

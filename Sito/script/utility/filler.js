@@ -22,8 +22,8 @@ function addH3Animation(){
 
     h3s.each(function(){
         $(this).on("mouseenter",function(){
-            $(this).parent().find(".isFirstP")[0].style.setProperty("color", "white", "important");
-            $(this).css("color", "#E0E0E0");
+            //$(this).parent().find(".isFirstP")[0].style.setProperty("color", "white", "important");
+            $(this).css("color", "#545454");
             $(this).next().next()[0].animate([
                     {
                         opacity: 1,

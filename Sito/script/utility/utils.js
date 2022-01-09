@@ -76,17 +76,17 @@ $(document).on("ready", function () {
     let page = window.location.pathname;
 
     if (page === "/index.php" || page === "/") {
-        $(".indexHref > p").css("color", "#5c80bc").css("font-size", "23px");
-        $(".indexHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
+        $(".indexHref > p").css("color", "#2F4A74").css("font-size", "23px");
+        $(".indexHref img").css("filter", "invert(28%) sepia(17%) saturate(1598%) hue-rotate(178deg) brightness(89%) contrast(92%)");
     } else if (page === "/cart.php") {
-        $(".cartHref > p").css("color", "#5c80bc").css("font-size", "23px");
-        $(".cartHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
+        $(".cartHref > p").css("color", "#2F4A74").css("font-size", "23px");
+        $(".cartHref img").css("filter", "invert(28%) sepia(17%) saturate(1598%) hue-rotate(178deg) brightness(89%) contrast(92%)");
     } else if (page === "/profile.php") {
-        $(".profileHref > p").css("color", "#5c80bc").css("font-size", "23px");
-        $(".profileHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
+        $(".profileHref > p").css("color", "#2F4A74").css("font-size", "23px");
+        $(".profileHref img").css("filter", "invert(28%) sepia(17%) saturate(1598%) hue-rotate(178deg) brightness(89%) contrast(92%)");
     } else if (page === "/search.php") {
-        $(".searchHref > p").css("color", "#5c80bc").css("font-size", "23px");
-        $(".searchHref img").css("filter", "invert(50%) sepia(55%) saturate(422%) hue-rotate(179deg) brightness(88%) contrast(89%)");
+        $(".searchHref > p").css("color", "#2F4A74").css("font-size", "23px");
+        $(".searchHref img").css("filter", "invert(28%) sepia(17%) saturate(1598%) hue-rotate(178deg) brightness(89%) contrast(92%)");
     }
 })
 
