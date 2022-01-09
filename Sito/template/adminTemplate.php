@@ -29,6 +29,11 @@
                                 quadri[<?php echo $i?>].setText(<?php echo $square['Codice'] ?>);
                                 quadri[<?php echo $i?>].disable();
 
+                                /**validation code**/
+                                $("span").removeAttr("cm-text");
+                                $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect");
+                                $(".CodeMirror span").removeAttr("cm-text");
+                                $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
 
                             </script>
                         </div>

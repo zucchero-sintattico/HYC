@@ -94,7 +94,7 @@
                     </p>
                 </div>
                 <div class="col-2 pr-5">
-                    <label><?php
+                    <?php
                         if (isUserLoggedIn()) {
                             echo "<script>let userId =" . getLoggedUserID() . ";</script>";
                             echo "<p>Hi " . getNameUserID() . "</p>";
@@ -102,7 +102,7 @@
                         } else {
                             echo "<script> let userId = null </script>";
                             echo "<a href='../login.php'>LogIn</a>";
-                        } ?></label>
+                        } ?>
                 </div>
             </div>
         </header>
