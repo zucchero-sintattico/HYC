@@ -7,7 +7,7 @@ $(document).on("ready", function (event) {
 
         fillHomePage(data);
         let categoriesContainer = $(".categories > section > div:nth-child(2)");
-        let categoriesScroller = $("main >  section > section");
+        let categoriesScroller = $("main > div > section > section");
 
         $(categoriesScroller).append(`
             <div class='d-flex justify-content-center text-center scrollbarIndicator'>
@@ -22,12 +22,16 @@ $(document).on("ready", function (event) {
             loadingGif.remove();
             const mainContent = $("main > div:nth-child(1)");
             mainContent.show();
+        }, 600);
+
+        window.setTimeout(()=>{
             //validation code
             $("span").removeAttr("cm-text");
-            $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect");
+            $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect").removeAttr("wrap");
             $(".CodeMirror span").removeAttr("cm-text");
             $(".CodeMirror div").removeAttr("cm-not-content").removeAttr("autocorrect");
-        }, 600);
+            $(".cm-tab").removeAttr("cm-text");
+        },1200)
 
 
     });
