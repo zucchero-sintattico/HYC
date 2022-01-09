@@ -24,7 +24,7 @@ $(document).on("ready", function (event) {
             mainContent.show();
         }, 600);
 
-        window.setTimeout(()=>{
+        window.setTimeout(() => {
             //validation code
             $("span").removeAttr("cm-text");
             $(".CodeMirror textarea").attr("title", "code main frame area").removeAttr("autocorrect").removeAttr("wrap");

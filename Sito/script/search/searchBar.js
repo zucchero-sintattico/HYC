@@ -6,7 +6,9 @@ $(document).on('ready', function () {
         if ($("#searchField").val() !== "") {
             $.getJSON("/API/api-search.php?key=" + $("#searchField").val(), function (data) {
                 $("main div").hide();
+
                 $(".searchResults").remove();
+
                 let articoli = data["Results"];
                 $("main").append(`<div class="container">
                                             <div class="col categRes"></div>
@@ -22,10 +24,13 @@ $(document).on('ready', function () {
                 $('#searchField').trigger('focus');
             });
         } else {
-            $(".categRes").empty();
-            $("main div").show();
-            $(".searchResults").hide();
-            $(".searchResults").remove();
+            if(window.location.pathname !== "/search.php"){
+                $(".categRes").empty();
+                $("main div").show();
+                $(".searchResults").hide();
+                $(".searchResults").remove();
+            }
+
         }
     });
 
