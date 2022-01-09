@@ -158,12 +158,12 @@ main {
     }
 
     .categories, .categories > div > div:nth-child(2) {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-        padding: 0px !important;
+        margin-left: 0!important;
+        margin-right: 0 !important;
+        padding: 0 !important;
     }
 
-    .categories > div > div:nth-child(2) > div{
+    .categories > section > div:nth-child(2) > div{
         overflow-y: hidden;
         overflow-x: auto;
         padding-top: 0;
