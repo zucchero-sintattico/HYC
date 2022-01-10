@@ -80,11 +80,7 @@
     }
 
     .productWhole{
-        margin: 0 30px;
-    }
-
-    main > div.container > div.row.m-auto.pt-3.d-flex.justify-content-center.searchResults .productWhole:not(:first-child){
-        margin-left: 40px;
+        margin: 30px 40px;
     }
 
     .info{
