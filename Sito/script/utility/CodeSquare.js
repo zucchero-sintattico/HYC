@@ -153,7 +153,7 @@ class CodeSquare {
         square.parent().parent().css("box-sizing", "border-box");
         let refer = this;
         square.on("mouseenter", function(){
-            $(".categories > div").css("z-index",10);
+            $(".categories > section").css("z-index",10);
             square.parent().parent().css("z-index", 9000);
             square.parent().parent().find(".info").css("display", "inline-block");
             square.parent().parent().parent().parent().parent().css("z-index",99999);
