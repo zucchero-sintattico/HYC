@@ -1,5 +1,7 @@
-# HYC
 
+
+![alt text](https://github.com/zucchero-sintattico/HYC/blob/main/report/logos/logo1_bianco.png)
+# HYC
 [Link al Sito](http://hangyourcode.shop) <br />
 Progetto per Tecnologie Web 2021/2022
 
