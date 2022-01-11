@@ -6,7 +6,7 @@
 Progetto per Tecnologie Web 2021/2022
 
 ## Obiettivo: 
-Sito web per la gestione della vendita di quadri di codice. Il quadro può essere scelto tra quelli già disponibili in lista e in seguito modificato nel contenuto e nell'estetica secondo gusti ed esigenze.
+Sito web per la gestione della vendita di quadri di codice. Il quadro può essere scelto tra quelli già disponibili in lista e in seguito modificato nel contenuto e nell'estetica secondo gusti ed esigenze personali.
 
 ### Features
 
@@ -21,7 +21,7 @@ Sito web per la gestione della vendita di quadri di codice. Il quadro può esser
  
 ## Sondaggio di valutazione esperienza utente
 
-Dati statisctici aquisiti mediante Google Form, [Tabelle complete qui](https://github.com/zucchero-sintattico/HYC/blob/main/report/Indagine%20UX.pdf).
+Dati statistici aquisiti mediante Google Form, [Tabelle complete qui](https://github.com/zucchero-sintattico/HYC/blob/main/report/Indagine%20UX.pdf).
 ![alt text](https://github.com/zucchero-sintattico/HYC/blob/main/report/informazioni.png)
 
 ## Componenti gruppo:
