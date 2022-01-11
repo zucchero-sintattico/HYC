@@ -19,7 +19,7 @@ Sito web per la gestione della vendita di quadri di codice. Il quadro può esser
  - Profilo utente con cronologia ordini e possibilità di cambiare i propri dati
  
  
-## Dati
+## Sondaggio di valutazione esperienza utente
 
 Dati statisctici aquisiti mediate Google Form, [Tabelle complete qui](https://github.com/zucchero-sintattico/HYC/blob/main/report/Indagine%20UX.pdf).
 ![alt text](https://github.com/zucchero-sintattico/HYC/blob/main/report/informazioni.png)
