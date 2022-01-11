@@ -76,5 +76,14 @@
     .paintingTitle{
         opacity: 1 !important;
         position: static !important;
+        width: auto;
+    }
+
+    .productWhole{
+        margin: 30px 40px;
+    }
+
+    .info{
+        display: none;
     }
 }
