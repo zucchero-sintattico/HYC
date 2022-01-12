@@ -118,7 +118,7 @@ function modifyIndexIfMobile() {
                     }
 
                     //let singleSpace = 100 / numProducts;
-                    if($(window).width() < numProducts * 40){
+                    if($(window).width() < numProducts * (40 + 20)){
                         let singleSpace = 100 / numProducts;
                         $(this).find("img").css("max-width", `${singleSpace}%`);
                     }
