@@ -118,7 +118,14 @@ function modifyIndexIfMobile() {
                     }
 
                     //let singleSpace = 100 / numProducts;
-                    $(this).find("img").css("max-width", `40px`);
+                    if($(window).width() < numProducts * 40){
+                        let singleSpace = 100 / numProducts;
+                        $(this).find("img").css("max-width", `${singleSpace}%`);
+                    }
+                    else{
+                        $(this).find("img").css("max-width", `40px`);
+                    }
+
 
                     $(this).prev().find(" > div").on("scroll", function () {
                         //let scrollPercentage = 100 * this.scrollLeft / this.scrollWidth / (1 - this.clientWidth / this.scrollWidth);
