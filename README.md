@@ -22,7 +22,11 @@ Sito web per la gestione della vendita di quadri di codice. Il quadro può esser
 ## Sondaggio di valutazione esperienza utente
 
 Dati statistici aquisiti mediante Google Form, [Tabelle complete qui](https://github.com/zucchero-sintattico/HYC/blob/main/report/Indagine%20UX.pdf).
-![alt text](https://github.com/zucchero-sintattico/HYC/blob/main/report/informazioni.png)
+![Grafici](https://github.com/zucchero-sintattico/HYC/blob/main/report/informazioni.png)
+
+## Mockup iniziali
+[Lista mockup](https://github.com/zucchero-sintattico/HYC/tree/main/report/Mockup)
+![Esempio di mockup iniziale](https://github.com/zucchero-sintattico/HYC/blob/main/report/Mockup/evolutivoMockup.png)
 
 ## Componenti gruppo:
  - Tommaso Patriti
